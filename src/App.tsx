@@ -5,6 +5,9 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import DojoCaraiva from "./pages/DojoCaraiva.tsx";
+import DojoBonete from "./pages/DojoBonete.tsx";
+import CorumbauBjj from "./pages/CorumbauBjj.tsx";
 
 const queryClient = new QueryClient();
 
