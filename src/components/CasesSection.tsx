@@ -1,6 +1,6 @@
-import caseCaraiva from "@/assets/case-caraiva.jpg";
-import caseCorumbau from "@/assets/case-corumbau.jpg";
-import caseBonete from "@/assets/case-bonete.jpg";
+import caseCaraiva from "@/assets/case-caraiva-real.webp";
+import caseCorumbau from "@/assets/case-corumbau-real.webp";
+import caseBonete from "@/assets/case-bonete-real.webp";
 import { ArrowRight } from "lucide-react";
 
 const cases = [
@@ -18,11 +18,11 @@ const CasesSection = () => {
       <h2 className="text-2xl md:text-3xl font-bold mb-8">
         Campanhas que geraram resultado real
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="flex gap-5 overflow-x-auto pb-2">
         {cases.map((c) => (
           <div
             key={c.name}
-            className="rounded-2xl overflow-hidden border border-border bg-card shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-200 cursor-pointer group"
+            className="min-w-[280px] flex-1 rounded-2xl overflow-hidden border border-border bg-card shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-200 cursor-pointer group"
           >
             <div className="relative h-48 overflow-hidden">
               <img

@@ -1,12 +1,12 @@
-import heroImg from "@/assets/hero.jpg";
+import heroImg from "@/assets/hero-real.webp";
 
 const HeroSection = () => {
   return (
     <section className="relative h-[92vh] min-h-[520px] overflow-hidden">
       <img
         src={heroImg}
-        alt="Mateus Tafuri trabalhando com comunidade"
-        className="w-full h-full object-cover object-[center_10%]"
+        alt="Mateus Tafuri com alunos no dojo"
+        className="w-full h-full object-cover object-[center_30%]"
         width={1920}
         height={1080}
       />
