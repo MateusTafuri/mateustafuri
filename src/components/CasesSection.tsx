@@ -1,12 +1,16 @@
 import caseCaraiva from "@/assets/case-caraiva-real.webp";
 import caseCorumbau from "@/assets/case-corumbau-real.webp";
 import caseBonete from "@/assets/case-bonete-real.webp";
+import logoCaraiva from "@/assets/logo-caraiva.png";
+import logoBonete from "@/assets/logo-bonete.png";
+import logoCorumbau from "@/assets/logo-corumbau.png";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const cases = [
-  { img: caseCaraiva, name: "Dojo Caraíva", value: "R$ 100 mil", tag: "Rifa Solidária" },
-  { img: caseCorumbau, name: "Corumbau BJJ", value: "R$ 159.493,60", tag: "Rifa Solidária" },
-  { img: caseBonete, name: "Dojo Bonete", value: "R$ 152.678,93", tag: "Rifa Solidária" },
+  { img: caseCaraiva, logo: logoCaraiva, name: "Dojo Caraíva", value: "R$ 100 mil", tag: "Rifa Solidária", path: "/dojo-caraiva" },
+  { img: caseCorumbau, logo: logoCorumbau, name: "Corumbau BJJ", value: "R$ 159.493,60", tag: "Rifa Solidária", path: "/corumbau-bjj" },
+  { img: caseBonete, logo: logoBonete, name: "Dojo Bonete", value: "R$ 152.678,93", tag: "Rifa Solidária", path: "/dojo-bonete" },
 ];
 
 const CasesSection = () => {
@@ -20,9 +24,10 @@ const CasesSection = () => {
       </h2>
       <div className="flex gap-5 overflow-x-auto pb-2">
         {cases.map((c) => (
-          <div
+          <Link
             key={c.name}
-            className="min-w-[280px] flex-1 rounded-2xl overflow-hidden border border-border bg-card shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-200 cursor-pointer group"
+            to={c.path}
+            className="min-w-[280px] flex-1 rounded-2xl overflow-hidden border border-border bg-card shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-200 cursor-pointer group no-underline text-foreground"
           >
             <div className="relative h-48 overflow-hidden">
               <img
@@ -36,6 +41,7 @@ const CasesSection = () => {
             </div>
             <div className="p-4">
               <div className="flex items-center gap-2 mb-1">
+                <img src={c.logo} alt="" className="w-6 h-6 rounded-full object-cover" />
                 <span className="text-sm font-semibold">{c.name}</span>
                 <ArrowRight size={16} className="ml-auto text-primary" />
               </div>
@@ -44,7 +50,7 @@ const CasesSection = () => {
                 {c.tag}
               </span>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </section>

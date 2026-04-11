@@ -5,6 +5,9 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import DojoCaraiva from "./pages/DojoCaraiva.tsx";
+import DojoBonete from "./pages/DojoBonete.tsx";
+import CorumbauBjj from "./pages/CorumbauBjj.tsx";
 
 const queryClient = new QueryClient();
 
@@ -16,6 +19,9 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/dojo-caraiva" element={<DojoCaraiva />} />
+          <Route path="/dojo-bonete" element={<DojoBonete />} />
+          <Route path="/corumbau-bjj" element={<CorumbauBjj />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
