@@ -22,7 +22,6 @@ const HeroSection = () => {
               ela merece voz.
             </span>
           </h1>
-          </p>
           <p className="text-base text-white/75 leading-relaxed mb-6 max-w-lg">
             Ajudo projetos sociais a se tornarem financeiramente sustentáveis, unindo estratégia, narrativa e mobilização para transformar intenção em impacto real.
           </p>
