@@ -15,11 +15,13 @@ const HeroSection = () => {
         <div className="max-w-xl">
           <h1 className="text-3xl md:text-5xl font-bold text-primary-foreground leading-tight mb-3">
             Mateus Tafuri
-          </h1>
-          <p className="text-lg md:text-xl text-white/90 leading-relaxed mb-2 max-w-md font-medium">
-            Quando uma causa tem propósito,
             <br />
-            ela merece voz.
+            <span className="text-green-accent">
+              Quando uma causa tem propósito,
+              <br />
+              ela merece voz.
+            </span>
+          </h1>
           </p>
           <p className="text-base text-white/75 leading-relaxed mb-6 max-w-lg">
             Ajudo projetos sociais a se tornarem financeiramente sustentáveis, unindo estratégia, narrativa e mobilização para transformar intenção em impacto real.
