@@ -6,14 +6,14 @@ const HeroSection = () => {
       <img
         src={heroImg}
         alt="Mateus Tafuri com alunos no dojo"
-        className="w-full h-full object-cover object-[center_30%]"
+        className="w-full h-full object-cover object-[center_40%]"
         width={1920}
         height={1080}
       />
-      <div className="absolute inset-0 bg-gradient-to-br from-black/5 via-black/20 to-black/75" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10" />
       <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 flex items-end justify-between gap-8 flex-wrap">
         <div className="max-w-xl">
-          <p className="text-sm text-white/60 mb-2">Mateus Tafuri</p>
+          <p className="text-sm text-white/60 mb-2">Impacto Social</p>
           <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-4">
             <span className="text-green-accent">
               Quando uma causa tem propósito, ela merece voz.
