@@ -13,17 +13,14 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-black/5 via-black/20 to-black/75" />
       <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 flex items-end justify-between gap-8 flex-wrap">
         <div className="max-w-xl">
-          <h1 className="text-3xl md:text-5xl font-bold text-primary-foreground leading-tight mb-3">
-            Mateus Tafuri
-            <br />
-            <span className="text-green-accent">
-              Quando uma causa tem propósito,
-              <br />
-              ela merece voz.
+          <p className="text-sm text-white/60 mb-2">Mateus Tafuri</p>
+          <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-4">
+            <span className="bg-gradient-to-r from-green-400 via-emerald-300 to-teal-400 bg-clip-text text-transparent">
+              Quando uma causa tem propósito, ela merece voz.
             </span>
           </h1>
-          <p className="text-base text-white/75 leading-relaxed mb-6 max-w-lg">
-            Ajudo projetos sociais a se tornarem financeiramente sustentáveis, unindo estratégia, narrativa e mobilização para transformar intenção em impacto real.
+          <p className="text-base md:text-lg text-white font-bold leading-relaxed mb-6 max-w-lg">
+            Transformo causas em narrativas que mobilizam pessoas e geram impacto.
           </p>
           <a
             href="https://wa.me/5567998860067"
