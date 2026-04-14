@@ -44,11 +44,11 @@ const FeedbackSection = () => {
             className="rounded-2xl border border-border bg-card overflow-hidden"
           >
             <div className="flex flex-col md:flex-row">
-              <div className="md:w-64 shrink-0">
+              <div className="md:w-64 h-64 md:h-80 shrink-0">
                 <img
                   src={f.image}
                   alt={f.project}
-                  className="w-full h-64 md:h-full object-cover object-top"
+                  className="w-full h-full object-cover object-top"
                   loading="lazy"
                 />
               </div>
