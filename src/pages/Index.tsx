@@ -5,6 +5,7 @@ import ServicesSection from "@/components/ServicesSection";
 import StorySection from "@/components/StorySection";
 import FeedbackSection from "@/components/FeedbackSection";
 import CtaSection from "@/components/CtaSection";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
