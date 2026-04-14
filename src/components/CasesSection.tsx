@@ -8,9 +8,9 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const cases = [
-  { img: caseCaraiva, logo: logoCaraiva, name: "Dojo Caraíva", value: "R$ 100 mil", tag: "Rifa Solidária", path: "/dojo-caraiva" },
-  { img: caseCorumbau, logo: logoCorumbau, name: "Corumbau BJJ", value: "R$ 159.493,60", tag: "Rifa Solidária", path: "/corumbau-bjj" },
-  { img: caseBonete, logo: logoBonete, name: "Dojo Bonete", value: "R$ 152.678,93", tag: "Rifa Solidária", path: "/dojo-bonete" },
+  { img: caseBonete, logo: logoBonete, name: "Dojo Bonete", desc: "Uma comunidade isolada, um professor de jiu jitsu e um sonho que construíram muito mais que um espaço.", stats: ["+2M de views", "+R$ 152 mil captados"], path: "/dojo-bonete" },
+  { img: caseCorumbau, logo: logoCorumbau, name: "Corumbau BJJ", desc: "4.500 apoiadores e um projeto que provou que o esporte transforma vidas, mesmo longe de tudo.", stats: ["+1M de views", "+R$ 159 mil captados"], path: "/corumbau-bjj" },
+  { img: caseCaraiva, logo: logoCaraiva, name: "Dojo Caraíva", desc: "Quando estratégia encontra propósito, o simples vira poderoso. Uma campanha que mostrou que qualquer causa pode ir além do que parece possível.", stats: ["+3M de views", "+R$ 100 mil captados"], path: "/dojo-caraiva" },
 ];
 
 const CasesSection = () => {
@@ -40,15 +40,17 @@ const CasesSection = () => {
               />
             </div>
             <div className="p-4">
-              <div className="flex items-center gap-2 mb-1">
+              <div className="flex items-center gap-2 mb-2">
                 <img src={c.logo} alt="" className="w-6 h-6 rounded-full object-cover" />
                 <span className="text-sm font-semibold">{c.name}</span>
                 <ArrowRight size={16} className="ml-auto text-primary" />
               </div>
-              <div className="text-2xl font-bold text-primary mb-1">{c.value}</div>
-              <span className="text-xs bg-secondary text-secondary-foreground px-3 py-1 rounded-full">
-                {c.tag}
-              </span>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-3">{c.desc}</p>
+              <div className="flex gap-3">
+                {c.stats.map((s) => (
+                  <span key={s} className="text-[10px] text-muted-foreground/70 font-medium">{s}</span>
+                ))}
+              </div>
             </div>
           </Link>
         ))}
