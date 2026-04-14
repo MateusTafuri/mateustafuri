@@ -15,7 +15,7 @@ const HeroSection = () => {
         <div className="max-w-xl">
           <p className="text-sm text-white/60 mb-2">Mateus Tafuri</p>
           <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-4">
-            <span className="bg-gradient-to-r from-green-400 via-emerald-300 to-teal-400 bg-clip-text text-transparent">
+            <span className="text-green-accent">
               Quando uma causa tem propósito, ela merece voz.
             </span>
           </h1>
