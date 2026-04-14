@@ -1,7 +1,16 @@
+import { useState, useCallback, useEffect } from "react";
 import feedbackCorumbau from "@/assets/feedback-corumbau.jpg";
 import feedbackCaraiva from "@/assets/feedback-caraiva.jpg";
 import feedbackBonete from "@/assets/feedback-bonete.jpg";
 import { Quote } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+  type CarouselApi,
+} from "@/components/ui/carousel";
 
 const feedbacks = [
   {
@@ -29,6 +38,21 @@ const feedbacks = [
 ];
 
 const FeedbackSection = () => {
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+
+  const onSelect = useCallback(() => {
+    if (!api) return;
+    setCurrent(api.selectedScrollSnap());
+  }, [api]);
+
+  useEffect(() => {
+    if (!api) return;
+    onSelect();
+    api.on("select", onSelect);
+    return () => { api.off("select", onSelect); };
+  }, [api, onSelect]);
+
   return (
     <section className="max-w-5xl mx-auto px-6 py-16" id="feedbacks">
       <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-1">
@@ -37,46 +61,64 @@ const FeedbackSection = () => {
       <h2 className="text-2xl md:text-3xl font-bold mb-10">
         O que dizem os projetos
       </h2>
-      <div className="space-y-12">
-        {feedbacks.map((f) => (
-          <div
-            key={f.project}
-            className="rounded-2xl border border-border bg-card overflow-hidden"
-          >
-            <div className="flex flex-col md:flex-row md:items-center">
-              <div className="md:w-64 h-64 md:h-80 shrink-0">
-                <img
-                  src={f.image}
-                  alt={f.project}
-                  className="w-full h-full object-cover object-top"
-                  loading="lazy"
-                />
-              </div>
-              <div className="p-6 md:p-8 flex flex-col justify-center flex-1">
-                <div className="flex items-center gap-2 mb-4">
-                  <Quote size={20} className="text-primary shrink-0" />
-                  <span className="text-sm font-bold text-primary">{f.project}</span>
-                </div>
-                {f.placeholder ? (
-                  <p className="text-sm text-muted-foreground/50 italic">
-                    Depoimento em breve...
-                  </p>
-                ) : (
-                  <>
-                    <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line mb-4">
-                      {f.text}
-                    </p>
-                    <div className="mt-auto">
-                      <p className="text-sm font-semibold">{f.author}</p>
-                      <p className="text-xs text-muted-foreground">{f.role}</p>
+
+      <Carousel opts={{ loop: true }} setApi={setApi} className="w-full">
+        <CarouselContent>
+          {feedbacks.map((f) => (
+            <CarouselItem key={f.project}>
+              <div className="rounded-2xl border border-border bg-card overflow-hidden">
+                <div className="flex flex-col md:flex-row md:items-center">
+                  <div className="md:w-64 h-64 md:h-80 shrink-0">
+                    <img
+                      src={f.image}
+                      alt={f.project}
+                      className="w-full h-full object-cover object-[center_30%]"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="p-6 md:p-8 flex flex-col justify-center flex-1">
+                    <div className="flex items-center gap-2 mb-4">
+                      <Quote size={20} className="text-primary shrink-0" />
+                      <span className="text-sm font-bold text-primary">{f.project}</span>
                     </div>
-                  </>
-                )}
+                    {f.placeholder ? (
+                      <p className="text-sm text-muted-foreground/50 italic">
+                        Depoimento em breve...
+                      </p>
+                    ) : (
+                      <>
+                        <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line mb-4">
+                          {f.text}
+                        </p>
+                        <div className="mt-auto">
+                          <p className="text-sm font-semibold">{f.author}</p>
+                          <p className="text-xs text-muted-foreground">{f.role}</p>
+                        </div>
+                      </>
+                    )}
+                  </div>
+                </div>
               </div>
-            </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+
+        <div className="flex items-center justify-center gap-4 mt-6">
+          <CarouselPrevious className="static translate-y-0" />
+          <div className="flex gap-2">
+            {feedbacks.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => api?.scrollTo(i)}
+                className={`w-2.5 h-2.5 rounded-full transition-colors ${
+                  i === current ? "bg-primary" : "bg-muted-foreground/30"
+                }`}
+              />
+            ))}
           </div>
-        ))}
-      </div>
+          <CarouselNext className="static translate-y-0" />
+        </div>
+      </Carousel>
     </section>
   );
 };
