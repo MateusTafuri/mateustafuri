@@ -1,5 +1,5 @@
 const services = [
-  { icon: "🚀", title: "Plataforma de Captação", desc: "Estruturo toda a plataforma — rifas, páginas, links e funil — para maximizar cada real arrecadado.", highlight: true },
+  { icon: "🚀", title: "Plataforma de Captação", desc: "Estruturo toda a plataforma — rifas, páginas, links e funil — para maximizar cada real arrecadado." },
   { icon: "🎟️", title: "Rifas Solidárias", desc: "Estratégia, narrativa e mobilização de ponta a ponta para campanhas que engajam e convertem." },
   { icon: "✍️", title: "Campanhas Temáticas", desc: "Narrativas poderosas que conectam causas a pessoas e geram ação real." },
   { icon: "📱", title: "Social Media", desc: "Gestão de redes com foco em engajamento e construção de comunidade." },
