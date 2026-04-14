@@ -6,7 +6,7 @@ const HeroSection = () => {
       <img
         src={heroImg}
         alt="Mateus Tafuri com alunos no dojo"
-        className="w-full h-full object-cover object-[center_40%]"
+        className="w-full h-full object-cover object-[center_30%]"
         width={1920}
         height={1080}
       />
