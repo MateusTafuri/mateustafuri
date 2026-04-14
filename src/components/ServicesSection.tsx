@@ -16,21 +16,13 @@ const ServicesSection = () => {
         {services.map((s) => (
           <div
             key={s.title}
-            className={`rounded-2xl p-5 border ${
-              s.highlight
-                ? "bg-primary border-primary text-primary-foreground"
-                : "bg-secondary/50 border-border"
-            }`}
+            className="rounded-2xl p-5 border bg-secondary/50 border-border"
           >
-            <div
-              className={`w-10 h-10 rounded-lg flex items-center justify-center mb-3 text-lg ${
-                s.highlight ? "bg-white/15" : "bg-secondary"
-              }`}
-            >
+            <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-3 text-lg bg-secondary">
               {s.icon}
             </div>
             <h3 className="text-sm font-semibold mb-1">{s.title}</h3>
-            <p className={`text-xs leading-relaxed ${s.highlight ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
+            <p className="text-xs leading-relaxed text-muted-foreground">
               {s.desc}
             </p>
           </div>
