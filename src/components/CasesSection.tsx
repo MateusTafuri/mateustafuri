@@ -37,6 +37,7 @@ const CasesSection = () => {
                 width={800}
                 height={600}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                style={c.imgPosition ? { objectPosition: c.imgPosition } : undefined}
               />
             </div>
             <div className="p-4">
