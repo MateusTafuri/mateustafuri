@@ -14,7 +14,7 @@ const Navbar = () => {
 
       <div className="hidden md:flex items-center gap-6 text-sm text-muted-foreground">
         <a href="#cases" className="hover:text-primary transition-colors">Resultados</a>
-        <a href="#servicos" className="hover:text-primary transition-colors">Como posso ajudar</a>
+        <a href="#servicos" className="hover:text-primary transition-colors">Trajetória</a>
         <a href="#historia" className="hover:text-primary transition-colors">História</a>
       </div>
 
@@ -34,7 +34,7 @@ const Navbar = () => {
       {open && (
         <div className="absolute top-full left-0 right-0 bg-background border-b border-border flex flex-col p-4 gap-3 md:hidden">
           <a href="#cases" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-primary">Resultados</a>
-          <a href="#servicos" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-primary">Como posso ajudar</a>
+          <a href="#servicos" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-primary">Trajetória</a>
           <a href="#historia" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-primary">História</a>
           <a
             href="https://wa.me/5567998860067"
