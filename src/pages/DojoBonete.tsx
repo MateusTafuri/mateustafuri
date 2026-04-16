@@ -316,6 +316,14 @@ const DojoBonete = () => (
             loading="lazy"
           />
         </div>
+        <div className="mt-4">
+          <img
+            src={exteriorDojo}
+            alt="Equipe reunida na frente do novo Dojo Bonete no dia da inauguração"
+            className="w-full rounded-2xl object-cover max-h-[420px]"
+            loading="lazy"
+          />
+        </div>
       </section>
 
       {/* Seção 6 – Impacto em Números */}
