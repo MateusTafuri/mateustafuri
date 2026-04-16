@@ -18,14 +18,13 @@ const StorySection = () => {
           <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-1">Minha história</p>
           <h3 className="text-2xl font-bold mb-4 leading-snug">Do storytelling ao impacto real</h3>
           <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-            Sou engenheiro na captação de recursos — combino estratégia, mobilização e narrativa para transformar causas sociais em campanhas que movem pessoas e geram resultados concretos.
+            Nascido e criado no interior de Goiás, filho de professores, cresci inquieto com a ideia de gerar impacto positivo no mundo. Hoje, atuo na captação de recursos combinando estratégia, mobilização e narrativa para transformar causas sociais em campanhas que movem pessoas e geram resultados concretos.
           </p>
           <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-            Ao longo da minha trajetória, ajudei projetos a arrecadar mais de{" "}
+            Ao longo da minha trajetória, conheci diferentes realidades pelo Brasil, o que ampliou minha visão sobre impacto e acesso a recursos. Nesse caminho, ajudei projetos a mobilizar mais de{" "}
             <strong className="text-primary">R$ 410 mil</strong> por meio de rifas solidárias e campanhas bem estruturadas.
           </p>
           <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-            Trabalho com projetos sociais, dojos de artes marciais, comunidades e organizações que querem crescer de forma autêntica e sustentável.
           </p>
           <div className="flex flex-wrap gap-2">
             {tags.map((t) => (
