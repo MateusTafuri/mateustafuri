@@ -50,7 +50,7 @@ const StorySection = () => {
                     src={src}
                     alt={`Mateus Tafuri - foto ${i + 1}`}
                     loading="lazy"
-                    className="w-full rounded-2xl object-cover h-[400px]"
+                    className="w-full rounded-2xl object-cover h-[420px] object-[center_25%]"
                   />
                 </CarouselItem>
               ))}
