@@ -19,7 +19,7 @@ const HeroSection = () => {
       <img
         src={heroMobileImg}
         alt="Mateus Tafuri com alunos no dojo"
-        className="block md:hidden w-full h-full object-cover object-center"
+        className="block md:hidden w-full h-full object-contain object-center bg-black"
         width={1080}
         height={1350}
         fetchPriority="high"
