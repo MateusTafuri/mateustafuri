@@ -15,6 +15,7 @@ import tijolosPraia from "@/assets/bonete-tijolos-praia.jpg";
 import barco from "@/assets/bonete-barco.jpg";
 import quadriciclo from "@/assets/bonete-quadriciclo.jpg";
 import inauguracao from "@/assets/bonete-inauguracao.jpg";
+import exteriorDojo from "@/assets/bonete-exterior-dojo.jpg";
 
 import tatamePraia from "@/assets/bonete-tatame-praia.jpg";
 import graduacaoPraia from "@/assets/bonete-graduacao-praia.jpg";
@@ -312,6 +313,14 @@ const DojoBonete = () => (
             src={graduacaoPraia}
             alt="Foto oficial de toda a comunidade reunida no novo Dojo Bonete na inauguração"
             className="w-full rounded-2xl object-cover h-72"
+            loading="lazy"
+          />
+        </div>
+        <div className="mt-4">
+          <img
+            src={exteriorDojo}
+            alt="Equipe reunida na frente do novo Dojo Bonete no dia da inauguração"
+            className="w-full rounded-2xl object-cover max-h-[420px]"
             loading="lazy"
           />
         </div>
