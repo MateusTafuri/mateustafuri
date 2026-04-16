@@ -11,6 +11,11 @@ import rifaGrupo from "@/assets/bonete-rifa-grupo.jpg";
 import mateus from "@/assets/bonete-mateus.jpg";
 import criancaPraia from "@/assets/bonete-crianca-praia.jpg";
 import construcao2 from "@/assets/bonete-construcao-2.jpg";
+import tijolosPraia from "@/assets/bonete-tijolos-praia.jpg";
+import barco from "@/assets/bonete-barco.jpg";
+import quadriciclo from "@/assets/bonete-quadriciclo.jpg";
+import inauguracao from "@/assets/bonete-inauguracao.jpg";
+import mateusAndre from "@/assets/bonete-mateus-andre.jpg";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
