@@ -16,9 +16,9 @@ const Index = () => {
       <hr className="border-border" />
       <CasesSection />
       <hr className="border-border" />
-      <StorySection />
-      <hr className="border-border" />
       <TimelineSection />
+      <hr className="border-border" />
+      <StorySection />
       <hr className="border-border" />
       <FeedbackSection />
       <hr className="border-border" />
