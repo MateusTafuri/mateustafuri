@@ -146,7 +146,7 @@ const DojoBonete = () => (
             loading="lazy"
           />
           <img
-            src={roda}
+            src="/lovable-uploads/11c23685-6802-4217-a186-84b564cc52d6.jpg"
             alt="Roda de conversa entre mestres e alunos no tatame do Dojo Bonete"
             className="w-full rounded-2xl object-cover h-72"
             loading="lazy"
