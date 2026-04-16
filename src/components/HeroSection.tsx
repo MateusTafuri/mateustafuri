@@ -30,7 +30,7 @@ const HeroSection = () => {
         <div className="max-w-xl">
           <p className="text-white/60 mb-2 text-xs">​Impacto Social</p>
           <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-4">
-            <span className="text-green-accent drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] text-left font-sans text-4xl mx-0 my-0 px-0 py-0 pb-0">
+            <span className="text-green-accent drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] text-left font-sans mx-0 my-0 px-0 py-0 pb-0 text-4xl">
               Quando uma causa tem propósito, ela merece voz.
             </span>
           </h1>
