@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import logo from "@/assets/logo-bonete.png";
-import heroImg from "@/assets/bonete-hero.png";
+import droneImg from "@/assets/bonete-drone.jpg";
 import dojoKids from "@/assets/bonete-dojo-kids.jpg";
 import kidJump from "@/assets/bonete-kid-jump.jpg";
 import roda from "@/assets/bonete-roda.jpg";
@@ -9,13 +9,16 @@ import turma from "@/assets/bonete-turma.jpg";
 import construcao1 from "@/assets/bonete-construcao-1.jpg";
 import rifaGrupo from "@/assets/bonete-rifa-grupo.jpg";
 import mateus from "@/assets/bonete-mateus.jpg";
-import criancaPraia from "@/assets/bonete-crianca-praia.jpg";
+import criancaPraia from "@/assets/bonete-crianca-praia-hq.jpg";
 import construcao2 from "@/assets/bonete-construcao-2.jpg";
 import tijolosPraia from "@/assets/bonete-tijolos-praia.jpg";
 import barco from "@/assets/bonete-barco.jpg";
 import quadriciclo from "@/assets/bonete-quadriciclo.jpg";
 import inauguracao from "@/assets/bonete-inauguracao.jpg";
 import mateusAndre from "@/assets/bonete-mateus-andre.jpg";
+import tatamePraia from "@/assets/bonete-tatame-praia.jpg";
+import graduacaoPraia from "@/assets/bonete-graduacao-praia.jpg";
+import rodaPraia from "@/assets/bonete-roda-praia.jpg";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -35,8 +38,8 @@ const DojoBonete = () => (
     {/* Hero */}
     <header className="relative w-full h-[50vh] md:h-[60vh] overflow-hidden">
       <img
-        src={heroImg}
-        alt="Mosaico do projeto Dojo Bonete — crianças treinando jiu-jitsu na Praia do Bonete, Ilhabela"
+        src={droneImg}
+        alt="Vista aérea da Praia do Bonete, Ilhabela — tatame azul na areia onde acontecem os treinos de jiu-jitsu"
         className="w-full h-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
@@ -91,18 +94,30 @@ const DojoBonete = () => (
           alicerces de sua própria casa — um espaço improvisado, mas que
           transbordava significado e disciplina.
         </p>
-        <figure>
-          <img
-            src={dojoKids}
-            alt="Mestre André Queiroz com as crianças do Dojo Bonete no espaço original"
-            className="w-full rounded-2xl object-cover max-h-[420px]"
-            loading="lazy"
-          />
-          <figcaption className="text-xs text-muted-foreground/60 mt-2 text-center">
-            O início de tudo: o espaço era pequeno, mas o propósito já era
-            gigante.
-          </figcaption>
-        </figure>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <figure>
+            <img
+              src={turma}
+              alt="Crianças do Dojo Bonete no antigo espaço improvisado embaixo da casa"
+              className="w-full rounded-2xl object-cover h-72"
+              loading="lazy"
+            />
+            <figcaption className="text-xs text-muted-foreground/60 mt-2 text-center">
+              O antigo dojo: embaixo da casa do mestre André.
+            </figcaption>
+          </figure>
+          <figure>
+            <img
+              src={dojoKids}
+              alt="Mestre André Queiroz com as crianças do Dojo Bonete no espaço original"
+              className="w-full rounded-2xl object-cover h-72"
+              loading="lazy"
+            />
+            <figcaption className="text-xs text-muted-foreground/60 mt-2 text-center">
+              O espaço era pequeno, mas o propósito já era gigante.
+            </figcaption>
+          </figure>
+        </div>
       </section>
 
       {/* Seção 2 – O Desafio */}
@@ -272,17 +287,31 @@ const DojoBonete = () => (
           persistência caiçara e à prova de que nenhuma comunidade é isolada
           demais quando o Brasil inteiro decide abraçar a causa.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+        <div className="mb-6">
           <img
             src={inauguracao}
             alt="Alunos e comunidade reunidos no tatame do novo Dojo Bonete no dia da inauguração"
-            className="w-full rounded-2xl object-cover h-80"
+            className="w-full rounded-2xl object-cover max-h-[420px]"
+            loading="lazy"
+          />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <img
+            src={tatamePraia}
+            alt="Treino de jiu-jitsu ao ar livre no tatame montado na Praia do Bonete"
+            className="w-full rounded-2xl object-cover h-72"
             loading="lazy"
           />
           <img
-            src={turma}
-            alt="Turma completa do Dojo Bonete no espaço antigo antes da construção"
-            className="w-full rounded-2xl object-cover h-80"
+            src={rodaPraia}
+            alt="Roda de graduação ao pôr do sol na Praia do Bonete com toda a comunidade"
+            className="w-full rounded-2xl object-cover h-72"
+            loading="lazy"
+          />
+          <img
+            src={graduacaoPraia}
+            alt="Foto oficial da graduação do Dojo Bonete na praia com alunos segurando diplomas"
+            className="w-full rounded-2xl object-cover h-72"
             loading="lazy"
           />
         </div>
@@ -290,7 +319,7 @@ const DojoBonete = () => (
           <img
             src={mateusAndre}
             alt="Mateus Tafuri e mestre André Queiroz no Dojo Bonete após a inauguração"
-            className="w-full rounded-2xl object-cover max-h-[400px]"
+            className="w-full rounded-2xl object-cover max-h-[400px] object-top"
             loading="lazy"
           />
           <figcaption className="text-xs text-muted-foreground/60 mt-2 text-center">
