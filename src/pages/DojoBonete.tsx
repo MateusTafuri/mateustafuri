@@ -298,34 +298,22 @@ const DojoBonete = () => (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           <img
             src={tatamePraia}
-            alt="Treino de jiu-jitsu ao ar livre no tatame montado na Praia do Bonete"
+            alt="Crianças e professores de kimono reunidos no novo Dojo Bonete no dia da inauguração"
             className="w-full rounded-2xl object-cover h-72"
             loading="lazy"
           />
           <img
             src={rodaPraia}
-            alt="Roda de graduação ao pôr do sol na Praia do Bonete com toda a comunidade"
+            alt="Roda de treino no novo Dojo Bonete durante a inauguração"
             className="w-full rounded-2xl object-cover h-72"
             loading="lazy"
           />
           <img
             src={graduacaoPraia}
-            alt="Foto oficial da graduação do Dojo Bonete na praia com alunos segurando diplomas"
+            alt="Foto oficial de toda a comunidade reunida no novo Dojo Bonete na inauguração"
             className="w-full rounded-2xl object-cover h-72"
             loading="lazy"
           />
-        </div>
-        <figure>
-          <img
-            src={mateusAndre}
-            alt="Mateus Tafuri e mestre André Queiroz no Dojo Bonete após a inauguração"
-            className="w-full rounded-2xl object-cover max-h-[400px] object-top"
-            loading="lazy"
-          />
-          <figcaption className="text-xs text-muted-foreground/60 mt-2 text-center">
-            Mateus Tafuri e mestre André Queiroz: a parceria que transformou o sonho em realidade.
-          </figcaption>
-        </figure>
       </section>
 
       {/* Seção 6 – Impacto em Números */}
