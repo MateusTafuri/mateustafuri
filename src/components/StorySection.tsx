@@ -1,19 +1,75 @@
-import storyImg from "@/assets/story.webp";
+import { useState, useEffect, useCallback } from "react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+  type CarouselApi,
+} from "@/components/ui/carousel";
+
+import story1 from "@/assets/story-1.jpg";
+import story2 from "@/assets/story-2.jpg";
+import story3 from "@/assets/story-3.jpg";
+import story4 from "@/assets/story-4.png";
+import story5 from "@/assets/story-5.jpg";
+import story6 from "@/assets/story-6.jpg";
+import story7 from "@/assets/story-7.jpg";
+import story8 from "@/assets/story-8.jpg";
+import story9 from "@/assets/story-9.jpg";
+
+const photos = [story1, story2, story3, story4, story5, story6, story7, story8, story9];
 
 const tags = ["Estratégia", "Mobilização", "Storytelling", "Captação de Recursos", "Impacto Social"];
 
 const StorySection = () => {
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+
+  const onSelect = useCallback(() => {
+    if (!api) return;
+    setCurrent(api.selectedScrollSnap());
+  }, [api]);
+
+  useEffect(() => {
+    if (!api) return;
+    onSelect();
+    api.on("select", onSelect);
+    return () => { api.off("select", onSelect); };
+  }, [api, onSelect]);
+
   return (
     <section className="max-w-5xl mx-auto px-6 py-16" id="historia">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-        <img
-          src={storyImg}
-          alt="Mateus Tafuri"
-          loading="lazy"
-          width={800}
-          height={1000}
-          className="w-full rounded-2xl object-cover h-[400px]"
-        />
+        <div className="relative">
+          <Carousel setApi={setApi} opts={{ loop: true }} className="w-full">
+            <CarouselContent>
+              {photos.map((src, i) => (
+                <CarouselItem key={i}>
+                  <img
+                    src={src}
+                    alt={`Mateus Tafuri - foto ${i + 1}`}
+                    loading="lazy"
+                    className="w-full rounded-2xl object-cover h-[400px]"
+                  />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="left-2" />
+            <CarouselNext className="right-2" />
+          </Carousel>
+          <div className="flex justify-center gap-1.5 mt-3">
+            {photos.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => api?.scrollTo(i)}
+                className={`w-2 h-2 rounded-full transition-all ${
+                  i === current ? "bg-primary w-4" : "bg-muted-foreground/30"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
         <div>
           <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-1">Minha história</p>
           <h3 className="text-2xl font-bold mb-4 leading-snug">Do storytelling ao impacto real</h3>
