@@ -35,11 +35,11 @@ const timeline = [
 
 const TimelineSection = () => {
   return (
-    <section className="max-w-3xl mx-auto px-6 py-16" id="trajetoria">
-      <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-1 text-center">
+    <section className="max-w-5xl mx-auto px-6 py-16" id="trajetoria">
+      <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-1">
         minha Trajetória
       </p>
-      <h2 className="text-2xl md:text-3xl font-bold mb-12 text-center leading-snug">
+      <h2 className="text-2xl md:text-3xl font-bold mb-12 leading-snug">
         Do propósito à prática
       </h2>
 
