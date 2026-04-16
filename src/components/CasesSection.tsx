@@ -29,7 +29,7 @@ const CasesSection = () => {
             to={c.path}
             className="min-w-[280px] flex-1 rounded-2xl overflow-hidden border border-border bg-card shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-200 cursor-pointer group no-underline text-foreground"
           >
-            <div className="relative h-48 overflow-hidden">
+            <div className="relative h-56 overflow-hidden">
               <img
                 src={c.img}
                 alt={c.name}
