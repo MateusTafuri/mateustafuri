@@ -4,7 +4,7 @@ import logo from "@/assets/logo-bonete.png";
 import droneImg from "@/assets/bonete-drone.jpg";
 import dojoKids from "@/assets/bonete-dojo-kids.jpg";
 import kidJump from "@/assets/bonete-kid-jump.jpg";
-import roda from "@/assets/bonete-roda.jpg";
+
 import turma from "@/assets/bonete-turma.jpg";
 import construcao1 from "@/assets/bonete-construcao-1.jpg";
 import rifaGrupo from "@/assets/bonete-rifa-grupo.jpg";
