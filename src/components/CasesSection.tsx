@@ -1,4 +1,4 @@
-import caseCaraiva from "@/assets/case-caraiva-new.jpg";
+import caseCaraiva from "@/assets/case-caraiva-new.webp";
 import caseCorumbau from "@/assets/case-corumbau-real.webp";
 import caseBonete from "@/assets/bonete-crianca-praia-hq.jpg";
 import logoCaraiva from "@/assets/logo-caraiva.png";
