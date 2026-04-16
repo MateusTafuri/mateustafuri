@@ -24,7 +24,7 @@ const timeline = [
   {
     year: "2025",
     icon: Lightbulb,
-    text: "Desenvolvimento e aplicação da metodologia da Rifa Solidária em projetos sociais.",
+    text: "Desenvolvimento e aplicação da metodologia da Rifa Solidária, com mais de R$ 400 mil mobilizados para projetos sociais.",
   },
   {
     year: "2026",
@@ -37,7 +37,7 @@ const TimelineSection = () => {
   return (
     <section className="max-w-3xl mx-auto px-6 py-16" id="trajetoria">
       <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-1 text-center">
-        Trajetória
+        minha Trajetória
       </p>
       <h2 className="text-2xl md:text-3xl font-bold mb-12 text-center leading-snug">
         Do propósito à prática
