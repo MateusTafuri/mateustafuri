@@ -272,12 +272,31 @@ const DojoBonete = () => (
           persistência caiçara e à prova de que nenhuma comunidade é isolada
           demais quando o Brasil inteiro decide abraçar a causa.
         </p>
-        <img
-          src={turma}
-          alt="Turma completa do Dojo Bonete no espaço inaugurado"
-          className="w-full rounded-2xl object-cover max-h-[420px]"
-          loading="lazy"
-        />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+          <img
+            src={inauguracao}
+            alt="Alunos e comunidade reunidos no tatame do novo Dojo Bonete no dia da inauguração"
+            className="w-full rounded-2xl object-cover h-80"
+            loading="lazy"
+          />
+          <img
+            src={turma}
+            alt="Turma completa do Dojo Bonete no espaço antigo antes da construção"
+            className="w-full rounded-2xl object-cover h-80"
+            loading="lazy"
+          />
+        </div>
+        <figure>
+          <img
+            src={mateusAndre}
+            alt="Mateus Tafuri e mestre André Queiroz no Dojo Bonete após a inauguração"
+            className="w-full rounded-2xl object-cover max-h-[400px]"
+            loading="lazy"
+          />
+          <figcaption className="text-xs text-muted-foreground/60 mt-2 text-center">
+            Mateus Tafuri e mestre André Queiroz: a parceria que transformou o sonho em realidade.
+          </figcaption>
+        </figure>
       </section>
 
       {/* Seção 6 – Impacto em Números */}
