@@ -13,16 +13,16 @@ const HeroSection = () => {
         fetchPriority="high"
         decoding="async"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent text-2xl" />
       <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 flex items-end justify-between gap-8 flex-wrap">
         <div className="max-w-xl">
           <p className="text-sm text-white/60 mb-2">Impacto Social</p>
           <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-4">
-            <span className="text-green-accent drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
+            <span className="text-green-accent drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] text-left font-sans text-4xl">
               Quando uma causa tem propósito, ela merece voz.
             </span>
           </h1>
-          <p className="text-base md:text-lg text-white font-bold leading-relaxed mb-6 max-w-lg drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]">
+          <p className="text-white font-bold leading-relaxed mb-6 max-w-lg drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)] text-sm md:text-base">
             Transformo causas em narrativas que mobilizam pessoas e geram impacto.
           </p>
           <a
