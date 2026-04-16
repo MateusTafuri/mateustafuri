@@ -1,15 +1,27 @@
 import heroImg from "@/assets/hero-real.webp";
+import heroMobileImg from "@/assets/hero-mobile.jpg";
 import { ArrowRight } from "lucide-react";
 
 const HeroSection = () => {
   return (
     <section className="relative h-[92vh] min-h-[520px] overflow-hidden">
+      {/* Desktop/Tablet image */}
       <img
         src={heroImg}
         alt="Mateus Tafuri com alunos no dojo"
-        className="w-full h-full object-cover object-[center_25%]"
+        className="hidden md:block w-full h-full object-cover object-[center_25%]"
         width={1920}
         height={1080}
+        fetchPriority="high"
+        decoding="async"
+      />
+      {/* Mobile image */}
+      <img
+        src={heroMobileImg}
+        alt="Mateus Tafuri com alunos no dojo"
+        className="block md:hidden w-full h-full object-cover object-center"
+        width={1080}
+        height={1350}
         fetchPriority="high"
         decoding="async"
       />
