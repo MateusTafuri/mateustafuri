@@ -19,17 +19,9 @@ const CasesSection = () => {
       <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-1">
         Realidades Transformadas
       </p>
-      <h2 className="text-2xl md:text-3xl font-bold mb-4">
+      <h2 className="text-2xl md:text-3xl font-bold mb-8">
         Estratégia, narrativa e mobilização na prática
       </h2>
-      <a
-        href="https://wa.me/5567998860067?text=Quero%20fazer%20a%20minha%20rifa"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-block bg-primary text-primary-foreground px-6 py-3 rounded-full text-sm font-semibold hover:opacity-90 transition-opacity mb-8"
-      >
-        Quero fazer a minha rifa
-      </a>
       <div className="flex gap-5 overflow-x-auto pb-2">
         {cases.map((c) => (
           <Link
@@ -63,6 +55,16 @@ const CasesSection = () => {
             </div>
           </Link>
         ))}
+      </div>
+      <div className="mt-8 text-center">
+        <a
+          href="https://wa.me/5567998860067?text=Quero%20fazer%20a%20minha%20rifa"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block bg-primary text-primary-foreground px-6 py-3 rounded-full text-sm font-semibold hover:opacity-90 transition-opacity"
+        >
+          Quero fazer a minha rifa
+        </a>
       </div>
     </section>
   );
