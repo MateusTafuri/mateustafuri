@@ -213,6 +213,26 @@ const DojoBonete = () => (
           carregar as toras de madeira e os tijolos, entendendo, desde cedo, que
           aquele teto seria delas — porque elas ajudaram a levantá-lo.
         </p>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+          <img
+            src={barco}
+            alt="Comunidade do Bonete empurrando barco com materiais de construção na praia"
+            className="w-full rounded-2xl object-cover h-64"
+            loading="lazy"
+          />
+          <img
+            src={tijolosPraia}
+            alt="Moradores carregando tijolos na Praia do Bonete para a construção do dojo"
+            className="w-full rounded-2xl object-cover h-64"
+            loading="lazy"
+          />
+          <img
+            src={quadriciclo}
+            alt="Quadriciclo transportando blocos de cimento na praia do Bonete com ajuda da comunidade"
+            className="w-full rounded-2xl object-cover h-64 col-span-2 md:col-span-1"
+            loading="lazy"
+          />
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <img
             src={criancaPraia}
