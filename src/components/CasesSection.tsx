@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 const cases = [
   { img: caseBonete, logo: logoBonete, name: "Dojo Bonete", desc: "Uma comunidade isolada, um professor de jiu jitsu e um sonho que construíram muito mais que um espaço.", stats: ["+1.2 milhões de views", "2.077 novos apoiadores", "+150 mil captados"], path: "/dojo-bonete", imgPosition: "center 65%" },
-  { img: caseCorumbau, logo: logoCorumbau, name: "Corumbau", desc: "101 dias de campanha, persistência e fé. Um projeto que provou que o esporte muda tudo, mesmo longe de tudo.", stats: ["+1.8 milhões de views", "4.377 novos apoiadores", "+160 mil captados"], path: "/corumbau-bjj", imgPosition: "center 60%" },
+  { img: caseCorumbau, logo: logoCorumbau, name: "Corumbau", desc: "101 dias de campanha, persistência e fé. Um projeto que provou que o esporte muda tudo, mesmo longe de tudo.", stats: ["+1.8 milhões de views", "4.377 novos apoiadores", "+160 mil captados"], path: "/corumbau-bjj", imgPosition: "center 70%", imgScale: "scale-110" },
   { img: caseCaraiva, logo: logoCaraiva, name: "Caraíva", desc: "Quando a estratégia encontra propósito, o simples encanta, engaja e transforma.", stats: ["+1 milhão de views", "3.183 novos apoiadores", "100 mil captados"], path: "/dojo-caraiva" },
 ];
 
@@ -36,7 +36,7 @@ const CasesSection = () => {
                 loading="lazy"
                 width={800}
                 height={600}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 ${(c as any).imgScale || ''}`}
                 style={c.imgPosition ? { objectPosition: c.imgPosition } : undefined}
               />
             </div>
