@@ -15,6 +15,7 @@ import tijolosPraia from "@/assets/bonete-tijolos-praia.jpg";
 import barco from "@/assets/bonete-barco.jpg";
 import quadriciclo from "@/assets/bonete-quadriciclo.jpg";
 import inauguracao from "@/assets/bonete-inauguracao.jpg";
+import exteriorDojo from "@/assets/bonete-exterior-dojo.jpg";
 
 import tatamePraia from "@/assets/bonete-tatame-praia.jpg";
 import graduacaoPraia from "@/assets/bonete-graduacao-praia.jpg";
