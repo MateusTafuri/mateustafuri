@@ -290,9 +290,9 @@ const DojoBonete = () => (
         </p>
         <div className="mb-6">
           <img
-            src={inauguracao}
+            src="/lovable-uploads/8a538a52-84aa-41ef-a182-94ef47370d2a.jpg"
             alt="Alunos e comunidade reunidos no tatame do novo Dojo Bonete no dia da inauguração"
-            className="w-full rounded-2xl object-cover max-h-[420px]"
+            className="w-full rounded-2xl max-h-[420px] mx-0 px-0 object-cover"
             loading="lazy"
           />
         </div>
@@ -311,7 +311,7 @@ const DojoBonete = () => (
             loading="lazy"
           />
           <img
-            src={graduacaoPraia}
+            src="/lovable-uploads/da40d39d-5119-447b-aa60-90f8448e4c3c.jpg"
             alt="Foto oficial de toda a comunidade reunida no novo Dojo Bonete na inauguração"
             className="w-full rounded-2xl object-cover h-72"
             loading="lazy"
@@ -319,9 +319,9 @@ const DojoBonete = () => (
         </div>
         <div className="mt-4">
           <img
-            src={tatamePraia}
+            src="/lovable-uploads/0a4b82d0-b22d-47c0-9da1-91b980f5fd59.jpg"
             alt="Cerimônia dentro do novo Dojo Bonete no dia da inauguração"
-            className="w-full rounded-2xl object-cover max-h-[420px]"
+            className="w-full rounded-2xl max-h-[420px] mx-0 px-0 object-cover"
             loading="lazy"
           />
         </div>
