@@ -111,7 +111,8 @@ const DojoBonete = () => (
             <img
               src={dojoKids}
               alt="Mestre André Queiroz com as crianças do Dojo Bonete no espaço original"
-              className="w-full rounded-2xl object-cover h-72 object-top"
+              className="w-full rounded-2xl object-cover h-72"
+              style={{ objectPosition: "center 70%" }}
               loading="lazy"
             />
             <figcaption className="text-xs text-muted-foreground/60 mt-2 text-center">
