@@ -4,7 +4,7 @@ import logo from "@/assets/logo-bonete.png";
 import droneImg from "@/assets/bonete-drone.jpg";
 import dojoKids from "@/assets/bonete-dojo-kids.jpg";
 import kidJump from "@/assets/bonete-kid-jump.jpg";
-import roda from "@/assets/bonete-roda.jpg";
+
 import turma from "@/assets/bonete-turma.jpg";
 import construcao1 from "@/assets/bonete-construcao-1.jpg";
 import rifaGrupo from "@/assets/bonete-rifa-grupo.jpg";
@@ -146,7 +146,7 @@ const DojoBonete = () => (
             loading="lazy"
           />
           <img
-            src={roda}
+            src="/lovable-uploads/11c23685-6802-4217-a186-84b564cc52d6.jpg"
             alt="Roda de conversa entre mestres e alunos no tatame do Dojo Bonete"
             className="w-full rounded-2xl object-cover h-72"
             loading="lazy"
