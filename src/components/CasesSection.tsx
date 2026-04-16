@@ -20,7 +20,7 @@ const CasesSection = () => {
         Realidades Transformadas
       </p>
       <h2 className="text-2xl md:text-3xl font-bold mb-8">
-        Campanhas que geraram resultado real
+        Estratégia, narrativa e mobilização na prática
       </h2>
       <div className="flex gap-5 overflow-x-auto pb-2">
         {cases.map((c) => (
