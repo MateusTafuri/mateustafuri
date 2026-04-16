@@ -8,7 +8,7 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const cases = [
-  { img: caseBonete, logo: logoBonete, name: "Dojo Bonete", desc: "Uma comunidade isolada, um professor de jiu jitsu e um sonho que construíram muito mais que um espaço.", stats: ["+1.2 milhões de views", "2.077 novos apoiadores", "+150 mil captados"], path: "/dojo-bonete", imgPosition: "center 40%" },
+  { img: caseBonete, logo: logoBonete, name: "Dojo Bonete", desc: "Uma comunidade isolada, um professor de jiu jitsu e um sonho que construíram muito mais que um espaço.", stats: ["+1.2 milhões de views", "2.077 novos apoiadores", "+150 mil captados"], path: "/dojo-bonete", imgPosition: "center 60%" },
   { img: caseCorumbau, logo: logoCorumbau, name: "Corumbau", desc: "101 dias de campanha, persistência e fé. Um projeto que provou que o esporte muda tudo, mesmo longe de tudo.", stats: ["+1.8 milhões de views", "4.377 novos apoiadores", "+160 mil captados"], path: "/corumbau-bjj" },
   { img: caseCaraiva, logo: logoCaraiva, name: "Caraíva", desc: "Quando a estratégia encontra propósito, o simples encanta, engaja e transforma.", stats: ["+1 milhão de views", "3.183 novos apoiadores", "100 mil captados"], path: "/dojo-caraiva" },
 ];
