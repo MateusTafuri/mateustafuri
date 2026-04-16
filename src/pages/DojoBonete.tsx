@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import logo from "@/assets/logo-bonete.png";
-import droneImg from "@/assets/bonete-drone.jpg";
+import droneImg from "@/assets/bonete-drone.webp";
 import dojoKids from "@/assets/bonete-dojo-kids.jpg";
 import kidJump from "@/assets/bonete-kid-jump.jpg";
 
@@ -17,9 +17,9 @@ import quadriciclo from "@/assets/bonete-quadriciclo.jpg";
 import inauguracao from "@/assets/bonete-inauguracao.jpg";
 import exteriorDojo from "@/assets/bonete-exterior-dojo.jpg";
 
-import tatamePraia from "@/assets/bonete-tatame-praia.jpg";
-import graduacaoPraia from "@/assets/bonete-graduacao-praia.jpg";
-import rodaPraia from "@/assets/bonete-roda-praia.jpg";
+import tatamePraia from "@/assets/bonete-tatame-praia.webp";
+import graduacaoPraia from "@/assets/bonete-graduacao-praia.webp";
+import rodaPraia from "@/assets/bonete-roda-praia.webp";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 

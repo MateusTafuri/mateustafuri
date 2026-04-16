@@ -10,6 +10,8 @@ const HeroSection = () => {
         className="w-full h-full object-cover object-[center_25%]"
         width={1920}
         height={1080}
+        fetchPriority="high"
+        decoding="async"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 flex items-end justify-between gap-8 flex-wrap">

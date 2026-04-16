@@ -1,4 +1,4 @@
-import storyImg from "@/assets/story.jpg";
+import storyImg from "@/assets/story.webp";
 
 const tags = ["Estratégia", "Mobilização", "Storytelling", "Captação de Recursos", "Impacto Social"];
 
