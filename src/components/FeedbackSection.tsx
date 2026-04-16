@@ -59,7 +59,7 @@ const FeedbackSection = () => {
         Depoimentos
       </p>
       <h2 className="text-2xl md:text-3xl font-bold mb-10">
-        O que dizem os projetos
+        O que dizem das minhas campanhas
       </h2>
 
       <Carousel opts={{ loop: true }} setApi={setApi} className="w-full">
