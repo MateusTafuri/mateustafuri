@@ -298,8 +298,8 @@ const DojoBonete = () => (
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           <img
-            src={tatamePraia}
-            alt="Crianças e professores de kimono reunidos no novo Dojo Bonete no dia da inauguração"
+            src={exteriorDojo}
+            alt="Equipe reunida na frente do novo Dojo Bonete no dia da inauguração"
             className="w-full rounded-2xl object-cover h-72"
             loading="lazy"
           />
@@ -318,8 +318,8 @@ const DojoBonete = () => (
         </div>
         <div className="mt-4">
           <img
-            src={exteriorDojo}
-            alt="Equipe reunida na frente do novo Dojo Bonete no dia da inauguração"
+            src={tatamePraia}
+            alt="Cerimônia dentro do novo Dojo Bonete no dia da inauguração"
             className="w-full rounded-2xl object-cover max-h-[420px]"
             loading="lazy"
           />
