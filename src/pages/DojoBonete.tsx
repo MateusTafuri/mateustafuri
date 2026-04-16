@@ -61,7 +61,7 @@ const DojoBonete = () => (
             <span className="text-xs bg-primary/20 text-primary px-3 py-1 rounded-full">
               Rifa Solidária
             </span>
-            <h1 className="text-3xl md:text-4xl font-bold mt-1 leading-tight">
+            <h1 className="md:text-4xl font-bold mt-1 leading-tight text-2xl">
               A Força de um Sonho: A Construção Coletiva do Novo Dojo Bonete
             </h1>
           </div>
@@ -80,7 +80,7 @@ const DojoBonete = () => (
       {/* Seção 1 – O Cenário */}
       <section>
         <h2 className="text-2xl font-bold mb-4">
-          📍 O Cenário: Onde o Asfalto Não Chega
+          📍 Praia do Bonete: Onde o Asfalto Não Chega
         </h2>
         <p className="text-muted-foreground leading-relaxed mb-4">
           Ilhabela guarda um dos seus maiores tesouros na Praia do Bonete. Uma
@@ -98,7 +98,7 @@ const DojoBonete = () => (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <figure>
             <img
-              src={turma}
+              src="/lovable-uploads/817c6ee9-c89c-40c8-bbc5-458d823c9263.png"
               alt="Crianças do Dojo Bonete no antigo espaço improvisado embaixo da casa"
               className="w-full rounded-2xl object-cover h-72"
               loading="lazy"
@@ -116,7 +116,7 @@ const DojoBonete = () => (
               loading="lazy"
             />
             <figcaption className="text-xs text-muted-foreground/60 mt-2 text-center">
-              O espaço era pequeno, mas o propósito já era gigante.
+              Treino de jiu-jitsu na Praia do Bonete
             </figcaption>
           </figure>
         </div>
