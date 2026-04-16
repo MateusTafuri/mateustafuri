@@ -314,6 +314,7 @@ const DojoBonete = () => (
             className="w-full rounded-2xl object-cover h-72"
             loading="lazy"
           />
+        </div>
       </section>
 
       {/* Seção 6 – Impacto em Números */}
