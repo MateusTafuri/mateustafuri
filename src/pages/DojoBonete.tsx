@@ -299,8 +299,9 @@ const DojoBonete = () => (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           <img
             src={exteriorDojo}
-            alt="Equipe reunida na frente do novo Dojo Bonete no dia da inauguração"
+            alt="Mateus com as crianças na frente do novo Dojo Bonete"
             className="w-full rounded-2xl object-cover h-72"
+            style={{ objectPosition: "center 60%" }}
             loading="lazy"
           />
           <img
