@@ -94,18 +94,30 @@ const DojoBonete = () => (
           alicerces de sua própria casa — um espaço improvisado, mas que
           transbordava significado e disciplina.
         </p>
-        <figure>
-          <img
-            src={dojoKids}
-            alt="Mestre André Queiroz com as crianças do Dojo Bonete no espaço original"
-            className="w-full rounded-2xl object-cover max-h-[420px]"
-            loading="lazy"
-          />
-          <figcaption className="text-xs text-muted-foreground/60 mt-2 text-center">
-            O início de tudo: o espaço era pequeno, mas o propósito já era
-            gigante.
-          </figcaption>
-        </figure>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <figure>
+            <img
+              src={turma}
+              alt="Crianças do Dojo Bonete no antigo espaço improvisado embaixo da casa"
+              className="w-full rounded-2xl object-cover h-72"
+              loading="lazy"
+            />
+            <figcaption className="text-xs text-muted-foreground/60 mt-2 text-center">
+              O antigo dojo: embaixo da casa do mestre André.
+            </figcaption>
+          </figure>
+          <figure>
+            <img
+              src={dojoKids}
+              alt="Mestre André Queiroz com as crianças do Dojo Bonete no espaço original"
+              className="w-full rounded-2xl object-cover h-72"
+              loading="lazy"
+            />
+            <figcaption className="text-xs text-muted-foreground/60 mt-2 text-center">
+              O espaço era pequeno, mas o propósito já era gigante.
+            </figcaption>
+          </figure>
+        </div>
       </section>
 
       {/* Seção 2 – O Desafio */}
