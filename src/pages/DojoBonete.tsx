@@ -11,6 +11,11 @@ import rifaGrupo from "@/assets/bonete-rifa-grupo.jpg";
 import mateus from "@/assets/bonete-mateus.jpg";
 import criancaPraia from "@/assets/bonete-crianca-praia.jpg";
 import construcao2 from "@/assets/bonete-construcao-2.jpg";
+import tijolosPraia from "@/assets/bonete-tijolos-praia.jpg";
+import barco from "@/assets/bonete-barco.jpg";
+import quadriciclo from "@/assets/bonete-quadriciclo.jpg";
+import inauguracao from "@/assets/bonete-inauguracao.jpg";
+import mateusAndre from "@/assets/bonete-mateus-andre.jpg";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -208,6 +213,26 @@ const DojoBonete = () => (
           carregar as toras de madeira e os tijolos, entendendo, desde cedo, que
           aquele teto seria delas — porque elas ajudaram a levantá-lo.
         </p>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+          <img
+            src={barco}
+            alt="Comunidade do Bonete empurrando barco com materiais de construção na praia"
+            className="w-full rounded-2xl object-cover h-64"
+            loading="lazy"
+          />
+          <img
+            src={tijolosPraia}
+            alt="Moradores carregando tijolos na Praia do Bonete para a construção do dojo"
+            className="w-full rounded-2xl object-cover h-64"
+            loading="lazy"
+          />
+          <img
+            src={quadriciclo}
+            alt="Quadriciclo transportando blocos de cimento na praia do Bonete com ajuda da comunidade"
+            className="w-full rounded-2xl object-cover h-64 col-span-2 md:col-span-1"
+            loading="lazy"
+          />
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <img
             src={criancaPraia}
@@ -247,12 +272,31 @@ const DojoBonete = () => (
           persistência caiçara e à prova de que nenhuma comunidade é isolada
           demais quando o Brasil inteiro decide abraçar a causa.
         </p>
-        <img
-          src={turma}
-          alt="Turma completa do Dojo Bonete no espaço inaugurado"
-          className="w-full rounded-2xl object-cover max-h-[420px]"
-          loading="lazy"
-        />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+          <img
+            src={inauguracao}
+            alt="Alunos e comunidade reunidos no tatame do novo Dojo Bonete no dia da inauguração"
+            className="w-full rounded-2xl object-cover h-80"
+            loading="lazy"
+          />
+          <img
+            src={turma}
+            alt="Turma completa do Dojo Bonete no espaço antigo antes da construção"
+            className="w-full rounded-2xl object-cover h-80"
+            loading="lazy"
+          />
+        </div>
+        <figure>
+          <img
+            src={mateusAndre}
+            alt="Mateus Tafuri e mestre André Queiroz no Dojo Bonete após a inauguração"
+            className="w-full rounded-2xl object-cover max-h-[400px]"
+            loading="lazy"
+          />
+          <figcaption className="text-xs text-muted-foreground/60 mt-2 text-center">
+            Mateus Tafuri e mestre André Queiroz: a parceria que transformou o sonho em realidade.
+          </figcaption>
+        </figure>
       </section>
 
       {/* Seção 6 – Impacto em Números */}
