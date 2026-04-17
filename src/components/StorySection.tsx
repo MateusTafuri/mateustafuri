@@ -18,7 +18,7 @@ import story7 from "@/assets/story-7.jpg";
 import story8 from "@/assets/story-8.jpg";
 import story9 from "@/assets/story-9.jpg";
 
-const photos = [story1, story2, story3, story4, story5, story6, story7, story8, story9];
+const photos = [story2, story1, story3, story4, story5, story6, story7, story8, story9];
 
 const tags = ["Estratégia", "Mobilização", "Storytelling", "Captação de Recursos", "Impacto Social"];
 
