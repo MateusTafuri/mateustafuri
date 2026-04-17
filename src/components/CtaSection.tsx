@@ -8,7 +8,7 @@ const CtaSection = () => {
         <img
           src={logoTafuri}
           alt="Mateus Tafuri"
-          className="w-12 h-12 mx-auto mb-4 [filter:brightness(0)_saturate(100%)_invert(18%)_sepia(58%)_saturate(1654%)_hue-rotate(78deg)_brightness(96%)_contrast(95%)]"
+          className="w-20 h-20 mx-auto mb-1 [filter:brightness(0)_saturate(100%)_invert(18%)_sepia(58%)_saturate(1654%)_hue-rotate(78deg)_brightness(96%)_contrast(95%)]"
         />
         <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-2">Vamos juntos</p>
         <h2 className="text-3xl font-bold text-green-dark mb-3">Pronto para gerar impacto?</h2>
