@@ -8,7 +8,7 @@ const Navbar = () => {
   return (
     <nav className="sticky top-0 z-50 flex items-center justify-between px-6 py-4 border-b border-border bg-background/95 backdrop-blur-md">
       <a href="#" className="flex items-center gap-2 text-sm font-semibold text-primary">
-        <img src={logoTafuri} alt="Tafuri" className="w-6 h-6 [filter:brightness(0)_saturate(100%)_invert(18%)_sepia(58%)_saturate(1654%)_hue-rotate(78deg)_brightness(96%)_contrast(95%)]" />
+        <img src={logoTafuri} alt="Tafuri" className="w-9 h-9 [filter:brightness(0)_saturate(100%)_invert(18%)_sepia(58%)_saturate(1654%)_hue-rotate(78deg)_brightness(96%)_contrast(95%)]" />
         Mateus Tafuri
       </a>
 
