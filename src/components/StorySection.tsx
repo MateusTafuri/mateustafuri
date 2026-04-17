@@ -8,17 +8,19 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 
-import story1 from "@/assets/story-1.jpg";
 import story2 from "@/assets/story-2.jpg";
-import story3 from "@/assets/story-3.jpg";
 import story4 from "@/assets/story-4.png";
 import story5 from "@/assets/story-5.jpg";
-import story6 from "@/assets/story-6.jpg";
-import story7 from "@/assets/story-7.jpg";
 import story8 from "@/assets/story-8.jpg";
 import story9 from "@/assets/story-9.jpg";
 
-const photos = [story2, story1, story3, story4, story5, story6, story7, story8, story9];
+const photos = [
+  { src: story2, position: "center 25%" },
+  { src: story4, position: "center 25%" },
+  { src: story5, position: "center 15%" },
+  { src: story8, position: "center 25%" },
+  { src: story9, position: "center 25%" },
+];
 
 const tags = ["Estratégia", "Mobilização", "Storytelling", "Captação de Recursos", "Impacto Social"];
 
