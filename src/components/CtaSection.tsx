@@ -3,7 +3,7 @@ import logoTafuri from "@/assets/logo-tafuri.png";
 
 const CtaSection = () => {
   return (
-    <section className="bg-secondary py-16 px-6 text-center" id="contato">
+    <section className="bg-secondary py-8 px-6 text-center" id="contato">
       <div className="max-w-lg mx-auto">
         <img
           src={logoTafuri}
