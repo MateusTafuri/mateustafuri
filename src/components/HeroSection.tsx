@@ -28,14 +28,14 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent text-2xl" />
       <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 flex items-end justify-between gap-8 flex-wrap">
         <div className="max-w-xl">
-          <p className="text-white/60 mb-2 text-xs">​Impacto Social</p>
+          <p className="text-white/60 mb-2 text-base">​Impacto Social</p>
           <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-4">
             <span className="text-green-accent drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] text-left font-sans mx-0 my-0 px-0 py-0 pb-0 text-4xl">
               Quando uma causa tem propósito, ela merece voz.
             </span>
           </h1>
           <p className="text-white font-bold leading-relaxed mb-6 max-w-lg drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)] text-sm md:text-base">
-            E é por isso que transformo causas em narrativas que mobilizam pessoas e geram impacto.
+            E é por isso que eu transformo causas em narrativas que mobilizam pessoas e geram impacto.
           </p>
           <a
             href="https://wa.me/5567998860067"
