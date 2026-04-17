@@ -47,10 +47,9 @@ const CasesSection = () => {
                 <ArrowRight size={16} className="ml-auto text-primary" />
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed mb-3">{c.desc}</p>
-              <div className="flex gap-3">
-                {c.stats.map((s) => (
-                  <span key={s} className="text-[10px] text-muted-foreground/70 font-medium">{s}</span>
-                ))}
+              <div className="flex items-center gap-1 text-xs text-muted-foreground/80 font-medium">
+                <MapPin size={12} className="text-primary" />
+                <span>{c.location}</span>
               </div>
             </div>
           </Link>
