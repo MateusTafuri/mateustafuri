@@ -46,13 +46,14 @@ const StorySection = () => {
         <div className="relative">
           <Carousel setApi={setApi} opts={{ loop: true }} className="w-full">
             <CarouselContent>
-              {photos.map((src, i) => (
+              {photos.map((photo, i) => (
                 <CarouselItem key={i}>
                   <img
-                    src={src}
+                    src={photo.src}
                     alt={`Mateus Tafuri - foto ${i + 1}`}
                     loading="lazy"
-                    className="w-full rounded-2xl object-cover h-[420px] object-[center_25%]"
+                    className="w-full rounded-2xl object-cover h-[420px]"
+                    style={{ objectPosition: photo.position }}
                   />
                 </CarouselItem>
               ))}
