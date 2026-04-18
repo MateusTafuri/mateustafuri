@@ -28,7 +28,7 @@ const feedbacks = [
     role: "Líder do projeto social Corumbau BJJ",
   },
   {
-    project: "Dojo Bonete",
+    project: "Projeto Social l Dojo Bonete",
     image: feedbackBonete,
     text: "",
     author: "",
