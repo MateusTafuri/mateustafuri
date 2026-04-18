@@ -131,7 +131,7 @@ const TimelineSection = () => {
   }, []);
 
   return (
-    <section className="max-w-5xl mx-auto px-6 py-16" id="trajetoria">
+    <section className="max-w-5xl mx-auto px-6 py-16 scroll-mt-24" id="trajetoria">
       <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-1">
         minha Trajetória
       </p>
