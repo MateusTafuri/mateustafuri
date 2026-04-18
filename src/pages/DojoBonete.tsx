@@ -142,7 +142,7 @@ const DojoBonete = () => (
             loading="lazy"
           />
           <img
-            src={turma}
+            src="/lovable-uploads/96e5eb17-7a5c-48bf-a6cb-2a60175b3acf.png"
             alt="Roda de conversa entre mestres e alunos no tatame do Dojo Bonete"
             className="w-full rounded-2xl object-cover h-72 my-0 py-0 px-0 border-0"
             loading="lazy"
