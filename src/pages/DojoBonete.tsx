@@ -294,7 +294,40 @@ const DojoBonete = () => (
           foi a confirmação de que a comunicação, quando serve a um propósito
           real, é imbatível.
         </p>
-// ...
+        <p className="text-muted-foreground leading-relaxed mb-6 text-justify">
+          O Dojo Bonete hoje não é apenas um centro de treinamento. É um monumento à
+          persistência caiçara e à prova de que nenhuma comunidade é isolada
+          demais quando o Brasil inteiro decide abraçar a causa.
+        </p>
+        <div className="mb-6">
+          <img
+            src="/lovable-uploads/8a538a52-84aa-41ef-a182-94ef47370d2a.jpg"
+            alt="Alunos e comunidade reunidos no tatame do novo Dojo Bonete no dia da inauguração"
+            className="w-full rounded-2xl max-h-[420px] mx-0 px-0 object-cover"
+            loading="lazy"
+          />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <img
+            src={exteriorDojo}
+            alt="Mateus com as crianças na frente do novo Dojo Bonete"
+            className="w-full rounded-2xl object-cover h-72"
+            style={{ objectPosition: "center 60%" }}
+            loading="lazy"
+          />
+          <img
+            src={rodaPraia}
+            alt="Roda de treino no novo Dojo Bonete durante a inauguração"
+            className="w-full rounded-2xl object-cover h-72"
+            loading="lazy"
+          />
+          <img
+            src="/lovable-uploads/da40d39d-5119-447b-aa60-90f8448e4c3c.jpg"
+            alt="Foto oficial de toda a comunidade reunida no novo Dojo Bonete na inauguração"
+            className="w-full rounded-2xl object-cover h-72"
+            loading="lazy"
+          />
+        </div>
         <div className="mt-4">
           <img
             src="/lovable-uploads/86da9fdf-3fec-4631-b896-d9214619c094.png"
