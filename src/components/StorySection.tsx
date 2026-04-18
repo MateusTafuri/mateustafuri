@@ -59,7 +59,7 @@ const StorySection = () => {
   }, [api, onSelect]);
 
   return (
-    <section className="max-w-5xl mx-auto px-6 py-16" id="historia">
+    <section className="max-w-5xl mx-auto px-6 py-16 scroll-mt-24" id="historia">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         <div className="relative">
           <Carousel setApi={setApi} opts={{ loop: true }} className="w-full">

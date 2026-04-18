@@ -15,7 +15,7 @@ const cases = [
 
 const CasesSection = () => {
   return (
-    <section className="max-w-5xl mx-auto px-6 py-16" id="cases">
+    <section className="max-w-5xl mx-auto px-6 py-16 scroll-mt-24" id="cases">
       <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-1">
         Realidades Transformadas
       </p>

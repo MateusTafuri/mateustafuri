@@ -54,7 +54,7 @@ const FeedbackSection = () => {
   }, [api, onSelect]);
 
   return (
-    <section className="max-w-5xl mx-auto px-6 py-16" id="feedbacks">
+    <section className="max-w-5xl mx-auto px-6 py-16 scroll-mt-24" id="feedbacks">
       <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-1">
         Depoimentos
       </p>
