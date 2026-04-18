@@ -60,39 +60,48 @@ const ImageTuner = () => {
     };
     const onClick = (e: MouseEvent) => {
       const t = e.target as HTMLElement;
-      if (t.tagName === "IMG" && !t.closest("[data-image-tuner]")) {
-        e.preventDefault();
-        e.stopPropagation();
-        const img = t as HTMLImageElement;
-        const computed = getComputedStyle(img);
+      if (!t || t.tagName !== "IMG") return;
+      if (t.closest("[data-image-tuner]")) return;
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      const img = t as HTMLImageElement;
+      const computed = getComputedStyle(img);
+      const op = img.style.objectPosition || computed.objectPosition;
+      const parts = op.split(" ");
+      const px = parsePercent(parts[0], 50);
+      const py = parsePercent(parts[1], 50);
+      const tr = img.style.transform || computed.transform;
+      const scaleMatch = tr.match(/scale\(([\d.]+)\)/) || tr.match(/matrix\(([\d.]+)/);
+      const z = scaleMatch ? parseFloat(scaleMatch[1]) : 1;
+
+      // Use queueMicrotask to ensure React batches state updates from native event
+      queueMicrotask(() => {
         setSelected({
           el: img,
           originalStyle: {
-            objectPosition: img.style.objectPosition || computed.objectPosition,
+            objectPosition: img.style.objectPosition,
             transform: img.style.transform,
             transformOrigin: img.style.transformOrigin,
           },
         });
-
-        // Parse current values
-        const op = img.style.objectPosition || computed.objectPosition;
-        const parts = op.split(" ");
-        const px = parsePercent(parts[0], 50);
-        const py = parsePercent(parts[1], 50);
         setPosX(px);
         setPosY(py);
-
-        const tr = img.style.transform || computed.transform;
-        const scaleMatch = tr.match(/scale\(([\d.]+)\)/) || tr.match(/matrix\(([\d.]+)/);
-        setZoom(scaleMatch ? parseFloat(scaleMatch[1]) : 1);
-
+        setZoom(z);
         clearHover();
         setPicking(false);
-      }
+      });
     };
 
     document.addEventListener("mouseover", onOver, true);
     document.addEventListener("click", onClick, true);
+    document.addEventListener("pointerdown", onClick, true);
+    return () => {
+      document.removeEventListener("mouseover", onOver, true);
+      document.removeEventListener("click", onClick, true);
+      document.removeEventListener("pointerdown", onClick, true);
+      clearHover();
+    };
     return () => {
       document.removeEventListener("mouseover", onOver, true);
       document.removeEventListener("click", onClick, true);
