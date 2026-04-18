@@ -340,15 +340,6 @@ const DojoBonete = () => (
           em recursos diretos para a obra.
         </p>
 
-        <div className="text-center py-6 mb-8 border border-border rounded-2xl bg-card">
-          <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">
-            Total arrecadado para o projeto
-          </p>
-          <p className="text-5xl md:text-6xl font-bold text-primary">
-            R$ 152.678,93
-          </p>
-        </div>
-
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
           {stats.map((s) => (
             <div
@@ -361,6 +352,15 @@ const DojoBonete = () => (
               <p className="text-xs text-muted-foreground mt-1">{s.label}</p>
             </div>
           ))}
+        </div>
+
+        <div className="text-center py-6 mb-8 border border-border rounded-2xl bg-card">
+          <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">
+            Total arrecadado para o projeto
+          </p>
+          <p className="text-5xl md:text-6xl font-bold text-primary">
+            R$ 152.678,93
+          </p>
         </div>
 
         <div className="bg-card border border-border rounded-2xl p-6">
