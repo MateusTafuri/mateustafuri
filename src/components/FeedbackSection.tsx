@@ -68,7 +68,7 @@ const FeedbackSection = () => {
             <CarouselItem key={f.project}>
               <div className="rounded-2xl border border-border bg-card overflow-hidden">
                 <div className="flex flex-col md:flex-row md:items-center">
-                  <div className="md:w-64 h-64 md:h-80 shrink-0">
+                  <div className="md:w-96 h-64 md:h-[480px] shrink-0">
                     <img
                       src={f.image}
                       alt={f.project}
