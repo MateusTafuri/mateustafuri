@@ -1,9 +1,9 @@
-import caseCaraiva from "@/assets/case-caraiva-v2.jpg";
-import caseCorumbau from "@/assets/case-corumbau.jpg";
-import caseBonete from "@/assets/case-bonete-v3.jpg";
-import logoCaraiva from "@/assets/logo-caraiva.png";
-import logoBonete from "@/assets/logo-bonete.png";
-import logoCorumbau from "@/assets/logo-corumbau.png";
+import caseCaraiva from "@/assets/case-caraiva-v2.webp";
+import caseCorumbau from "@/assets/case-corumbau.webp";
+import caseBonete from "@/assets/case-bonete-v3.webp";
+import logoCaraiva from "@/assets/logo-caraiva.webp";
+import logoBonete from "@/assets/logo-bonete.webp";
+import logoCorumbau from "@/assets/logo-corumbau.webp";
 import { ArrowRight, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 

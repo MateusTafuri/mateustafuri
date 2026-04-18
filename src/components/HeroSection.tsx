@@ -1,5 +1,5 @@
 import heroImg from "@/assets/hero-real.webp";
-import heroMobileImg from "@/assets/hero-mobile.jpg";
+import heroMobileImg from "@/assets/hero-mobile.webp";
 import { ArrowRight } from "lucide-react";
 
 const HeroSection = () => {
