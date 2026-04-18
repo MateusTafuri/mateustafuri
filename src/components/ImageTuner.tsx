@@ -48,51 +48,78 @@ const ImageTuner = () => {
   useEffect(() => {
     if (!picking) return;
 
+    const findImgAt = (x: number, y: number): HTMLImageElement | null => {
+      const stack = document.elementsFromPoint(x, y) as HTMLElement[];
+      for (const el of stack) {
+        if (el.closest("[data-image-tuner]")) continue;
+        if (el.tagName === "IMG") return el as HTMLImageElement;
+      }
+      return null;
+    };
+
     const onOver = (e: MouseEvent) => {
-      const t = e.target as HTMLElement;
-      if (t.tagName === "IMG" && !t.closest("[data-image-tuner]")) {
+      const img = findImgAt(e.clientX, e.clientY);
+      if (img && img !== hoverRef.current) {
         clearHover();
-        const img = t as HTMLImageElement;
         img.style.outline = "3px solid hsl(var(--primary))";
         img.style.cursor = "crosshair";
         hoverRef.current = img;
       }
     };
+    const findImgAtPoint = (x: number, y: number, target: HTMLElement): HTMLImageElement | null => {
+      if (target.tagName === "IMG") return target as HTMLImageElement;
+      // Look beneath overlays for an <img> at the click point
+      const stack = document.elementsFromPoint(x, y) as HTMLElement[];
+      for (const el of stack) {
+        if (el.closest("[data-image-tuner]")) continue;
+        if (el.tagName === "IMG") return el as HTMLImageElement;
+      }
+      return null;
+    };
+
     const onClick = (e: MouseEvent) => {
       const t = e.target as HTMLElement;
-      if (t.tagName === "IMG" && !t.closest("[data-image-tuner]")) {
-        e.preventDefault();
-        e.stopPropagation();
-        const img = t as HTMLImageElement;
-        const computed = getComputedStyle(img);
+      if (!t || t.closest("[data-image-tuner]")) return;
+      const img = findImgAtPoint(e.clientX, e.clientY, t);
+      if (!img) return;
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      const computed = getComputedStyle(img);
+      const op = img.style.objectPosition || computed.objectPosition;
+      const parts = op.split(" ");
+      const px = parsePercent(parts[0], 50);
+      const py = parsePercent(parts[1], 50);
+      const tr = img.style.transform || computed.transform;
+      const scaleMatch = tr.match(/scale\(([\d.]+)\)/) || tr.match(/matrix\(([\d.]+)/);
+      const z = scaleMatch ? parseFloat(scaleMatch[1]) : 1;
+
+      queueMicrotask(() => {
         setSelected({
           el: img,
           originalStyle: {
-            objectPosition: img.style.objectPosition || computed.objectPosition,
+            objectPosition: img.style.objectPosition,
             transform: img.style.transform,
             transformOrigin: img.style.transformOrigin,
           },
         });
-
-        // Parse current values
-        const op = img.style.objectPosition || computed.objectPosition;
-        const parts = op.split(" ");
-        const px = parsePercent(parts[0], 50);
-        const py = parsePercent(parts[1], 50);
         setPosX(px);
         setPosY(py);
-
-        const tr = img.style.transform || computed.transform;
-        const scaleMatch = tr.match(/scale\(([\d.]+)\)/) || tr.match(/matrix\(([\d.]+)/);
-        setZoom(scaleMatch ? parseFloat(scaleMatch[1]) : 1);
-
+        setZoom(z);
         clearHover();
         setPicking(false);
-      }
+      });
     };
 
     document.addEventListener("mouseover", onOver, true);
     document.addEventListener("click", onClick, true);
+    document.addEventListener("pointerdown", onClick, true);
+    return () => {
+      document.removeEventListener("mouseover", onOver, true);
+      document.removeEventListener("click", onClick, true);
+      document.removeEventListener("pointerdown", onClick, true);
+      clearHover();
+    };
     return () => {
       document.removeEventListener("mouseover", onOver, true);
       document.removeEventListener("click", onClick, true);
