@@ -26,7 +26,7 @@ const HeroSection = () => {
         decoding="async"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent text-2xl" />
-      <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 flex items-end justify-between gap-8 flex-wrap">
+      <div className="absolute bottom-0 left-0 right-0 p-6 pt-20 md:p-10 flex items-end justify-between gap-8 flex-wrap">
         <div className="max-w-xl">
           <p className="text-white/60 mb-2 text-base">​</p>
           <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-4">
