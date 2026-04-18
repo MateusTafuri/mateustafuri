@@ -26,10 +26,10 @@ import { Link } from "react-router-dom";
 const stats = [
   { label: "Alcance no Instagram", value: "1,2M+" },
   { label: "Impressões", value: "2,3M" },
+  { label: "Cliques na Campanha", value: "32 mil+" },
   { label: "Faturamento Bruto", value: "R$ 134.044,00" },
   { label: "Doações Diretas", value: "R$ 21.716,00" },
   { label: "Lucro para o Projeto", value: "R$ 102.574,00" },
-  { label: "Cliques na Campanha", value: "32 mil+" },
 ];
 
 const DojoBonete = () => (
