@@ -94,7 +94,7 @@ const StorySection = () => {
       </div>
       <div className="max-w-3xl mx-auto">
         <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-1">Minha história</p>
-        <h3 className="text-2xl font-bold mb-4 leading-snug">Do storytelling ao impacto social</h3>
+        <h3 className="text-2xl font-bold mb-4 leading-snug">Do propósito ao impacto social</h3>
         <p className="text-sm text-muted-foreground leading-relaxed mb-3">
           Nascido e criado no interior de Goiás, filho de professores, <strong className="text-foreground">cresci inquieto com a ideia de gerar impacto positivo no mundo</strong>. Hoje, atuo na captação de recursos combinando estratégia, mobilização e narrativa para <strong className="text-foreground">transformar causas sociais em campanhas</strong> que movem pessoas e geram resultados concretos.
         </p>
