@@ -35,7 +35,7 @@ const photos = [
   { src: story17, position: "center 25%" },
   { src: story18, position: "center 25%" },
   { src: story19, position: "center 25%" },
-  { src: story20, position: "center top" },
+  { src: story20, position: "center 60%", zoom: 1.4 },
 ];
 
 const tags = ["Estratégia", "Mobilização", "Storytelling", "Captação de Recursos", "Impacto Social"];
