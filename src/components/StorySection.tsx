@@ -21,6 +21,7 @@ import story17 from "@/assets/story-17.jpg";
 import story18 from "@/assets/story-18.jpg";
 import story19 from "@/assets/story-19.webp";
 import story20 from "@/assets/story-20.webp";
+import story21 from "@/assets/story-21.jpg";
 
 const photos = [
   { src: story11, position: "center 25%" },
@@ -34,8 +35,9 @@ const photos = [
   { src: story16, position: "center 70%" },
   { src: story17, position: "center 25%" },
   { src: story18, position: "center 25%" },
-  { src: story19, position: "center 25%" },
+  { src: story19, position: "center 60%", zoom: 1.3 },
   { src: story20, position: "center 60%", zoom: 1.4 },
+  { src: story21, position: "center 25%" },
 ];
 
 const tags = ["Estratégia", "Mobilização", "Storytelling", "Captação de Recursos", "Impacto Social"];
