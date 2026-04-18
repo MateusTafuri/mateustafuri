@@ -5,7 +5,7 @@ const timeline = [
   {
     year: "2021",
     icon: GraduationCap,
-    text: "Primeiro contato com o terceiro setor durante a graduação (UFMS) e estágio no Instituto Causadores da Alegria.",
+    text: "Primeiro contato com o terceiro setor durante a graduação em Engenharia de Produção (UFMS) e estágio no Instituto Causadores da Alegria.",
   },
   {
     year: "2022",
@@ -15,7 +15,7 @@ const timeline = [
   {
     year: "2023",
     icon: Heart,
-    text: "Realização de mais de 30 ações sociais, aplicando estratégias de captação de recursos em asilos, orfanatos e clínicas de reabilitação.",
+    text: "Realização de mais de 30 ações sociais, aplicando estratégias de captação de recursos em asilos, orfanatos, clínicas de reabilitação e comunidades carentes",
   },
   {
     year: "2024",
@@ -25,12 +25,12 @@ const timeline = [
   {
     year: "2025",
     icon: Lightbulb,
-    text: "Desenvolvimento e aplicação da metodologia da Rifa Solidária, com mais de R$ 400 mil mobilizados para projetos sociais.",
+    text: "Desenvolvimento e aplicação da metodologia da Rifa Solidária, com mais de R$ 410 mil mobilizados para projetos sociais em comunidades isoladas.",
   },
   {
     year: "2026",
     icon: Rocket,
-    text: "Estruturação de uma plataforma própria de arrecadação de recursos.",
+    text: "Estruturação de uma plataforma própria de arrecadação de recursos através das rifas solidárias.",
   },
 ];
 
