@@ -70,7 +70,7 @@ const DojoBonete = () => (
       </div>
     </header>
 
-    <main className="max-w-4xl mx-auto px-6 py-12 space-y-16">
+    <main className="max-w-4xl mx-auto px-6 py-12 space-y-10">
       {/* Subtítulo */}
       <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl">
         Como a união de uma comunidade caiçara e o poder da comunicação
