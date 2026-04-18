@@ -99,7 +99,7 @@ const DojoBonete = () => (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <figure>
             <img
-              src={inauguracao}
+              src="/lovable-uploads/1887d23b-30c3-4e32-91fa-0c97b1d08af4.jpg"
               alt="Crianças do Dojo Bonete no antigo espaço improvisado embaixo da casa"
               className="w-full rounded-2xl object-cover h-72 my-0 py-0 px-0 border-0"
               loading="lazy"
@@ -110,7 +110,7 @@ const DojoBonete = () => (
           </figure>
           <figure>
             <img
-              src={dojoKids}
+              src="/lovable-uploads/9063a5ea-4953-43d0-b435-befb7092e4be.png"
               alt="Mestre André Queiroz com as crianças do Dojo Bonete no espaço original"
               className="w-full rounded-2xl object-cover h-72 my-0 py-0 px-0 border-0"
               style={{ objectPosition: "center 70%" }}
