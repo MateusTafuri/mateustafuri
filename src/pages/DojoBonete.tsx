@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import logo from "@/assets/logo-bonete.webp";
+import logoTafuri from "@/assets/logo-tafuri.webp";
 import droneImg from "@/assets/bonete-drone.webp";
 import dojoKids from "@/assets/bonete-dojo-kids.webp";
 import kidJump from "@/assets/bonete-kid-jump.webp";
@@ -385,6 +386,11 @@ const DojoBonete = () => (
     {/* CTA Vamos captar juntos */}
     <section className="bg-secondary py-16 px-6 text-center mt-8">
       <div className="max-w-2xl mx-auto">
+        <img
+          src={logoTafuri}
+          alt="Mateus Tafuri"
+          className="w-20 h-20 mx-auto mb-3 [filter:brightness(0)_saturate(100%)_invert(18%)_sepia(58%)_saturate(1654%)_hue-rotate(78deg)_brightness(96%)_contrast(95%)]"
+        />
         <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-3">
           Sua causa é a próxima
         </p>
