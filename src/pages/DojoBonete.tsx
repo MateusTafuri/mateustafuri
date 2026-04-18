@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import logo from "@/assets/logo-bonete.webp";
 import logoTafuri from "@/assets/logo-tafuri.webp";
 import droneImg from "@/assets/bonete-drone.webp";
-import dojoKids from "@/assets/bonete-dojo-kids.webp";
+// ... keep existing code
 import kidJump from "@/assets/bonete-kid-jump.webp";
 
 import turma from "@/assets/bonete-turma.webp";
@@ -15,7 +15,7 @@ import construcao2 from "@/assets/bonete-construcao-2.webp";
 import tijolosPraia from "@/assets/bonete-tijolos-praia.webp";
 import barco from "@/assets/bonete-barco.webp";
 import quadriciclo from "@/assets/bonete-quadriciclo.webp";
-import inauguracao from "@/assets/bonete-inauguracao.webp";
+// ... keep existing code
 import exteriorDojo from "@/assets/bonete-exterior-dojo.webp";
 
 import tatamePraia from "@/assets/bonete-tatame-praia.webp";
