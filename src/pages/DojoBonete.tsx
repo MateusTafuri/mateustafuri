@@ -99,7 +99,7 @@ const DojoBonete = () => (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <figure>
             <img
-              src="/lovable-uploads/12f5fc61-241c-4279-ab08-5736f8543d0b.jpg"
+              src={inauguracao}
               alt="Crianças do Dojo Bonete no antigo espaço improvisado embaixo da casa"
               className="w-full rounded-2xl object-cover h-72 my-0 py-0 px-0 border-0"
               loading="lazy"
@@ -110,7 +110,7 @@ const DojoBonete = () => (
           </figure>
           <figure>
             <img
-              src="/lovable-uploads/5b480288-cd92-4176-8a42-595459a8bbf8.png"
+              src={dojoKids}
               alt="Mestre André Queiroz com as crianças do Dojo Bonete no espaço original"
               className="w-full rounded-2xl object-cover h-72 my-0 py-0 px-0 border-0"
               style={{ objectPosition: "center 70%" }}
@@ -147,7 +147,7 @@ const DojoBonete = () => (
             loading="lazy"
           />
           <img
-            src="/lovable-uploads/8f699f55-d42c-46c2-8cb4-ed3ee199c1a8.jpg"
+            src={turma}
             alt="Roda de conversa entre mestres e alunos no tatame do Dojo Bonete"
             className="w-full rounded-2xl object-cover h-72 my-0 py-0 px-0 border-0"
             loading="lazy"
@@ -174,13 +174,13 @@ const DojoBonete = () => (
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <img
-            src="/lovable-uploads/97d0ccf4-eff7-4cd2-9f9b-39dbd8639b62.jpg"
+            src={rifaGrupo}
             alt="Equipe do Dojo Bonete reunida com o cartaz da Rifa Solidária"
             className="w-full rounded-2xl object-cover h-72 my-0 py-0 px-0 border-0"
             loading="lazy"
           />
           <img
-            src="/lovable-uploads/3cb50b07-d344-4b84-b13b-8e7f3d6e6861.jpg"
+            src={mateus}
             alt="Mateus Tafuri na frente do Dojo Bonete segurando o cartaz da rifa solidária"
             className="w-full rounded-2xl object-cover h-72 my-0 py-0 px-0 border-0"
             loading="lazy"
@@ -253,13 +253,13 @@ const DojoBonete = () => (
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <img
-            src="/lovable-uploads/7037ce13-a112-4733-a016-1f18b87787cc.jpg"
+            src={criancaPraia}
             alt="Criança carregando tijolos na praia do Bonete durante a construção do dojo"
             className="w-full rounded-2xl object-cover h-64 my-0 py-0 px-0 border-0"
             loading="lazy"
           />
           <img
-            src="/lovable-uploads/cab5e178-5a0f-49f1-b312-1cd41ca82d8f.jpg"
+            src={construcao1}
             alt="Estrutura de madeira do novo Dojo Bonete sendo erguida"
             className="w-full rounded-2xl object-cover h-64 my-0 py-0 px-0 border-0"
             loading="lazy"
