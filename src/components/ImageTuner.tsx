@@ -48,11 +48,19 @@ const ImageTuner = () => {
   useEffect(() => {
     if (!picking) return;
 
+    const findImgAt = (x: number, y: number): HTMLImageElement | null => {
+      const stack = document.elementsFromPoint(x, y) as HTMLElement[];
+      for (const el of stack) {
+        if (el.closest("[data-image-tuner]")) continue;
+        if (el.tagName === "IMG") return el as HTMLImageElement;
+      }
+      return null;
+    };
+
     const onOver = (e: MouseEvent) => {
-      const t = e.target as HTMLElement;
-      if (t.tagName === "IMG" && !t.closest("[data-image-tuner]")) {
+      const img = findImgAt(e.clientX, e.clientY);
+      if (img && img !== hoverRef.current) {
         clearHover();
-        const img = t as HTMLImageElement;
         img.style.outline = "3px solid hsl(var(--primary))";
         img.style.cursor = "crosshair";
         hoverRef.current = img;
