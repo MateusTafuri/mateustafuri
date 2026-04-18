@@ -7,11 +7,6 @@ import droneImg from "@/assets/bonete-drone.webp";
 import kidJump from "@/assets/bonete-kid-jump.webp";
 
 import turma from "@/assets/bonete-turma.webp";
-import construcao1 from "@/assets/bonete-construcao-1.webp";
-import rifaGrupo from "@/assets/bonete-rifa-grupo.webp";
-import mateus from "@/assets/bonete-mateus.webp";
-import criancaPraia from "@/assets/bonete-crianca-praia-hq.webp";
-import construcao2 from "@/assets/bonete-construcao-2.webp";
 import tijolosPraia from "@/assets/bonete-tijolos-praia.webp";
 import barco from "@/assets/bonete-barco.webp";
 import quadriciclo from "@/assets/bonete-quadriciclo.webp";
@@ -174,13 +169,13 @@ const DojoBonete = () => (
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <img
-            src={rifaGrupo}
+            src="/lovable-uploads/43131828-e914-42f8-8cbd-910c4ece5618.jpg"
             alt="Equipe do Dojo Bonete reunida com o cartaz da Rifa Solidária"
             className="w-full rounded-2xl object-cover h-72 my-0 py-0 px-0 border-0"
             loading="lazy"
           />
           <img
-            src={mateus}
+            src="/lovable-uploads/6de1a166-0b57-4ca5-bc67-f7ba006a5031.jpg"
             alt="Mateus Tafuri na frente do Dojo Bonete segurando o cartaz da rifa solidária"
             className="w-full rounded-2xl object-cover h-72 my-0 py-0 px-0 border-0"
             loading="lazy"
@@ -253,19 +248,19 @@ const DojoBonete = () => (
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <img
-            src={criancaPraia}
+            src="/lovable-uploads/980e06a8-b996-4794-a494-b291a9266aa6.jpg"
             alt="Criança carregando tijolos na praia do Bonete durante a construção do dojo"
             className="w-full rounded-2xl object-cover h-64 my-0 py-0 px-0 border-0"
             loading="lazy"
           />
           <img
-            src={construcao1}
+            src="/lovable-uploads/e413c114-5dee-40bf-b938-3a9775070a0f.jpg"
             alt="Estrutura de madeira do novo Dojo Bonete sendo erguida"
             className="w-full rounded-2xl object-cover h-64 my-0 py-0 px-0 border-0"
             loading="lazy"
           />
           <img
-            src={construcao2}
+            src="/lovable-uploads/9b641d87-6884-457d-b5cb-5bad7d470a27.jpg"
             alt="Vista geral da obra do Dojo Bonete com tijolos e estrutura"
             className="w-full rounded-2xl object-cover h-64"
             loading="lazy"
