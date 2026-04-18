@@ -26,7 +26,7 @@ import { Link } from "react-router-dom";
 const stats = [
   { label: "Alcance no Instagram", value: "1,2M+" },
   { label: "Impressões", value: "2,3M+" },
-  { label: "Cliques na Campanha", value: "32 mil+" },
+  { label: "Novos Apoiadores", value: "2.161" },
   { label: "Faturamento Bruto", value: "R$ 134.044,00" },
   { label: "Doações Diretas", value: "R$ 21.716,00" },
   { label: "Total Arrecadado", value: "R$ 152.678,93" },
@@ -381,6 +381,31 @@ const DojoBonete = () => (
         </div>
       </section>
     </main>
+
+    {/* CTA Vamos captar juntos */}
+    <section className="bg-secondary py-16 px-6 text-center mt-8">
+      <div className="max-w-2xl mx-auto">
+        <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-3">
+          Sua causa é a próxima
+        </p>
+        <h2 className="text-3xl md:text-4xl font-bold text-green-dark mb-4">
+          Vamos captar juntos?
+        </h2>
+        <p className="text-secondary-foreground/80 mb-8 text-base leading-relaxed">
+          Se o Dojo Bonete te inspirou, imagine o que podemos construir pelo seu
+          projeto. Vamos transformar sua história em uma campanha que mobiliza,
+          emociona e arrecada.
+        </p>
+        <a
+          href="https://wa.me/5567998860067"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block bg-primary text-primary-foreground px-8 py-4 rounded-full text-base font-semibold hover:opacity-90 transition-opacity"
+        >
+          Falar com Mateus no WhatsApp
+        </a>
+      </div>
+    </section>
 
     <Footer />
   </div>
