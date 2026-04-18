@@ -8,20 +8,20 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 
-import story2 from "@/assets/story-2.jpg";
-import story4 from "@/assets/story-4.png";
-import story9 from "@/assets/story-9.jpg";
-import story10 from "@/assets/story-10.jpg";
-import story11 from "@/assets/story-11.jpg";
-import story13 from "@/assets/story-13.jpg";
-import story14 from "@/assets/story-14.jpg";
-import story15 from "@/assets/story-15.jpg";
-import story16 from "@/assets/story-16.jpg";
-import story17 from "@/assets/story-17.jpg";
-import story18 from "@/assets/story-18.jpg";
+import story2 from "@/assets/story-2.webp";
+import story4 from "@/assets/story-4.webp";
+import story9 from "@/assets/story-9.webp";
+import story10 from "@/assets/story-10.webp";
+import story11 from "@/assets/story-11.webp";
+import story13 from "@/assets/story-13.webp";
+import story14 from "@/assets/story-14.webp";
+import story15 from "@/assets/story-15.webp";
+import story16 from "@/assets/story-16.webp";
+import story17 from "@/assets/story-17.webp";
+import story18 from "@/assets/story-18.webp";
 import story19 from "@/assets/story-19.webp";
 import story20 from "@/assets/story-20.webp";
-import story21 from "@/assets/story-21.jpg";
+import story21 from "@/assets/story-21.webp";
 
 const photos = [
   { src: story10, position: "center 25%" },

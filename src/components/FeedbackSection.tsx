@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from "react";
-import feedbackCorumbau from "@/assets/feedback-corumbau.jpg";
+import feedbackCorumbau from "@/assets/feedback-corumbau.webp";
 import feedbackCaraiva from "@/assets/feedback-caraiva.webp";
-import feedbackBonete from "@/assets/feedback-bonete.jpg";
+import feedbackBonete from "@/assets/feedback-bonete.webp";
 import { Quote } from "lucide-react";
 import {
   Carousel,

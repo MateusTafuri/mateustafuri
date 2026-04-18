@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import logo from "@/assets/logo-corumbau.png";
+import logo from "@/assets/logo-corumbau.webp";
 import caseImg from "@/assets/case-corumbau-real.webp";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";

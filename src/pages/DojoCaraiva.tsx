@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import logo from "@/assets/logo-caraiva.png";
+import logo from "@/assets/logo-caraiva.webp";
 import caseImg from "@/assets/case-caraiva-real.webp";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";

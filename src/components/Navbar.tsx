@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import logoTafuri from "@/assets/logo-tafuri.png";
+import logoTafuri from "@/assets/logo-tafuri.webp";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);

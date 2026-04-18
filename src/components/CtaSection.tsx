@@ -1,5 +1,5 @@
 import { Instagram, Linkedin, MessageCircle } from "lucide-react";
-import logoTafuri from "@/assets/logo-tafuri.png";
+import logoTafuri from "@/assets/logo-tafuri.webp";
 
 const CtaSection = () => {
   return (
