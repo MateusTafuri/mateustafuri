@@ -58,14 +58,25 @@ const ImageTuner = () => {
         hoverRef.current = img;
       }
     };
+    const findImgAtPoint = (x: number, y: number, target: HTMLElement): HTMLImageElement | null => {
+      if (target.tagName === "IMG") return target as HTMLImageElement;
+      // Look beneath overlays for an <img> at the click point
+      const stack = document.elementsFromPoint(x, y) as HTMLElement[];
+      for (const el of stack) {
+        if (el.closest("[data-image-tuner]")) continue;
+        if (el.tagName === "IMG") return el as HTMLImageElement;
+      }
+      return null;
+    };
+
     const onClick = (e: MouseEvent) => {
       const t = e.target as HTMLElement;
-      if (!t || t.tagName !== "IMG") return;
-      if (t.closest("[data-image-tuner]")) return;
+      if (!t || t.closest("[data-image-tuner]")) return;
+      const img = findImgAtPoint(e.clientX, e.clientY, t);
+      if (!img) return;
       e.preventDefault();
       e.stopPropagation();
       e.stopImmediatePropagation();
-      const img = t as HTMLImageElement;
       const computed = getComputedStyle(img);
       const op = img.style.objectPosition || computed.objectPosition;
       const parts = op.split(" ");
@@ -75,7 +86,6 @@ const ImageTuner = () => {
       const scaleMatch = tr.match(/scale\(([\d.]+)\)/) || tr.match(/matrix\(([\d.]+)/);
       const z = scaleMatch ? parseFloat(scaleMatch[1]) : 1;
 
-      // Use queueMicrotask to ensure React batches state updates from native event
       queueMicrotask(() => {
         setSelected({
           el: img,
