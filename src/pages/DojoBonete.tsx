@@ -389,7 +389,7 @@ const DojoBonete = () => (
         <img
           src={logoTafuri}
           alt="Mateus Tafuri"
-          className="w-20 h-20 mx-auto mb-3 [filter:brightness(0)_saturate(100%)_invert(18%)_sepia(58%)_saturate(1654%)_hue-rotate(78deg)_brightness(96%)_contrast(95%)]"
+          className="w-28 h-28 md:w-32 md:h-32 mx-auto -mb-2 [filter:brightness(0)_saturate(100%)_invert(18%)_sepia(58%)_saturate(1654%)_hue-rotate(78deg)_brightness(96%)_contrast(95%)]"
         />
         <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-3">
           Sua causa é a próxima
