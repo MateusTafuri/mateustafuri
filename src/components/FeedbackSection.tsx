@@ -18,7 +18,7 @@ const feedbacks = [
     image: feedbackCaraiva,
     text: `Antes da Rifa o projeto era mantido através de pequenas doações e vendas de camisetas. Todo campeonato, graduação, manutenção do local lá ia eu fazer vakinha on line pra levantar dinheiro, o que me tomava um tempão e nem sempre atingíamos nossos objetivos.\n\nAtravés da verba arrecadada pela Rifa Solidária conseguimos organizar melhor nossos eventos anuais e colocar nossos objetivos em prática com facilidade. Compramos kimonos novos e roupas de ballet para as crianças, faixas e diplomas para a graduação, camisetas e adesivos para a divulgação, levamos muitos atletas para vários campeonatos (Baianos, Nacionais e internacionais). Trouxemos 3 campeões mundiais de Jiu Jitsu para a Aldeia Xandó. Foi realmente incrível o que fizemos juntos.\n\nMe senti apoiada financeiramente na nossa missão pela primeira vez! Fizemos mais e por mais pessoas. Foi uma grande surpresa encontrar o Mateus e essa ideia pelo caminho. Deus mandou uma ajuda e tanto. Nós do Dojo Caraiva agradecemos por toda ajuda!`,
     author: "Suellen Thomaz Boni",
-    role: "Líder do projeto Social Dojo Caraíva",
+    role: "Líder do projeto social Dojo Caraíva",
   },
   {
     project: "Projeto Social l Corumbau BJJ",
@@ -59,7 +59,7 @@ const FeedbackSection = () => {
         Depoimentos
       </p>
       <h2 className="text-2xl md:text-3xl font-bold mb-10">
-        O que dizem das minhas campanhas
+        O que dizem sobre minhas campanhas
       </h2>
 
       <Carousel opts={{ loop: true }} setApi={setApi} className="w-full">
