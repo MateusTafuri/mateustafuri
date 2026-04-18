@@ -18,10 +18,10 @@ import story14 from "@/assets/story-14.jpg";
 
 const photos = [
   { src: story11, position: "center 25%" },
+  { src: story10, position: "center 25%" },
   { src: story2, position: "center 25%" },
   { src: story4, position: "center 25%" },
   { src: story9, position: "center 25%" },
-  { src: story10, position: "center 25%" },
   { src: story13, position: "center 25%" },
   { src: story14, position: "center 25%" },
 ];
