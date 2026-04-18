@@ -266,6 +266,20 @@ const DojoBonete = () => (
             loading="lazy"
           />
         </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+          <img
+            src="/lovable-uploads/bonete-construcao-3.jpg"
+            alt="Estrutura de madeira do novo Dojo Bonete vista de dentro com vigas e pilares"
+            className="w-full rounded-2xl object-cover h-64"
+            loading="lazy"
+          />
+          <img
+            src="/lovable-uploads/bonete-construcao-4.jpg"
+            alt="Estrutura de madeira do novo Dojo Bonete com tijolos empilhados ao lado"
+            className="w-full rounded-2xl object-cover h-64"
+            loading="lazy"
+          />
+        </div>
       </section>
 
       {/* Seção 5 – Inauguração */}
