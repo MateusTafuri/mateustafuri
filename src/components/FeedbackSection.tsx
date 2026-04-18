@@ -21,7 +21,7 @@ const feedbacks = [
     role: "Líder do projeto Social Dojo Caraíva",
   },
   {
-    project: "Corumbau BJJ",
+    project: "Projeto Social l Corumbau BJJ",
     image: feedbackCorumbau,
     text: `Contar com o apoio e suporte da Rifa Solidária, através do empenho, atenção e profissionalismo do Mateus, nos fez acreditar ainda mais que estamos em um caminho correto e que o nosso trabalho vai além dos tatames... \n\nConseguimos alcançar e captar recursos, valores e conexões com pessoas que, durante a campanha, estiveram presentes e torceram pelas nossas crianças e pelo nosso primeiro espaço esportivo e cultural de Corumbau. Algo além de inteiramente necessário, tornará-se histórico na nossa comunidade. \n\nPudemos apresentar o nosso projeto para o Brasil inteiro e alguns países afora também. Incrível como foi possível conectar as crianças em cada filmagem, roteiro e experiências diversas durante a campanha inteira. Foi uma verdadeira aventura de aprendizado, superação e vontade de vencer através dos nossos esforços e merecimento...\n\nIsso fez toda a diferença. Somos inteiramente gratos por tudo e a todos que fizeram parte dessa Rifa Solidária.`,
     author: "Diego Oliveira",
