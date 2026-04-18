@@ -24,8 +24,8 @@ import story20 from "@/assets/story-20.webp";
 import story21 from "@/assets/story-21.jpg";
 
 const photos = [
-  { src: story11, position: "center 25%" },
   { src: story10, position: "center 25%" },
+  { src: story11, position: "center 25%" },
   { src: story2, position: "center 25%" },
   { src: story4, position: "center 25%" },
   { src: story9, position: "center 25%" },
