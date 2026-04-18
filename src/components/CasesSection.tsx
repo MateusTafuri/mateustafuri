@@ -57,12 +57,12 @@ const CasesSection = () => {
       </div>
       <div className="mt-8 text-center">
         <a
-          href="https://wa.me/5567998860067?text=Quero%20fazer%20a%20minha%20rifa"
+          href="https://wa.me/5567998860067?text=Quero%20Causar%20Impacto!"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block bg-primary text-primary-foreground px-6 py-3 rounded-full text-sm font-semibold hover:opacity-90 transition-opacity"
         >
-          Quero fazer a minha rifa
+          Quero Causar Impacto!
         </a>
       </div>
     </section>
