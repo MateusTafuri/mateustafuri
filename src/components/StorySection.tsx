@@ -10,23 +10,18 @@ import {
 
 import story2 from "@/assets/story-2.jpg";
 import story4 from "@/assets/story-4.png";
-import story5 from "@/assets/story-5.jpg";
-import story8 from "@/assets/story-8.jpg";
 import story9 from "@/assets/story-9.jpg";
 import story10 from "@/assets/story-10.jpg";
 import story11 from "@/assets/story-11.jpg";
-import story12 from "@/assets/story-12.jpg";
 import story13 from "@/assets/story-13.jpg";
 import story14 from "@/assets/story-14.jpg";
 
 const photos = [
   { src: story2, position: "center 25%" },
   { src: story4, position: "center 25%" },
-  { src: story5, position: "center 5%" },
   { src: story9, position: "center 25%" },
   { src: story10, position: "center 25%" },
   { src: story11, position: "center 25%" },
-  { src: story12, position: "center 25%" },
   { src: story13, position: "center 25%" },
   { src: story14, position: "center 25%" },
 ];
