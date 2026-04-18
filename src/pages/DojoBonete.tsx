@@ -36,7 +36,7 @@ const DojoBonete = () => (
     <header className="relative w-full h-[50vh] md:h-[60vh] overflow-hidden">
       <img
         src={droneImg}
-        alt="Vista aérea da Praia do Bonete, Ilhabela — tatame azul na areia onde acontecem os treinos de jiu-jitsu"
+        alt="Vista aérea da Praia do Bonete, Ilhabela: tatame azul na areia onde acontecem os treinos de jiu-jitsu"
         className="w-full h-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
@@ -88,7 +88,7 @@ const DojoBonete = () => (
           Nesse isolamento, as oportunidades para os jovens são raras. Mas foi
           aqui que o mestre André Queiroz, faixa preta de jiu-jitsu, decidiu
           plantar uma semente. Por anos, a "arte suave" foi ensinada nos
-          alicerces de sua própria casa — um espaço improvisado, mas que
+          alicerces de sua própria casa, um espaço improvisado, mas que
           transbordava significado e disciplina.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -224,7 +224,7 @@ const DojoBonete = () => (
         <p className="text-muted-foreground leading-relaxed mb-6 text-justify">
           As crianças do projeto não foram apenas espectadoras. Elas ajudaram a
           carregar as toras de madeira e os tijolos, entendendo, desde cedo, que
-          aquele teto seria delas — porque elas ajudaram a levantá-lo.
+          aquele teto seria delas, porque elas ajudaram a levantá-lo.
         </p>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
           <img
@@ -346,7 +346,7 @@ const DojoBonete = () => (
         <p className="text-muted-foreground leading-relaxed mb-8 text-justify">
           A construção do Dojo Bonete foi viabilizada por uma campanha digital
           que rompeu as fronteiras da Ilha. A estratégia de comunicação não
-          apenas contou uma história — gerou um engajamento real que se traduziu
+          apenas contou uma história, gerou um engajamento real que se traduziu
           em recursos diretos para a obra.
         </p>
 
@@ -384,7 +384,7 @@ const DojoBonete = () => (
             a história do Dojo Bonete para milhões de pessoas.
           </p>
           <p className="text-muted-foreground leading-relaxed text-justify">
-            Não foi só impulsionamento — foi construção de mensagem, testes de
+            Não foi só impulsionamento, foi construção de mensagem, testes de
             criativos e distribuição inteligente para transformar atenção em
             conexão real.
           </p>
