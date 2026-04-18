@@ -26,9 +26,9 @@ import { Link } from "react-router-dom";
 const stats = [
   { label: "Alcance no Instagram", value: "1,2M+" },
   { label: "Impressões", value: "2,3M" },
-  { label: "Faturamento Bruto", value: "R$ 134.044" },
-  { label: "Doações Diretas", value: "R$ 21.716" },
-  { label: "Lucro para o Projeto", value: "R$ 102.574" },
+  { label: "Faturamento Bruto", value: "R$ 134.044,00" },
+  { label: "Doações Diretas", value: "R$ 21.716,00" },
+  { label: "Lucro para o Projeto", value: "R$ 102.574,00" },
   { label: "Cliques na Campanha", value: "32 mil+" },
 ];
 
@@ -73,22 +73,22 @@ const DojoBonete = () => (
       {/* Subtítulo */}
       <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl">
         Como a união de uma comunidade caiçara e o poder da comunicação
-        estratégica transformaram o propósito de um mestre em uma realidade que
+        estratégica transformaram o propósito de um professor em uma realidade que
         muda destinos.
       </p>
 
       {/* Seção 1 – O Cenário */}
       <section>
         <h2 className="text-2xl font-bold mb-4">
-          📍 Praia do Bonete: Onde o Asfalto Não Chega
+          📍 Praia do Bonete: Um paraíso isoaldo
         </h2>
-        <p className="text-muted-foreground leading-relaxed mb-4">
+        <p className="text-muted-foreground leading-relaxed mb-4 text-justify">
           Ilhabela guarda um dos seus maiores tesouros na Praia do Bonete. Uma
           comunidade caiçara com cerca de 350 moradores, onde o tempo é ditado
           pela maré e o acesso é limitado: ou se enfrenta 12 km de trilha densa,
           ou o balanço do mar em pequenas embarcações.
         </p>
-        <p className="text-muted-foreground leading-relaxed mb-6">
+        <p className="text-muted-foreground leading-relaxed mb-6 text-justify">
           Nesse isolamento, as oportunidades para os jovens são raras. Mas foi
           aqui que o mestre André Queiroz, faixa preta de jiu-jitsu, decidiu
           plantar uma semente. Por anos, a "arte suave" foi ensinada nos
@@ -98,25 +98,25 @@ const DojoBonete = () => (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <figure>
             <img
-              src="/lovable-uploads/817c6ee9-c89c-40c8-bbc5-458d823c9263.png"
+              src="/lovable-uploads/12f5fc61-241c-4279-ab08-5736f8543d0b.jpg"
               alt="Crianças do Dojo Bonete no antigo espaço improvisado embaixo da casa"
-              className="w-full rounded-2xl object-cover h-72"
+              className="w-full rounded-2xl object-cover h-72 my-0 py-0 px-0 border-0"
               loading="lazy"
             />
             <figcaption className="text-xs text-muted-foreground/60 mt-2 text-center">
-              O antigo dojo: embaixo da casa do mestre André.
+              {"\n"}
             </figcaption>
           </figure>
           <figure>
             <img
-              src={dojoKids}
+              src="/lovable-uploads/5b480288-cd92-4176-8a42-595459a8bbf8.png"
               alt="Mestre André Queiroz com as crianças do Dojo Bonete no espaço original"
-              className="w-full rounded-2xl object-cover h-72"
+              className="w-full rounded-2xl object-cover h-72 my-0 py-0 px-0 border-0"
               style={{ objectPosition: "center 70%" }}
               loading="lazy"
             />
             <figcaption className="text-xs text-muted-foreground/60 mt-2 text-center">
-              Treino de jiu-jitsu na Praia do Bonete
+              {"\n"}
             </figcaption>
           </figure>
         </div>
@@ -127,13 +127,13 @@ const DojoBonete = () => (
         <h2 className="text-2xl font-bold mb-4">
           🥋 O Desafio: Quando o Sonho Fica Maior que o Teto
         </h2>
-        <p className="text-muted-foreground leading-relaxed mb-4">
+        <p className="text-muted-foreground leading-relaxed mb-4 text-justify">
           O projeto cresceu. As crianças ocuparam o tatame, e logo ficou claro
           que o Bonete precisava de um espaço dedicado. Foi nesse momento que a
           minha história se cruzou com a deles. Cheguei em maio de 2024 como
           voluntário e vivi quatro meses imerso na cultura local.
         </p>
-        <p className="text-muted-foreground leading-relaxed mb-6">
+        <p className="text-muted-foreground leading-relaxed mb-6 text-justify">
           Percebi que o desafio não era apenas financeiro, mas logístico e
           narrativo. Como construir um centro esportivo de alto nível em um
           lugar onde cada grama de cimento precisa vir pelo mar?
@@ -142,13 +142,13 @@ const DojoBonete = () => (
           <img
             src={kidJump}
             alt="Criança saltando durante treino de jiu-jitsu no Dojo Bonete"
-            className="w-full rounded-2xl object-cover h-72"
+            className="w-full rounded-2xl object-cover h-72 my-0 py-0 px-0 border-0"
             loading="lazy"
           />
           <img
-            src="/lovable-uploads/11c23685-6802-4217-a186-84b564cc52d6.jpg"
+            src="/lovable-uploads/8f699f55-d42c-46c2-8cb4-ed3ee199c1a8.jpg"
             alt="Roda de conversa entre mestres e alunos no tatame do Dojo Bonete"
-            className="w-full rounded-2xl object-cover h-72"
+            className="w-full rounded-2xl object-cover h-72 my-0 py-0 px-0 border-0"
             loading="lazy"
           />
         </div>
@@ -159,29 +159,29 @@ const DojoBonete = () => (
         <h2 className="text-2xl font-bold mb-4">
           🎟️ A Estratégia: Transformando Solidariedade em Experiência
         </h2>
-        <p className="text-muted-foreground leading-relaxed mb-4">
+        <p className="text-muted-foreground leading-relaxed mb-4 text-justify">
           Para viabilizar o novo Dojo, não pedimos apenas doações. Criamos uma{" "}
           <strong className="text-foreground">Rifa Solidária</strong> com uma
           narrativa estratégica. O prêmio? Uma imersão no paraíso: 3 diárias na
           Pousada Canto Bravo, unindo o apoio ao projeto ao fortalecimento do
           turismo local.
         </p>
-        <p className="text-muted-foreground leading-relaxed mb-6">
+        <p className="text-muted-foreground leading-relaxed mb-6 text-justify">
           Através de um trabalho de copywriting e storytelling, levamos a rotina
           do Bonete para as telas de todo o Brasil. Mostramos que cada bilhete
-          comprado era um tijolo colocado no morro.
+          comprado era um tijolo colocado no novo dojo.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <img
-            src={rifaGrupo}
+            src="/lovable-uploads/97d0ccf4-eff7-4cd2-9f9b-39dbd8639b62.jpg"
             alt="Equipe do Dojo Bonete reunida com o cartaz da Rifa Solidária"
-            className="w-full rounded-2xl object-cover h-72"
+            className="w-full rounded-2xl object-cover h-72 my-0 py-0 px-0 border-0"
             loading="lazy"
           />
           <img
-            src={mateus}
+            src="/lovable-uploads/3cb50b07-d344-4b84-b13b-8e7f3d6e6861.jpg"
             alt="Mateus Tafuri na frente do Dojo Bonete segurando o cartaz da rifa solidária"
-            className="w-full rounded-2xl object-cover h-72"
+            className="w-full rounded-2xl object-cover h-72 my-0 py-0 px-0 border-0"
             loading="lazy"
           />
         </div>
@@ -192,7 +192,7 @@ const DojoBonete = () => (
         <h2 className="text-2xl font-bold mb-4">
           ⚓ A Logística do Impossível: 9 Toneladas de Suor
         </h2>
-        <p className="text-muted-foreground leading-relaxed mb-4">
+        <p className="text-muted-foreground leading-relaxed mb-4 text-justify">
           A construção foi uma prova de resistência. Imagine o cenário:
         </p>
         <ul className="space-y-3 mb-6">
@@ -225,7 +225,7 @@ const DojoBonete = () => (
             </li>
           ))}
         </ul>
-        <p className="text-muted-foreground leading-relaxed mb-6">
+        <p className="text-muted-foreground leading-relaxed mb-6 text-justify">
           As crianças do projeto não foram apenas espectadoras. Elas ajudaram a
           carregar as toras de madeira e os tijolos, entendendo, desde cedo, que
           aquele teto seria delas — porque elas ajudaram a levantá-lo.
@@ -252,15 +252,15 @@ const DojoBonete = () => (
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <img
-            src={criancaPraia}
+            src="/lovable-uploads/7037ce13-a112-4733-a016-1f18b87787cc.jpg"
             alt="Criança carregando tijolos na praia do Bonete durante a construção do dojo"
-            className="w-full rounded-2xl object-cover h-64"
+            className="w-full rounded-2xl object-cover h-64 my-0 py-0 px-0 border-0"
             loading="lazy"
           />
           <img
-            src={construcao1}
+            src="/lovable-uploads/cab5e178-5a0f-49f1-b312-1cd41ca82d8f.jpg"
             alt="Estrutura de madeira do novo Dojo Bonete sendo erguida"
-            className="w-full rounded-2xl object-cover h-64"
+            className="w-full rounded-2xl object-cover h-64 my-0 py-0 px-0 border-0"
             loading="lazy"
           />
           <img
@@ -277,15 +277,15 @@ const DojoBonete = () => (
         <h2 className="text-2xl font-bold mb-4">
           🎉 O Dia da Inauguração: O Nascimento do Dojo Bonete
         </h2>
-        <p className="text-muted-foreground leading-relaxed mb-4">
+        <p className="text-muted-foreground leading-relaxed mb-4 text-justify">
           O dia da entrega foi a materialização de um esforço coletivo que
           envolveu mais de 2.500 pessoas através da rifa. Ver o novo tatame
           esticado, o cheiro de madeira nova e o brilho no olhar de cada aluno
           foi a confirmação de que a comunicação, quando serve a um propósito
           real, é imbatível.
         </p>
-        <p className="text-muted-foreground leading-relaxed mb-6">
-          O Dojo Bonete hoje não é apenas um prédio. É um monumento à
+        <p className="text-muted-foreground leading-relaxed mb-6 text-justify">
+          O Dojo Bonete hoje não é apenas um centro de treinamento. É um monumento à
           persistência caiçara e à prova de que nenhuma comunidade é isolada
           demais quando o Brasil inteiro decide abraçar a causa.
         </p>
@@ -333,7 +333,7 @@ const DojoBonete = () => (
         <h2 className="text-2xl font-bold mb-6">
           📊 O Impacto em Números: A Força da Campanha
         </h2>
-        <p className="text-muted-foreground leading-relaxed mb-8">
+        <p className="text-muted-foreground leading-relaxed mb-8 text-justify">
           A construção do Dojo Bonete foi viabilizada por uma campanha digital
           que rompeu as fronteiras da Ilha. A estratégia de comunicação não
           apenas contou uma história — gerou um engajamento real que se traduziu
@@ -358,7 +358,7 @@ const DojoBonete = () => (
           <h3 className="text-lg font-semibold mb-3">
             Performance de Marketing
           </h3>
-          <p className="text-muted-foreground leading-relaxed">
+          <p className="text-muted-foreground leading-relaxed text-justify">
             Para alcançar esses resultados em uma comunidade isolada, o
             investimento em tráfego pago foi preciso. Foram investidos{" "}
             <strong className="text-foreground">R$ 41.000,00</strong> em
