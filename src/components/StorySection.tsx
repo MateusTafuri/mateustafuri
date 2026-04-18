@@ -35,7 +35,7 @@ const photos = [
   { src: story17, position: "center 25%" },
   { src: story18, position: "center 25%" },
   { src: story19, position: "center 25%" },
-  { src: story20, position: "center top" },
+  { src: story20, position: "center 60%", zoom: 1.4 },
 ];
 
 const tags = ["Estratégia", "Mobilização", "Storytelling", "Captação de Recursos", "Impacto Social"];
@@ -64,13 +64,19 @@ const StorySection = () => {
             <CarouselContent>
               {photos.map((photo, i) => (
                 <CarouselItem key={i}>
-                  <img
-                    src={photo.src}
-                    alt={`Mateus Tafuri - foto ${i + 1}`}
-                    loading="lazy"
-                    className="w-full rounded-2xl object-cover h-[420px]"
-                    style={{ objectPosition: photo.position }}
-                  />
+                  <div className="w-full rounded-2xl overflow-hidden h-[420px]">
+                    <img
+                      src={photo.src}
+                      alt={`Mateus Tafuri - foto ${i + 1}`}
+                      loading="lazy"
+                      className="w-full h-full object-cover"
+                      style={{
+                        objectPosition: photo.position,
+                        transform: photo.zoom ? `scale(${photo.zoom})` : undefined,
+                        transformOrigin: photo.position,
+                      }}
+                    />
+                  </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
