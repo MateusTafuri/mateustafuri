@@ -33,7 +33,7 @@ const DojoBonete = () => (
     <Navbar />
 
     {/* Hero */}
-    <header className="relative w-full h-[50vh] md:h-[60vh] overflow-hidden">
+    <header className="relative w-full h-[35vh] md:h-[45vh] overflow-hidden">
       <img
         src={droneImg}
         alt="Vista aérea da Praia do Bonete, Ilhabela: tatame azul na areia onde acontecem os treinos de jiu-jitsu"
@@ -65,7 +65,7 @@ const DojoBonete = () => (
       </div>
     </header>
 
-    <main className="max-w-4xl mx-auto px-6 py-12 space-y-10">
+    <main className="max-w-4xl mx-auto px-6 pt-6 pb-12 space-y-10">
       {/* Subtítulo */}
       <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl">
         Como a união de uma comunidade caiçara e o poder da comunicação
