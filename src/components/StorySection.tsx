@@ -30,10 +30,8 @@ const photos = [
   { src: story4, position: "center 25%" },
   { src: story9, position: "center 25%" },
   { src: story13, position: "center 25%" },
-  { src: story15, position: "center 70%" },
   { src: story16, position: "center 70%" },
   { src: story18, position: "center 25%" },
-  { src: story19, position: "center 60%", zoom: 1.3 },
   { src: story20, position: "center 60%", zoom: 1.4 },
   { src: story21, position: "center 25%" },
 ];
