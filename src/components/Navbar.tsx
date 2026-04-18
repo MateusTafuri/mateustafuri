@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 import logoTafuri from "@/assets/logo-tafuri.webp";
 
 const Navbar = () => {
@@ -7,10 +8,10 @@ const Navbar = () => {
 
   return (
     <nav className="sticky top-0 z-50 flex items-center justify-between px-6 py-4 border-b border-border bg-background/95 backdrop-blur-md">
-      <a href="#" className="flex items-center gap-2 text-sm font-semibold text-primary">
+      <Link to="/" className="flex items-center gap-2 text-sm font-semibold text-primary">
         <img src={logoTafuri} alt="Tafuri" className="w-9 h-9 [filter:brightness(0)_saturate(100%)_invert(18%)_sepia(58%)_saturate(1654%)_hue-rotate(78deg)_brightness(96%)_contrast(95%)]" />
         Mateus Tafuri
-      </a>
+      </Link>
 
       <div className="hidden md:flex items-center gap-6 text-sm text-muted-foreground">
         <a href="#cases" className="hover:text-primary transition-colors">Campanhas</a>
