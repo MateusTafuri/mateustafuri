@@ -25,11 +25,11 @@ import { Link } from "react-router-dom";
 
 const stats = [
   { label: "Alcance no Instagram", value: "1,2M+" },
-  { label: "Impressões", value: "2,3M" },
+  { label: "Impressões", value: "2,3M+" },
   { label: "Cliques na Campanha", value: "32 mil+" },
   { label: "Faturamento Bruto", value: "R$ 134.044,00" },
   { label: "Doações Diretas", value: "R$ 21.716,00" },
-  { label: "Lucro para o Projeto", value: "R$ 102.574,00" },
+  { label: "Total Arrecadado", value: "R$ 152.678,93" },
 ];
 
 const DojoBonete = () => (
@@ -356,10 +356,10 @@ const DojoBonete = () => (
 
         <div className="text-center py-6 mb-8 border border-border rounded-2xl bg-card">
           <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">
-            Total arrecadado para o projeto
+            Lucro real para o projeto
           </p>
           <p className="text-5xl md:text-6xl font-bold text-primary">
-            R$ 152.678,93
+            R$ 102.574,00
           </p>
         </div>
 
@@ -367,14 +367,16 @@ const DojoBonete = () => (
           <h3 className="text-lg font-semibold mb-3">
             Performance de Marketing
           </h3>
+          <p className="text-muted-foreground leading-relaxed text-justify mb-4">
+            Para escalar essa campanha, investimos{" "}
+            <strong className="text-foreground">R$ 41.000</strong> em tráfego
+            pago, com estratégias de alcance, criativos e narrativa que levaram
+            a história do Dojo Bonete para milhões de pessoas.
+          </p>
           <p className="text-muted-foreground leading-relaxed text-justify">
-            Para alcançar esses resultados em uma comunidade isolada, o
-            investimento em tráfego pago foi preciso. Foram investidos{" "}
-            <strong className="text-foreground">R$ 41.000,00</strong> em
-            anúncios, com um CPM de{" "}
-            <strong className="text-foreground">R$ 16,57</strong> e mais de{" "}
-            <strong className="text-foreground">32 mil cliques</strong> no link
-            da campanha.
+            Não foi só impulsionamento — foi construção de mensagem, testes de
+            criativos e distribuição inteligente para transformar atenção em
+            conexão real.
           </p>
         </div>
       </section>
