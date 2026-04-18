@@ -5,6 +5,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
+import ImageTuner from "./components/ImageTuner";
 
 const DojoCaraiva = lazy(() => import("./pages/DojoCaraiva.tsx"));
 const DojoBonete = lazy(() => import("./pages/DojoBonete.tsx"));
@@ -18,6 +19,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <ImageTuner />
       <BrowserRouter>
         <Suspense fallback={<div className="min-h-screen bg-background" />}>
           <Routes>
