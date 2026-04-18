@@ -274,7 +274,7 @@ const DojoBonete = () => (
             loading="lazy"
           />
           <img
-            src="/lovable-uploads/bonete-construcao-4.jpg"
+            src="/lovable-uploads/4caedbdd-13f0-472a-a1b4-5f04263ebaf2.png"
             alt="Estrutura de madeira do novo Dojo Bonete com tijolos empilhados ao lado"
             className="w-full rounded-2xl object-cover h-64"
             loading="lazy"
@@ -288,8 +288,8 @@ const DojoBonete = () => (
           🎉 O Dia da Inauguração: O Nascimento do Dojo Bonete
         </h2>
         <p className="text-muted-foreground leading-relaxed mb-4 text-justify">
-          O dia da entrega foi a materialização de um esforço coletivo que
-          envolveu mais de 2.500 pessoas através da rifa. Ver o novo tatame
+          Dia 20 de dezembro de 2025 foi a materialização de um esforço coletivo que
+          envolveu pessoas através da rifa. Ver o novo tatame
           esticado, o cheiro de madeira nova e o brilho no olhar de cada aluno
           foi a confirmação de que a comunicação, quando serve a um propósito
           real, é imbatível.
@@ -330,7 +330,7 @@ const DojoBonete = () => (
         </div>
         <div className="mt-4">
           <img
-            src="/lovable-uploads/0a4b82d0-b22d-47c0-9da1-91b980f5fd59.jpg"
+            src="/lovable-uploads/86da9fdf-3fec-4631-b896-d9214619c094.png"
             alt="Cerimônia dentro do novo Dojo Bonete no dia da inauguração"
             className="w-full rounded-2xl max-h-[420px] mx-0 px-0 object-cover"
             loading="lazy"
