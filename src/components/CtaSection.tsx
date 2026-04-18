@@ -25,8 +25,7 @@ const CtaSection = () => {
         </a>
 
         <div className="mt-8">
-          <p className="text-sm text-secondary-foreground/80 mb-3">Me siga nas redes sociais</p>
-          <div className="flex items-center justify-center gap-3">
+          <div className="flex items-center justify-center gap-3 mb-3">
             <a
               href="https://www.instagram.com/mateustafuri/"
               target="_blank"
@@ -55,6 +54,7 @@ const CtaSection = () => {
               <Linkedin size={20} />
             </a>
           </div>
+          <p className="text-sm text-secondary-foreground/80">Me siga nas redes sociais</p>
         </div>
       </div>
     </section>
