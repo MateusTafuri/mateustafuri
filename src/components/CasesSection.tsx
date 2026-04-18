@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 const cases = [
   { img: caseCaraiva, logo: logoCaraiva, name: "Projeto Social l Dojo Caraíva", desc: "Quando a estratégia encontra propósito, o simples encanta, engaja, transforma e realiza.", location: "Caraíva, BA", path: "/dojo-caraiva", imgPosition: "center 65%" },
   { img: caseBonete, logo: logoBonete, name: "Projeto Social l Dojo Bonete", desc: "Uma comunidade isolada, um professor de jiu jitsu e um sonho que construíram muito mais que um espaço.", location: "Ilhabela, SP", path: "/dojo-bonete", imgPosition: "center 58%" },
-  { img: caseCorumbau, logo: logoCorumbau, name: "Projeto Social l Corumbau BJJ", desc: "101 dias de campanha, persistência e fé. Um projeto que provou que o esporte muda tudo, mesmo longe de tudo.", location: "Corumbau, BA", path: "/corumbau-bjj", imgPosition: "center 65%" },
+  { img: caseCorumbau, logo: logoCorumbau, name: "Projeto Social l Corumbau BJJ", desc: "101 dias de campanha, persistência e fé. Um projeto que provou que o esporte muda tudo, mesmo longe de tudo.", location: "Corumbau, BA", path: "/corumbau-bjj", imgPosition: "center 65%", imgScale: "scale-110" },
 ];
 
 const CasesSection = () => {
