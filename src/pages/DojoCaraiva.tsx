@@ -38,7 +38,7 @@ const DojoCaraiva = () => (
       <img
         src={heroImg}
         alt="Crianças do Dojo Caraíva treinando jiu-jitsu na vila de Caraíva, Bahia"
-        className="w-full h-full object-cover"
+        className="w-full h-full object-cover object-[75%_20%] md:object-center"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
       <div className="absolute bottom-6 left-0 right-0 max-w-4xl mx-auto px-6">
