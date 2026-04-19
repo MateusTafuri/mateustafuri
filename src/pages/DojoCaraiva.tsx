@@ -16,6 +16,10 @@ import sorteio1 from "@/assets/caraiva-sorteio-1.jpg";
 import sorteio2 from "@/assets/caraiva-sorteio-2.jpg";
 import sorteio3 from "@/assets/caraiva-sorteio-3.jpg";
 import sorteio4 from "@/assets/caraiva-sorteio-4.jpg";
+import impacto1 from "@/assets/caraiva-impacto-1.jpg";
+import impacto2 from "@/assets/caraiva-impacto-2.jpg";
+import impacto3 from "@/assets/caraiva-impacto-3.jpg";
+import impacto4 from "@/assets/caraiva-impacto-4.jpg";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -264,6 +268,12 @@ const DojoCaraiva = () => (
             </li>
           ))}
         </ul>
+        <div className="grid grid-cols-2 gap-4">
+          <img src={impacto1} alt="Alunos do Dojo Caraíva em travessia de barco para competição" className="w-full rounded-2xl object-cover h-72" loading="lazy" />
+          <img src={impacto2} alt="Equipe do Dojo Caraíva reunida antes do campeonato" className="w-full rounded-2xl object-cover h-72" loading="lazy" />
+          <img src={impacto3} alt="Atletas do Dojo Caraíva acompanhando lutas no campeonato" className="w-full rounded-2xl object-cover h-72" loading="lazy" />
+          <img src={impacto4} alt="Mateus Tafuri com atletas do Dojo Caraíva no campeonato" className="w-full rounded-2xl object-cover h-72" loading="lazy" />
+        </div>
       </section>
 
       {/* Seção 6 – Conclusão */}
