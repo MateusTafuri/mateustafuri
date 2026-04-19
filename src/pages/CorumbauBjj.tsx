@@ -5,6 +5,8 @@ import logoTafuri from "@/assets/logo-tafuri.webp";
 import heroImg from "@/assets/case-corumbau-real.webp";
 import teamImg1 from "@/assets/corumbau-team-1.jpg";
 import teamImg2 from "@/assets/corumbau-team-2.jpg";
+import teamImg3 from "@/assets/corumbau-team-3.jpg";
+import teamImg4 from "@/assets/corumbau-team-4.jpg";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -78,6 +80,18 @@ const CorumbauBjj = () => (
           <img
             src={teamImg2}
             alt="Equipe do Corumbau BJJ posando com o professor Diego Oliveira"
+            className="w-full rounded-2xl object-cover h-72"
+            loading="lazy"
+          />
+          <img
+            src={teamImg3}
+            alt="Atletas do Corumbau BJJ no Campeonato Baiano de Jiu-Jitsu 2025 com medalhas"
+            className="w-full rounded-2xl object-cover h-72"
+            loading="lazy"
+          />
+          <img
+            src={teamImg4}
+            alt="Equipe completa do Corumbau BJJ Team e Dojo Caraíva no Campeonato Baiano 2025"
             className="w-full rounded-2xl object-cover h-72"
             loading="lazy"
           />
