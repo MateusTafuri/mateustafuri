@@ -72,13 +72,13 @@ const CorumbauBjj = () => (
           <img
             src={teamImg1}
             alt="Atletas do Corumbau BJJ Team com medalhas após campeonato"
-            className="w-full h-auto rounded-2xl object-cover border border-border"
+            className="w-full rounded-2xl object-cover h-72"
             loading="lazy"
           />
           <img
             src={teamImg2}
             alt="Equipe do Corumbau BJJ posando com o professor Diego Oliveira"
-            className="w-full h-auto rounded-2xl object-cover border border-border"
+            className="w-full rounded-2xl object-cover h-72"
             loading="lazy"
           />
         </div>
