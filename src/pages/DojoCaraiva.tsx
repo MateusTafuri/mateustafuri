@@ -104,7 +104,7 @@ const DojoCaraiva = () => (
           <img
             src={bastidores1}
             alt="Mateus Tafuri fixando cartaz da Rifa Solidária no Dojo Caraíva"
-            className="w-full rounded-2xl object-cover h-72"
+            className="w-full rounded-2xl object-cover h-72 object-[center_25%]"
             loading="lazy"
           />
           <img
