@@ -110,7 +110,7 @@ const DojoCaraiva = () => (
           <img
             src={bastidores2}
             alt="Mateus Tafuri apresentando a rifa para aluna do Dojo Caraíva"
-            className="w-full rounded-2xl object-cover h-72 object-top"
+            className="w-full rounded-2xl object-cover h-72 object-[center_25%]"
             loading="lazy"
           />
         </div>
