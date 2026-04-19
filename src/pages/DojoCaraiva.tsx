@@ -8,10 +8,10 @@ import kidsImg from "@/assets/caraiva-kids.jpg";
 import bastidores1 from "@/assets/caraiva-bastidores-1.png";
 import bastidores2 from "@/assets/caraiva-bastidores-2.jpg";
 import bastidores2New from "@/assets/caraiva-bastidores-2-new.jpg";
-import pousada1 from "@/assets/caraiva-pousada-1.jpg";
+import pousada1 from "@/assets/caraiva-pousada-1-new.jpg";
 import pousada2 from "@/assets/caraiva-pousada-2.jpg";
-import pousada3 from "@/assets/caraiva-pousada-3.jpg";
-import pousada4 from "@/assets/caraiva-pousada-4.jpg";
+import pousada3 from "@/assets/caraiva-pousada-3-new.jpg";
+import pousada4 from "@/assets/caraiva-pousada-4-new.jpg";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
