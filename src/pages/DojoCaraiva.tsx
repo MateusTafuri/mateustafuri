@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import logo from "@/assets/logo-caraiva.webp";
 import logoTafuri from "@/assets/logo-tafuri.webp";
-import heroImg from "@/assets/case-caraiva-real.webp";
+import heroImg from "@/assets/caraiva-hero.jpg";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
