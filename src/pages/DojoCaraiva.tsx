@@ -6,7 +6,7 @@ import heroImg from "@/assets/caraiva-hero.jpg";
 import socialImg from "@/assets/caraiva-social.jpg";
 import kidsImg from "@/assets/caraiva-kids.jpg";
 import bastidores1 from "@/assets/caraiva-bastidores-1.jpg";
-import bastidores2 from "@/assets/caraiva-bastidores-2.jpg";
+import bastidores2 from "@/assets/caraiva-bastidores-2.png";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
