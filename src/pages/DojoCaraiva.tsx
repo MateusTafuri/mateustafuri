@@ -16,12 +16,9 @@ import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const stats = [
-  { label: "Total de Compradores", value: "3.183" },
+  { label: "Novos Apoiadores", value: "3.183" },
   { label: "Faturamento Bruto", value: "R$ 100.000,00" },
   { label: "Investimento em Tráfego", value: "R$ 21.500,00" },
-  { label: "ROI", value: "3,77" },
-  { label: "Outros Custos", value: "R$ 3.575,84" },
-  { label: "Custo de Marketing", value: "R$ 7.492,42" },
 ];
 
 const DojoCaraiva = () => (
