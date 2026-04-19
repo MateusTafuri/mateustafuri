@@ -35,7 +35,7 @@ const HeroSection = () => {
             </span>
           </h1>
           <p className="text-white font-bold leading-relaxed mb-6 max-w-lg drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)] text-sm md:text-base">
-            Transformo causas em narrativas que mobilizam pessoas e geram impacto.
+            Transformo causas em narrativas que mobilizam pessoas e geram impacto social.
           </p>
           <a
             href="https://wa.me/5567998860067"
