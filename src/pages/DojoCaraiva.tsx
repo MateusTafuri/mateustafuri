@@ -7,6 +7,9 @@ import socialImg from "@/assets/caraiva-social.jpg";
 import kidsImg from "@/assets/caraiva-kids.jpg";
 import bastidores1 from "@/assets/caraiva-bastidores-1.png";
 import bastidores2 from "@/assets/caraiva-bastidores-2.jpg";
+import bastidores2New from "@/assets/caraiva-bastidores-2-new.jpg";
+import pousada1 from "@/assets/caraiva-pousada-1.jpg";
+import pousada2 from "@/assets/caraiva-pousada-2.jpg";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -108,7 +111,7 @@ const DojoCaraiva = () => (
             loading="lazy"
           />
           <img
-            src={bastidores2}
+            src={bastidores2New}
             alt="Mateus Tafuri apresentando a rifa para aluna do Dojo Caraíva"
             className="w-full rounded-2xl object-cover h-72 object-[center_25%]"
             loading="lazy"
@@ -132,13 +135,13 @@ const DojoCaraiva = () => (
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <img
-            src={heroImg}
+            src={pousada1}
             alt="Alunos do Dojo Caraíva conhecendo a Pousada Vila do Mar"
             className="w-full rounded-2xl object-cover h-72"
             loading="lazy"
           />
           <img
-            src={heroImg}
+            src={pousada2}
             alt="Bastidores da gravação da rifa solidária do Dojo Caraíva"
             className="w-full rounded-2xl object-cover h-72"
             loading="lazy"
