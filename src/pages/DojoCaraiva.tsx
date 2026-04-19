@@ -218,10 +218,18 @@ const DojoCaraiva = () => (
             O dia do sorteio foi uma celebração coletiva. Reunimos a comunidade, os alunos e os apoiadores para entregar os prêmios e agradecer por cada bilhete vendido. A alegria nos rostos das crianças e o brilho de quem fez parte dessa jornada provam que essa rifa foi muito mais do que números: foi um movimento de amor pelo Dojo Caraíva.
           </p>
           <div className="grid grid-cols-2 gap-4">
-            <img src={sorteio1} alt="Aluna do Dojo Caraíva no dia do sorteio da rifa solidária" className="w-full rounded-2xl object-contain bg-card max-h-[28rem]" loading="lazy" />
-            <img src={sorteio2} alt="Mestre Suellen, Mateus Tafuri e aluno premiado no sorteio do Dojo Caraíva" className="w-full rounded-2xl object-contain bg-card max-h-[28rem]" loading="lazy" />
-            <img src={sorteio3} alt="Aluno premiado com a mestre Suellen no dia do sorteio" className="w-full rounded-2xl object-contain bg-card max-h-[28rem]" loading="lazy" />
-            <img src={sorteio4} alt="Mateus Tafuri entregando prêmio para aluno do Dojo Caraíva" className="w-full rounded-2xl object-contain bg-card max-h-[28rem]" loading="lazy" />
+            <div className="w-full aspect-square rounded-2xl overflow-hidden bg-card flex items-center justify-center">
+              <img src={sorteio1} alt="Aluna do Dojo Caraíva no dia do sorteio da rifa solidária" className="w-full h-full object-contain" loading="lazy" />
+            </div>
+            <div className="w-full aspect-square rounded-2xl overflow-hidden bg-card flex items-center justify-center">
+              <img src={sorteio2} alt="Mestre Suellen, Mateus Tafuri e aluno premiado no sorteio do Dojo Caraíva" className="w-full h-full object-contain" loading="lazy" />
+            </div>
+            <div className="w-full aspect-square rounded-2xl overflow-hidden bg-card flex items-center justify-center">
+              <img src={sorteio3} alt="Aluno premiado com a mestre Suellen no dia do sorteio" className="w-full h-full object-contain" loading="lazy" />
+            </div>
+            <div className="w-full aspect-square rounded-2xl overflow-hidden bg-card flex items-center justify-center">
+              <img src={sorteio4} alt="Mateus Tafuri entregando prêmio para aluno do Dojo Caraíva" className="w-full h-full object-contain" loading="lazy" />
+            </div>
           </div>
         </div>
       </section>
