@@ -3,6 +3,8 @@ import Footer from "@/components/Footer";
 import logo from "@/assets/logo-corumbau.webp";
 import logoTafuri from "@/assets/logo-tafuri.webp";
 import heroImg from "@/assets/case-corumbau-real.webp";
+import teamImg1 from "@/assets/corumbau-team-1.jpg";
+import teamImg2 from "@/assets/corumbau-team-2.jpg";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -66,6 +68,20 @@ const CorumbauBjj = () => (
         <p className="text-muted-foreground leading-relaxed mb-6 text-justify">
           Foi nesse cenário que o Corumbau BJJ Team, liderado pelo professor Diego Oliveira, se ergueu como um farol. Mais do que um projeto de jiu-jitsu, é uma estrutura de disciplina, respeito e cidadania que acolhe dezenas de jovens locais.
         </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+          <img
+            src={teamImg1}
+            alt="Atletas do Corumbau BJJ Team com medalhas após campeonato"
+            className="w-full h-auto rounded-2xl object-cover border border-border"
+            loading="lazy"
+          />
+          <img
+            src={teamImg2}
+            alt="Equipe do Corumbau BJJ posando com o professor Diego Oliveira"
+            className="w-full h-auto rounded-2xl object-cover border border-border"
+            loading="lazy"
+          />
+        </div>
       </section>
 
       {/* Seção 2 – O Desafio Narrativo */}
