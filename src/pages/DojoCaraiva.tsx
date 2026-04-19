@@ -248,12 +248,12 @@ const DojoCaraiva = () => (
             {
               icon: "🛡️",
               title: "Equipamento",
-              text: "Aquisição de novos kimonos, sapatilhas e figurinos, além de equipamentos de segurança essenciais para treinos seguros.",
+              text: "Aquisição de novos kimonos, sapatilhas e figurinos do projeto parceiro de ballet, além de equipamentos de segurança essenciais para treinos seguros.",
             },
             {
               icon: "✨",
               title: "Infraestrutura e Uniforme",
-              text: "Confecção de novas camisetas da equipe e um grande evento de Dia das Crianças cheio de alegria e união.",
+              text: "Confecção de novas camisetas da equipe e um grande evento de sorteio da rifa cheio de alegria e união.",
             },
           ].map((item) => (
             <li
@@ -285,7 +285,7 @@ const DojoCaraiva = () => (
           A Rifa Solidária do Dojo Caraíva não foi apenas uma campanha de arrecadação de fundos; foi uma demonstração do poder da comunidade e da eficácia de uma comunicação estratégica e empática. Ela validou o modelo de gestão e captação do projeto.
         </p>
         <p className="text-muted-foreground leading-relaxed text-justify">
-          Este é apenas o começo. O tatame está pronto para receber novos alunos, e nossos atletas estão prontos para novos tatames no mundo todo.
+          Este é apenas o começo. O tatame está pronto para receber novos alunos, e nossos atletas estão prontos para novos desafios no mundo todo.
         </p>
       </section>
     </main>
