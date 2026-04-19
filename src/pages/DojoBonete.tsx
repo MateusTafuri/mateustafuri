@@ -33,17 +33,17 @@ const DojoBonete = () => (
     <Navbar />
 
     {/* Hero */}
-    <header className="relative w-full h-[35vh] md:h-[45vh] overflow-hidden">
+    <header className="relative w-full h-[55vh] md:h-[60vh] overflow-hidden">
       <img
         src={droneImg}
         alt="Vista aérea da Praia do Bonete, Ilhabela: tatame azul na areia onde acontecem os treinos de jiu-jitsu"
         className="w-full h-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
-      <div className="absolute bottom-8 left-0 right-0 max-w-4xl mx-auto px-6">
+      <div className="absolute bottom-6 left-0 right-0 max-w-4xl mx-auto px-6">
         <Link
           to="/#cases"
-          className="inline-flex items-center gap-2 text-sm text-primary mb-4 hover:underline"
+          className="inline-flex items-center gap-2 text-sm text-primary mb-3 hover:underline"
         >
           <ArrowLeft size={16} /> Voltar para cases
         </Link>
