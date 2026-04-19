@@ -47,7 +47,7 @@ const DojoCaraiva = () => (
               Rifa Solidária
             </span>
             <h1 className="md:text-4xl font-bold mt-1 leading-tight text-2xl">
-              Como Unimos Caraíva para Apoiar os Sonhos de Nossos Ateltas
+              A União de uma Vila: Transformando Vidas através do Esporte
             </h1>
           </div>
         </div>
@@ -57,29 +57,29 @@ const DojoCaraiva = () => (
     <main className="max-w-4xl mx-auto px-6 pt-6 pb-12 space-y-10">
       {/* Subtítulo */}
       <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl">
-        Um olhar estratégico sobre os bastidores e os resultados da Rifa Solidária do Dojo Caraíva, onde a união comunitária e o marketing ético construíram novas oportunidades.
+        Uma jornada pelos bastidores de um sonho coletivo, onde o carinho da comunidade e o poder de contar histórias abriram novos caminhos para o futuro do esporte.
       </p>
 
       {/* Seção 1 – O Cenário */}
       <section>
         <h2 className="text-2xl font-bold mb-4">
-          🌊 O Cenário: Caraíva, Além do Turismo
+          🌊 Caraíva, Além do Turismo
         </h2>
         <p className="text-muted-foreground leading-relaxed mb-4 text-justify">
           Caraíva é um refúgio de belezas naturais, conhecido por suas ruas de areia e o encontro mágico do rio com o mar. Mas, longe dos holofotes turísticos, existe uma comunidade vibrante que enfrenta desafios reais. O acesso limitado e a falta de oportunidades para os jovens são questões presentes no dia a dia da vila.
         </p>
         <p className="text-muted-foreground leading-relaxed mb-6 text-justify">
-          Foi nesse contexto que o Dojo Caraíva nasceu. O projeto social não entrega apenas aulas de Jiu-Jitsu (a "arte suave"); ele oferece uma estrutura de disciplina, respeito e cidadania para dezenas de crianças e adolescentes locais. Sob a orientação de seus mestres, o tatame tornou-se um porto seguro e um trampolim para sonhos maiores.
+          Foi nesse contexto que o Dojo Caraíva nasceu. O projeto social não entrega apenas aulas de Jiu-Jitsu, ele oferece uma estrutura de disciplina, respeito e cidadania para dezenas de crianças e adolescentes locais. Sob a orientação da mestre Suellen Boni o tatame tornou-se um porto seguro e um trampolim para sonhos maiores.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <img
-            src={heroImg}
+            src={socialImg}
             alt="Vila de Caraíva, sul da Bahia"
             className="w-full rounded-2xl object-cover h-72"
             loading="lazy"
           />
           <img
-            src={heroImg}
+            src={kidsImg}
             alt="Crianças do Dojo Caraíva no tatame"
             className="w-full rounded-2xl object-cover h-72"
             loading="lazy"
@@ -93,10 +93,10 @@ const DojoCaraiva = () => (
           🥋 O Desafio Narrativo: Conectando Propósito com Desejo
         </h2>
         <p className="text-muted-foreground leading-relaxed mb-4 text-justify">
-          O Dojo sempre precisou de apoio, mas, para a nossa principal campanha de captação de 2024, sabíamos que não poderíamos apenas pedir doações. Precisávamos criar uma conexão emocional genuína, uma narrativa que mostrasse a força desses jovens.
+          O Dojo Caraíva foi erguido na Aldeia Xandó em 2019, fruto de doações e do esforço comunitário. Durante anos, a estrutura foi mantida por meio de vaquinhas pontuais que, embora fundamentais, limitavam o planejamento a longo prazo. O desafio era constante: manter o tatame vivo em uma realidade de recursos escassos.
         </p>
         <p className="text-muted-foreground leading-relaxed text-justify">
-          A nossa estratégia foi baseada na Rifa Solidária. O prêmio foi o ponto de partida para a história: uma experiência dos sonhos em Caraíva, 5 diárias na Pousada @viladomarcaraiva, de frente para o mar.
+          A rifa solidária surgiu uma ideia audaciosa para romper esse ciclo: a criação de uma. O objetivo era captar recursos suficientes para custear o projeto por um ano inteiro, garantindo segurança e continuidade para o projeto.
         </p>
       </section>
 
