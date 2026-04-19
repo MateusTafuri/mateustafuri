@@ -5,6 +5,8 @@ import logoTafuri from "@/assets/logo-tafuri.webp";
 import heroImg from "@/assets/caraiva-hero.jpg";
 import socialImg from "@/assets/caraiva-social.jpg";
 import kidsImg from "@/assets/caraiva-kids.jpg";
+import bastidores1 from "@/assets/caraiva-bastidores-1.jpg";
+import bastidores2 from "@/assets/caraiva-bastidores-2.jpg";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -95,9 +97,23 @@ const DojoCaraiva = () => (
         <p className="text-muted-foreground leading-relaxed mb-4 text-justify">
           O Dojo Caraíva foi erguido na Aldeia Xandó em 2019, fruto de doações e do esforço comunitário. Durante anos, a estrutura foi mantida por meio de vaquinhas pontuais que, embora fundamentais, limitavam o planejamento a longo prazo. O desafio era constante: manter o tatame vivo em uma realidade de recursos escassos.
         </p>
-        <p className="text-muted-foreground leading-relaxed text-justify">
+        <p className="text-muted-foreground leading-relaxed mb-6 text-justify">
           A rifa solidária surgiu uma ideia audaciosa para romper esse ciclo: a criação de uma. O objetivo era captar recursos suficientes para custear o projeto por um ano inteiro, garantindo segurança e continuidade para o projeto.
         </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <img
+            src={bastidores1}
+            alt="Mateus Tafuri fixando cartaz da Rifa Solidária no Dojo Caraíva"
+            className="w-full rounded-2xl object-cover h-72"
+            loading="lazy"
+          />
+          <img
+            src={bastidores2}
+            alt="Mateus Tafuri apresentando a rifa para aluna do Dojo Caraíva"
+            className="w-full rounded-2xl object-cover h-72"
+            loading="lazy"
+          />
+        </div>
       </section>
 
       {/* Seção 3 – Bastidores */}
