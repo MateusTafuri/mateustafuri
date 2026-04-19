@@ -270,7 +270,7 @@ const DojoCaraiva = () => (
         </ul>
         <div className="grid grid-cols-2 gap-4">
           <img src={impacto1} alt="Alunos do Dojo Caraíva em travessia de barco para competição" className="w-full rounded-2xl object-cover h-72" loading="lazy" />
-          <img src={impacto2} alt="Equipe do Dojo Caraíva reunida antes do campeonato" className="w-full rounded-2xl object-cover h-72" loading="lazy" />
+          <img src={impacto2} alt="Equipe do Dojo Caraíva reunida antes do campeonato" className="w-full rounded-2xl object-cover h-72 object-[center_70%]" loading="lazy" />
           <img src={impacto3} alt="Atletas do Dojo Caraíva acompanhando lutas no campeonato" className="w-full rounded-2xl object-cover h-72" loading="lazy" />
           <img src={impacto4} alt="Mateus Tafuri com atletas do Dojo Caraíva no campeonato" className="w-full rounded-2xl object-cover h-72" loading="lazy" />
         </div>
