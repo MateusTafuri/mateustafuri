@@ -10,6 +10,8 @@ import bastidores2 from "@/assets/caraiva-bastidores-2.jpg";
 import bastidores2New from "@/assets/caraiva-bastidores-2-new.jpg";
 import pousada1 from "@/assets/caraiva-pousada-1.jpg";
 import pousada2 from "@/assets/caraiva-pousada-2.jpg";
+import pousada3 from "@/assets/caraiva-pousada-3.jpg";
+import pousada4 from "@/assets/caraiva-pousada-4.jpg";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -151,6 +153,20 @@ const DojoCaraiva = () => (
 
       {/* Seção 4 – Estratégia Digital */}
       <section>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+          <img
+            src={pousada3}
+            alt="Mateus Tafuri com aluna do Dojo Caraíva apresentando a Rifa Solidária"
+            className="w-full rounded-2xl object-cover h-72"
+            loading="lazy"
+          />
+          <img
+            src={pousada4}
+            alt="Aluna do Dojo Caraíva à beira da piscina da pousada"
+            className="w-full rounded-2xl object-cover h-72"
+            loading="lazy"
+          />
+        </div>
         <h2 className="text-2xl font-bold mb-4">
           📊 A Estratégia Digital e o Resultado Financeiro
         </h2>
