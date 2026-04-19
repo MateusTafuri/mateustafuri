@@ -225,7 +225,7 @@ const DojoCaraiva = () => (
             <img src={sorteio1} alt="Aluna do Dojo Caraíva no dia do sorteio da rifa solidária" className="w-full rounded-2xl object-cover h-72 object-[center_5%]" loading="lazy" />
             <img src={sorteio2} alt="Mestre Suellen, Mateus Tafuri e aluno premiado no sorteio do Dojo Caraíva" className="w-full rounded-2xl object-cover h-72 object-[center_30%]" loading="lazy" />
             <img src={sorteio3} alt="Aluno premiado com a mestre Suellen no dia do sorteio" className="w-full rounded-2xl object-cover h-72 object-[center_25%]" loading="lazy" />
-            <img src={sorteio4} alt="Mateus Tafuri entregando prêmio para aluno do Dojo Caraíva" className="w-full rounded-2xl object-cover h-72" loading="lazy" />
+            <img src={sorteio4} alt="Mateus Tafuri entregando prêmio para aluno do Dojo Caraíva" className="w-full rounded-2xl object-cover h-72 object-[center_25%]" loading="lazy" />
           </div>
         </div>
       </section>
