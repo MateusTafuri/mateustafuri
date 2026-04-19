@@ -3,6 +3,8 @@ import Footer from "@/components/Footer";
 import logo from "@/assets/logo-caraiva.webp";
 import logoTafuri from "@/assets/logo-tafuri.webp";
 import heroImg from "@/assets/caraiva-hero.jpg";
+import socialImg from "@/assets/caraiva-social.jpg";
+import kidsImg from "@/assets/caraiva-kids.jpg";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
