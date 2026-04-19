@@ -45,7 +45,7 @@ const DojoCaraiva = () => (
               Rifa Solidária
             </span>
             <h1 className="md:text-4xl font-bold mt-1 leading-tight text-2xl">
-              O Jiu-Jitsu que Transforma: Como Unimos Caraíva para Apoiar os Sonhos de Nossos Jovens Atletas
+              Como Unimos Caraíva para Apoiar os Sonhos de Nossos Ateltas
             </h1>
           </div>
         </div>
