@@ -12,6 +12,10 @@ import pousada1 from "@/assets/caraiva-pousada-1-new.jpg";
 import pousada2 from "@/assets/caraiva-pousada-2.jpg";
 import pousada3 from "@/assets/caraiva-pousada-3-new.jpg";
 import pousada4 from "@/assets/caraiva-pousada-4-new.jpg";
+import sorteio1 from "@/assets/caraiva-sorteio-1.jpg";
+import sorteio2 from "@/assets/caraiva-sorteio-2.jpg";
+import sorteio3 from "@/assets/caraiva-sorteio-3.jpg";
+import sorteio4 from "@/assets/caraiva-sorteio-4.jpg";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -204,6 +208,21 @@ const DojoCaraiva = () => (
           <p className="text-muted-foreground leading-relaxed text-justify">
             Este resultado é a prova de que quando a comunicação autêntica se une à gestão profissional e transparente, os resultados são extraordinários. Cada centavo arrecadado foi documentado e direcionado para a transformação dos jovens atletas de Caraíva.
           </p>
+        </div>
+
+        <div className="mt-10">
+          <h3 className="text-2xl font-bold mb-4">
+            🎉 Dia do Sorteio
+          </h3>
+          <p className="text-muted-foreground leading-relaxed mb-6 text-justify">
+            O dia do sorteio foi uma celebração coletiva. Reunimos a comunidade, os alunos e os apoiadores para entregar os prêmios e agradecer por cada bilhete vendido. A alegria nos rostos das crianças e o brilho de quem fez parte dessa jornada provam que essa rifa foi muito mais do que números: foi um movimento de amor pelo Dojo Caraíva.
+          </p>
+          <div className="grid grid-cols-2 gap-4">
+            <img src={sorteio1} alt="Aluna do Dojo Caraíva no dia do sorteio da rifa solidária" className="w-full rounded-2xl object-cover h-72" loading="lazy" />
+            <img src={sorteio2} alt="Mestre Suellen, Mateus Tafuri e aluno premiado no sorteio do Dojo Caraíva" className="w-full rounded-2xl object-cover h-72" loading="lazy" />
+            <img src={sorteio3} alt="Aluno premiado com a mestre Suellen no dia do sorteio" className="w-full rounded-2xl object-cover h-72" loading="lazy" />
+            <img src={sorteio4} alt="Mateus Tafuri entregando prêmio para aluno do Dojo Caraíva" className="w-full rounded-2xl object-cover h-72" loading="lazy" />
+          </div>
         </div>
       </section>
 
