@@ -108,7 +108,7 @@ const DojoCaraiva = () => (
           O Dojo Caraíva foi erguido na Aldeia Xandó em 2019, fruto de doações e do esforço comunitário. Durante anos, a estrutura foi mantida por meio de vaquinhas pontuais que, embora fundamentais, limitavam o planejamento a longo prazo. O desafio era constante: manter o tatame vivo em uma realidade de recursos escassos.
         </p>
         <p className="text-muted-foreground leading-relaxed mb-6 text-justify">
-          A rifa solidária surgiu uma ideia audaciosa para romper esse ciclo: a criação de uma. O objetivo era captar recursos suficientes para custear o projeto por um ano inteiro, garantindo segurança e continuidade para o projeto.
+          A rifa solidária surgiu uma ideia audaciosa para romper esse ciclo. O objetivo era captar recursos suficientes para custear o projeto por um ano inteiro, garantindo segurança e continuidade para o projeto.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <img
@@ -129,7 +129,7 @@ const DojoCaraiva = () => (
       {/* Seção 3 – Bastidores */}
       <section>
         <h2 className="text-2xl font-bold mb-4">
-          ✨ Bastidores de um Dia Especial: A Inocência do Tatame
+          ✨ Bastidores de um Dia Especial: O Dia da Gravação
         </h2>
         <p className="text-muted-foreground leading-relaxed mb-4 text-justify">
           Para comunicar essa campanha, fomos além do "compre um número". Trouxemos as estrelas do projeto para serem os porta-vozes. Durante um treino kids, os alunos Pérola, Arlison, Atxuhi e Helena tiveram a oportunidade de conhecer o prêmio que ajudariam a rifar.
