@@ -40,7 +40,8 @@ const StorySection = () => {
                 <img
                   src={photo.src}
                   alt={`Mateus Tafuri - foto ${(i % photos.length) + 1}`}
-                  loading="lazy"
+                  loading="eager"
+                  decoding="async"
                   className="w-full h-full object-cover"
                   style={{
                     objectPosition: photo.position,
