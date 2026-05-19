@@ -42,6 +42,7 @@ const tags = ["Estratégia", "Mobilização", "Storytelling", "Captação de Rec
 const StorySection = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
+  const autoplay = useRef(Autoplay({ delay: 3000, stopOnInteraction: false, stopOnMouseEnter: true }));
 
   const onSelect = useCallback(() => {
     if (!api) return;
