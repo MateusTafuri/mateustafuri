@@ -1,4 +1,5 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
+import Autoplay from "embla-carousel-autoplay";
 import {
   Carousel,
   CarouselContent,
@@ -41,6 +42,7 @@ const tags = ["Estratégia", "Mobilização", "Storytelling", "Captação de Rec
 const StorySection = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
+  const autoplay = useRef(Autoplay({ delay: 3000, stopOnInteraction: false, stopOnMouseEnter: true }));
 
   const onSelect = useCallback(() => {
     if (!api) return;
@@ -56,8 +58,8 @@ const StorySection = () => {
 
   return (
     <section className="max-w-5xl mx-auto px-6 py-16 scroll-mt-24" id="historia">
-      <div className="relative max-w-2xl mx-auto mb-10">
-        <Carousel setApi={setApi} opts={{ loop: true }} className="w-full">
+      <div className="relative w-full mb-10">
+        <Carousel setApi={setApi} opts={{ loop: true }} plugins={[autoplay.current]} className="w-full">
           <CarouselContent>
             {photos.map((photo, i) => (
               <CarouselItem key={i}>
