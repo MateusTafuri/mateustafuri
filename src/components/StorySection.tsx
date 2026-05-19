@@ -92,7 +92,7 @@ const StorySection = () => {
           ))}
         </div>
       </div>
-      <div className="max-w-3xl mx-auto">
+      <div>
         <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-1">Minha história</p>
         <h3 className="text-2xl font-bold mb-4 leading-snug">Do intenção ao legado</h3>
         <p className="text-sm text-muted-foreground leading-relaxed mb-3">
