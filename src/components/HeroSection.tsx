@@ -34,12 +34,18 @@ const HeroSection = () => {
             ela merece voz.
           </span>
         </h1>
-        <div className="flex flex-col items-center animate-bounce mt-2">
-          <svg width="24" height="40" viewBox="0 0 24 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="opacity-80">
-            <rect x="1" y="1" width="22" height="38" rx="11" stroke="white" strokeWidth="2" />
-            <circle cx="12" cy="10" r="3" fill="white" className="animate-pulse" />
-          </svg>
-          <span className="text-white/60 text-xs mt-1 tracking-widest uppercase">Scroll</span>
+        <div className="flex flex-col items-center mt-4">
+          <div className="flex flex-col items-center animate-bounce">
+            <svg width="20" height="8" viewBox="0 0 20 8" fill="none" className="opacity-90">
+              <path d="M10 7L2 1H18L10 7Z" fill="white"/>
+            </svg>
+            <svg width="20" height="8" viewBox="0 0 20 8" fill="none" className="opacity-60 -mt-1">
+              <path d="M10 7L2 1H18L10 7Z" fill="white"/>
+            </svg>
+            <svg width="20" height="8" viewBox="0 0 20 8" fill="none" className="opacity-30 -mt-1">
+              <path d="M10 7L2 1H18L10 7Z" fill="white"/>
+            </svg>
+          </div>
         </div>
       </div>
     </section>
