@@ -1,7 +1,20 @@
+import { useRef } from "react";
 import heroImg from "@/assets/hero-real.webp";
 import heroMobileImg from "@/assets/hero-mobile.webp";
 
 const HeroSection = () => {
+  const headingRef = useRef<HTMLHeadingElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLHeadingElement>) => {
+    const el = headingRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    el.style.setProperty("--mx", `${x}%`);
+    el.style.setProperty("--my", `${y}%`);
+  };
+
   return (
     <section className="relative h-screen min-h-[600px] overflow-hidden">
       {/* Desktop/Tablet image */}
@@ -26,15 +39,21 @@ const HeroSection = () => {
       />
       <div className="absolute top-0 left-0 right-0 h-[30%] bg-gradient-to-b from-black/70 via-black/25 to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 h-[45%] bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-      <div className="absolute bottom-10 md:bottom-16 left-0 right-0 p-6 md:px-10 flex flex-col items-center justify-center gap-4">
-        <h1 className="font-bold leading-[1.12] tracking-tight text-2xl md:text-4xl max-w-2xl text-center animate-fade-in [animation-duration:1.2s]">
-          <span className="bg-gradient-to-r from-[hsl(var(--green-accent))] via-[hsl(var(--secondary))] to-[hsl(var(--green-accent))] bg-clip-text text-transparent drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
-            Quando uma causa tem propósito,
-            <br />
-            ela merece voz.
-          </span>
+      <div className="absolute bottom-4 md:bottom-6 left-0 right-0 p-6 md:px-10 flex flex-col items-center justify-center gap-3">
+        <h1
+          ref={headingRef}
+          onMouseMove={handleMouseMove}
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at var(--mx, 50%) var(--my, 50%), hsl(var(--secondary)) 0%, hsl(var(--green-accent)) 45%, hsl(var(--green-accent)) 100%)",
+          }}
+          className="font-bold leading-[1.05] tracking-tight text-4xl md:text-6xl lg:text-7xl max-w-4xl text-center animate-fade-in [animation-duration:1.2s] bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] cursor-default"
+        >
+          Quando uma causa tem propósito,
+          <br />
+          ela merece voz.
         </h1>
-        <div className="flex flex-col items-center mt-4">
+        <div className="flex flex-col items-center mt-2">
           <div className="flex flex-col items-center animate-bounce">
             <svg width="20" height="8" viewBox="0 0 20 8" fill="none" className="opacity-90">
               <path d="M10 7L2 1H18L10 7Z" fill="white"/>
