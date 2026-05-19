@@ -24,10 +24,10 @@ const HeroSection = () => {
         fetchPriority="high"
         decoding="async"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--green-dark))]/90 via-[hsl(var(--green-dark))]/40 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-      <div className="absolute bottom-0 left-0 right-0 p-6 pb-16 md:pb-24 md:px-6 md:max-w-5xl md:mx-auto">
-        <h1 className="font-bold leading-[1.05] tracking-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)] text-5xl md:text-7xl max-w-4xl text-[hsl(var(--secondary))]">
+      <div className="absolute top-0 left-0 right-0 h-[45%] bg-gradient-to-b from-[hsl(var(--green-dark))]/80 via-[hsl(var(--green-dark))]/30 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-[20%] bg-gradient-to-t from-black/30 to-transparent" />
+      <div className="absolute top-24 left-0 right-0 p-6 md:px-10">
+        <h1 className="font-bold leading-[1.1] tracking-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] text-4xl md:text-5xl max-w-xl text-[hsl(var(--secondary))] text-left">
           Quando uma causa tem propósito, ela merece voz.
         </h1>
       </div>
