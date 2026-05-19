@@ -3,7 +3,7 @@ import heroMobileImg from "@/assets/hero-mobile.webp";
 
 const HeroSection = () => {
   return (
-    <section className="relative h-screen min-h-[600px] overflow-hidden -mt-[72px]">
+    <section className="relative h-screen min-h-[600px] overflow-hidden">
       {/* Desktop/Tablet image */}
       <img
         src={heroImg}
