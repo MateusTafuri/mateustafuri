@@ -27,8 +27,12 @@ const HeroSection = () => {
       <div className="absolute top-0 left-0 right-0 h-[30%] bg-gradient-to-b from-black/70 via-black/25 to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 h-[45%] bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
       <div className="absolute bottom-10 md:bottom-16 left-0 right-0 p-6 md:px-10 flex justify-center">
-        <h1 className="font-bold leading-[1.12] tracking-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)] text-2xl md:text-4xl max-w-2xl text-[hsl(var(--green-accent))] text-center">
-          Quando uma causa tem propósito, ela merece voz.
+        <h1 className="font-bold leading-[1.12] tracking-tight text-2xl md:text-4xl max-w-2xl text-center animate-fade-in [animation-duration:1.2s]">
+          <span className="bg-gradient-to-r from-[hsl(var(--green-accent))] via-[hsl(var(--secondary))] to-[hsl(var(--green-accent))] bg-clip-text text-transparent drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
+            Quando uma causa tem propósito,
+            <br />
+            ela merece voz.
+          </span>
         </h1>
       </div>
     </section>
