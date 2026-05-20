@@ -15,31 +15,31 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 10%;
 
-    --primary: 103 72% 21%;
+    --primary: 38 55% 22%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 96 40% 94%;
-    --secondary-foreground: 103 72% 21%;
+    --secondary: 46 85% 90%;
+    --secondary-foreground: 38 55% 22%;
 
-    --muted: 100 20% 96%;
+    --muted: 44 35% 95%;
     --muted-foreground: 0 0% 33%;
 
-    --accent: 96 40% 94%;
-    --accent-foreground: 103 72% 21%;
+    --accent: 46 85% 90%;
+    --accent-foreground: 38 55% 22%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 0 0% 90%;
     --input: 0 0% 90%;
-    --ring: 103 72% 21%;
+    --ring: 43 75% 50%;
 
     --radius: 0.75rem;
 
-    /* Custom tokens */
-    --green-light: 96 40% 94%;
-    --green-accent: 96 60% 66%;
-    --green-dark: 103 80% 13%;
+    /* Custom tokens — gold palette */
+    --green-light: 46 85% 90%;
+    --green-accent: 43 78% 55%;
+    --green-dark: 38 60% 18%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
