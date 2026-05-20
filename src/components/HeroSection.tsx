@@ -49,7 +49,9 @@ const HeroSection = () => {
           }}
           className="font-bold leading-[1.05] tracking-tight text-3xl md:text-5xl lg:text-6xl max-w-4xl text-center animate-fade-in [animation-duration:1.2s] bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] cursor-default"
         >
-          Quando uma causa tem propósito,
+          Quando uma causa
+          <br />
+          tem propositivo,
           <br />
           ela merece voz.
         </h1>
