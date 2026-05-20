@@ -8,9 +8,32 @@ const Navbar = () => {
 
   return (
     <nav className="absolute top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 bg-transparent">
-      <Link to="/" className="flex items-center gap-2 text-sm font-semibold text-white drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]">
-        <img src={logoTafuri} alt="Tafuri" className="w-9 h-9 [filter:brightness(0)_saturate(100%)_invert(100%)]" />
-        Mateus Tafuri
+      <Link to="/" className="flex items-center gap-2 text-sm font-semibold drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]">
+        <span
+          aria-label="Tafuri"
+          className="w-9 h-9 inline-block"
+          style={{
+            backgroundImage:
+              "linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--green-accent)) 60%, hsl(var(--green-accent)) 100%)",
+            WebkitMaskImage: `url(${logoTafuri})`,
+            maskImage: `url(${logoTafuri})`,
+            WebkitMaskRepeat: "no-repeat",
+            maskRepeat: "no-repeat",
+            WebkitMaskSize: "contain",
+            maskSize: "contain",
+            WebkitMaskPosition: "center",
+            maskPosition: "center",
+          }}
+        />
+        <span
+          className="bg-clip-text text-transparent"
+          style={{
+            backgroundImage:
+              "linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--green-accent)) 60%, hsl(var(--green-accent)) 100%)",
+          }}
+        >
+          Mateus Tafuri
+        </span>
       </Link>
 
       <div className="hidden md:flex items-center gap-6 text-sm text-white/90 drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]">
