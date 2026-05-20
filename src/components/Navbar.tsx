@@ -50,7 +50,7 @@ const Navbar = () => {
         className="hidden md:inline-block relative z-0 text-white border border-green-accent/40 px-5 py-2 rounded-full text-sm font-medium transition-colors backdrop-blur-sm overflow-hidden"
         style={{
           backgroundImage:
-            "linear-gradient(135deg, hsl(25 45% 22%) 0%, hsl(25 50% 32%) 60%, hsl(28 55% 42%) 100%)",
+            "linear-gradient(135deg, hsl(80 15% 25%) 0%, hsl(80 17% 33%) 60%, hsl(82 20% 42%) 100%)",
         }}
       >
         Entrar em contato
@@ -73,7 +73,7 @@ const Navbar = () => {
             className="relative z-0 text-white border border-green-accent/40 px-5 py-2 rounded-full text-sm font-medium text-center backdrop-blur-sm overflow-hidden"
             style={{
               backgroundImage:
-                "linear-gradient(135deg, hsl(25 45% 22%) 0%, hsl(25 50% 32%) 60%, hsl(28 55% 42%) 100%)",
+                "linear-gradient(135deg, hsl(80 15% 25%) 0%, hsl(80 17% 33%) 60%, hsl(82 20% 42%) 100%)",
             }}
           >
             Entrar em contato

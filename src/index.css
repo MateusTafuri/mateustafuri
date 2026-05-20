@@ -15,31 +15,31 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 10%;
 
-    --primary: 25 45% 25%;
+    --primary: 80 15% 28%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 103 66% 92%;
-    --secondary-foreground: 25 45% 25%;
+    --secondary-foreground: 80 15% 28%;
 
-    --muted: 30 25% 95%;
+    --muted: 80 15% 95%;
     --muted-foreground: 0 0% 33%;
 
     --accent: 103 66% 92%;
-    --accent-foreground: 25 45% 25%;
+    --accent-foreground: 80 15% 28%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 0 0% 90%;
     --input: 0 0% 90%;
-    --ring: 25 50% 40%;
+    --ring: 80 18% 40%;
 
     --radius: 0.75rem;
 
-    /* Custom tokens — wood palette */
+    /* Custom tokens — sage green palette */
     --green-light: 103 66% 92%;
-    --green-accent: 25 50% 40%;
-    --green-dark: 25 45% 20%;
+    --green-accent: 80 18% 40%;
+    --green-dark: 80 15% 22%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
