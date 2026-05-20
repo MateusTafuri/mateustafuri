@@ -47,9 +47,17 @@ const Navbar = () => {
         href="https://wa.me/5567998860067"
         target="_blank"
         rel="noopener noreferrer"
-        className="hidden md:inline-block bg-primary/90 text-primary-foreground border border-green-accent/40 px-5 py-2 rounded-full text-sm font-medium hover:bg-primary transition-colors backdrop-blur-sm"
+        className="hidden md:inline-block bg-primary/90 border border-green-accent/40 px-5 py-2 rounded-full text-sm font-medium hover:bg-primary transition-colors backdrop-blur-sm"
       >
-        Entrar em contato
+        <span
+          className="bg-clip-text text-transparent"
+          style={{
+            backgroundImage:
+              "linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--green-accent)) 60%, hsl(var(--green-accent)) 100%)",
+          }}
+        >
+          Entrar em contato
+        </span>
       </a>
 
       <button onClick={() => setOpen(!open)} className="md:hidden text-white drop-shadow">
