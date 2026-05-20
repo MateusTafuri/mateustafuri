@@ -1,13 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import { Rocket, Ticket, PenLine, Smartphone, LineChart, Lightbulb, type LucideIcon } from "lucide-react";
+import { Rocket, LineChart, PenLine, Lightbulb, type LucideIcon } from "lucide-react";
 
 const services: { icon: LucideIcon; title: string; desc: string }[] = [
-  { icon: Rocket, title: "Plataforma de Captação", desc: "Estruturo toda a plataforma (rifas, páginas, links e funil) para maximizar cada real arrecadado." },
-  { icon: Ticket, title: "Rifas Solidárias", desc: "Estratégia, narrativa e mobilização de ponta a ponta para campanhas que engajam e convertem." },
-  { icon: PenLine, title: "Campanhas Temáticas", desc: "Narrativas poderosas que conectam causas a pessoas e geram ação real." },
-  { icon: Smartphone, title: "Social Media", desc: "Gestão de redes com foco em engajamento e construção de comunidade." },
-  { icon: LineChart, title: "Gestão de Tráfego", desc: "Anúncios estratégicos para amplificar campanhas e alcançar o público certo." },
-  { icon: Lightbulb, title: "Consultoria", desc: "Orientação personalizada para projetos sociais que querem escalar seu impacto." },
+  { icon: Rocket, title: "Captação de Recursos", desc: "Criação de plataformas, rifas e funis digitais customizados para maximizar a entrada financeira do seu projeto." },
+  { icon: LineChart, title: "Gestão de Tráfego e Redes", desc: "Anúncios estratégicos combinados com posicionamento digital para atrair doadores e engajar sua comunidade." },
+  { icon: PenLine, title: "Campanhas Temáticas", desc: "Planejamento e execução de grandes mobilizações para datas comemorativas e captações pontuais." },
+  { icon: Lightbulb, title: "Consultoria Estratégica", desc: "Direcionamento personalizado para estruturar o marketing e escalar o impacto da sua causa." },
 ];
 
 const ServiceCard = ({
