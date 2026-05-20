@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from "react";
+import { Rocket, Ticket, PenLine, Smartphone, LineChart, Lightbulb, type LucideIcon } from "lucide-react";
 
-const services = [
-  { icon: "🚀", title: "Plataforma de Captação", desc: "Estruturo toda a plataforma (rifas, páginas, links e funil) para maximizar cada real arrecadado." },
-  { icon: "🎟️", title: "Rifas Solidárias", desc: "Estratégia, narrativa e mobilização de ponta a ponta para campanhas que engajam e convertem." },
-  { icon: "✍️", title: "Campanhas Temáticas", desc: "Narrativas poderosas que conectam causas a pessoas e geram ação real." },
-  { icon: "📱", title: "Social Media", desc: "Gestão de redes com foco em engajamento e construção de comunidade." },
-  { icon: "📈", title: "Gestão de Tráfego", desc: "Anúncios estratégicos para amplificar campanhas e alcançar o público certo." },
-  { icon: "💡", title: "Consultoria", desc: "Orientação personalizada para projetos sociais que querem escalar seu impacto." },
+const services: { icon: LucideIcon; title: string; desc: string }[] = [
+  { icon: Rocket, title: "Plataforma de Captação", desc: "Estruturo toda a plataforma (rifas, páginas, links e funil) para maximizar cada real arrecadado." },
+  { icon: Ticket, title: "Rifas Solidárias", desc: "Estratégia, narrativa e mobilização de ponta a ponta para campanhas que engajam e convertem." },
+  { icon: PenLine, title: "Campanhas Temáticas", desc: "Narrativas poderosas que conectam causas a pessoas e geram ação real." },
+  { icon: Smartphone, title: "Social Media", desc: "Gestão de redes com foco em engajamento e construção de comunidade." },
+  { icon: LineChart, title: "Gestão de Tráfego", desc: "Anúncios estratégicos para amplificar campanhas e alcançar o público certo." },
+  { icon: Lightbulb, title: "Consultoria", desc: "Orientação personalizada para projetos sociais que querem escalar seu impacto." },
 ];
 
 const ServiceCard = ({
@@ -37,6 +38,8 @@ const ServiceCard = ({
     return () => observer.disconnect();
   }, []);
 
+  const Icon = service.icon;
+
   return (
     <div
       ref={ref}
@@ -45,8 +48,8 @@ const ServiceCard = ({
       }`}
       style={{ transitionDelay: visible ? `${index * 100}ms` : "0ms" }}
     >
-      <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-3 text-lg bg-secondary">
-        {service.icon}
+      <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-3 bg-primary/10 text-primary">
+        <Icon size={20} strokeWidth={1.5} />
       </div>
       <h3 className="text-sm font-semibold mb-1">{service.title}</h3>
       <p className="text-xs leading-relaxed text-muted-foreground">
@@ -59,7 +62,6 @@ const ServiceCard = ({
 const ServicesSection = () => {
   return (
     <section className="max-w-5xl mx-auto px-6 py-16 scroll-mt-24" id="servicos">
-      <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-1">O que eu faço</p>
       <h2 className="text-2xl md:text-3xl font-bold mb-8">Como posso ajudar</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {services.map((s, i) => (
