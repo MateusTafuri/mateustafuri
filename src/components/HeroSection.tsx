@@ -64,14 +64,14 @@ const HeroSection = () => {
           ela merece voz.
         </h1>
         <div className="flex flex-col items-center mt-2">
-          <div className="flex flex-col items-center animate-bounce">
+          <div className="flex flex-col items-center animate-scroll-arrow">
             <svg width="20" height="8" viewBox="0 0 20 8" fill="none" className="opacity-90">
               <path d="M10 7L2 1H18L10 7Z" fill="white"/>
             </svg>
-            <svg width="20" height="8" viewBox="0 0 20 8" fill="none" className="opacity-60 -mt-1">
+            <svg width="20" height="8" viewBox="0 0 20 8" fill="none" className="opacity-60 -mt-1 animate-scroll-arrow [animation-delay:0.15s]">
               <path d="M10 7L2 1H18L10 7Z" fill="white"/>
             </svg>
-            <svg width="20" height="8" viewBox="0 0 20 8" fill="none" className="opacity-30 -mt-1">
+            <svg width="20" height="8" viewBox="0 0 20 8" fill="none" className="opacity-30 -mt-1 animate-scroll-arrow [animation-delay:0.3s]">
               <path d="M10 7L2 1H18L10 7Z" fill="white"/>
             </svg>
           </div>
