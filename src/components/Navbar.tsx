@@ -8,7 +8,7 @@ const Navbar = () => {
 
   return (
     <nav className="absolute top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 bg-transparent">
-      <Link to="/" className="flex items-center gap-2 text-sm font-semibold drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]">
+      <Link to="/" className="group flex items-center gap-2 text-sm font-semibold drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]">
         <span
           aria-label="Tafuri"
           className="w-9 h-9 inline-block transition-all duration-300 group-hover:scale-105 group-hover:brightness-110"
