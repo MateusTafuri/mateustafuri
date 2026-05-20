@@ -18,13 +18,13 @@
     --primary: 38 55% 22%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 46 85% 90%;
+    --secondary: 103 66% 92%;
     --secondary-foreground: 38 55% 22%;
 
     --muted: 44 35% 95%;
     --muted-foreground: 0 0% 33%;
 
-    --accent: 46 85% 90%;
+    --accent: 103 66% 92%;
     --accent-foreground: 38 55% 22%;
 
     --destructive: 0 84.2% 60.2%;
@@ -37,7 +37,7 @@
     --radius: 0.75rem;
 
     /* Custom tokens — gold palette */
-    --green-light: 46 85% 90%;
+    --green-light: 103 66% 92%;
     --green-accent: 43 78% 55%;
     --green-dark: 38 60% 18%;
 
