@@ -28,14 +28,7 @@ const HeroSection = () => {
         decoding="async"
       />
       {/* Mobile image */}
-      <div className="block md:hidden absolute inset-0 overflow-hidden">
-        {/* Blurred background to fill empty space */}
-        <img
-          src={heroMobileImg}
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover scale-110 blur-xl"
-        />
+      <div className="block md:hidden absolute inset-0 overflow-hidden bg-black">
         <img
           src={heroMobileImg}
           alt="Mateus Tafuri com alunos no dojo"
@@ -44,11 +37,13 @@ const HeroSection = () => {
           height={1350}
           fetchPriority="high"
           decoding="async"
+          style={{
+            WebkitMaskImage:
+              "linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%)",
+            maskImage:
+              "linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%)",
+          }}
         />
-        {/* Top fade */}
-        <div className="absolute top-0 left-0 right-0 h-[20%] bg-gradient-to-b from-black via-black/60 to-transparent pointer-events-none" />
-        {/* Bottom fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-[20%] bg-gradient-to-t from-black via-black/60 to-transparent pointer-events-none" />
       </div>
       <div className="absolute top-0 left-0 right-0 h-[30%] bg-gradient-to-b from-black/70 via-black/25 to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 h-[45%] bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
