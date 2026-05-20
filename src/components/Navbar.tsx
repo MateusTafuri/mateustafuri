@@ -11,7 +11,7 @@ const Navbar = () => {
       <Link to="/" className="group flex items-center gap-2 text-sm font-semibold drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]">
         <span
           aria-label="Tafuri"
-          className="w-9 h-9 inline-block transition-all duration-300 group-hover:brightness-110"
+          className="w-9 h-9 inline-block transition-all duration-300 group-hover:scale-105 group-hover:brightness-110"
           style={{
             backgroundImage:
               "linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--green-accent)) 60%, hsl(var(--green-accent)) 100%)",

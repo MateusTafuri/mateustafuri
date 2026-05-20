@@ -36,7 +36,7 @@ const CasesSection = () => {
                 loading="lazy"
                 width={800}
                 height={600}
-                className={`w-full h-full ${(c as any).fit === 'contain' ? 'object-contain bg-muted' : 'object-cover'} ${(c as any).imgScale || ''}`}
+                className={`w-full h-full ${(c as any).fit === 'contain' ? 'object-contain bg-muted' : 'object-cover'} group-hover:scale-105 transition-transform duration-300 ${(c as any).imgScale || ''}`}
                 style={c.imgPosition ? { objectPosition: c.imgPosition } : undefined}
               />
             </div>
