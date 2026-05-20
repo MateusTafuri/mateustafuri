@@ -28,15 +28,17 @@ const HeroSection = () => {
         decoding="async"
       />
       {/* Mobile image */}
-      <img
-        src={heroMobileImg}
-        alt="Mateus Tafuri com alunos no dojo"
-        className="block md:hidden w-full h-full object-cover object-[center_20%]"
-        width={1080}
-        height={1350}
-        fetchPriority="high"
-        decoding="async"
-      />
+      <div className="block md:hidden absolute inset-0 overflow-hidden">
+        <img
+          src={heroMobileImg}
+          alt="Mateus Tafuri com alunos no dojo"
+          className="w-full h-full object-cover object-center scale-[0.92]"
+          width={1080}
+          height={1350}
+          fetchPriority="high"
+          decoding="async"
+        />
+      </div>
       <div className="absolute top-0 left-0 right-0 h-[30%] bg-gradient-to-b from-black/70 via-black/25 to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 h-[45%] bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
       <div className="absolute bottom-4 md:bottom-6 left-0 right-0 p-6 md:px-10 flex flex-col items-center justify-center gap-3">
