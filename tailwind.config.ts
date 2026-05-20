@@ -82,6 +82,12 @@ export default {
           "0%": { transform: "translateX(-50%)" },
           "100%": { transform: "translateX(0)" },
         },
+        "scroll-arrow": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "25%": { transform: "translateY(12px)" },
+          "50%": { transform: "translateY(6px)" },
+          "75%": { transform: "translateY(14px)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
