@@ -29,10 +29,17 @@ const HeroSection = () => {
       />
       {/* Mobile image */}
       <div className="block md:hidden absolute inset-0 overflow-hidden">
+        {/* Blurred background to fill empty space */}
+        <img
+          src={heroMobileImg}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover scale-110 blur-xl"
+        />
         <img
           src={heroMobileImg}
           alt="Mateus Tafuri com alunos no dojo"
-          className="w-full h-full object-cover object-center scale-[0.92]"
+          className="relative w-full h-full object-contain object-center"
           width={1080}
           height={1350}
           fetchPriority="high"
