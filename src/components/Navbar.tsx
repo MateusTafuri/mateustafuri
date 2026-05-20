@@ -56,7 +56,7 @@ const Navbar = () => {
         Entrar em contato
       </a>
 
-      <button onClick={() => setOpen(!open)} className="md:hidden text-white drop-shadow">
+      <button onClick={() => setOpen(!open)} className="md:hidden text-green-accent drop-shadow">
         {open ? <X size={22} /> : <Menu size={22} />}
       </button>
 
