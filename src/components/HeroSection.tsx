@@ -59,7 +59,7 @@ const HeroSection = () => {
         >
           Quando uma causa
           <br />
-          tem propositivo,
+          tem propósito,
           <br />
           ela merece voz.
         </h1>
