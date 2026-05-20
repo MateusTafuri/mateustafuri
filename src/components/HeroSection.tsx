@@ -1,6 +1,6 @@
 import { useRef } from "react";
-import heroImg from "@/assets/hero-real.webp";
-import heroMobileImg from "@/assets/hero-mobile.webp";
+import heroImg from "@/assets/hero-real.jpg";
+import heroMobileImg from "@/assets/hero-mobile.jpg";
 
 const HeroSection = () => {
   const headingRef = useRef<HTMLHeadingElement>(null);
