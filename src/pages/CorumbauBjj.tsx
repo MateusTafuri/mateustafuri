@@ -56,7 +56,7 @@ const CorumbauBjj = () => (
     <main className="max-w-4xl mx-auto px-6 pt-6 pb-12 space-y-10">
       {/* Subtítulo */}
       <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl">
-        Uma jornada de persistência e propósito, onde uma comunidade isolada provou que o esporte transforma vidas — mesmo longe de tudo.
+        Uma jornada de persistência e propósito, onde uma comunidade isolada provou que o esporte transforma vidas, mesmo longe de tudo.
       </p>
 
       {/* Seção 1 – O Cenário */}
@@ -107,7 +107,7 @@ const CorumbauBjj = () => (
           O projeto vivia da boa vontade da comunidade e de doações pontuais. Para garantir continuidade, materiais e a participação dos atletas em campeonatos, era preciso algo maior: uma campanha estruturada, com narrativa forte e execução profissional.
         </p>
         <p className="text-muted-foreground leading-relaxed mb-6 text-justify">
-          A rifa solidária nasceu como resposta a esse desafio. Foram 101 dias de campanha, persistência e fé — uma maratona de comunicação, mobilização e gestão para transformar cada bilhete em impacto real.
+          A rifa solidária nasceu como resposta a esse desafio. Foram 101 dias de campanha, persistência e fé: uma maratona de comunicação, mobilização e gestão para transformar cada bilhete em impacto real.
         </p>
       </section>
 
@@ -202,7 +202,7 @@ const CorumbauBjj = () => (
           🚀 Conclusão e Oportunidade
         </h2>
         <p className="text-muted-foreground leading-relaxed mb-4 text-justify">
-          A Rifa Solidária do Corumbau BJJ não foi apenas uma campanha de arrecadação; foi a prova de que persistência, fé e estratégia constroem resultados extraordinários — mesmo nos lugares mais distantes.
+          A Rifa Solidária do Corumbau BJJ não foi apenas uma campanha de arrecadação; foi a prova de que persistência, fé e estratégia constroem resultados extraordinários, mesmo nos lugares mais distantes.
         </p>
         <p className="text-muted-foreground leading-relaxed text-justify">
           Este é apenas o começo. O tatame está pronto para receber novos alunos, e nossos atletas estão prontos para novos desafios no mundo todo.

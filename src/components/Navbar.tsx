@@ -30,6 +30,7 @@ const Navbar = () => {
 
       <div className="hidden md:flex items-center gap-6 text-sm text-white/90 drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]">
         <a href="#cases" className="hover:text-green-accent transition-colors">Campanhas</a>
+        <Link to="/rifa-solidaria" className="hover:text-green-accent transition-colors">Rifa Solidária</Link>
         <a href="#trajetoria" className="hover:text-green-accent transition-colors">Trajetória</a>
         <a href="#historia" className="hover:text-green-accent transition-colors">História</a>
         <a href="#feedbacks" className="hover:text-green-accent transition-colors">Depoimentos</a>
@@ -55,6 +56,7 @@ const Navbar = () => {
       {open && (
         <div className="absolute top-full left-0 right-0 bg-primary/95 backdrop-blur-md flex flex-col p-4 gap-3 md:hidden">
           <a href="#cases" onClick={() => setOpen(false)} className="text-sm text-white hover:text-green-accent">Campanhas</a>
+          <Link to="/rifa-solidaria" onClick={() => setOpen(false)} className="text-sm text-white hover:text-green-accent">Rifa Solidária</Link>
           <a href="#trajetoria" onClick={() => setOpen(false)} className="text-sm text-white hover:text-green-accent">Trajetória</a>
           <a href="#historia" onClick={() => setOpen(false)} className="text-sm text-white hover:text-green-accent">História</a>
           <a href="#feedbacks" onClick={() => setOpen(false)} className="text-sm text-white hover:text-green-accent">Depoimentos</a>

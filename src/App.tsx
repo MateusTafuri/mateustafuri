@@ -10,6 +10,8 @@ import ImageTuner from "./components/ImageTuner";
 const DojoCaraiva = lazy(() => import("./pages/DojoCaraiva.tsx"));
 const DojoBonete = lazy(() => import("./pages/DojoBonete.tsx"));
 const CorumbauBjj = lazy(() => import("./pages/CorumbauBjj.tsx"));
+const Testes = lazy(() => import("./pages/Testes.tsx"));
+const RifaSolidaria = lazy(() => import("./pages/RifaSolidaria.tsx"));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 
 const queryClient = new QueryClient();
@@ -27,6 +29,8 @@ const App = () => (
             <Route path="/dojo-caraiva" element={<DojoCaraiva />} />
             <Route path="/dojo-bonete" element={<DojoBonete />} />
             <Route path="/corumbau-bjj" element={<CorumbauBjj />} />
+            <Route path="/testes" element={<Testes />} />
+            <Route path="/rifa-solidaria" element={<RifaSolidaria />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

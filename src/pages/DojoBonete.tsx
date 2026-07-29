@@ -1,428 +1,429 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import logo from "@/assets/logo-bonete.webp";
-import logoTafuri from "@/assets/logo-tafuri.webp";
-import droneImg from "@/assets/bonete-drone.webp";
-// ... keep existing code
-import kidJump from "@/assets/bonete-kid-jump.webp";
-
-import turma from "@/assets/bonete-turma.webp";
-import tijolosPraia from "@/assets/bonete-tijolos-praia.webp";
-import barco from "@/assets/bonete-barco.webp";
-import quadriciclo from "@/assets/bonete-quadriciclo.webp";
-// ... keep existing code
-import exteriorDojo from "@/assets/bonete-exterior-dojo.webp";
-
-import tatamePraia from "@/assets/bonete-tatame-praia.webp";
-import graduacaoPraia from "@/assets/bonete-graduacao-praia.webp";
-import rodaPraia from "@/assets/bonete-roda-praia.webp";
+import { useEffect, useRef, useState } from "react";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
+import Navbar from "@/components/Navbar";
+import DragCarousel from "@/components/DragCarousel";
 
-const stats = [
+import logoBonete from "@/assets/logo-bonete.webp";
+import logoTafuri from "@/assets/logo-tafuri.webp";
+
+import drone from "@/assets/bonete-drone.webp";
+import dojoKids from "@/assets/bonete-dojo-kids.webp";
+import turma from "@/assets/bonete-turma.webp";
+import barco from "@/assets/bonete-barco.webp";
+import tijolosPraia from "@/assets/bonete-tijolos-praia.webp";
+import quadriciclo from "@/assets/bonete-quadriciclo.webp";
+import inauguracao from "@/assets/bonete-inauguracao.webp";
+import rifaGrupo from "@/assets/bonete-rifa-grupo.webp";
+import criancaPraia from "@/assets/bonete-crianca-praia-hq.webp";
+
+/* ─────────────────────────── DATA ─────────────────────────── */
+
+const SECTIONS = [
+  { id: "desafio", label: "O desafio" },
+  { id: "estrategia", label: "Estratégia" },
+  { id: "entregas", label: "O que entregamos" },
+  { id: "processo", label: "Processo" },
+  { id: "artes", label: "As artes" },
+  { id: "ficha", label: "Ficha técnica" },
+];
+
+const STRATEGY = [
+  {
+    n: "01",
+    title: "Narrativa & storytelling",
+    text: "Levamos a rotina do Bonete para telas de todo o Brasil. Cada bilhete comprado era, na prática, um tijolo colocado no novo dojo.",
+  },
+  {
+    n: "02",
+    title: "Rifa Solidária",
+    text: "Em vez de só pedir doação, criamos um prêmio-experiência: 3 diárias na Pousada Canto Bravo, unindo o apoio ao turismo local.",
+  },
+  {
+    n: "03",
+    title: "Tráfego pago",
+    text: "R$ 41 mil investidos em mídia, com testes de criativos e distribuição inteligente para escalar a história a milhões de pessoas.",
+  },
+  {
+    n: "04",
+    title: "Mobilização da comunidade",
+    text: "As próprias crianças carregando madeira e tijolos: parte da campanha e donas do teto que ajudaram a levantar.",
+  },
+];
+
+const DELIVERABLES = [
+  { title: "Rifa Solidária", sub: "Metodologia de captação com prêmio-experiência" },
+  { title: "Copywriting & storytelling", sub: "Narrativa que levou o Bonete ao Brasil" },
+  { title: "Gestão de tráfego pago", sub: "R$ 41 mil em Meta Ads" },
+  { title: "Criativos de campanha", sub: "Carrosséis e vídeos nativos" },
+  { title: "Mobilização comunitária", sub: "A comunidade como parte da história" },
+  { title: "Estratégia de arrecadação", sub: "Bilhetes, doações e checkout" },
+];
+
+const PROCESS = [
+  {
+    n: "01",
+    title: "Imersão na comunidade",
+    text: "Cheguei em maio de 2024 como voluntário e vivi quatro meses no Bonete, entendendo a cultura caiçara e o propósito do mestre André Queiroz.",
+    img: dojoKids,
+  },
+  {
+    n: "02",
+    title: "Narrativa & Rifa Solidária",
+    text: "Criamos a rifa com um prêmio-experiência e, através de copywriting e storytelling, levamos a rotina do Bonete para as telas de todo o Brasil.",
+    img: rifaGrupo,
+  },
+  {
+    n: "03",
+    title: "A logística do impossível",
+    text: "Mais de 9 toneladas de material atravessando o mar, desembarcadas na areia e subidas no morro, com quadriciclos e, principalmente, no braço da comunidade.",
+    img: barco,
+  },
+  {
+    n: "04",
+    title: "A construção e a inauguração",
+    text: "Tijolo por tijolo até 20 de dezembro de 2025: o novo tatame esticado, o cheiro de madeira nova e o brilho no olhar de cada aluno.",
+    img: inauguracao,
+  },
+];
+
+const STATS = [
   { label: "Alcance no Instagram", value: "1,2M+" },
   { label: "Impressões", value: "2,3M+" },
   { label: "Novos Apoiadores", value: "2.161" },
-  { label: "Faturamento Bruto", value: "R$ 134.044,00" },
-  { label: "Doações Diretas", value: "R$ 21.716,00" },
-  { label: "Total Arrecadado", value: "R$ 152.678,93" },
+  { label: "Total Arrecadado", value: "R$ 152.678" },
 ];
+
+const FICHA = [
+  { label: "Ano", value: "2024 – 2025" },
+  { label: "Projeto", value: "Dojo Bonete · Ilhabela/SP" },
+  { label: "Metodologia", value: "Rifa Solidária" },
+  { label: "Idealização & Mestre", value: "André Queiroz" },
+  { label: "Estratégia & Captação", value: "Mateus Tafuri" },
+  { label: "Comunidade", value: "Moradores da Praia do Bonete" },
+];
+
+const CARROSSEIS = [
+  { title: "Uma comunidade unida", slug: "carrossel-3", count: 6 },
+  { title: "Tijolo em tijolo", slug: "tijolo-em-tijolo", count: 6 },
+  { title: "Rifa Solidária", slug: "rifa-solidaria", count: 10 },
+  { title: "8 motivos", slug: "8-motivos", count: 10 },
+  { title: "Jiu-jitsu", slug: "jiu-jitsu", count: 9 },
+  { title: "O impacto", slug: "o-impacto", count: 6 },
+].map((c) => ({
+  ...c,
+  images: Array.from({ length: c.count }, (_, i) => `/carrosseis/${c.slug}/${i + 1}.jpg`),
+}));
+
+/* ─────────────────────────── HELPERS ─────────────────────────── */
+
+const Label = ({ children }: { children: React.ReactNode }) => (
+  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#A9C46C] mb-4">
+    {children}
+  </p>
+);
+
+/* Sticky scroll-spy anchor menu */
+const AnchorNav = () => {
+  const [active, setActive] = useState(SECTIONS[0].id);
+  const barRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) setActive(e.target.id);
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
+    );
+    SECTIONS.forEach((s) => {
+      const el = document.getElementById(s.id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const el = barRef.current?.querySelector<HTMLElement>(`[data-id="${active}"]`);
+    el?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+  }, [active]);
+
+  const go = (id: string) =>
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+
+  return (
+    <div className="sticky top-0 z-40 border-y border-black/5 bg-[#F4F0E6]/95 backdrop-blur-md">
+      <div
+        ref={barRef}
+        className="mx-auto flex max-w-5xl items-center gap-2 overflow-x-auto px-4 py-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      >
+        {SECTIONS.map((s) => {
+          const on = active === s.id;
+          return (
+            <button
+              key={s.id}
+              data-id={s.id}
+              onClick={() => go(s.id)}
+              className={`shrink-0 rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                on ? "bg-[#16281f] text-[#F4F0E6]" : "text-[#16281f]/60 hover:text-[#16281f]"
+              }`}
+            >
+              {s.label}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+/* ─────────────────────────── PAGE ─────────────────────────── */
 
 const DojoBonete = () => (
   <div className="min-h-screen bg-background text-foreground">
     <Navbar />
 
-    {/* Hero */}
-    <header className="relative w-full h-[55vh] md:h-[60vh] overflow-hidden">
-      <img
-        src={droneImg}
-        alt="Vista aérea da Praia do Bonete, Ilhabela: tatame azul na areia onde acontecem os treinos de jiu-jitsu"
-        className="w-full h-full object-cover"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
-      <div className="absolute bottom-6 left-0 right-0 max-w-4xl mx-auto px-6">
-        <Link
-          to="/#cases"
-          className="inline-flex items-center gap-2 text-sm text-primary mb-3 hover:underline"
-        >
-          <ArrowLeft size={16} /> Voltar para cases
-        </Link>
-        <div className="flex items-center gap-4">
-          <img
-            src={logo}
-            alt="Logo Dojô Bonete"
-            className="w-14 h-14 rounded-full object-cover border-2 border-primary"
-          />
+    <div
+      className="text-[#F4F0E6]"
+      style={{ background: "linear-gradient(165deg, #0f1f18 0%, #14271e 45%, #193024 100%)" }}
+    >
+      {/* ───────── HERO ───────── */}
+      <header className="relative overflow-hidden px-6 pt-28 pb-16 md:pt-32 md:pb-24">
+        <div
+          className="pointer-events-none absolute -right-32 -top-24 h-96 w-96 rounded-full opacity-30 blur-3xl"
+          style={{ background: "radial-gradient(circle, #2f6b45 0%, transparent 70%)" }}
+        />
+        <div className="relative mx-auto grid max-w-5xl items-center gap-12 md:grid-cols-[1.1fr_0.9fr]">
           <div>
-            <span className="text-xs bg-primary/20 text-primary px-3 py-1 rounded-full">
-              Rifa Solidária
-            </span>
-            <h1 className="md:text-4xl font-bold mt-1 leading-tight text-2xl">
-              A Força de um Sonho: A Construção Coletiva do Novo Dojo Bonete
+            <Link
+              to="/#cases"
+              className="mb-8 inline-flex items-center gap-2 text-sm text-[#F4F0E6]/60 transition-colors hover:text-[#A9C46C]"
+            >
+              <ArrowLeft size={16} /> Voltar para cases
+            </Link>
+
+            <div className="mb-6 flex items-center gap-3">
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#F4F0E6]/50">
+                Projeto
+              </span>
+              <img
+                src={logoBonete}
+                alt="Logo Dojo Bonete"
+                className="h-11 w-11 rounded-xl border border-white/15 bg-white/5 object-cover p-1"
+              />
+              <span className="rounded-full bg-[#A9C46C]/15 px-3 py-1 text-xs font-medium text-[#A9C46C]">
+                Rifa Solidária
+              </span>
+            </div>
+
+            <h1 className="font-display text-5xl font-extrabold leading-[0.95] tracking-tight md:text-7xl">
+              Dojo Bonete
             </h1>
+            <p className="mt-4 font-display text-xl font-semibold text-[#F4F0E6]/85 md:text-2xl">
+              A construção coletiva de um sonho caiçara
+            </p>
+            <p className="mt-5 max-w-md text-base leading-relaxed text-[#F4F0E6]/65">
+              Como a união de uma comunidade isolada e o poder da comunicação
+              estratégica transformaram o propósito de um professor de jiu-jitsu
+              em uma realidade que muda destinos.
+            </p>
+          </div>
+
+          {/* Fanned photo deck */}
+          <div className="relative hidden h-[380px] md:block">
+            {[
+              { src: drone, r: "-8deg", x: "0%", y: "6%", z: 10 },
+              { src: inauguracao, r: "6deg", x: "28%", y: "0%", z: 20 },
+              { src: turma, r: "-3deg", x: "14%", y: "30%", z: 30 },
+            ].map((c, idx) => (
+              <img
+                key={idx}
+                src={c.src}
+                alt=""
+                className="absolute h-64 w-48 rounded-2xl border-4 border-[#F4F0E6]/90 object-cover shadow-2xl"
+                style={{ transform: `rotate(${c.r})`, left: c.x, top: c.y, zIndex: c.z }}
+                loading="lazy"
+              />
+            ))}
           </div>
         </div>
-      </div>
-    </header>
+      </header>
 
-    <main className="max-w-4xl mx-auto px-6 pt-6 pb-12 space-y-10">
-      {/* Subtítulo */}
-      <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl">
-        Como a união de uma comunidade caiçara e o poder da comunicação
-        estratégica transformaram o propósito de um professor em uma realidade que
-        muda destinos.
-      </p>
+      {/* ───────── STICKY INTERACTIVE MENU ───────── */}
+      <AnchorNav />
 
-      {/* Seção 1 – O Cenário */}
-      <section>
-        <h2 className="text-2xl font-bold mb-4">
-          📍 Praia do Bonete: Um paraíso isoaldo
-        </h2>
-        <p className="text-muted-foreground leading-relaxed mb-4 text-justify">
-          Ilhabela guarda um dos seus maiores tesouros na Praia do Bonete. Uma
-          comunidade caiçara com cerca de 350 moradores, onde o tempo é ditado
-          pela maré e o acesso é limitado: ou se enfrenta 12 km de trilha densa,
-          ou o balanço do mar em pequenas embarcações.
-        </p>
-        <p className="text-muted-foreground leading-relaxed mb-6 text-justify">
-          Nesse isolamento, as oportunidades para os jovens são raras. Mas foi
-          aqui que o mestre André Queiroz, faixa preta de jiu-jitsu, decidiu
-          plantar uma semente. Por anos, a "arte suave" foi ensinada nos
-          alicerces de sua própria casa, um espaço improvisado, mas que
-          transbordava significado e disciplina.
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <figure>
-            <img
-              src="/lovable-uploads/1887d23b-30c3-4e32-91fa-0c97b1d08af4.jpg"
-              alt="Crianças do Dojo Bonete no antigo espaço improvisado embaixo da casa"
-              className="w-full rounded-2xl object-cover h-72 my-0 py-0 px-0 border-0"
-              loading="lazy"
-            />
-            <figcaption className="text-xs text-muted-foreground/60 mt-2 text-center">
-              {"\n"}
-            </figcaption>
-          </figure>
-          <figure>
-            <img
-              src="/lovable-uploads/9063a5ea-4953-43d0-b435-befb7092e4be.png"
-              alt="Mestre André Queiroz com as crianças do Dojo Bonete no espaço original"
-              className="w-full rounded-2xl object-cover h-72 my-0 py-0 px-0 border-0"
-              style={{ objectPosition: "center 70%" }}
-              loading="lazy"
-            />
-            <figcaption className="text-xs text-muted-foreground/60 mt-2 text-center">
-              {"\n"}
-            </figcaption>
-          </figure>
-        </div>
-      </section>
-
-      {/* Seção 2 – O Desafio */}
-      <section>
-        <h2 className="text-2xl font-bold mb-4">
-          🥋 O Desafio: Quando o Sonho Fica Maior que o Teto
-        </h2>
-        <p className="text-muted-foreground leading-relaxed mb-4 text-justify">
-          O projeto cresceu. As crianças ocuparam o tatame, e logo ficou claro
-          que o Bonete precisava de um espaço dedicado. Foi nesse momento que a
-          minha história se cruzou com a deles. Cheguei em maio de 2024 como
-          voluntário e vivi quatro meses imerso na cultura local.
-        </p>
-        <p className="text-muted-foreground leading-relaxed mb-6 text-justify">
-          Percebi que o desafio não era apenas financeiro, mas logístico e
-          narrativo. Como construir um centro esportivo de alto nível em um
-          lugar onde cada grama de cimento precisa vir pelo mar?
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <img
-            src={kidJump}
-            alt="Criança saltando durante treino de jiu-jitsu no Dojo Bonete"
-            className="w-full rounded-2xl object-cover h-72 my-0 py-0 px-0 border-0"
-            loading="lazy"
-          />
-          <img
-            src="/lovable-uploads/96e5eb17-7a5c-48bf-a6cb-2a60175b3acf.png"
-            alt="Roda de conversa entre mestres e alunos no tatame do Dojo Bonete"
-            className="w-full rounded-2xl object-cover h-72 my-0 py-0 px-0 border-0"
-            loading="lazy"
-          />
-        </div>
-      </section>
-
-      {/* Seção 3 – A Estratégia */}
-      <section>
-        <h2 className="text-2xl font-bold mb-4">
-          🎟️ A Estratégia: Transformando Solidariedade em Experiência
-        </h2>
-        <p className="text-muted-foreground leading-relaxed mb-4 text-justify">
-          Para viabilizar o novo Dojo, não pedimos apenas doações. Criamos uma{" "}
-          <strong className="text-foreground">Rifa Solidária</strong> com uma
-          narrativa estratégica. O prêmio? Uma imersão no paraíso: 3 diárias na
-          Pousada Canto Bravo, unindo o apoio ao projeto ao fortalecimento do
-          turismo local.
-        </p>
-        <p className="text-muted-foreground leading-relaxed mb-6 text-justify">
-          Através de um trabalho de copywriting e storytelling, levamos a rotina
-          do Bonete para as telas de todo o Brasil. Mostramos que cada bilhete
-          comprado era um tijolo colocado no novo dojo.
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <img
-            src="/lovable-uploads/43131828-e914-42f8-8cbd-910c4ece5618.jpg"
-            alt="Equipe do Dojo Bonete reunida com o cartaz da Rifa Solidária"
-            className="w-full rounded-2xl object-cover h-72 my-0 py-0 px-0 border-0"
-            loading="lazy"
-          />
-          <img
-            src="/lovable-uploads/6de1a166-0b57-4ca5-bc67-f7ba006a5031.jpg"
-            alt="Mateus Tafuri na frente do Dojo Bonete segurando o cartaz da rifa solidária"
-            className="w-full rounded-2xl object-cover h-72 my-0 py-0 px-0 border-0"
-            loading="lazy"
-          />
-        </div>
-      </section>
-
-      {/* Seção 4 – A Logística */}
-      <section>
-        <h2 className="text-2xl font-bold mb-4">
-          ⚓ A Logística do Impossível: 9 Toneladas de Suor
-        </h2>
-        <p className="text-muted-foreground leading-relaxed mb-4 text-justify">
-          A construção foi uma prova de resistência. Imagine o cenário:
-        </p>
-        <ul className="space-y-3 mb-6">
-          {[
-            {
-              icon: "🚢",
-              title: "O Mar",
-              text: "Barcos carregados de pedra e areia enfrentando o Canal de São Sebastião.",
-            },
-            {
-              icon: "🏖️",
-              title: "A Praia",
-              text: "Desembarque manual de mais de 9 toneladas de material de construção.",
-            },
-            {
-              icon: "⛰️",
-              title: "O Morro",
-              text: "Transporte incansável com quadriciclos e, principalmente, no braço.",
-            },
-          ].map((item) => (
-            <li
-              key={item.title}
-              className="flex items-start gap-3 bg-card border border-border rounded-xl p-4"
-            >
-              <span className="text-2xl shrink-0">{item.icon}</span>
-              <div>
-                <strong className="text-foreground">{item.title}:</strong>{" "}
-                <span className="text-muted-foreground">{item.text}</span>
-              </div>
-            </li>
-          ))}
-        </ul>
-        <p className="text-muted-foreground leading-relaxed mb-6 text-justify">
-          As crianças do projeto não foram apenas espectadoras. Elas ajudaram a
-          carregar as toras de madeira e os tijolos, entendendo, desde cedo, que
-          aquele teto seria delas, porque elas ajudaram a levantá-lo.
-        </p>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
-          <img
-            src={barco}
-            alt="Comunidade do Bonete empurrando barco com materiais de construção na praia"
-            className="w-full rounded-2xl object-cover h-64"
-            loading="lazy"
-          />
-          <img
-            src={tijolosPraia}
-            alt="Moradores carregando tijolos na Praia do Bonete para a construção do dojo"
-            className="w-full rounded-2xl object-cover h-64"
-            loading="lazy"
-          />
-          <img
-            src={quadriciclo}
-            alt="Quadriciclo transportando blocos de cimento na praia do Bonete com ajuda da comunidade"
-            className="w-full rounded-2xl object-cover h-64 col-span-2 md:col-span-1"
-            loading="lazy"
-          />
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <img
-            src="/lovable-uploads/980e06a8-b996-4794-a494-b291a9266aa6.jpg"
-            alt="Criança carregando tijolos na praia do Bonete durante a construção do dojo"
-            className="w-full rounded-2xl object-cover h-64 my-0 py-0 px-0 border-0"
-            loading="lazy"
-          />
-          <img
-            src="/lovable-uploads/e413c114-5dee-40bf-b938-3a9775070a0f.jpg"
-            alt="Estrutura de madeira do novo Dojo Bonete sendo erguida"
-            className="w-full rounded-2xl object-cover h-64 my-0 py-0 px-0 border-0"
-            loading="lazy"
-          />
-          <img
-            src="/lovable-uploads/9b641d87-6884-457d-b5cb-5bad7d470a27.jpg"
-            alt="Vista geral da obra do Dojo Bonete com tijolos e estrutura"
-            className="w-full rounded-2xl object-cover h-64"
-            loading="lazy"
-          />
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-          <img
-            src="/lovable-uploads/bonete-construcao-3.jpg"
-            alt="Estrutura de madeira do novo Dojo Bonete vista de dentro com vigas e pilares"
-            className="w-full rounded-2xl object-cover h-64"
-            loading="lazy"
-          />
-          <img
-            src="/lovable-uploads/4caedbdd-13f0-472a-a1b4-5f04263ebaf2.png"
-            alt="Estrutura de madeira do novo Dojo Bonete com tijolos empilhados ao lado"
-            className="w-full rounded-2xl object-cover h-64"
-            loading="lazy"
-          />
-        </div>
-      </section>
-
-      {/* Seção 5 – Inauguração */}
-      <section>
-        <h2 className="text-2xl font-bold mb-4">
-          🎉 O Dia da Inauguração: O Nascimento do Dojo Bonete
-        </h2>
-        <p className="text-muted-foreground leading-relaxed mb-4 text-justify">
-          Dia 20 de dezembro de 2025 foi a materialização de um esforço coletivo que
-          envolveu pessoas através da rifa. Ver o novo tatame
-          esticado, o cheiro de madeira nova e o brilho no olhar de cada aluno
-          foi a confirmação de que a comunicação, quando serve a um propósito
-          real, é imbatível.
-        </p>
-        <p className="text-muted-foreground leading-relaxed mb-6 text-justify">
-          O Dojo Bonete hoje não é apenas um centro de treinamento. É um monumento à
-          persistência caiçara e à prova de que nenhuma comunidade é isolada
-          demais quando o Brasil inteiro decide abraçar a causa.
-        </p>
-        <div className="mb-6">
-          <img
-            src="/lovable-uploads/8a538a52-84aa-41ef-a182-94ef47370d2a.jpg"
-            alt="Alunos e comunidade reunidos no tatame do novo Dojo Bonete no dia da inauguração"
-            className="w-full rounded-2xl max-h-[420px] mx-0 px-0 object-cover"
-            loading="lazy"
-          />
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-          <img
-            src={exteriorDojo}
-            alt="Mateus com as crianças na frente do novo Dojo Bonete"
-            className="w-full rounded-2xl object-cover h-72"
-            style={{ objectPosition: "center 60%" }}
-            loading="lazy"
-          />
-          <img
-            src={rodaPraia}
-            alt="Roda de treino no novo Dojo Bonete durante a inauguração"
-            className="w-full rounded-2xl object-cover h-72"
-            loading="lazy"
-          />
-          <img
-            src="/lovable-uploads/da40d39d-5119-447b-aa60-90f8448e4c3c.jpg"
-            alt="Foto oficial de toda a comunidade reunida no novo Dojo Bonete na inauguração"
-            className="w-full rounded-2xl object-cover h-72"
-            loading="lazy"
-          />
-        </div>
-        <div className="mt-4">
-          <img
-            src="/lovable-uploads/86da9fdf-3fec-4631-b896-d9214619c094.png"
-            alt="Cerimônia dentro do novo Dojo Bonete no dia da inauguração"
-            className="w-full rounded-2xl max-h-[420px] mx-0 px-0 object-cover"
-            loading="lazy"
-          />
-        </div>
-      </section>
-
-      {/* Seção 6 – Impacto em Números */}
-      <section>
-        <h2 className="text-2xl font-bold mb-6">
-          📊 O Impacto em Números: A Força da Campanha
-        </h2>
-        <p className="text-muted-foreground leading-relaxed mb-8 text-justify">
-          A construção do Dojo Bonete foi viabilizada por uma campanha digital
-          que rompeu as fronteiras da Ilha. A estratégia de comunicação não
-          apenas contou uma história, gerou um engajamento real que se traduziu
-          em recursos diretos para a obra.
-        </p>
-
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
-          {stats.map((s) => (
-            <div
-              key={s.label}
-              className="bg-card border border-border rounded-2xl p-5 text-center"
-            >
-              <p className="text-2xl md:text-3xl font-bold text-primary">
-                {s.value}
+      <main className="mx-auto max-w-5xl px-6">
+        {/* ───────── O DESAFIO ───────── */}
+        <section id="desafio" className="scroll-mt-24 border-t border-white/10 py-16 md:py-20">
+          <Label>O desafio</Label>
+          <p className="max-w-3xl font-display text-2xl font-semibold leading-snug md:text-3xl">
+            Como construir um centro esportivo de alto nível em um lugar onde cada
+            grama de cimento precisa vir pelo mar?
+          </p>
+          <div className="mt-8 grid gap-8 md:grid-cols-2">
+            <div className="space-y-4 text-[#F4F0E6]/70 leading-relaxed">
+              <p>
+                Ilhabela guarda um dos seus maiores tesouros na Praia do Bonete:
+                uma comunidade caiçara com cerca de 350 moradores, onde o acesso é
+                limitado a 12 km de trilha ou ao balanço do mar em pequenas
+                embarcações.
               </p>
-              <p className="text-xs text-muted-foreground mt-1">{s.label}</p>
+              <p>
+                Nesse isolamento, o mestre <strong className="text-[#F4F0E6]">André
+                Queiroz</strong> ensinava jiu-jitsu nos alicerces da própria casa.
+                O projeto cresceu e ficou claro que o Bonete precisava de um
+                espaço dedicado. O desafio não era só financeiro: era logístico e
+                narrativo.
+              </p>
             </div>
-          ))}
-        </div>
+            <div className="grid grid-cols-2 gap-4">
+              <img src={drone} alt="Vista aérea da Praia do Bonete" className="h-56 w-full rounded-2xl object-cover" loading="lazy" />
+              <img src={criancaPraia} alt="Criança na praia do Bonete" className="h-56 w-full rounded-2xl object-cover" loading="lazy" />
+            </div>
+          </div>
+        </section>
 
-        <div className="text-center py-6 mb-8 border border-border rounded-2xl bg-card">
-          <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">
-            Lucro real para o projeto
-          </p>
-          <p className="text-5xl md:text-6xl font-bold text-primary">
-            R$ 102.574,00
-          </p>
-        </div>
+        {/* ───────── ESTRATÉGIA ADOTADA ───────── */}
+        <section id="estrategia" className="scroll-mt-24 border-t border-white/10 py-16 md:py-20">
+          <Label>Estratégia adotada</Label>
+          <h2 className="font-display text-3xl font-bold md:text-4xl">
+            Transformando solidariedade em experiência
+          </h2>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            {STRATEGY.map((s) => (
+              <div
+                key={s.n}
+                className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 transition-colors hover:border-[#A9C46C]/40"
+              >
+                <span className="font-display text-2xl font-extrabold text-[#A9C46C]">{s.n}</span>
+                <h3 className="mt-2 font-display text-lg font-bold">{s.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-[#F4F0E6]/65">{s.text}</p>
+              </div>
+            ))}
+          </div>
+        </section>
 
-        <div className="bg-card border border-border rounded-2xl p-6">
-          <h3 className="text-lg font-semibold mb-3">
-            Performance de Marketing
-          </h3>
-          <p className="text-muted-foreground leading-relaxed text-justify mb-4">
-            Para escalar essa campanha, investimos{" "}
-            <strong className="text-foreground">R$ 41.000</strong> em tráfego
-            pago, com estratégias de alcance, criativos e narrativa que levaram
-            a história do Dojo Bonete para milhões de pessoas.
+        {/* ───────── O QUE ENTREGAMOS ───────── */}
+        <section id="entregas" className="scroll-mt-24 border-t border-white/10 py-16 md:py-20">
+          <Label>O que entregamos</Label>
+          <h2 className="font-display text-3xl font-bold md:text-4xl">
+            Uma operação completa de captação
+          </h2>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+            {DELIVERABLES.map((d) => (
+              <div key={d.title} className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+                <h3 className="font-semibold">{d.title}</h3>
+                <p className="mt-1 text-sm text-[#F4F0E6]/60">{d.sub}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ───────── PROCESSO DE DESENVOLVIMENTO ───────── */}
+        <section id="processo" className="scroll-mt-24 border-t border-white/10 py-16 md:py-20">
+          <Label>Processo de desenvolvimento</Label>
+          <h2 className="font-display text-3xl font-bold md:text-4xl">
+            Do propósito à inauguração, passo a passo
+          </h2>
+          <div className="mt-10 space-y-6">
+            {PROCESS.map((p, idx) => (
+              <div
+                key={p.n}
+                className={`grid items-center gap-6 rounded-2xl border border-white/10 bg-white/[0.04] p-4 md:grid-cols-2 ${
+                  idx % 2 ? "md:[&>figure]:order-2" : ""
+                }`}
+              >
+                <div className="p-2 md:p-6">
+                  <span className="font-display text-2xl font-extrabold text-[#A9C46C]">{p.n}</span>
+                  <h3 className="mt-2 font-display text-xl font-bold">{p.title}</h3>
+                  <p className="mt-2 text-[#F4F0E6]/65 leading-relaxed">{p.text}</p>
+                </div>
+                <figure className="overflow-hidden rounded-xl">
+                  <img src={p.img} alt={p.title} className="h-56 w-full object-cover md:h-64" loading="lazy" />
+                </figure>
+              </div>
+            ))}
+          </div>
+
+          {/* Resultado */}
+          <div className="mt-10">
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+              {STATS.map((s) => (
+                <div key={s.label} className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 text-center">
+                  <p className="font-display text-2xl font-extrabold text-[#A9C46C] md:text-3xl">{s.value}</p>
+                  <p className="mt-1 text-xs text-[#F4F0E6]/60">{s.label}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-4 overflow-hidden rounded-2xl border border-[#A9C46C]/30 bg-white/[0.04] py-8 text-center">
+              <p className="text-xs uppercase tracking-[0.2em] text-[#F4F0E6]/60">Lucro real para o projeto</p>
+              <p className="mt-2 font-display text-5xl font-extrabold text-[#A9C46C] md:text-6xl">R$ 102.574</p>
+            </div>
+          </div>
+        </section>
+
+        {/* ───────── AS ARTES (carrosséis — no final) ───────── */}
+        <section id="artes" className="scroll-mt-24 border-t border-white/10 py-16 md:py-20">
+          <Label>As artes</Label>
+          <h2 className="font-display text-3xl font-bold md:text-4xl">Os carrosséis da campanha</h2>
+          <p className="mt-4 mb-10 max-w-2xl text-[#F4F0E6]/70 leading-relaxed">
+            As peças que levaram a história do Dojo Bonete para todo o Brasil.
+            Arraste para o lado para ver cada carrossel.
           </p>
-          <p className="text-muted-foreground leading-relaxed text-justify">
-            Não foi só impulsionamento, foi construção de mensagem, testes de
-            criativos e distribuição inteligente para transformar atenção em
-            conexão real.
+          <div className="space-y-12">
+            {CARROSSEIS.map((c) => (
+              <DragCarousel key={c.slug} title={c.title} images={c.images} />
+            ))}
+          </div>
+        </section>
+
+        {/* ───────── FICHA TÉCNICA ───────── */}
+        <section id="ficha" className="scroll-mt-24 border-t border-white/10 py-16 md:py-20">
+          <Label>Ficha técnica</Label>
+          <div className="grid gap-x-8 gap-y-6 sm:grid-cols-2 md:grid-cols-3">
+            {FICHA.map((f) => (
+              <div key={f.label} className="border-t border-white/10 pt-4">
+                <p className="text-xs uppercase tracking-[0.15em] text-[#F4F0E6]/45">{f.label}</p>
+                <p className="mt-1 font-medium">{f.value}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      </main>
+
+      {/* ───────── CTA ───────── */}
+      <section className="border-t border-white/10 px-6 py-20 text-center">
+        <div className="mx-auto max-w-2xl">
+          <img
+            src={logoTafuri}
+            alt="Mateus Tafuri"
+            className="mx-auto mb-2 h-24 w-24 [filter:brightness(0)_saturate(100%)_invert(80%)_sepia(18%)_saturate(700%)_hue-rotate(35deg)_brightness(95%)_contrast(88%)]"
+          />
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-[#A9C46C]">
+            Sua causa é a próxima
           </p>
+          <h2 className="font-display text-3xl font-bold md:text-4xl">Vamos captar juntos?</h2>
+          <p className="mx-auto mt-4 mb-8 max-w-lg text-[#F4F0E6]/65 leading-relaxed">
+            Se o Dojo Bonete te inspirou, imagine o que podemos construir pela sua
+            causa. Vamos transformar sua história em uma campanha que mobiliza,
+            emociona e arrecada.
+          </p>
+          <a
+            href="https://wa.me/5567998860067"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block rounded-full bg-[#A9C46C] px-8 py-4 text-base font-semibold text-[#16281f] transition-opacity hover:opacity-90"
+          >
+            Falar com Mateus no WhatsApp
+          </a>
         </div>
       </section>
-    </main>
+    </div>
 
-    {/* CTA Vamos captar juntos */}
-    <section className="bg-secondary py-16 px-6 text-center mt-8">
-      <div className="max-w-2xl mx-auto">
-        <img
-          src={logoTafuri}
-          alt="Mateus Tafuri"
-          className="w-28 h-28 md:w-32 md:h-32 mx-auto -mb-2 [filter:brightness(0)_saturate(100%)_invert(18%)_sepia(58%)_saturate(1654%)_hue-rotate(78deg)_brightness(96%)_contrast(95%)]"
-        />
-        <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-3">
-          Sua causa é a próxima
-        </p>
-        <h2 className="text-3xl md:text-4xl font-bold text-green-dark mb-4">
-          Vamos captar juntos?
-        </h2>
-        <p className="text-secondary-foreground/80 mb-8 text-base leading-relaxed">
-          Se o Dojo Bonete te inspirou, imagine o que podemos construir pelo seu
-          projeto. Vamos transformar sua história em uma campanha que mobiliza,
-          emociona e arrecada.
-        </p>
-        <a
-          href="https://wa.me/5567998860067"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block bg-primary text-primary-foreground px-8 py-4 rounded-full text-base font-semibold hover:opacity-90 transition-opacity"
-        >
-          Falar com Mateus no WhatsApp
-        </a>
-      </div>
-    </section>
-
-    <Footer />
+    <footer className="py-6 text-center text-xs text-muted-foreground">
+      © 2026 Mateus Tafuri | Impacto Social
+    </footer>
   </div>
 );
 
