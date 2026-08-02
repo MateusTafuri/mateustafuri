@@ -5,31 +5,37 @@ import FeedbackSection from "@/components/FeedbackSection";
 import fotoMateus from "@/assets/bonete-mateus.webp";
 import {
   ArrowRight,
-  CalendarDays,
   CheckCircle2,
   Gift,
   HandHeart,
   Megaphone,
+  PlayCircle,
+  QrCode,
   Sparkles,
   Target,
   TrendingUp,
-  Users,
 } from "lucide-react";
+
+const WHATSAPP =
+  "https://wa.me/5567998860067?text=Oi%20Mateus!%20Vim%20pela%20p%C3%A1gina%20da%20Rifa%20Solid%C3%A1ria%20e%20quero%20falar%20sobre%20a%20minha%20causa.";
 
 /* ─────────── DATA ─────────── */
 
 const HERO_CARDS = [
-  { icon: Target, title: "5 etapas", sub: "do sonho à retribuição" },
-  { icon: TrendingUp, title: "R$ 410 mil+", sub: "mobilizados para causas" },
-  { icon: Users, title: "3 comunidades", sub: "transformadas pelo método" },
-  { icon: Sparkles, title: "Método validado", sub: "na prática, em campo" },
+  { icon: PlayCircle, title: "5 aulas em vídeo", sub: "uma para cada etapa" },
+  { icon: TrendingUp, title: "R$ 410 mil+", sub: "mobilizados com o método" },
+  { icon: Sparkles, title: "100% gratuito", sub: "sem cadastro, sem pegadinha" },
+  { icon: Target, title: "Testado em campo", sub: "em comunidades reais" },
 ];
 
 const ETAPAS = [
   {
     n: 1,
     title: "Sonhar",
-    objetivo: "Definir o que queremos alcançar, por que queremos alcançar e quais os objetivos por trás da campanha.",
+    chamada: "Antes de pensar em prêmio, defina onde você quer chegar.",
+    objetivo:
+      "Sair do “precisamos arrecadar dinheiro” e chegar a uma meta clara, alcançável e amarrada a uma transformação que dá pra mostrar.",
+    video: "",
     precisaTitulo: "Uma causa que as pessoas queiram apoiar",
     precisa: [
       "Um objetivo claro: o que exatamente a campanha vai construir",
@@ -51,7 +57,10 @@ const ETAPAS = [
   {
     n: 2,
     title: "Ofertar",
-    objetivo: "Montar o prêmio certo e construir parcerias estratégicas, com troca real de valor: o parceiro fortalece a causa e ganha mídia e visibilidade de volta.",
+    chamada: "O prêmio certo faz a pessoa querer participar, mesmo sem conhecer a sua causa.",
+    objetivo:
+      "Montar uma oferta desejável e construir parcerias estratégicas com troca real de valor: o parceiro fortalece a causa e ganha mídia e visibilidade de volta.",
+    video: "",
     precisaTitulo: "Uma oferta que faça a pessoa querer participar",
     precisa: [
       "Um prêmio desejável: uma experiência única ou vários ganhadores",
@@ -61,7 +70,7 @@ const ETAPAS = [
     aprender: [
       "Como escolher a rota do prêmio: experiência única ou vários ganhadores",
       "Como mapear e escolher parceiros estratégicos a dedo",
-      "Como apresentar a proposta e negociar a parceria",
+      "Como apresentar a proposta e conduzir a conversa com o parceiro",
       "Como estruturar a troca de valor: o que cada parceiro ganha em mídia",
     ],
     entregaveis: [
@@ -73,7 +82,10 @@ const ETAPAS = [
   {
     n: 3,
     title: "Contar",
-    objetivo: "Transformar a história real da organização em roteiro, peças e um calendário que sustenta semanas de conteúdo.",
+    chamada: "Uma causa boa que ninguém conhece não arrecada. A narrativa resolve isso.",
+    objetivo:
+      "Transformar a história real da sua organização em roteiro, peças e um calendário que sustenta semanas de conteúdo antes do lançamento.",
+    video: "",
     precisaTitulo: "Alcançar mais pessoas do que o seu círculo",
     precisa: [
       "Uma história real, com pessoas no centro",
@@ -95,7 +107,10 @@ const ETAPAS = [
   {
     n: 4,
     title: "Escalar",
-    objetivo: "Fazer a campanha sair do círculo próximo, com uma página que converte e mídia que se paga sozinha.",
+    chamada: "É aqui que a campanha sai do grupo da família e chega no Brasil inteiro.",
+    objetivo:
+      "Colocar no ar uma página que converte e um investimento em mídia que se paga com as próprias vendas da campanha.",
+    video: "",
     precisaTitulo: "Ganhar escala de verdade",
     precisa: [
       "Uma página de vendas que converte visitante em apoiador",
@@ -110,14 +125,17 @@ const ETAPAS = [
     ],
     entregaveis: [
       "Página de vendas no ar, com compra em passo único",
-      "Estratégia orgânica ativada e divulgação rodando",
+      "Divulgação orgânica ativada e rodando",
       "Tráfego pago otimizado, financiado pelas primeiras vendas",
     ],
   },
   {
     n: 5,
     title: "Retribuir",
-    objetivo: "Fechar o ciclo com credibilidade: quem apoiou precisa ver o sorteio, a entrega e o resultado.",
+    chamada: "É a etapa que faz o apoiador de hoje virar o apoiador da próxima campanha.",
+    objetivo:
+      "Fechar o ciclo com credibilidade: quem apoiou precisa ver o sorteio, a entrega do prêmio e o resultado que ajudou a construir.",
+    video: "",
     precisaTitulo: "Retribuir a quem confiou: parceiros e apoiadores",
     precisa: [
       "Um sorteio conduzido com transparência",
@@ -152,12 +170,12 @@ const BENEFICIOS = [
   {
     icon: Megaphone,
     title: "História que mobiliza",
-    text: "Narrativa real transformada em roteiro e peças que fazem a causa sair do círculo próximo.",
+    text: "A narrativa real vira roteiro e peças que fazem a causa sair do círculo próximo e chegar em quem nunca ouviu falar dela.",
   },
   {
     icon: HandHeart,
     title: "Ciclo que se repete",
-    text: "A prestação de contas transforma apoiadores pontuais em uma comunidade que apoia de novo.",
+    text: "A prestação de contas transforma apoiadores pontuais em uma base que apoia de novo na próxima campanha.",
   },
 ];
 
@@ -168,11 +186,11 @@ const CENARIOS = [
   },
   {
     title: "Depende de vaquinhas",
-    text: "Toda necessidade vira uma vaquinha improvisada, que toma tempo e nem sempre atinge o objetivo.",
+    text: "Toda necessidade vira uma vaquinha improvisada, que toma tempo da equipe e nem sempre atinge o objetivo.",
   },
   {
     title: "Comunica muito, converte pouco",
-    text: "As redes engajam, mas o engajamento não vira apoio financeiro. Falta um caminho entre o post e o Pix.",
+    text: "As redes engajam, mas o engajamento não vira doação. Falta um caminho claro entre o post e o Pix.",
   },
   {
     title: "Tem uma causa forte e invisível",
@@ -196,7 +214,6 @@ const RifaSolidaria = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Navbar é branca — precisa de fundo escuro atrás */}
       <div
         style={{
           backgroundImage:
@@ -209,18 +226,15 @@ const RifaSolidaria = () => {
         <header className="px-6 pt-28 pb-16 md:pt-32 md:pb-20 text-white text-center">
           <div className="max-w-4xl mx-auto">
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[hsl(103,66%,80%)] mb-3">
-              Metodologia própria
+              Aprenda a captar recursos para sua causa
             </p>
             <h1 className="text-4xl md:text-6xl font-bold leading-tight tracking-tight">
               Rifa <span className="text-[hsl(103,66%,80%)]">Solidária</span>
             </h1>
-            <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/15 px-4 py-2 text-sm">
-              <span className="text-[hsl(103,66%,80%)] font-semibold">Do sonho à retribuição</span>
-              <span className="text-white/60">· 5 etapas</span>
-            </div>
-            <p className="mt-5 max-w-xl mx-auto text-white/75 text-lg leading-relaxed">
-              Método e narrativa para sua causa parar de depender de vaquinhas
-              improvisadas e captar com campanhas que mobilizam o Brasil inteiro.
+            <p className="mt-5 max-w-2xl mx-auto text-white/80 text-lg leading-relaxed">
+              O método completo, em 5 etapas, para transformar a sua causa em uma
+              campanha que mobiliza pessoas e arrecada de verdade. Do primeiro
+              objetivo até a prestação de contas.
             </p>
 
             <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3 text-left">
@@ -235,36 +249,54 @@ const RifaSolidaria = () => {
 
             <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
               <a
-                href="https://wa.me/5567998860067"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#metodologia"
                 className="inline-flex items-center justify-center gap-2 bg-[hsl(103,66%,80%)] text-green-dark px-7 py-3.5 rounded-full text-sm font-bold hover:opacity-90 transition-opacity"
               >
-                Falar com Mateus <ArrowRight size={16} />
+                Começar pela etapa 1 <ArrowRight size={16} />
               </a>
               <a
-                href="#metodologia"
+                href={WHATSAPP}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center border border-white/25 text-white px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-white/10 transition-colors"
               >
-                Ver a metodologia
+                Quero ajuda com a minha campanha
               </a>
             </div>
           </div>
         </header>
       </div>
 
-      {/* ───── COMO FUNCIONA (etapas clicáveis) ───── */}
+      {/* ───── BOAS-VINDAS DO FESTIVAL ───── */}
+      <section className="px-6 py-6 bg-secondary/50 border-b border-border">
+        <div className="max-w-4xl mx-auto flex items-start gap-4">
+          <span className="hidden sm:grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-primary/10 text-primary">
+            <QrCode size={22} />
+          </span>
+          <div>
+            <p className="font-bold">Veio pelo poster do Festival ABCR? Que bom ter você aqui.</p>
+            <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
+              Esta página é a continuação daquele poster. Aqui a metodologia está
+              aberta, etapa por etapa, para você aplicar na sua organização. Leia,
+              anote e, se quiser ajuda para colocar em prática, me chame.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ───── METODOLOGIA (etapas clicáveis) ───── */}
       <section id="metodologia" className="scroll-mt-20 px-6 py-16 md:py-24">
         <div className="max-w-4xl mx-auto">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary text-center mb-3">
-            Como funciona a metodologia
+            O método, passo a passo
           </p>
           <h2 className="text-2xl md:text-4xl font-bold text-center mb-3">
-            5 etapas · cada uma com entregáveis claros
+            5 etapas para tirar a sua campanha do papel
           </h2>
           <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-10">
-            Clique em uma etapa para ver o que fazer e o que você deve ter em
-            mãos no final dela antes de seguir para a próxima.
+            Clique em cada etapa para ver o que você precisa ter antes de
+            começar, o que vai aprender na aula e o que deve ter em mãos no final
+            antes de seguir para a próxima.
           </p>
 
           {/* Tab bar em pílula */}
@@ -294,13 +326,54 @@ const RifaSolidaria = () => {
 
           {/* Conteúdo da etapa ativa */}
           <div key={etapa.n} className="animate-fade-in">
+            <p className="text-center text-xs font-semibold uppercase tracking-[0.25em] text-primary mb-2">
+              Etapa {etapa.n} de 5
+            </p>
             <h3 className="text-2xl md:text-3xl font-bold text-center">{etapa.title}</h3>
-            <p className="text-center mt-3 max-w-2xl mx-auto">
-              <strong>Objetivo:</strong>{" "}
-              <span className="text-muted-foreground">{etapa.objetivo}</span>
+            <p className="text-center mt-3 max-w-2xl mx-auto text-lg font-medium">
+              {etapa.chamada}
+            </p>
+            <p className="text-center mt-3 max-w-2xl mx-auto text-muted-foreground leading-relaxed">
+              <strong className="text-foreground">Objetivo:</strong> {etapa.objetivo}
             </p>
 
-            <div className="mt-10 grid gap-6 md:grid-cols-2 items-stretch">
+            {/* Aula em vídeo */}
+            <div className="mt-8 rounded-3xl overflow-hidden border border-border">
+              {etapa.video ? (
+                <div className="aspect-video bg-black">
+                  <iframe
+                    key={etapa.video}
+                    src={etapa.video}
+                    title={`Aula ${etapa.n}: ${etapa.title}`}
+                    className="w-full h-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+              ) : (
+                <div className="bg-secondary/50 flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left px-6 py-6">
+                  <PlayCircle size={36} className="shrink-0 text-primary/60" />
+                  <div className="flex-1">
+                    <p className="font-bold">
+                      Aula {etapa.n}: {etapa.title}
+                    </p>
+                    <p className="text-sm text-muted-foreground mt-1">
+                      A aula em vídeo desta etapa está sendo gravada.
+                    </p>
+                  </div>
+                  <a
+                    href={WHATSAPP}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="shrink-0 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
+                  >
+                    Quero ser avisado <ArrowRight size={14} />
+                  </a>
+                </div>
+              )}
+            </div>
+
+            <div className="mt-6 grid gap-6 md:grid-cols-2 items-stretch">
               {/* Esquerda: o que é necessário */}
               <div className="rounded-3xl border border-border bg-secondary/30 p-6 md:p-8">
                 <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground mb-3">
@@ -360,12 +433,12 @@ const RifaSolidaria = () => {
 
             <div className="mt-8 text-center">
               <a
-                href="https://wa.me/5567998860067"
+                href={WHATSAPP}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-7 py-3.5 rounded-full text-sm font-semibold hover:opacity-90 transition-opacity"
               >
-                Quero aplicar na minha causa <ArrowRight size={16} />
+                Quero ajuda para aplicar esta etapa <ArrowRight size={16} />
               </a>
             </div>
           </div>
@@ -376,10 +449,10 @@ const RifaSolidaria = () => {
       <section className="px-6 py-16 md:py-20 bg-secondary/40">
         <div className="max-w-4xl mx-auto">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary text-center mb-3">
-            Benefícios
+            Por que funciona
           </p>
           <h2 className="text-2xl md:text-4xl font-bold text-center mb-10">
-            Por que a Rifa Solidária funciona?
+            O que muda quando existe método
           </h2>
           <div className="grid sm:grid-cols-2 gap-4">
             {BENEFICIOS.map((b) => (
@@ -400,11 +473,11 @@ const RifaSolidaria = () => {
             Diagnóstico rápido
           </p>
           <h2 className="text-2xl md:text-4xl font-bold text-center mb-3">
-            Para quem é essa metodologia
+            Reconhece a sua organização aqui?
           </h2>
           <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-10">
-            Reconheceu sua causa em algum destes cenários? Então a Rifa Solidária
-            foi desenhada pra você.
+            Se você marcou algum destes cenários, a Rifa Solidária foi desenhada
+            para a sua realidade.
           </p>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
             {CENARIOS.map((c) => (
@@ -414,38 +487,62 @@ const RifaSolidaria = () => {
               </div>
             ))}
           </div>
-          <p className="text-center text-sm text-muted-foreground mt-8">
-            Marcou mais de um cenário? Melhor ainda: é exatamente aí que o método
-            gera mais resultado.
-          </p>
+          <div className="text-center mt-8">
+            <p className="text-sm text-muted-foreground mb-4">
+              Marcou mais de um? Melhor ainda: é exatamente aí que o método gera
+              mais resultado.
+            </p>
+            <a
+              href={WHATSAPP}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-7 py-3.5 rounded-full text-sm font-semibold hover:opacity-90 transition-opacity"
+            >
+              Falar sobre a minha causa <ArrowRight size={16} />
+            </a>
+          </div>
         </div>
       </section>
 
       {/* ───── QUEM CONDUZ ───── */}
       <section className="px-6 py-16 md:py-20 bg-secondary/40">
-        <div className="max-w-4xl mx-auto grid gap-8 md:grid-cols-[320px_1fr] md:items-center">
+        <div className="max-w-4xl mx-auto grid gap-10 md:grid-cols-[320px_1fr] items-center">
           <img
             src={fotoMateus}
-            alt="Mateus Tafuri no Dojo Bonete segurando o cartaz da Rifa Solidária"
-            className="w-full rounded-3xl object-cover h-72 md:h-96"
+            alt="Mateus Tafuri em frente ao dojo, segurando o cartaz de uma Rifa Solidária"
+            className="w-full rounded-3xl object-cover aspect-[4/5]"
             style={{ objectPosition: "center 35%" }}
             loading="lazy"
           />
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary mb-3">
-              Quem conduz
+              Quem criou o método
             </p>
             <h2 className="text-2xl md:text-4xl font-bold mb-2">Mateus Tafuri</h2>
-            <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4">
+            <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-5">
               Estratégia · Mobilização · Captação de Recursos
             </p>
-            <p className="text-muted-foreground leading-relaxed">
-              Atuo na captação de recursos combinando estratégia, mobilização e
-              narrativa. Desenvolvi a metodologia da Rifa Solidária em campo, ao
-              lado de comunidades isoladas, e já foram mais de R$ 410 mil
-              mobilizados para transformar causas sociais em campanhas que movem
-              pessoas e geram resultados concretos.
-            </p>
+            <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <p>
+                Eu não aprendi captação em sala de aula. Aprendi morando em
+                comunidades isoladas, vendendo bilhete, negociando parceria e
+                gravando vídeo no celular ao lado de quem toca o projeto.
+              </p>
+              <p>
+                A Rifa Solidária nasceu dessa prática e já mobilizou mais de{" "}
+                <strong className="text-foreground">R$ 410 mil</strong> para
+                projetos sociais. É esse caminho, o mesmo que apliquei em campo,
+                que está aberto aqui nesta página.
+              </p>
+            </div>
+            <a
+              href={WHATSAPP}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
+            >
+              Falar comigo no WhatsApp <ArrowRight size={14} />
+            </a>
           </div>
         </div>
       </section>
@@ -460,14 +557,15 @@ const RifaSolidaria = () => {
             Sua causa é a próxima
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-green-dark mb-4">
-            Vamos tirar a campanha do papel?
+            Vamos tirar a sua campanha do papel?
           </h2>
           <p className="text-secondary-foreground/80 mb-8 text-base leading-relaxed">
-            Me conta a sua causa e a gente desenha juntos o caminho pelas cinco
-            etapas, do sonho à retribuição.
+            Me conte qual é a sua causa e qual valor você precisa alcançar. A
+            gente avalia juntos o momento da sua organização e desenha o caminho
+            pelas cinco etapas.
           </p>
           <a
-            href="https://wa.me/5567998860067"
+            href={WHATSAPP}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-primary text-primary-foreground px-8 py-4 rounded-full text-base font-semibold hover:opacity-90 transition-opacity"

@@ -13,7 +13,6 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <HeroSection />
-      <ServicesSection />
       <div className="bg-secondary">
         <TimelineSection />
       </div>
@@ -22,6 +21,7 @@ const Index = () => {
         <CasesSection />
       </div>
       <FeedbackSection />
+      <ServicesSection />
       <CtaSection />
       <Footer />
     </div>
