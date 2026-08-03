@@ -93,7 +93,10 @@ const RifaSolidaria = () => {
         } as CSSProperties
       }
     >
+      {/* Primeira tela: hero verde + faixa do QR, sem sobra branca */}
+      <div className="min-h-screen flex flex-col">
       <div
+        className="flex-1 flex items-center"
         style={{
           backgroundImage:
             "linear-gradient(150deg, hsl(176 44% 13%) 0%, hsl(178 40% 19%) 55%, hsl(181 38% 27%) 100%)",
@@ -102,7 +105,7 @@ const RifaSolidaria = () => {
         <Navbar />
 
         {/* ───── HERO ───── */}
-        <header className="relative overflow-hidden px-6 pt-28 pb-20 md:pt-32 md:pb-24 text-white text-center">
+        <header className="relative w-full overflow-hidden px-6 pt-28 pb-16 md:pt-32 md:pb-20 text-white text-center">
           <FundoViaLactea />
           {/* brilho decorativo */}
           <div
@@ -164,7 +167,7 @@ const RifaSolidaria = () => {
       </div>
 
       {/* ───── BOAS-VINDAS DO FESTIVAL ───── */}
-      <section className="px-6 py-6 bg-secondary/50 border-b border-border">
+      <section className="shrink-0 px-6 py-6 bg-secondary/50 border-b border-border">
         <div className="max-w-4xl mx-auto flex items-start gap-4">
           <span className="hidden sm:grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-primary/10 text-primary">
             <QrCode size={22} />
@@ -179,6 +182,7 @@ const RifaSolidaria = () => {
           </div>
         </div>
       </section>
+      </div>
 
       {/* ───── METODOLOGIA (etapas clicáveis) ───── */}
       <section id="metodologia" className="scroll-mt-20 px-6 py-16 md:py-24">
