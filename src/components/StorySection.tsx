@@ -29,8 +29,8 @@ const StorySection = () => {
 
   return (
     <section className="max-w-5xl mx-auto px-6 py-16 scroll-mt-24" id="historia">
-      <div className="relative w-full mb-10 overflow-hidden group">
-        <div className="flex w-max animate-marquee-rtl group-hover:[animation-play-state:paused]">
+      <div className="relative w-full mb-10 overflow-hidden">
+        <div className="flex w-max animate-marquee-rtl">
           {loop.map((photo, i) => (
             <div
               key={i}
