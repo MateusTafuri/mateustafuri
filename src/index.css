@@ -66,3 +66,20 @@
     @apply bg-background text-foreground font-sans antialiased;
   }
 }
+
+/* Estrelas do header da Rifa Solidária */
+@keyframes piscar {
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [style*="piscar"] {
+    animation: none !important;
+  }
+}
