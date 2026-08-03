@@ -1,160 +1,23 @@
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
+import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FeedbackSection from "@/components/FeedbackSection";
 import fotoMateus from "@/assets/bonete-mateus.webp";
+import { ETAPAS, WHATSAPP } from "@/data/rifaSolidaria";
 import {
   ArrowRight,
   CheckCircle2,
+  ClipboardList,
   Gift,
   HandHeart,
   Megaphone,
-  PlayCircle,
   QrCode,
   Sparkles,
   Target,
-  TrendingUp,
 } from "lucide-react";
 
-const WHATSAPP =
-  "https://wa.me/5567998860067?text=Oi%20Mateus!%20Vim%20pela%20p%C3%A1gina%20da%20Rifa%20Solid%C3%A1ria%20e%20quero%20falar%20sobre%20a%20minha%20causa.";
-
 /* ─────────── DATA ─────────── */
-
-const HERO_CARDS = [
-  { icon: PlayCircle, title: "5 aulas em vídeo", sub: "uma para cada etapa" },
-  { icon: TrendingUp, title: "R$ 410 mil+", sub: "mobilizados com o método" },
-  { icon: Sparkles, title: "100% gratuito", sub: "sem cadastro, sem pegadinha" },
-  { icon: Target, title: "Testado em campo", sub: "em comunidades reais" },
-];
-
-const ETAPAS = [
-  {
-    n: 1,
-    title: "Sonhar",
-    chamada: "Antes de pensar em prêmio, defina onde você quer chegar.",
-    objetivo:
-      "Sair do “precisamos arrecadar dinheiro” e chegar a uma meta clara, alcançável e amarrada a uma transformação que dá pra mostrar.",
-    video: "",
-    precisaTitulo: "Uma causa que as pessoas queiram apoiar",
-    precisa: [
-      "Um objetivo claro: o que exatamente a campanha vai construir",
-      "Uma transformação visível, que dá pra mostrar depois",
-      "Uma meta financeira alcançável, não aspiracional",
-    ],
-    aprender: [
-      "Como conduzir o briefing inicial e sair do “queremos arrecadar dinheiro”",
-      "Como definir um objetivo claro e amarrado a um resultado concreto",
-      "Como desenhar a transformação visível por trás da campanha",
-      "Como chegar a uma meta realista para o tamanho da sua causa",
-    ],
-    entregaveis: [
-      "Objetivo e meta da campanha definidos por escrito",
-      "Transformação visível desenhada: o que muda e dá pra mostrar",
-      "Briefing alinhado com toda a equipe da organização",
-    ],
-  },
-  {
-    n: 2,
-    title: "Ofertar",
-    chamada: "O prêmio certo faz a pessoa querer participar, mesmo sem conhecer a sua causa.",
-    objetivo:
-      "Montar uma oferta desejável e construir parcerias estratégicas com troca real de valor: o parceiro fortalece a causa e ganha mídia e visibilidade de volta.",
-    video: "",
-    precisaTitulo: "Uma oferta que faça a pessoa querer participar",
-    precisa: [
-      "Um prêmio desejável: uma experiência única ou vários ganhadores",
-      "Parceiros estratégicos com credibilidade e audiência",
-      "Uma troca de valor clara para cada parceiro",
-    ],
-    aprender: [
-      "Como escolher a rota do prêmio: experiência única ou vários ganhadores",
-      "Como mapear e escolher parceiros estratégicos a dedo",
-      "Como apresentar a proposta e conduzir a conversa com o parceiro",
-      "Como estruturar a troca de valor: o que cada parceiro ganha em mídia",
-    ],
-    entregaveis: [
-      "Prêmio definido e garantido com os parceiros",
-      "Parcerias fechadas e alinhadas, com contrapartidas claras",
-      "Troca de valor acordada: o que cada parceiro ganha em visibilidade",
-    ],
-  },
-  {
-    n: 3,
-    title: "Contar",
-    chamada: "Uma causa boa que ninguém conhece não arrecada. A narrativa resolve isso.",
-    objetivo:
-      "Transformar a história real da sua organização em roteiro, peças e um calendário que sustenta semanas de conteúdo antes do lançamento.",
-    video: "",
-    precisaTitulo: "Alcançar mais pessoas do que o seu círculo",
-    precisa: [
-      "Uma história real, com pessoas no centro",
-      "Peças e criativos que traduzam a causa",
-      "Um calendário de conteúdo antes do lançamento",
-    ],
-    aprender: [
-      "Como encontrar a história por trás da campanha: pessoas, não números",
-      "Como estruturar a narrativa e o roteiro do vídeo de lançamento",
-      "Como produzir criativos com poucos recursos: gravação e edição",
-      "Como montar o calendário de pré-campanha de 2 semanas",
-    ],
-    entregaveis: [
-      "História da campanha encontrada e roteirizada",
-      "Vídeo de lançamento e peças de apoio produzidos",
-      "Calendário de pré-campanha pronto: posts, destaques e bio",
-    ],
-  },
-  {
-    n: 4,
-    title: "Escalar",
-    chamada: "É aqui que a campanha sai do grupo da família e chega no Brasil inteiro.",
-    objetivo:
-      "Colocar no ar uma página que converte e um investimento em mídia que se paga com as próprias vendas da campanha.",
-    video: "",
-    precisaTitulo: "Ganhar escala de verdade",
-    precisa: [
-      "Uma página de vendas que converte visitante em apoiador",
-      "Investimento em tráfego que se paga com as primeiras vendas",
-      "Números acompanhados de perto durante a campanha",
-    ],
-    aprender: [
-      "Como montar a anatomia de uma boa página de vendas",
-      "Como ativar a divulgação orgânica: influenciadores, imprensa e listas",
-      "Como rodar tráfego pago e testar criativos até chegar na escala",
-      "Quais números acompanhar todos os dias durante a campanha",
-    ],
-    entregaveis: [
-      "Página de vendas no ar, com compra em passo único",
-      "Divulgação orgânica ativada e rodando",
-      "Tráfego pago otimizado, financiado pelas primeiras vendas",
-    ],
-  },
-  {
-    n: 5,
-    title: "Retribuir",
-    chamada: "É a etapa que faz o apoiador de hoje virar o apoiador da próxima campanha.",
-    objetivo:
-      "Fechar o ciclo com credibilidade: quem apoiou precisa ver o sorteio, a entrega do prêmio e o resultado que ajudou a construir.",
-    video: "",
-    precisaTitulo: "Retribuir a quem confiou: parceiros e apoiadores",
-    precisa: [
-      "Um sorteio conduzido com transparência",
-      "A entrega do prêmio documentada",
-      "Prestação de contas para apoiadores e parceiros",
-    ],
-    aprender: [
-      "Como conduzir um sorteio ao vivo com credibilidade e regras claras",
-      "Como documentar e comunicar o encerramento da campanha",
-      "Como entregar o prêmio e dar suporte no pós-campanha",
-      "Como retribuir os parceiros e prestar contas de todo o resultado",
-    ],
-    entregaveis: [
-      "Sorteio realizado ao vivo, com regras claras",
-      "Prêmio entregue e cada etapa documentada",
-      "Prestação de contas publicada: o que o dinheiro construiu",
-    ],
-  },
-];
 
 const BENEFICIOS = [
   {
@@ -213,55 +76,87 @@ const RifaSolidaria = () => {
   const etapa = ETAPAS[ativa];
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div
+      className="min-h-screen bg-background text-foreground"
+      style={
+        {
+          // Paleta do pôster do Festival ABCR: petróleo + coral + creme
+          "--primary": "15 65% 56%",
+          "--primary-foreground": "0 0% 100%",
+          "--secondary": "42 37% 88%",
+          "--secondary-foreground": "178 36% 22%",
+          "--accent": "15 65% 56%",
+          "--accent-foreground": "0 0% 100%",
+          "--border": "42 22% 84%",
+          "--green-dark": "178 36% 22%",
+          "--ring": "15 65% 56%",
+        } as CSSProperties
+      }
+    >
       <div
         style={{
           backgroundImage:
-            "linear-gradient(150deg, hsl(80 15% 18%) 0%, hsl(80 15% 25%) 60%, hsl(80 17% 30%) 100%)",
+            "linear-gradient(150deg, hsl(176 44% 13%) 0%, hsl(178 40% 19%) 55%, hsl(181 38% 27%) 100%)",
         }}
       >
         <Navbar />
 
         {/* ───── HERO ───── */}
-        <header className="px-6 pt-28 pb-16 md:pt-32 md:pb-20 text-white text-center">
-          <div className="max-w-4xl mx-auto">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[hsl(103,66%,80%)] mb-3">
-              Aprenda a captar recursos para sua causa
-            </p>
-            <h1 className="text-4xl md:text-6xl font-bold leading-tight tracking-tight">
-              Rifa <span className="text-[hsl(103,66%,80%)]">Solidária</span>
+        <header className="relative overflow-hidden px-6 pt-28 pb-20 md:pt-32 md:pb-24 text-white text-center">
+          {/* brilho decorativo */}
+          <div
+            className="pointer-events-none absolute -top-24 left-1/2 h-80 w-[36rem] -translate-x-1/2 rounded-full opacity-25 blur-3xl"
+            style={{
+              background:
+                "radial-gradient(circle, hsl(15 65% 56%) 0%, transparent 70%)",
+            }}
+          />
+          <div className="relative max-w-4xl mx-auto">
+            <span className="inline-flex items-center gap-2 rounded-full bg-[hsl(15,65%,56%)]/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(15,65%,56%)]">
+              <Sparkles size={13} /> Metodologia aberta e gratuita
+            </span>
+            <h1 className="mt-6 text-4xl md:text-6xl font-bold leading-[1.05] tracking-tight">
+              Como captar recursos para
+              <br />
+              a sua causa com a{" "}
+              <span className="text-[hsl(15,65%,56%)]">Rifa Solidária</span>
             </h1>
-            <p className="mt-5 max-w-2xl mx-auto text-white/80 text-lg leading-relaxed">
-              O método completo, em 5 etapas, para transformar a sua causa em uma
-              campanha que mobiliza pessoas e arrecada de verdade. Do primeiro
-              objetivo até a prestação de contas.
+            <p className="mt-6 max-w-2xl mx-auto text-white/75 text-lg leading-relaxed">
+              Uma metodologia em 5 etapas para planejar, lançar e encerrar uma
+              campanha de rifa na sua organização. Do primeiro objetivo até a
+              prestação de contas.
             </p>
 
-            <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3 text-left">
-              {HERO_CARDS.map((c) => (
-                <div key={c.title} className="rounded-2xl bg-white/[0.07] border border-white/10 p-4">
-                  <c.icon size={20} className="text-[hsl(103,66%,80%)]" />
-                  <p className="font-bold mt-2">{c.title}</p>
-                  <p className="text-xs text-white/60 mt-0.5">{c.sub}</p>
+            {/* trilha das etapas */}
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-x-2 gap-y-3">
+              {ETAPAS.map((e, i) => (
+                <div key={e.n} className="flex items-center gap-2">
+                  <a
+                    href="#metodologia"
+                    className="rounded-full border border-white/20 bg-white/[0.06] px-4 py-2 text-sm font-semibold transition-colors hover:border-[hsl(15,65%,56%)]/60 hover:bg-white/[0.12]"
+                  >
+                    {e.title}
+                  </a>
+                  {i < ETAPAS.length - 1 && (
+                    <ArrowRight size={14} className="text-white/30" />
+                  )}
                 </div>
               ))}
             </div>
 
-            <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+            <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
               <a
                 href="#metodologia"
-                className="inline-flex items-center justify-center gap-2 bg-[hsl(103,66%,80%)] text-green-dark px-7 py-3.5 rounded-full text-sm font-bold hover:opacity-90 transition-opacity"
+                className="inline-flex items-center justify-center gap-2 bg-[hsl(15,65%,56%)] text-white px-8 py-4 rounded-full text-sm font-bold hover:opacity-90 transition-opacity"
               >
-                Começar pela etapa 1 <ArrowRight size={16} />
+                Ver as 5 etapas <ArrowRight size={16} />
               </a>
-              <a
-                href={WHATSAPP}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center border border-white/25 text-white px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-white/10 transition-colors"
+              <Link
+                to="/mapeamento-rifa-solidaria"
+                className="inline-flex items-center justify-center border border-white/25 text-white px-8 py-4 rounded-full text-sm font-semibold hover:bg-white/10 transition-colors"
               >
-                Quero ajuda com a minha campanha
-              </a>
+                Montar a minha rifa
+              </Link>
             </div>
           </div>
         </header>
@@ -294,9 +189,9 @@ const RifaSolidaria = () => {
             5 etapas para tirar a sua campanha do papel
           </h2>
           <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-10">
-            Clique em cada etapa para ver o que você precisa ter antes de
-            começar, o que vai aprender na aula e o que deve ter em mãos no final
-            antes de seguir para a próxima.
+            Clique em cada etapa para entender o que você precisa ter antes de
+            começar, o que ela ensina na prática e o que deve estar pronto no
+            final antes de seguir para a próxima.
           </p>
 
           {/* Tab bar em pílula */}
@@ -337,43 +232,7 @@ const RifaSolidaria = () => {
               <strong className="text-foreground">Objetivo:</strong> {etapa.objetivo}
             </p>
 
-            {/* Aula em vídeo */}
-            <div className="mt-8 rounded-3xl overflow-hidden border border-border">
-              {etapa.video ? (
-                <div className="aspect-video bg-black">
-                  <iframe
-                    key={etapa.video}
-                    src={etapa.video}
-                    title={`Aula ${etapa.n}: ${etapa.title}`}
-                    className="w-full h-full"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-                </div>
-              ) : (
-                <div className="bg-secondary/50 flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left px-6 py-6">
-                  <PlayCircle size={36} className="shrink-0 text-primary/60" />
-                  <div className="flex-1">
-                    <p className="font-bold">
-                      Aula {etapa.n}: {etapa.title}
-                    </p>
-                    <p className="text-sm text-muted-foreground mt-1">
-                      A aula em vídeo desta etapa está sendo gravada.
-                    </p>
-                  </div>
-                  <a
-                    href={WHATSAPP}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="shrink-0 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
-                  >
-                    Quero ser avisado <ArrowRight size={14} />
-                  </a>
-                </div>
-              )}
-            </div>
-
-            <div className="mt-6 grid gap-6 md:grid-cols-2 items-stretch">
+            <div className="mt-8 grid gap-6 md:grid-cols-2 items-stretch">
               {/* Esquerda: o que é necessário */}
               <div className="rounded-3xl border border-border bg-secondary/30 p-6 md:p-8">
                 <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground mb-3">
@@ -393,9 +252,9 @@ const RifaSolidaria = () => {
               </div>
 
               {/* Direita: o que você vai aprender */}
-              <div className="rounded-3xl p-6 md:p-8 text-white" style={{ backgroundColor: "hsl(80 15% 16%)" }}>
+              <div className="rounded-3xl p-6 md:p-8 text-white" style={{ backgroundColor: "hsl(176 39% 14%)" }}>
                 <div className="flex items-center justify-between mb-3">
-                  <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[hsl(103,66%,80%)]">
+                  <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[hsl(15,65%,56%)]">
                     O que você vai aprender
                   </p>
                   <span className="grid h-8 w-8 place-items-center rounded-full bg-white/10 text-xs font-bold">
@@ -408,11 +267,40 @@ const RifaSolidaria = () => {
                 <ul className="space-y-3">
                   {etapa.aprender.map((a) => (
                     <li key={a} className="flex items-start gap-3">
-                      <ArrowRight size={18} className="mt-1 shrink-0 text-[hsl(103,66%,80%)]" />
+                      <ArrowRight size={18} className="mt-1 shrink-0 text-[hsl(15,65%,56%)]" />
                       <span className="leading-relaxed text-white/90">{a}</span>
                     </li>
                   ))}
                 </ul>
+              </div>
+            </div>
+
+            {/* As 3 perguntas da etapa (explicativo) */}
+            <div className="mt-6 rounded-3xl border border-border p-6 md:p-8">
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary mb-1">
+                As 3 perguntas desta etapa
+              </p>
+              <h4 className="text-lg md:text-xl font-bold leading-snug mb-6">
+                {etapa.pergunta}
+              </h4>
+              <div className="grid gap-4 md:grid-cols-3">
+                {etapa.canvas.map((bloco) => (
+                  <div
+                    key={bloco.title}
+                    className="flex flex-col rounded-2xl border border-border bg-secondary/30 p-5"
+                  >
+                    <div className="flex items-center gap-2">
+                      <bloco.icon size={17} className="shrink-0 text-primary" />
+                      <h5 className="font-bold">{bloco.title}</h5>
+                    </div>
+                    <p className="text-sm text-muted-foreground mt-2 leading-relaxed flex-1">
+                      {bloco.pergunta}
+                    </p>
+                    <p className="mt-4 pt-3 border-t border-border text-xs italic text-primary">
+                      {bloco.dica}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -430,18 +318,36 @@ const RifaSolidaria = () => {
                 ))}
               </ul>
             </div>
-
-            <div className="mt-8 text-center">
-              <a
-                href={WHATSAPP}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-7 py-3.5 rounded-full text-sm font-semibold hover:opacity-90 transition-opacity"
-              >
-                Quero ajuda para aplicar esta etapa <ArrowRight size={16} />
-              </a>
-            </div>
           </div>
+        </div>
+      </section>
+
+      {/* ───── CHAMADA PARA O MAPEAMENTO ───── */}
+      <section className="px-6 pb-16 md:pb-20">
+        <div
+          className="max-w-4xl mx-auto rounded-3xl px-6 py-10 md:px-12 md:py-12 text-white text-center"
+          style={{ backgroundColor: "hsl(176 39% 14%)" }}
+        >
+          <span className="inline-grid h-12 w-12 place-items-center rounded-2xl bg-white/10 text-[hsl(15,65%,56%)] mb-4">
+            <ClipboardList size={24} />
+          </span>
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[hsl(15,65%,56%)] mb-3">
+            Ferramenta gratuita
+          </p>
+          <h2 className="text-2xl md:text-3xl font-bold">
+            Mapeamento Rifa Solidária
+          </h2>
+          <p className="mt-4 max-w-xl mx-auto text-white/75 leading-relaxed">
+            Entendeu o método? Agora responda as 15 perguntas das 5 etapas e saia
+            daqui com a sua campanha desenhada no papel. É de graça, você preenche
+            no seu ritmo e salva o resultado no final.
+          </p>
+          <Link
+            to="/mapeamento-rifa-solidaria"
+            className="mt-7 inline-flex items-center gap-2 bg-[hsl(15,65%,56%)] text-white px-8 py-4 rounded-full text-base font-bold hover:opacity-90 transition-opacity"
+          >
+            Montar a minha rifa <ArrowRight size={18} />
+          </Link>
         </div>
       </section>
 
