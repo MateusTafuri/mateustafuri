@@ -45,7 +45,7 @@ export const ETAPAS: Etapa[] = [
   {
     n: 1,
     title: "Sonhar",
-    emoji: "💭",
+    emoji: "⭐",
     chamada: "Antes de pensar em prêmio, defina onde você quer chegar.",
     pergunta: "O que queremos alcançar, e por quê?",
     objetivo:
