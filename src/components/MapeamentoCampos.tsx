@@ -58,13 +58,6 @@ export const PilulasEtapas = ({
           );
         })}
       </div>
-      {/* fio de progresso: o único lugar onde as 15 respostas aparecem somadas */}
-      <div className="h-0.5 bg-secondary">
-        <div
-          className="h-full bg-primary transition-all duration-300"
-          style={{ width: `${(m.totalPreenchidas / TOTAL) * 100}%` }}
-        />
-      </div>
     </div>
   );
 };
