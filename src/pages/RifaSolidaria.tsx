@@ -123,10 +123,20 @@ const RifaSolidaria = () => {
               Como captar recursos para
               <br />
               a sua causa com a{" "}
-              <span className="text-[hsl(15,65%,56%)]">Rifa Solidária</span>
+              <span
+                className="bg-clip-text text-transparent"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(100deg, hsl(15 65% 56%) 20%, hsl(35 90% 70%) 45%, hsl(15 65% 56%) 70%)",
+                  backgroundSize: "200% 100%",
+                  animation: "varrer 3.5s ease-in-out infinite",
+                }}
+              >
+                Rifa Solidária
+              </span>
             </h1>
             <p className="mt-6 max-w-2xl mx-auto text-white/75 text-lg leading-relaxed">
-              Uma metodologia em 5 etapas para planejar, lançar e encerrar uma
+              Um caminho em 5 etapas para planejar, lançar e encerrar uma
               campanha de rifa na sua organização. Do primeiro objetivo até a
               prestação de contas.
             </p>
@@ -175,9 +185,9 @@ const RifaSolidaria = () => {
           <div>
             <p className="font-bold">Veio pelo poster do Festival ABCR? Que bom ter você aqui.</p>
             <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
-              Esta página é a continuação daquele poster. Aqui a metodologia está
-              aberta, etapa por etapa, para você aplicar na sua organização. Leia,
-              anote e, se quiser ajuda para colocar em prática, me chame.
+              Esta página é a continuação daquele poster. Aqui você encontra o
+              passo a passo completo para aplicar na sua organização. Leia, anote
+              e, se quiser ajuda para colocar em prática, me chame.
             </p>
           </div>
         </div>

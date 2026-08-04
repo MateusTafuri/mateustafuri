@@ -67,6 +67,17 @@
   }
 }
 
+/* Brilho que varre o nome Rifa Solidária */
+@keyframes varrer {
+  0%,
+  100% {
+    background-position: 0% 0;
+  }
+  50% {
+    background-position: 100% 0;
+  }
+}
+
 /* Estrelas do header da Rifa Solidária */
 @keyframes piscar {
   0%,

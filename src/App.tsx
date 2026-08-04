@@ -19,6 +19,10 @@ const TestesCopy = lazy(() => import("./pages/TestesCopy.tsx"));
 const TestesImersivo = lazy(() => import("./pages/TestesImersivo.tsx"));
 const TestesFundo = lazy(() => import("./pages/TestesFundo.tsx"));
 const TestesBloco = lazy(() => import("./pages/TestesBloco.tsx"));
+const TestesHero = lazy(() => import("./pages/TestesHero.tsx"));
+const TestesFundoTech = lazy(() => import("./pages/TestesFundoTech.tsx"));
+const TestesFundoImpacto = lazy(() => import("./pages/TestesFundoImpacto.tsx"));
+const TestesEmoji = lazy(() => import("./pages/TestesEmoji.tsx"));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 
 const queryClient = new QueryClient();
@@ -44,6 +48,10 @@ const App = () => (
             <Route path="/testes-imersivo" element={<TestesImersivo />} />
             <Route path="/testes-fundo" element={<TestesFundo />} />
             <Route path="/testes-bloco" element={<TestesBloco />} />
+            <Route path="/testes-hero" element={<TestesHero />} />
+            <Route path="/testes-fundo-tech" element={<TestesFundoTech />} />
+            <Route path="/testes-fundo-impacto" element={<TestesFundoImpacto />} />
+            <Route path="/testes-emoji" element={<TestesEmoji />} />
             <Route path="/testes-metodo" element={<TestesMetodo />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
