@@ -3,6 +3,7 @@ import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import DragCarousel from "@/components/DragCarousel";
+import EmBreveCase from "@/components/EmBreveCase";
 
 import logoBonete from "@/assets/logo-bonete.webp";
 import logoTafuri from "@/assets/logo-tafuri.webp";
@@ -391,6 +392,8 @@ const DojoBonete = () => (
           </div>
         </section>
       </main>
+
+      <EmBreveCase />
 
       {/* ───────── CTA ───────── */}
       <section className="border-t border-white/10 px-6 py-20 text-center">

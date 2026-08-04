@@ -1,9 +1,8 @@
 import {
-  ArrowLeftRight,
   Calendar,
   CircleDollarSign,
+  Camera,
   CircleDot,
-  Clock,
   Eye,
   Flag,
   Handshake,
@@ -12,6 +11,7 @@ import {
   MousePointerClick,
   PlayCircle,
   RefreshCw,
+  Ticket,
   Trophy,
   User,
   type LucideIcon,
@@ -25,6 +25,8 @@ export type BlocoCanvas = {
   emoji: string;
   title: string;
   pergunta: string;
+  /* Vira o placeholder do campo: mostra o formato da resposta, nunca o conteúdo */
+  exemplo: string;
   dica: string;
 };
 
@@ -74,6 +76,8 @@ export const ETAPAS: Etapa[] = [
         emoji: "❓",
         title: "Por quê",
         pergunta: "Qual problema real a organização quer resolver com esse dinheiro?",
+        exemplo:
+          "Ex.: as aulas acontecem num galpão sem cobertura. Quando chove, 60 crianças ficam sem atividade.",
         dica: "Seu porquê deve emocionar quem nunca ouviu falar de vocês.",
       },
       {
@@ -81,6 +85,7 @@ export const ETAPAS: Etapa[] = [
         emoji: "🎯",
         title: "Meta",
         pergunta: "Quanto precisa ser arrecadado, e o que exatamente esse valor cobre?",
+        exemplo: "Ex.: R$ 30 mil — R$ 22 mil de material e R$ 8 mil de mão de obra.",
         dica: "Sua meta deve ser alcançável.",
       },
       {
@@ -88,6 +93,8 @@ export const ETAPAS: Etapa[] = [
         emoji: "🌱",
         title: "Transformação",
         pergunta: "O que muda, na prática, quando a meta for batida?",
+        exemplo:
+          "Ex.: sala coberta e com piso, aberta o ano inteiro, e a turma passa de 60 para 100 crianças.",
         dica: "Deve ser algo que dá pra fotografar.",
       },
     ],
@@ -119,25 +126,30 @@ export const ETAPAS: Etapa[] = [
     ],
     canvas: [
       {
-        icon: Trophy,
-        emoji: "🏆",
-        title: "Prêmio",
-        pergunta: "Que prêmio faria alguém participar mesmo sem conhecer a causa?",
-        dica: "Seu prêmio deve ser desejável.",
-      },
-      {
         icon: Handshake,
         emoji: "🤝",
         title: "Parceiro certo",
-        pergunta: "Qual parceiro tem o público certo pra performar online?",
-        dica: "Deve ter o público certo pra converter online.",
+        pergunta: "Quem entra como parceiro, e o que ele leva de volta?",
+        exemplo:
+          "Ex.: a pousada da região doa 2 diárias e aparece nos posts, no vídeo de lançamento e no sorteio.",
+        dica: "A troca precisa ser clara dos dois lados.",
       },
       {
-        icon: ArrowLeftRight,
-        emoji: "🔄",
-        title: "Contrapartida",
-        pergunta: "O que, especificamente, cada parceiro leva pra casa em troca?",
-        dica: "Deve virar posts em collab no Instagram.",
+        icon: Trophy,
+        emoji: "🏆",
+        title: "Prêmio",
+        pergunta: "Que prêmio faria alguém participar mesmo sem conhecer o projeto?",
+        exemplo:
+          "Ex.: um fim de semana para duas pessoas, com hospedagem, passeio de barco e jantar.",
+        dica: "Seu prêmio deve ser desejável.",
+      },
+      {
+        icon: Ticket,
+        emoji: "🎟️",
+        title: "Bilhete",
+        pergunta: "Quanto custa o bilhete e quantos precisam ser vendidos para bater a meta?",
+        exemplo: "Ex.: bilhete de R$ 25, 1.200 vendidos para chegar nos R$ 30 mil.",
+        dica: "Preço x bilhetes tem que fechar a meta da etapa 1.",
       },
     ],
   },
@@ -172,21 +184,27 @@ export const ETAPAS: Etapa[] = [
         emoji: "🎤",
         title: "Protagonista",
         pergunta: "Quem é o rosto que carrega essa campanha?",
+        exemplo:
+          "Ex.: a coordenadora que fundou o projeto, com duas famílias atendidas contando a rotina.",
         dica: "Seu protagonista deve ser real.",
       },
       {
         icon: PlayCircle,
         emoji: "🎬",
         title: "Formato",
-        pergunta: "O que carrega o peso da narrativa: vídeo, depoimento, bastidor?",
-        dica: "Reels conecta mais que o produzido.",
+        pergunta: "Qual é o roteiro do vídeo e quais peças saem dele: reels, carrossel, flyer?",
+        exemplo:
+          "Ex.: vídeo de 2 min com a história da coordenadora. Dele saem 3 reels, 1 carrossel e o flyer do prêmio.",
+        dica: "Um roteiro bom vira várias peças. Reels conecta mais que o produzido.",
       },
       {
         icon: Calendar,
         emoji: "📅",
         title: "Calendário",
-        pergunta: "O que sai em cada semana da pré-campanha?",
-        dica: "Deve sustentar duas semanas de conteúdo.",
+        pergunta: "O que sai em cada semana, antes e durante a campanha?",
+        exemplo:
+          "Ex.: semana 1, bastidores e contagem regressiva. Semana 2, vídeo de lançamento. Depois, 3 posts por semana até o sorteio.",
+        dica: "Precisa sustentar conteúdo da pré-campanha até o sorteio.",
       },
     ],
   },
@@ -219,15 +237,18 @@ export const ETAPAS: Etapa[] = [
       {
         icon: MousePointerClick,
         emoji: "🛒",
-        title: "Conversão",
-        pergunta: "O que faz a pessoa confiar e comprar o bilhete na hora?",
-        dica: "Sua página deve converter em segundos.",
+        title: "Plataforma",
+        pergunta: "Qual plataforma vai vender os bilhetes?",
+        exemplo: "Ex.: página própria, compra em uma etapa, Pix e cartão, sem cadastro.",
+        dica: "A compra precisa acontecer em poucos cliques.",
       },
       {
         icon: Megaphone,
         emoji: "🗣️",
         title: "Alcance orgânico",
         pergunta: "Quais influenciadores parceiros podem abraçar essa causa?",
+        exemplo:
+          "Ex.: 4 perfis locais que já visitaram o projeto, o jornal da cidade e 2 grupos de WhatsApp do bairro.",
         dica: "Deve vir de quem já confia em você.",
       },
       {
@@ -235,6 +256,8 @@ export const ETAPAS: Etapa[] = [
         emoji: "💰",
         title: "Tráfego pago",
         pergunta: "Qual será nossa estratégia de tráfego pago?",
+        exemplo:
+          "Ex.: começar com R$ 50 por dia em 3 criativos e escalar só o que vender bilhete abaixo de R$ 30.",
         dica: "Deve manter só o que der ROI.",
       },
     ],
@@ -269,22 +292,28 @@ export const ETAPAS: Etapa[] = [
         icon: Eye,
         emoji: "👀",
         title: "Transparência",
-        pergunta: "Como o sorteio vai ser público e verificável?",
-        dica: "O resultado não pode deixar dúvida.",
+        pergunta: "Como o sorteio e a entrega do prêmio vão ser públicos?",
+        exemplo:
+          "Ex.: sorteio ao vivo no Instagram pela Loteria Federal, com a entrega do prêmio gravada e postada.",
+        dica: "Nem o resultado nem a entrega podem deixar dúvida.",
       },
       {
-        icon: Clock,
-        emoji: "⏱️",
-        title: "Prazo de entrega",
-        pergunta: "Em quanto tempo o prêmio chega na mão de quem ganhou?",
-        dica: "Deve ser rápido.",
+        icon: Camera,
+        emoji: "📸",
+        title: "Prova do resultado",
+        pergunta: "Que foto, vídeo ou documento prova que a meta virou realidade?",
+        exemplo:
+          "Ex.: foto da sala coberta com a turma dentro, no mesmo ângulo da foto do galpão vazio.",
+        dica: "É a transformação da etapa 1, agora em imagem.",
       },
       {
         icon: RefreshCw,
         emoji: "💌",
-        title: "Retorno",
-        pergunta: "O que quem apoiou recebe depois?",
-        dica: "Deve ser visível pra quem apoiou.",
+        title: "Relacionamento",
+        pergunta: "Como mantemos contato com quem apoiou depois da campanha?",
+        exemplo:
+          "Ex.: lista de transmissão com quem comprou bilhete e um post de prestação de contas por trimestre.",
+        dica: "Quem apoiou hoje é quem apoia a próxima.",
       },
     ],
   },

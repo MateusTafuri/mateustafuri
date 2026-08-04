@@ -59,9 +59,6 @@ export const TrilhaEtapas = ({
             >
               {e.title}
             </span>
-            <span className="text-[10px] text-white/35">
-              {m.respondidasNa(e.n)}/{e.canvas.length}
-            </span>
           </button>
         );
       })}
@@ -146,8 +143,8 @@ export const MapaEtapas = ({
     </div>
 
     <p className="mt-3 hidden border-t border-white/10 pt-3 text-[11px] leading-relaxed text-white/45 md:block">
-      Cada quadradinho é uma resposta. Quando os quinze acenderem, a sua
-      campanha está desenhada.
+      Tudo fica salvo neste navegador: pode fechar a página e voltar quando
+      quiser.
     </p>
   </aside>
   );
@@ -220,7 +217,7 @@ export const CampoDobravel = ({
             value={m.respostas[chave] || ""}
             onChange={(ev) => m.responder(chave, ev.target.value)}
             rows={4}
-            placeholder="Escreva aqui a sua resposta"
+            placeholder={bloco.exemplo}
             className="mt-2 w-full resize-y rounded-xl border border-border bg-secondary/30 p-3 text-sm leading-relaxed outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-primary/60 focus:bg-background"
           />
           <div className="mt-3 flex flex-col gap-3 border-t border-border pt-3 sm:flex-row sm:items-center sm:justify-between">

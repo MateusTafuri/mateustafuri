@@ -11,12 +11,18 @@ export const useDragScroll = () => {
   const onPointerDown = (e: React.PointerEvent) => {
     if (e.pointerType !== "mouse" || !ref.current) return;
     drag.current = { ativo: true, x: e.clientX, scroll: ref.current.scrollLeft };
-    ref.current.setPointerCapture(e.pointerId);
   };
 
   const onPointerMove = (e: React.PointerEvent) => {
     if (!drag.current.ativo || !ref.current) return;
-    ref.current.scrollLeft = drag.current.scroll - (e.clientX - drag.current.x);
+    const dx = e.clientX - drag.current.x;
+    // Só captura depois de arrastar de verdade: capturar no pointerdown faz o
+    // clique cair no container e links dentro da faixa param de navegar.
+    if (!ref.current.hasPointerCapture(e.pointerId)) {
+      if (Math.abs(dx) < 5) return;
+      ref.current.setPointerCapture(e.pointerId);
+    }
+    ref.current.scrollLeft = drag.current.scroll - dx;
   };
 
   const onPointerUp = (e: React.PointerEvent) => {

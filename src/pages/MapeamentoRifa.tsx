@@ -156,11 +156,11 @@ const MapeamentoRifa = () => {
                   Falar com Mateus <ArrowRight size={16} />
                 </a>
               </div>
-              <p className="mt-4 text-xs text-muted-foreground">
-                {m.baixado
-                  ? "Arquivo salvo. As suas respostas continuam aqui neste navegador."
-                  : "Salvo automaticamente neste navegador enquanto você escreve."}
-              </p>
+              {m.baixado && (
+                <p className="mt-4 text-xs text-muted-foreground">
+                  Arquivo salvo. As suas respostas continuam aqui neste navegador.
+                </p>
+              )}
             </div>
         </div>
       </main>

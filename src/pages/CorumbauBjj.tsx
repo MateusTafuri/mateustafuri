@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import EmBreveCase from "@/components/EmBreveCase";
 import logo from "@/assets/logo-corumbau.webp";
 import logoTafuri from "@/assets/logo-tafuri.webp";
 import heroImg from "@/assets/case-corumbau-real.webp";
@@ -209,6 +210,8 @@ const CorumbauBjj = () => (
         </p>
       </section>
     </main>
+
+    <EmBreveCase />
 
     {/* CTA */}
     <section className="bg-secondary py-16 px-6 text-center mt-8">

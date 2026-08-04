@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import EmBreveCase from "@/components/EmBreveCase";
 import logo from "@/assets/logo-caraiva.webp";
 import logoTafuri from "@/assets/logo-tafuri.webp";
 import heroImg from "@/assets/caraiva-hero.jpg";
@@ -289,6 +290,8 @@ const DojoCaraiva = () => (
         </p>
       </section>
     </main>
+
+    <EmBreveCase />
 
     {/* CTA */}
     <section className="bg-secondary py-16 px-6 text-center mt-8">
