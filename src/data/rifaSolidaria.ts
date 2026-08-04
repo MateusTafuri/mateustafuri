@@ -30,6 +30,7 @@ export type BlocoCanvas = {
 export type Etapa = {
   n: number;
   title: string;
+  emoji: string;
   chamada: string;
   pergunta: string;
   objetivo: string;
@@ -44,6 +45,7 @@ export const ETAPAS: Etapa[] = [
   {
     n: 1,
     title: "Sonhar",
+    emoji: "💭",
     chamada: "Antes de pensar em prêmio, defina onde você quer chegar.",
     pergunta: "O que queremos alcançar, e por quê?",
     objetivo:
@@ -89,6 +91,7 @@ export const ETAPAS: Etapa[] = [
   {
     n: 2,
     title: "Ofertar",
+    emoji: "🎁",
     chamada: "O prêmio certo faz a pessoa querer participar, mesmo sem conhecer a sua causa.",
     pergunta: "Qual experiência inesquecível vamos sortear e quem serão os parceiros?",
     objetivo:
@@ -134,6 +137,7 @@ export const ETAPAS: Etapa[] = [
   {
     n: 3,
     title: "Contar",
+    emoji: "📣",
     chamada: "Uma causa boa que ninguém conhece não arrecada. A narrativa resolve isso.",
     pergunta: "Como vamos contar essa história?",
     objetivo:
@@ -179,6 +183,7 @@ export const ETAPAS: Etapa[] = [
   {
     n: 4,
     title: "Escalar",
+    emoji: "🚀",
     chamada: "É aqui que a campanha sai do grupo da família e chega no Brasil inteiro.",
     pergunta: "Como levamos isso pra mais gente?",
     objetivo:
@@ -224,6 +229,7 @@ export const ETAPAS: Etapa[] = [
   {
     n: 5,
     title: "Retribuir",
+    emoji: "🤝",
     chamada: "É a etapa que faz o apoiador de hoje virar o apoiador da próxima campanha.",
     pergunta: "Como prestamos contas e agradecemos a quem apoiou?",
     objetivo:

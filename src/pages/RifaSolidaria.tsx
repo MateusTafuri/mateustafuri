@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FeedbackSection from "@/components/FeedbackSection";
-import FundoViaLactea from "@/components/FundoViaLactea";
 import fotoMateus from "@/assets/bonete-mateus.webp";
 import { ETAPAS, WHATSAPP } from "@/data/rifaSolidaria";
 import {
@@ -106,7 +105,6 @@ const RifaSolidaria = () => {
 
         {/* ───── HERO ───── */}
         <header className="relative w-full overflow-hidden px-6 pt-28 pb-16 md:pt-32 md:pb-20 text-white text-center">
-          <FundoViaLactea />
           {/* brilho decorativo */}
           <div
             className="pointer-events-none absolute -top-24 left-1/2 h-80 w-[36rem] -translate-x-1/2 rounded-full opacity-25 blur-3xl"
@@ -147,8 +145,9 @@ const RifaSolidaria = () => {
                 <div key={e.n} className="flex items-center gap-2">
                   <a
                     href="#metodologia"
-                    className="rounded-full border border-white/20 bg-white/[0.06] px-4 py-2 text-sm font-semibold transition-colors hover:border-[hsl(15,65%,56%)]/60 hover:bg-white/[0.12]"
+                    className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.06] px-4 py-2 text-sm font-semibold transition-colors hover:border-[hsl(15,65%,56%)]/60 hover:bg-white/[0.12]"
                   >
+                    <span className="text-base leading-none">{e.emoji}</span>
                     {e.title}
                   </a>
                   {i < ETAPAS.length - 1 && (
@@ -219,16 +218,16 @@ const RifaSolidaria = () => {
                     className="flex w-full items-center gap-4 px-5 py-4 text-left transition-colors hover:bg-secondary/30"
                   >
                     <span
-                      className={`grid h-9 w-9 shrink-0 place-items-center rounded-full text-sm font-bold transition-colors ${
-                        aberta
-                          ? "bg-primary text-primary-foreground"
-                          : "bg-secondary text-secondary-foreground"
+                      className={`grid h-9 w-9 shrink-0 place-items-center rounded-full text-lg transition-colors ${
+                        aberta ? "bg-primary/15" : "bg-secondary"
                       }`}
                     >
-                      {e.n}
+                      {e.emoji}
                     </span>
                     <span className="flex-1 min-w-0">
-                      <span className="font-bold block">{e.title}</span>
+                      <span className="font-bold block">
+                        {e.n}. {e.title}
+                      </span>
                       <span className="text-sm text-muted-foreground">{e.pergunta}</span>
                     </span>
                     <ChevronDown
