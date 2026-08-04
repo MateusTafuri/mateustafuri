@@ -4,10 +4,10 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FeedbackSection from "@/components/FeedbackSection";
 import Confetes from "@/components/Confetes";
-import fotoMateus from "@/assets/bonete-mateus.webp";
 import fotoTurma from "@/assets/story-16.webp";
-import fotoCaraiva from "@/assets/story-13.webp";
 import fotoCampeonato from "@/assets/story-20.webp";
+import fotoRifa1 from "@/assets/caraiva-rifa-1.webp";
+import fotoRifa2 from "@/assets/caraiva-rifa-2.webp";
 import logoTafuri from "@/assets/logo-tafuri.webp";
 import { useDragScroll } from "@/hooks/use-drag-scroll";
 import { ETAPAS, WHATSAPP } from "@/data/rifaSolidaria";
@@ -67,38 +67,44 @@ const NUMEROS = [
   { valor: "1,2M+", label: "pessoas alcançadas" },
 ];
 
-/* Retrato que troca sozinho: quatro fotos em crossfade, sem sair do card */
+/* Retrato que troca sozinho, em crossfade, sem sair do card */
 const RETRATOS = [
-  {
-    src: fotoMateus,
-    pos: "center 35%",
-    alt: "Mateus Tafuri em frente ao dojo, segurando o cartaz de uma Rifa Solidária",
-  },
   {
     src: fotoTurma,
     pos: "center 45%",
+    zoom: 1,
     alt: "Mateus com a turma de jiu jitsu do Dojo Bonete, sentados no deck",
   },
   {
-    src: fotoCaraiva,
+    src: fotoCampeonato,
     pos: "center 40%",
-    alt: "Mateus ajeitando o kimono de uma criança na praia de Caraíva",
+    zoom: 1.12, // aproxima um pouco: a foto é aberta demais no enquadramento
+    alt: "Mateus e os atletas do projeto depois de um campeonato",
   },
   {
-    src: fotoCampeonato,
-    pos: "center 35%",
-    alt: "Mateus e os atletas do projeto depois de um campeonato",
+    src: fotoRifa1,
+    pos: "center",
+    zoom: 1,
+    alt: "Mateus e uma aluna do Dojo Caraíva com o cartaz da Rifa Solidária, na escada da praia",
+  },
+  {
+    src: fotoRifa2,
+    pos: "center",
+    zoom: 1,
+    alt: "Mateus e uma aluna de kimono azul segurando o cartaz da Rifa Solidária do Dojo Caraíva",
   },
 ];
 
 const RetratoRotativo = () => {
   const [i, setI] = useState(0);
 
+  // depende de `i`: clicar num pontinho reinicia a contagem em vez de
+  // deixar a troca automática atropelar a escolha logo em seguida
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const t = setInterval(() => setI((n) => (n + 1) % RETRATOS.length), 4500);
-    return () => clearInterval(t);
-  }, []);
+    const t = setTimeout(() => setI((n) => (n + 1) % RETRATOS.length), 4500);
+    return () => clearTimeout(t);
+  }, [i]);
 
   return (
     <div className="relative mx-auto aspect-[4/5] w-full max-w-[280px] overflow-hidden rounded-3xl md:max-w-none">
@@ -112,7 +118,11 @@ const RetratoRotativo = () => {
           className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${
             idx === i ? "opacity-100" : "opacity-0"
           }`}
-          style={{ objectPosition: f.pos }}
+          style={{
+            objectPosition: f.pos,
+            transform: f.zoom === 1 ? undefined : `scale(${f.zoom})`,
+            transformOrigin: f.pos,
+          }}
         />
       ))}
 
@@ -224,7 +234,7 @@ const RifaSolidaria = () => {
               </span>
             </h1>
             <p className="mt-5 sm:mt-6 max-w-2xl mx-auto text-white/75 text-base sm:text-lg leading-relaxed">
-              Cinco etapas entre a sua causa e o valor que ela precisa.
+              Cinco etapas entre o seu projeto e o valor que ele precisa.
             </p>
 
             {/* trilha das etapas */}
@@ -259,8 +269,7 @@ const RifaSolidaria = () => {
           <div>
             <p className="font-bold">Veio pelo poster do Festival ABCR? Que bom ter você aqui.</p>
             <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
-              Aqui você pode planejar a sua Rifa Solidária de maneira simples e
-              gratuita.
+              Planeje a sua Rifa Solidária de maneira simples e gratuita.
             </p>
           </div>
         </div>
@@ -443,13 +452,14 @@ const RifaSolidaria = () => {
               </p>
               <div className="space-y-3 text-muted-foreground leading-relaxed">
                 <p>
-                  Três projetos em comunidades isoladas precisavam de dinheiro e
-                  não tinham como captar. A rifa foi a saída, e o que funcionou
-                  virou método.
+                  Como captar recursos para projetos isolados sem acesso a
+                  grandes financiadores? A solução foi estruturar rifas
+                  solidárias focadas em turismo de experiência.
                 </p>
                 <p>
-                  Do Bonete ao Corumbau, sempre as mesmas cinco etapas. São elas
-                  que estão abertas aqui.
+                  O que começou como uma saída emergencial virou um método
+                  validado: do Bonete a Caraíva e Corumbau, apliquei sempre as
+                  mesmas cinco etapas. São elas que abro detalhadamente aqui.
                 </p>
               </div>
               <a
@@ -528,7 +538,7 @@ const RifaSolidaria = () => {
       </section>
 
       {/* ───── DEPOIMENTOS ───── */}
-      <FeedbackSection />
+      <FeedbackSection titulo="O que dizem sobre a metodologia" />
 
       {/* ───── CTA FINAL ───── */}
       <section className="bg-secondary py-16 px-5 sm:px-6 text-center">

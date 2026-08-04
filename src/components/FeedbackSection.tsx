@@ -37,7 +37,11 @@ const feedbacks = [
   },
 ];
 
-const FeedbackSection = () => {
+const FeedbackSection = ({
+  titulo = "O que dizem sobre minhas campanhas",
+}: {
+  titulo?: string;
+}) => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
 
@@ -58,9 +62,7 @@ const FeedbackSection = () => {
       <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-1">
         Depoimentos
       </p>
-      <h2 className="text-2xl md:text-3xl font-bold mb-10">
-        O que dizem sobre minhas campanhas
-      </h2>
+      <h2 className="text-2xl md:text-3xl font-bold mb-10">{titulo}</h2>
 
       <Carousel opts={{ loop: true }} setApi={setApi} className="w-full">
         <CarouselContent>
