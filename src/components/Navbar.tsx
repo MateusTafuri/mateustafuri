@@ -3,8 +3,21 @@ import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import logoTafuri from "@/assets/logo-tafuri.webp";
 
-const Navbar = () => {
+export type ItemMenu = { label: string; href: string };
+
+/** Menu da home. Cada página pode passar os próprios itens, ou uma lista
+    vazia para não mostrar nenhum. */
+const PADRAO: ItemMenu[] = [
+  { label: "Campanhas", href: "#cases" },
+  { label: "Rifa Solidária", href: "/rifa-solidaria" },
+  { label: "Trajetória", href: "#trajetoria" },
+  { label: "História", href: "#historia" },
+  { label: "Depoimentos", href: "#feedbacks" },
+];
+
+const Navbar = ({ links = PADRAO }: { links?: ItemMenu[] }) => {
   const [open, setOpen] = useState(false);
+  const simples = links.length === 0;
 
   return (
     <nav className="absolute top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 bg-transparent">
@@ -28,47 +41,55 @@ const Navbar = () => {
         </span>
       </Link>
 
-      <div className="hidden md:flex items-center gap-6 text-sm text-white/90 drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]">
-        <a href="#cases" className="hover:text-green-accent transition-colors">Campanhas</a>
-        <Link to="/rifa-solidaria" className="hover:text-green-accent transition-colors">Rifa Solidária</Link>
-        <a href="#trajetoria" className="hover:text-green-accent transition-colors">Trajetória</a>
-        <a href="#historia" className="hover:text-green-accent transition-colors">História</a>
-        <a href="#feedbacks" className="hover:text-green-accent transition-colors">Depoimentos</a>
-      </div>
+      {!simples && (
+        <div className="hidden md:flex items-center gap-6 text-sm text-white/90 drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]">
+          {links.map((l) =>
+            l.href.startsWith("/") ? (
+              <Link key={l.href} to={l.href} className="hover:text-green-accent transition-colors">
+                {l.label}
+              </Link>
+            ) : (
+              <a key={l.href} href={l.href} className="hover:text-green-accent transition-colors">
+                {l.label}
+              </a>
+            ),
+          )}
+        </div>
+      )}
 
       <a
         href="https://wa.me/5567998860067"
         target="_blank"
         rel="noopener noreferrer"
-        className="hidden md:inline-block relative z-0 text-white border border-green-accent/40 px-5 py-2 rounded-full text-sm font-medium transition-colors backdrop-blur-sm overflow-hidden"
-        style={{
-          backgroundImage:
-            "linear-gradient(135deg, hsl(80 15% 25%) 0%, hsl(80 17% 33%) 60%, hsl(82 20% 42%) 100%)",
-        }}
+        className={`relative z-0 bg-primary${simples ? "" : " hidden md:inline-block"} text-primary-foreground px-4 py-2 sm:px-5 rounded-full text-sm font-semibold transition-opacity hover:opacity-90`}
       >
         Entrar em contato
       </a>
 
+      {!simples && (
       <button onClick={() => setOpen(!open)} className="md:hidden text-green-accent drop-shadow">
         {open ? <X size={22} /> : <Menu size={22} />}
       </button>
+      )}
 
-      {open && (
-        <div className="absolute top-full left-0 right-0 bg-primary/95 backdrop-blur-md flex flex-col p-4 gap-3 md:hidden">
-          <a href="#cases" onClick={() => setOpen(false)} className="text-sm text-white hover:text-green-accent">Campanhas</a>
-          <Link to="/rifa-solidaria" onClick={() => setOpen(false)} className="text-sm text-white hover:text-green-accent">Rifa Solidária</Link>
-          <a href="#trajetoria" onClick={() => setOpen(false)} className="text-sm text-white hover:text-green-accent">Trajetória</a>
-          <a href="#historia" onClick={() => setOpen(false)} className="text-sm text-white hover:text-green-accent">História</a>
-          <a href="#feedbacks" onClick={() => setOpen(false)} className="text-sm text-white hover:text-green-accent">Depoimentos</a>
+      {open && !simples && (
+        <div className="absolute top-full left-0 right-0 bg-green-dark/95 backdrop-blur-md flex flex-col p-4 gap-3 md:hidden">
+          {links.map((l) =>
+            l.href.startsWith("/") ? (
+              <Link key={l.href} to={l.href} onClick={() => setOpen(false)} className="text-sm text-white hover:text-green-accent">
+                {l.label}
+              </Link>
+            ) : (
+              <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="text-sm text-white hover:text-green-accent">
+                {l.label}
+              </a>
+            ),
+          )}
           <a
             href="https://wa.me/5567998860067"
             target="_blank"
             rel="noopener noreferrer"
-            className="relative z-0 text-white border border-green-accent/40 px-5 py-2 rounded-full text-sm font-medium text-center backdrop-blur-sm overflow-hidden"
-            style={{
-              backgroundImage:
-                "linear-gradient(135deg, hsl(80 15% 25%) 0%, hsl(80 17% 33%) 60%, hsl(82 20% 42%) 100%)",
-            }}
+            className="relative z-0 bg-primary text-primary-foreground px-5 py-2 rounded-full text-sm font-semibold text-center transition-opacity hover:opacity-90"
           >
             Entrar em contato
           </a>

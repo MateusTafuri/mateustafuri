@@ -36,6 +36,7 @@ const MapeamentoRifa = () => {
           "--accent-foreground": "0 0% 100%",
           "--border": "42 22% 84%",
           "--green-dark": "178 36% 22%",
+          "--green-accent": "15 65% 56%",
           "--ring": "15 65% 56%",
         } as CSSProperties
       }
@@ -46,7 +47,7 @@ const MapeamentoRifa = () => {
             "linear-gradient(150deg, hsl(176 44% 13%) 0%, hsl(178 40% 19%) 55%, hsl(181 38% 27%) 100%)",
         }}
       >
-        <Navbar />
+        <Navbar links={[]} />
 
         {/* ───── CABEÇALHO ───── */}
         <header className="px-5 pt-24 pb-12 sm:px-6 md:pt-28 md:pb-14 text-white">

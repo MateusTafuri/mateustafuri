@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { ETAPAS, type BlocoCanvas, type Etapa } from "@/data/rifaSolidaria";
 import { chaveDe, TOTAL, type Mapeamento } from "@/hooks/use-mapeamento";
 import { ArrowLeft, ArrowRight, Check, ChevronDown } from "lucide-react";
@@ -68,7 +69,8 @@ export const TrilhaEtapas = ({
   </div>
 );
 
-/** Mapa das 15 respostas: em cima no celular, à esquerda no desktop */
+/** Progresso das 15 respostas. No celular vem recolhido e abre no toque;
+    no desktop fica sempre aberto na coluna da esquerda. */
 export const MapaEtapas = ({
   m,
   i,
@@ -77,26 +79,44 @@ export const MapaEtapas = ({
   m: Mapeamento;
   i: number;
   irPara: (n: number) => void;
-}) => (
+}) => {
+  const [aberto, setAberto] = useState(false);
+
+  return (
   <aside
     className="h-max min-w-0 rounded-3xl p-4 text-white sm:p-5 md:sticky md:top-6"
     style={{ backgroundColor: PETROLEO }}
   >
-    <div className="flex items-baseline justify-between gap-3">
+    <button
+      onClick={() => setAberto((v) => !v)}
+      aria-expanded={aberto}
+      className="flex w-full items-center justify-between gap-3 text-left md:cursor-default"
+    >
       <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/50">
-        Seu mapa
+        Seu progresso
       </p>
-      <p className="text-2xl font-bold md:hidden">
-        {m.totalPreenchidas}
-        <span className="text-base font-semibold text-white/45">/{TOTAL}</span>
-      </p>
-    </div>
+      <span className="flex items-center gap-2 md:hidden">
+        <span className="text-2xl font-bold">
+          {m.totalPreenchidas}
+          <span className="text-base font-semibold text-white/45">/{TOTAL}</span>
+        </span>
+        <ChevronDown
+          size={18}
+          className="text-white/50 transition-transform"
+          style={{ transform: aberto ? "rotate(180deg)" : "none" }}
+        />
+      </span>
+    </button>
     <p className="mt-1 hidden text-2xl font-bold md:block">
       {m.totalPreenchidas}
       <span className="text-base font-semibold text-white/45">/{TOTAL}</span>
     </p>
 
-    <div className="mt-3 space-y-1.5 md:mt-4 md:space-y-2">
+    <div
+      className={`mt-3 space-y-1.5 md:mt-4 md:block md:space-y-2 ${
+        aberto ? "block" : "hidden"
+      }`}
+    >
       {ETAPAS.map((e, idx) => (
         <button
           key={e.n}
@@ -130,7 +150,8 @@ export const MapaEtapas = ({
       campanha está desenhada.
     </p>
   </aside>
-);
+  );
+};
 
 /** Campo que abre e fecha: só um fica aberto por vez dentro da etapa */
 export const CampoDobravel = ({

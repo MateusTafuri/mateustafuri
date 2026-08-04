@@ -1,10 +1,13 @@
-import { useState, type CSSProperties } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FeedbackSection from "@/components/FeedbackSection";
 import Confetes from "@/components/Confetes";
 import fotoMateus from "@/assets/bonete-mateus.webp";
+import fotoTurma from "@/assets/story-16.webp";
+import fotoCaraiva from "@/assets/story-13.webp";
+import fotoCampeonato from "@/assets/story-20.webp";
 import logoTafuri from "@/assets/logo-tafuri.webp";
 import { useDragScroll } from "@/hooks/use-drag-scroll";
 import { ETAPAS, WHATSAPP } from "@/data/rifaSolidaria";
@@ -17,6 +20,14 @@ import {
 } from "lucide-react";
 
 /* ─────────── DATA ─────────── */
+
+const MENU = [
+  { label: "O método", href: "#metodologia" },
+  { label: "Mapeamento", href: "#mapeamento" },
+  { label: "Sobre", href: "#sobre" },
+  { label: "Cases", href: "#cases" },
+  { label: "Depoimentos", href: "#feedbacks" },
+];
 
 const PASSOS = [
   { n: "1", title: "Abra o link", text: "Sem cadastro nem login." },
@@ -56,6 +67,71 @@ const NUMEROS = [
   { valor: "1,2M+", label: "pessoas alcançadas" },
 ];
 
+/* Retrato que troca sozinho: quatro fotos em crossfade, sem sair do card */
+const RETRATOS = [
+  {
+    src: fotoMateus,
+    pos: "center 35%",
+    alt: "Mateus Tafuri em frente ao dojo, segurando o cartaz de uma Rifa Solidária",
+  },
+  {
+    src: fotoTurma,
+    pos: "center 45%",
+    alt: "Mateus com a turma de jiu jitsu do Dojo Bonete, sentados no deck",
+  },
+  {
+    src: fotoCaraiva,
+    pos: "center 40%",
+    alt: "Mateus ajeitando o kimono de uma criança na praia de Caraíva",
+  },
+  {
+    src: fotoCampeonato,
+    pos: "center 35%",
+    alt: "Mateus e os atletas do projeto depois de um campeonato",
+  },
+];
+
+const RetratoRotativo = () => {
+  const [i, setI] = useState(0);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const t = setInterval(() => setI((n) => (n + 1) % RETRATOS.length), 4500);
+    return () => clearInterval(t);
+  }, []);
+
+  return (
+    <div className="relative mx-auto aspect-[4/5] w-full max-w-[280px] overflow-hidden rounded-3xl md:max-w-none">
+      {RETRATOS.map((f, idx) => (
+        <img
+          key={f.src}
+          src={f.src}
+          alt={idx === i ? f.alt : ""}
+          aria-hidden={idx !== i}
+          loading={idx === 0 ? "eager" : "lazy"}
+          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${
+            idx === i ? "opacity-100" : "opacity-0"
+          }`}
+          style={{ objectPosition: f.pos }}
+        />
+      ))}
+
+      <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-1.5">
+        {RETRATOS.map((f, idx) => (
+          <button
+            key={f.src}
+            onClick={() => setI(idx)}
+            aria-label={`Foto ${idx + 1} de ${RETRATOS.length}`}
+            className={`h-1.5 rounded-full transition-all ${
+              idx === i ? "w-5 bg-white" : "w-1.5 bg-white/50 hover:bg-white/80"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
 /* ─────────── PAGE ─────────── */
 
 const RifaSolidaria = () => {
@@ -76,6 +152,7 @@ const RifaSolidaria = () => {
           "--accent-foreground": "0 0% 100%",
           "--border": "42 22% 84%",
           "--green-dark": "178 36% 22%",
+          "--green-accent": "15 65% 56%",
           "--ring": "15 65% 56%",
         } as CSSProperties
       }
@@ -90,7 +167,7 @@ const RifaSolidaria = () => {
             "linear-gradient(120deg, hsl(176 44% 12%), hsl(178 40% 18%), hsl(184 36% 30%) 40%, hsl(15 45% 32%) 58%, hsl(178 40% 20%) 80%, hsl(176 44% 12%))",
         }}
       >
-        <Navbar />
+        <Navbar links={MENU} />
 
         {/* setas de rolagem, coladas na borda de baixo do header */}
         <a
@@ -112,7 +189,9 @@ const RifaSolidaria = () => {
         </a>
 
         {/* ───── HERO ───── */}
-        <header className="relative w-full overflow-hidden px-5 sm:px-6 pt-24 pb-12 sm:pt-28 sm:pb-16 md:pt-32 md:pb-20 text-white text-center">
+        {/* sem overflow-hidden aqui: ele cortava o brilho decorativo numa linha
+            reta. O container do degradê já recorta o que passar da faixa. */}
+        <header className="relative w-full px-5 sm:px-6 pt-24 pb-12 sm:pt-28 sm:pb-16 md:pt-32 md:pb-20 text-white text-center">
           {/* brilho decorativo */}
           <div
             className="pointer-events-none absolute -top-24 left-1/2 h-80 w-[36rem] -translate-x-1/2 rounded-full opacity-25 blur-3xl"
@@ -350,16 +429,10 @@ const RifaSolidaria = () => {
       </section>
 
       {/* ───── QUEM CONDUZ ───── */}
-      <section className="px-5 sm:px-6 py-16 md:py-20 bg-secondary/40">
+      <section id="sobre" className="scroll-mt-20 px-5 sm:px-6 py-16 md:py-20 bg-secondary/40">
         <div className="max-w-4xl mx-auto">
           <div className="grid gap-8 md:gap-10 md:grid-cols-[300px_1fr] md:items-center">
-            <img
-              src={fotoMateus}
-              alt="Mateus Tafuri em frente ao dojo, segurando o cartaz de uma Rifa Solidária"
-              className="w-full max-w-[280px] mx-auto md:max-w-none rounded-3xl object-cover aspect-[4/5]"
-              style={{ objectPosition: "center 35%" }}
-              loading="lazy"
-            />
+            <RetratoRotativo />
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary mb-3">
                 Quem criou o método
@@ -406,7 +479,7 @@ const RifaSolidaria = () => {
           </div>
 
           {/* rifas na prática */}
-          <h3 className="mt-12 mb-1 text-lg sm:text-xl font-bold">
+          <h3 id="cases" className="scroll-mt-24 mt-12 mb-1 text-lg sm:text-xl font-bold">
             As rifas que originaram o método
           </h3>
           <p className="text-sm text-muted-foreground mb-5 leading-relaxed">
