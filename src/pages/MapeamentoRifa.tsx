@@ -6,6 +6,7 @@ import {
   CampoDobravel,
   MapaEtapas,
   NavegacaoEtapas,
+  TrilhaEtapas,
 } from "@/components/MapeamentoCampos";
 import { ETAPAS, WHATSAPP } from "@/data/rifaSolidaria";
 import { useMapeamento } from "@/hooks/use-mapeamento";
@@ -14,13 +15,12 @@ import { ArrowLeft, ArrowRight, Download } from "lucide-react";
 const MapeamentoRifa = () => {
   const m = useMapeamento();
   const [i, setI] = useState(0);
-  const [aberto, setAberto] = useState(0);
+  const [aberto, setAberto] = useState(-1);
   const etapa = ETAPAS[i];
 
-  // trocar de etapa sempre reabre a primeira pergunta dela
   const irPara = (n: number) => {
     setI(n);
-    setAberto(0);
+    setAberto(-1); // a etapa sempre abre com as perguntas fechadas
   };
 
   return (
@@ -49,39 +49,30 @@ const MapeamentoRifa = () => {
         <Navbar />
 
         {/* ───── CABEÇALHO ───── */}
-        <header className="px-5 pt-28 pb-12 sm:px-6 md:pt-32 md:pb-14 text-white">
-          <div className="mx-auto max-w-5xl">
+        <header className="px-5 pt-24 pb-12 sm:px-6 md:pt-28 md:pb-14 text-white">
+          <div className="mx-auto max-w-4xl">
             <Link
               to="/rifa-solidaria"
-              className="mb-8 inline-flex items-center gap-2 text-sm text-white/60 transition-colors hover:text-[hsl(15,65%,56%)]"
+              className="inline-flex items-center gap-2 text-sm text-white/60 transition-colors hover:text-[hsl(15,65%,56%)]"
             >
               <ArrowLeft size={16} /> Voltar para a metodologia
             </Link>
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-[hsl(15,65%,56%)]">
-              Ferramenta gratuita
-            </p>
-            <h1 className="text-3xl font-bold leading-tight tracking-tight md:text-5xl">
-              Mapeamento Rifa Solidária
-            </h1>
-            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-white/75">
-              Uma pergunta de cada vez, etapa por etapa, até a sua campanha estar
-              desenhada. O que você escrever fica guardado neste navegador.
-            </p>
 
-            <div className="mt-8 max-w-md">
-              <label
-                htmlFor="organizacao"
-                className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-white/60"
-              >
-                Organização ou campanha
-              </label>
-              <input
-                id="organizacao"
-                value={m.respostas.organizacao || ""}
-                onChange={(ev) => m.responder("organizacao", ev.target.value)}
-                placeholder="Ex: Projeto Social Dojo Bonete"
-                className="w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-white outline-none transition-colors placeholder:text-white/40 focus:border-[hsl(15,65%,56%)]"
-              />
+            <div className="mt-8 text-center">
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[hsl(15,65%,56%)]">
+                Ferramenta gratuita
+              </p>
+              <h1 className="mt-3 text-3xl font-bold leading-tight tracking-tight md:text-5xl">
+                Mapeamento Rifa Solidária
+              </h1>
+              <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-white/70 md:text-lg">
+                Uma pergunta de cada vez, até a sua campanha estar desenhada.
+              </p>
+            </div>
+
+            {/* trilha: dá para trocar de etapa por aqui também */}
+            <div className="mt-10 md:mt-12">
+              <TrilhaEtapas m={m} i={i} irPara={irPara} />
             </div>
           </div>
         </header>
@@ -89,18 +80,23 @@ const MapeamentoRifa = () => {
 
       {/* ───── PREENCHIMENTO ───── */}
       <main className="px-5 py-10 sm:px-6 md:py-14">
-        <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-[220px_1fr]">
+        <div className="mx-auto grid max-w-4xl gap-4 md:grid-cols-[230px_minmax(0,1fr)] md:gap-6">
           <MapaEtapas m={m} i={i} irPara={irPara} />
 
-          <div className="min-w-0">
-            <div className="mb-4 flex items-center gap-3">
-              <span className="text-2xl leading-none">{etapa.emoji}</span>
-              <div>
-                <h2 className="text-xl font-bold">
-                  {etapa.n}. {etapa.title}
-                </h2>
-                <p className="text-sm text-muted-foreground">{etapa.chamada}</p>
+          <div className="min-w-0 rounded-3xl border border-border bg-card p-4 shadow-sm sm:p-6">
+            <div className="mb-5 flex items-start gap-3 border-b border-border pb-5">
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-secondary text-xl">
+                {etapa.emoji}
+              </span>
+              <div className="min-w-0 flex-1">
+                <h2 className="text-lg font-bold sm:text-xl">{etapa.title}</h2>
+                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                  {etapa.chamada}
+                </p>
               </div>
+              <span className="shrink-0 rounded-full bg-secondary px-3 py-1 text-xs font-bold text-primary">
+                {m.respondidasNa(etapa.n)}/{etapa.canvas.length}
+              </span>
             </div>
 
             <div className="space-y-2">
@@ -129,9 +125,12 @@ const MapeamentoRifa = () => {
               total={ETAPAS.length}
               rotulo={`Etapa ${i + 1} de ${ETAPAS.length}`}
             />
+          </div>
+        </div>
 
-            {/* ───── ENCERRAMENTO ───── */}
-            <div className="mt-10 rounded-3xl border border-primary/30 bg-secondary/40 p-6 text-center md:p-8">
+        {/* ───── ENCERRAMENTO ───── */}
+        <div className="mx-auto mt-8 max-w-4xl md:mt-10">
+          <div className="rounded-3xl border border-primary/30 bg-secondary/40 p-6 text-center md:p-8">
               <h2 className="text-xl font-bold md:text-2xl">
                 Terminou o mapeamento?
               </h2>
@@ -162,7 +161,6 @@ const MapeamentoRifa = () => {
                   : "Salvo automaticamente neste navegador enquanto você escreve."}
               </p>
             </div>
-          </div>
         </div>
       </main>
 

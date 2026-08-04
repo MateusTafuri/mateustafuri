@@ -7,6 +7,67 @@ import { ArrowLeft, ArrowRight, Check, ChevronDown } from "lucide-react";
 
 const PETROLEO = "hsl(176 39% 14%)";
 
+/** Trilha das 5 etapas em bolinhas, para trocar de etapa direto do cabeçalho */
+export const TrilhaEtapas = ({
+  m,
+  i,
+  irPara,
+}: {
+  m: Mapeamento;
+  i: number;
+  irPara: (n: number) => void;
+}) => (
+  <div className="relative">
+    <div className="grid grid-cols-5 gap-1">
+      {ETAPAS.map((e, idx) => {
+        const feita = m.completa(e.n);
+        const atual = idx === i;
+        return (
+          <button
+            key={e.n}
+            onClick={() => irPara(idx)}
+            aria-current={atual ? "step" : undefined}
+            className="group relative flex flex-col items-center gap-2 px-1 text-center"
+          >
+            {/* traço só entre uma bolinha e a anterior, nunca por dentro delas */}
+            {idx > 0 && (
+              <span
+                aria-hidden
+                className="pointer-events-none absolute top-6 h-px bg-white/15"
+                style={{
+                  right: "calc(50% + 26px)",
+                  width: "calc(100% - 48px)",
+                }}
+              />
+            )}
+            <span
+              className={`grid h-12 w-12 place-items-center rounded-full text-sm font-bold transition-colors ${
+                atual
+                  ? "bg-[hsl(15,65%,56%)] text-white ring-4 ring-[hsl(15,65%,56%)]/25"
+                  : feita
+                    ? "bg-[hsl(15,65%,56%)]/25 text-white"
+                    : "bg-white/10 text-white/60 group-hover:bg-white/20"
+              }`}
+            >
+              {feita && !atual ? <Check size={17} strokeWidth={3} /> : e.n}
+            </span>
+            <span
+              className={`text-[11px] font-semibold leading-tight sm:text-xs ${
+                atual ? "text-white" : "text-white/55"
+              }`}
+            >
+              {e.title}
+            </span>
+            <span className="text-[10px] text-white/35">
+              {m.respondidasNa(e.n)}/{e.canvas.length}
+            </span>
+          </button>
+        );
+      })}
+    </div>
+  </div>
+);
+
 /** Mapa das 15 respostas: em cima no celular, à esquerda no desktop */
 export const MapaEtapas = ({
   m,
@@ -141,12 +202,12 @@ export const CampoDobravel = ({
             placeholder="Escreva aqui a sua resposta"
             className="mt-2 w-full resize-y rounded-xl border border-border bg-secondary/30 p-3 text-sm leading-relaxed outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-primary/60 focus:bg-background"
           />
-          <div className="mt-3 flex items-center justify-between gap-3 border-t border-border pt-3">
-            <p className="text-xs italic text-primary">{bloco.dica}</p>
+          <div className="mt-3 flex flex-col gap-3 border-t border-border pt-3 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-xs italic leading-relaxed text-primary">{bloco.dica}</p>
             {proxima && (
               <button
                 onClick={proxima}
-                className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-xs font-semibold transition-colors hover:bg-secondary/50"
+                className="inline-flex shrink-0 items-center justify-center gap-1.5 self-start rounded-full border border-border px-4 py-2 text-xs font-semibold transition-colors hover:bg-secondary/50 sm:self-auto sm:px-3 sm:py-1.5"
               >
                 Próxima <ArrowRight size={13} />
               </button>
@@ -177,7 +238,9 @@ export const NavegacaoEtapas = ({
     >
       <ArrowLeft size={16} /> Voltar
     </button>
-    <span className="text-xs text-muted-foreground">{rotulo}</span>
+    <span className="whitespace-nowrap text-[11px] text-muted-foreground sm:text-xs">
+      {rotulo}
+    </span>
     <button
       onClick={() => setI(Math.min(total - 1, i + 1))}
       disabled={i === total - 1}

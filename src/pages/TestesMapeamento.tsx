@@ -322,13 +322,13 @@ const UmaPorVez = ({ m }: { m: Mapeamento }) => {
 
 const Grade = ({ m }: { m: Mapeamento }) => {
   const [i, setI] = useState(0);
-  const [aberto, setAberto] = useState(0);
+  const [aberto, setAberto] = useState(-1);
   const etapa = ETAPAS[i];
 
   // trocar de etapa sempre reabre a primeira pergunta
   const irPara = (n: number) => {
     setI(n);
-    setAberto(0);
+    setAberto(-1); // a etapa sempre abre com as perguntas fechadas
   };
 
   return (
