@@ -248,7 +248,6 @@ const RifaSolidaria = () => {
                           <p className="text-sm text-muted-foreground mt-1.5 leading-snug">
                             {bloco.pergunta}
                           </p>
-                          <p className="mt-2 text-xs italic text-primary">{bloco.dica}</p>
                         </div>
                       ))}
                     </div>
