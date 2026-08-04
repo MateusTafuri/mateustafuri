@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ETAPAS, type BlocoCanvas, type Etapa } from "@/data/rifaSolidaria";
 import { chaveDe, TOTAL, type Mapeamento } from "@/hooks/use-mapeamento";
 import { ArrowLeft, ArrowRight, Check, ChevronDown } from "lucide-react";
@@ -8,8 +8,9 @@ import { ArrowLeft, ArrowRight, Check, ChevronDown } from "lucide-react";
 
 const PETROLEO = "hsl(176 39% 14%)";
 
-/** Trilha das 5 etapas em bolinhas, para trocar de etapa direto do cabeçalho */
-export const TrilhaEtapas = ({
+/** As 5 etapas em pílulas numa faixa que gruda no topo e acompanha a rolagem.
+    A faixa rola sozinha para manter a etapa aberta no centro. */
+export const PilulasEtapas = ({
   m,
   i,
   irPara,
@@ -17,54 +18,56 @@ export const TrilhaEtapas = ({
   m: Mapeamento;
   i: number;
   irPara: (n: number) => void;
-}) => (
-  <div className="relative">
-    <div className="grid grid-cols-5 gap-1">
-      {ETAPAS.map((e, idx) => {
-        const feita = m.completa(e.n);
-        const atual = idx === i;
-        return (
-          <button
-            key={e.n}
-            onClick={() => irPara(idx)}
-            aria-current={atual ? "step" : undefined}
-            className="group relative flex flex-col items-center gap-2 px-1 text-center"
-          >
-            {/* traço só entre uma bolinha e a anterior, nunca por dentro delas */}
-            {idx > 0 && (
-              <span
-                aria-hidden
-                className="pointer-events-none absolute top-6 h-px bg-white/15"
-                style={{
-                  right: "calc(50% + 26px)",
-                  width: "calc(100% - 48px)",
-                }}
-              />
-            )}
-            <span
-              className={`grid h-12 w-12 place-items-center rounded-full text-sm font-bold transition-colors ${
+}) => {
+  const faixa = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    faixa.current?.children[i]?.scrollIntoView({
+      behavior: "smooth",
+      inline: "center",
+      block: "nearest",
+    });
+  }, [i]);
+
+  return (
+    <div className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur-md">
+      <div
+        ref={faixa}
+        className="mx-auto flex max-w-2xl justify-center gap-2 overflow-x-auto px-5 py-2.5 sm:px-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      >
+        {ETAPAS.map((e, idx) => {
+          const atual = idx === i;
+          return (
+            <button
+              key={e.n}
+              onClick={() => irPara(idx)}
+              aria-current={atual ? "step" : undefined}
+              className={`flex shrink-0 items-center gap-1.5 rounded-full border py-1.5 text-xs font-semibold transition-all ${
                 atual
-                  ? "bg-[hsl(15,65%,56%)] text-white ring-4 ring-[hsl(15,65%,56%)]/25"
-                  : feita
-                    ? "bg-[hsl(15,65%,56%)]/25 text-white"
-                    : "bg-white/10 text-white/60 group-hover:bg-white/20"
+                  ? "border-primary bg-primary px-3.5 text-primary-foreground"
+                  : "border-border px-2.5 text-muted-foreground hover:bg-secondary/50"
               }`}
             >
-              {feita && !atual ? <Check size={17} strokeWidth={3} /> : e.n}
-            </span>
-            <span
-              className={`text-[11px] font-semibold leading-tight sm:text-xs ${
-                atual ? "text-white" : "text-white/55"
-              }`}
-            >
-              {e.title}
-            </span>
-          </button>
-        );
-      })}
+              {m.completa(e.n) && !atual ? (
+                <Check size={13} strokeWidth={3} className="text-primary" />
+              ) : (
+                <span>{e.n}</span>
+              )}
+              {atual && <span>{e.title}</span>}
+            </button>
+          );
+        })}
+      </div>
+      {/* fio de progresso: o único lugar onde as 15 respostas aparecem somadas */}
+      <div className="h-0.5 bg-secondary">
+        <div
+          className="h-full bg-primary transition-all duration-300"
+          style={{ width: `${(m.totalPreenchidas / TOTAL) * 100}%` }}
+        />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 /** Progresso das 15 respostas. No celular vem recolhido e abre no toque;
     no desktop fica sempre aberto na coluna da esquerda. */

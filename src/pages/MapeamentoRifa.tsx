@@ -4,9 +4,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import {
   CampoDobravel,
-  MapaEtapas,
   NavegacaoEtapas,
-  TrilhaEtapas,
+  PilulasEtapas,
 } from "@/components/MapeamentoCampos";
 import { ETAPAS, WHATSAPP } from "@/data/rifaSolidaria";
 import { useMapeamento } from "@/hooks/use-mapeamento";
@@ -71,19 +70,16 @@ const MapeamentoRifa = () => {
               </p>
             </div>
 
-            {/* trilha: dá para trocar de etapa por aqui também */}
-            <div className="mt-10 md:mt-12">
-              <TrilhaEtapas m={m} i={i} irPara={irPara} />
-            </div>
           </div>
         </header>
       </div>
 
+      {/* as etapas seguem a rolagem: dá para pular de qualquer ponto da página */}
+      <PilulasEtapas m={m} i={i} irPara={irPara} />
+
       {/* ───── PREENCHIMENTO ───── */}
       <main className="px-5 py-10 sm:px-6 md:py-14">
-        <div className="mx-auto grid max-w-4xl gap-4 md:grid-cols-[230px_minmax(0,1fr)] md:gap-6">
-          <MapaEtapas m={m} i={i} irPara={irPara} />
-
+        <div className="mx-auto max-w-2xl">
           <div className="min-w-0 rounded-3xl border border-border bg-card p-4 shadow-sm sm:p-6">
             <div className="mb-5 flex items-start gap-3 border-b border-border pb-5">
               <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-secondary text-xl">
@@ -127,18 +123,22 @@ const MapeamentoRifa = () => {
               rotulo={`Etapa ${i + 1} de ${ETAPAS.length}`}
             />
           </div>
+
+          <p className="mt-4 text-center text-xs leading-relaxed text-muted-foreground">
+            Tudo fica salvo neste navegador: pode fechar a página e voltar
+            quando quiser.
+          </p>
         </div>
 
         {/* ───── ENCERRAMENTO ───── */}
-        <div className="mx-auto mt-8 max-w-4xl md:mt-10">
+        <div className="mx-auto mt-8 max-w-2xl md:mt-10">
           <div className="rounded-3xl border border-primary/30 bg-secondary/40 p-6 text-center md:p-8">
               <h2 className="text-xl font-bold md:text-2xl">
                 Terminou o mapeamento?
               </h2>
               <p className="mx-auto mt-3 max-w-xl leading-relaxed text-muted-foreground">
-                Salve as suas respostas em um arquivo para compartilhar com a
-                equipe. Se quiser, me mande o resultado e a gente conversa sobre
-                como tirar essa campanha do papel.
+                Salve as respostas em um arquivo para compartilhar com a equipe.
+                Se quiser, me mande o resultado.
               </p>
               <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
                 <button

@@ -26,6 +26,7 @@ const TestesEmoji = lazy(() => import("./pages/TestesEmoji.tsx"));
 const TestesDegrade = lazy(() => import("./pages/TestesDegrade.tsx"));
 const TestesConfete = lazy(() => import("./pages/TestesConfete.tsx"));
 const TestesMapeamento = lazy(() => import("./pages/TestesMapeamento.tsx"));
+const TestesProgresso = lazy(() => import("./pages/TestesProgresso.tsx"));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 
 const queryClient = new QueryClient();
@@ -59,6 +60,7 @@ const App = () => (
             <Route path="/testes-degrade" element={<TestesDegrade />} />
             <Route path="/testes-confete" element={<TestesConfete />} />
             <Route path="/testes-mapeamento" element={<TestesMapeamento />} />
+            <Route path="/testes-progresso" element={<TestesProgresso />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
