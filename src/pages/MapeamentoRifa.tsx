@@ -2,6 +2,7 @@ import { useState, type CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { baixarPdf } from "@/lib/pdf-mapeamento";
 import {
   CampoDobravel,
   NavegacaoEtapas,
@@ -138,14 +139,14 @@ const MapeamentoRifa = () => {
               </h2>
               <p className="mx-auto mt-3 max-w-xl leading-relaxed text-muted-foreground">
                 Salve as respostas em um arquivo para compartilhar com a equipe.
-                Se quiser, me mande o resultado.
+                Se precisar de ajuda, me chame.
               </p>
               <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
                 <button
-                  onClick={m.baixar}
+                  onClick={() => baixarPdf(m)}
                   className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-bold text-primary-foreground transition-opacity hover:opacity-90"
                 >
-                  <Download size={16} /> Salvar respostas
+                  <Download size={16} /> Baixar em PDF
                 </button>
                 <a
                   href={WHATSAPP}
@@ -156,11 +157,6 @@ const MapeamentoRifa = () => {
                   Falar com Mateus <ArrowRight size={16} />
                 </a>
               </div>
-              {m.baixado && (
-                <p className="mt-4 text-xs text-muted-foreground">
-                  Arquivo salvo. As suas respostas continuam aqui neste navegador.
-                </p>
-              )}
             </div>
         </div>
       </main>

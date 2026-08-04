@@ -64,7 +64,7 @@ const NUMEROS = [
   { valor: "R$ 412 mil", label: "mobilizados em rifas" },
   { valor: "3", label: "campanhas conduzidas" },
   { valor: "5.300+", label: "apoiadores conquistados" },
-  { valor: "1,2M+", label: "pessoas alcançadas" },
+  { valor: "3,6 mi", label: "pessoas alcançadas" },
 ];
 
 /* Retrato que troca sozinho, em crossfade, sem sair do card */
