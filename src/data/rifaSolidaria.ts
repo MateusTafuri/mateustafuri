@@ -229,7 +229,7 @@ export const ETAPAS: Etapa[] = [
   {
     n: 5,
     title: "Retribuir",
-    emoji: "🤝",
+    emoji: "❤️",
     chamada: "É a etapa que faz o apoiador de hoje virar o apoiador da próxima campanha.",
     pergunta: "Como prestamos contas e agradecemos a quem apoiou?",
     objetivo:

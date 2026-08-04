@@ -1,9 +1,12 @@
-import { useRef, useState, type CSSProperties } from "react";
+import { useState, type CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FeedbackSection from "@/components/FeedbackSection";
+import Confetes from "@/components/Confetes";
 import fotoMateus from "@/assets/bonete-mateus.webp";
+import logoTafuri from "@/assets/logo-tafuri.webp";
+import { useDragScroll } from "@/hooks/use-drag-scroll";
 import { ETAPAS, WHATSAPP } from "@/data/rifaSolidaria";
 import {
   ArrowRight,
@@ -25,26 +28,10 @@ const PRINCIPIOS = [
 ];
 
 const PASSOS = [
-  {
-    n: "1",
-    title: "Abra o link",
-    text: "Não tem cadastro, login nem e-mail. Você clica e já cai direto nas 5 etapas do método.",
-  },
-  {
-    n: "2",
-    title: "Responda etapa por etapa",
-    text: "São 15 perguntas, 3 em cada etapa. Cada campo tem uma dica curta do que uma boa resposta precisa ter.",
-  },
-  {
-    n: "3",
-    title: "Pare e volte quando quiser",
-    text: "Tudo fica salvo no seu navegador enquanto você escreve. Pode fechar a página e retomar de onde parou.",
-  },
-  {
-    n: "4",
-    title: "Baixe o seu plano",
-    text: "No fim você salva um arquivo com todas as respostas: é o desenho da sua campanha para levar pra equipe.",
-  },
+  { n: "1", title: "Abra o link", text: "Sem cadastro nem login." },
+  { n: "2", title: "Responda as 15 perguntas", text: "Três por etapa, com dica." },
+  { n: "3", title: "Pare quando quiser", text: "Salva sozinho no navegador." },
+  { n: "4", title: "Baixe o seu plano", text: "A campanha pronta no papel." },
 ];
 
 const RIFAS = [
@@ -81,24 +68,9 @@ const NUMEROS = [
 /* ─────────── PAGE ─────────── */
 
 const RifaSolidaria = () => {
-  const [ativa, setAtiva] = useState(0);
-
-  // arrastar a faixa de princípios com o mouse (no touch o scroll nativo já resolve)
-  const faixa = useRef<HTMLDivElement>(null);
-  const drag = useRef({ ativo: false, x: 0, scroll: 0 });
-  const arrastarInicio = (e: React.PointerEvent) => {
-    if (e.pointerType !== "mouse" || !faixa.current) return;
-    drag.current = { ativo: true, x: e.clientX, scroll: faixa.current.scrollLeft };
-    faixa.current.setPointerCapture(e.pointerId);
-  };
-  const arrastarMover = (e: React.PointerEvent) => {
-    if (!drag.current.ativo || !faixa.current) return;
-    faixa.current.scrollLeft = drag.current.scroll - (e.clientX - drag.current.x);
-  };
-  const arrastarFim = (e: React.PointerEvent) => {
-    drag.current.ativo = false;
-    faixa.current?.releasePointerCapture?.(e.pointerId);
-  };
+  const [ativa, setAtiva] = useState(-1);
+  const principios = useDragScroll();
+  const rifas = useDragScroll();
 
   return (
     <div
@@ -121,12 +93,14 @@ const RifaSolidaria = () => {
       {/* Primeira tela: hero verde + faixa do QR, sem sobra branca */}
       <div className="min-h-screen flex flex-col">
       <div
-        className="flex-1 flex items-center"
+        className="relative overflow-hidden flex-1 flex items-center animate-aurora motion-reduce:animate-none [background-size:300%_300%]"
         style={{
+          // petróleo com uma brasa de coral atravessando o meio
           backgroundImage:
-            "linear-gradient(150deg, hsl(176 44% 13%) 0%, hsl(178 40% 19%) 55%, hsl(181 38% 27%) 100%)",
+            "linear-gradient(120deg, hsl(176 44% 12%), hsl(178 40% 18%), hsl(184 36% 30%) 40%, hsl(15 45% 32%) 58%, hsl(178 40% 20%) 80%, hsl(176 44% 12%))",
         }}
       >
+        <Confetes variante="estouros" rastro />
         <Navbar />
 
         {/* ───── HERO ───── */}
@@ -160,9 +134,8 @@ const RifaSolidaria = () => {
               </span>
             </h1>
             <p className="mt-5 sm:mt-6 max-w-2xl mx-auto text-white/75 text-base sm:text-lg leading-relaxed">
-              Um caminho em 5 etapas para planejar, lançar e encerrar uma
-              campanha de rifa na sua organização. Do primeiro objetivo até a
-              prestação de contas.
+              Cinco etapas para planejar, lançar e encerrar a rifa da sua
+              organização. Da primeira meta à prestação de contas.
             </p>
 
             {/* trilha das etapas */}
@@ -211,8 +184,8 @@ const RifaSolidaria = () => {
           <div>
             <p className="font-bold">Veio pelo poster do Festival ABCR? Que bom ter você aqui.</p>
             <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
-              Esta página é a continuação do poster: o passo a passo completo
-              para aplicar na sua organização.
+              Esta página é a continuação do poster. O método inteiro está
+              aqui, de graça.
             </p>
           </div>
         </div>
@@ -229,7 +202,7 @@ const RifaSolidaria = () => {
             5 etapas para tirar a sua campanha do papel
           </h2>
           <p className="text-muted-foreground text-center max-w-xl mx-auto mb-10">
-            Cada etapa responde três perguntas. Toque para ver as suas.
+            Três perguntas por etapa. Toque para abrir.
           </p>
 
           {/* Acordeão das etapas */}
@@ -290,40 +263,6 @@ const RifaSolidaria = () => {
         </div>
       </section>
 
-      {/* ───── PRINCÍPIOS (faixa arrastável) ───── */}
-      <section className="py-12 md:py-16 bg-secondary/40">
-        <p className="px-5 text-xs font-semibold uppercase tracking-[0.25em] text-primary text-center mb-2">
-          Por que funciona
-        </p>
-        <h2 className="px-5 text-xl sm:text-2xl md:text-3xl font-bold text-center mb-2">
-          O que muda quando existe método
-        </h2>
-        <p className="px-5 text-center text-xs text-muted-foreground mb-6">
-          Arraste para o lado
-        </p>
-        <div
-          ref={faixa}
-          onPointerDown={arrastarInicio}
-          onPointerMove={arrastarMover}
-          onPointerUp={arrastarFim}
-          onPointerCancel={arrastarFim}
-          className="flex gap-3 overflow-x-auto px-5 pb-3 snap-x cursor-grab active:cursor-grabbing select-none touch-pan-y [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-        >
-          {PRINCIPIOS.map((p) => (
-            <div
-              key={p.title}
-              className="snap-start shrink-0 w-[76vw] sm:w-[300px] rounded-2xl bg-background border border-border px-5 py-4"
-            >
-              <p className="text-lg leading-none">{p.emoji}</p>
-              <h3 className="font-bold text-sm mt-2.5">{p.title}</h3>
-              <p className="text-[13px] text-muted-foreground mt-1 leading-snug">
-                {p.text}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* ───── COMO USAR O MAPEAMENTO ───── */}
       <section id="mapeamento" className="scroll-mt-20 px-5 sm:px-6 py-16 md:py-20">
         <div className="max-w-4xl mx-auto">
@@ -333,30 +272,28 @@ const RifaSolidaria = () => {
           <h2 className="text-2xl md:text-4xl font-bold text-center mb-3">
             Como funciona o mapeamento
           </h2>
-          <p className="text-muted-foreground text-center max-w-xl mx-auto mb-10 leading-relaxed">
-            Entender o método é o começo. O mapeamento é onde ele vira o plano da
-            sua campanha: você abre o link e preenche etapa por etapa.
+          <p className="text-muted-foreground text-center max-w-xl mx-auto mb-12">
+            O método vira o plano da sua campanha em quatro passos.
           </p>
 
-          <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {PASSOS.map((p) => (
-              <li
-                key={p.n}
-                className="rounded-2xl border border-border bg-secondary/30 p-5"
-              >
-                <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-primary text-[13px] font-bold text-primary-foreground">
-                  {p.n}
-                </span>
-                <h3 className="font-bold text-sm mt-3">{p.title}</h3>
-                <p className="text-[13px] text-muted-foreground mt-1.5 leading-relaxed">
-                  {p.text}
-                </p>
-              </li>
-            ))}
-          </ol>
+          <div className="relative">
+            {/* linha que liga os números */}
+            <span className="pointer-events-none absolute top-6 left-[12.5%] right-[12.5%] hidden h-px bg-border md:block" />
+            <ol className="grid grid-cols-2 gap-y-10 md:grid-cols-4 md:gap-y-0">
+              {PASSOS.map((p) => (
+                <li key={p.n} className="relative text-center px-2">
+                  <span className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-primary text-lg font-bold text-primary-foreground">
+                    {p.n}
+                  </span>
+                  <h3 className="mt-4 font-bold">{p.title}</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">{p.text}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
 
           <div
-            className="relative mt-6 overflow-hidden rounded-3xl p-6 sm:p-10 text-white"
+            className="relative mt-14 overflow-hidden rounded-3xl p-6 sm:p-10 text-white"
             style={{ backgroundColor: "hsl(176 39% 14%)" }}
           >
             <div
@@ -368,8 +305,8 @@ const RifaSolidaria = () => {
             />
             <div className="relative grid gap-8 md:grid-cols-[1fr_300px] md:items-center">
               <div>
-                <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.15em] text-[hsl(15,65%,56%)]">
-                  <ClipboardList size={13} /> Ferramenta gratuita
+                <span className="inline-grid h-10 w-10 place-items-center rounded-2xl bg-white/10 text-[hsl(15,65%,56%)]">
+                  <ClipboardList size={20} />
                 </span>
                 <h3 className="mt-4 text-xl sm:text-3xl font-bold leading-tight">
                   Mapeamento Rifa Solidária
@@ -435,24 +372,15 @@ const RifaSolidaria = () => {
               <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-5">
                 Estratégia · Mobilização · Captação de Recursos
               </p>
-              <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <div className="space-y-3 text-muted-foreground leading-relaxed">
                 <p>
-                  Eu não aprendi captação em sala de aula. Aprendi morando em
-                  comunidade isolada, vendendo bilhete na mão, batendo na porta
-                  de parceiro e gravando vídeo no celular ao lado de quem toca o
-                  projeto todo dia.
+                  Eu não aprendi captação em sala de aula. Aprendi em comunidade
+                  isolada, vendendo bilhete na mão e gravando vídeo no celular ao
+                  lado de quem toca o projeto.
                 </p>
                 <p>
-                  No Bonete, uma praia sem estrada em Ilhabela, cada bilhete
-                  vendido virou tijolo de um dojo novo. Em Caraíva, foram as
-                  próprias crianças do projeto que gravaram o vídeo que vendeu a
-                  campanha. No Corumbau, foram 101 dias de campanha para uma
-                  comunidade a horas da cidade mais próxima.
-                </p>
-                <p>
-                  Três realidades diferentes, o mesmo caminho de cinco etapas. É
-                  esse caminho, testado em campo e não em teoria, que está aberto
-                  de graça nesta página.
+                  Foram três campanhas, do Bonete ao Corumbau, sempre pelo mesmo
+                  caminho de cinco etapas. É ele que está aberto aqui.
                 </p>
               </div>
               <a
@@ -486,17 +414,26 @@ const RifaSolidaria = () => {
             As rifas que originaram o método
           </h3>
           <p className="text-sm text-muted-foreground mb-5 leading-relaxed">
-            Números reais de cada campanha. Toque para ver o case completo.
+            Números reais. Arraste para o lado, toque para ver o case.
           </p>
-          <div className="grid gap-4 sm:grid-cols-3">
-            {RIFAS.map((r) => (
-              <Link
+        </div>
+        <div
+          ref={rifas.ref}
+          {...rifas.handlers}
+          className="flex gap-4 overflow-x-auto px-5 pb-3 sm:px-6 snap-x cursor-grab active:cursor-grabbing select-none touch-pan-y [scrollbar-width:none] [&::-webkit-scrollbar]:hidden xl:justify-center"
+        >
+          {RIFAS.map((r) => (
+            <Link
                 key={r.nome}
                 to={r.path}
-                className="group rounded-2xl border border-border bg-background p-5 no-underline text-foreground transition-colors hover:border-primary/50"
+                draggable={false}
+                className="group snap-start shrink-0 w-[76vw] sm:w-[300px] rounded-2xl border border-border bg-background p-5 no-underline text-foreground transition-colors hover:border-primary/50"
               >
                 <div className="flex items-start justify-between gap-2">
                   <div>
+                    <p className="text-[11px] font-semibold uppercase tracking-widest text-primary">
+                      Projeto Social
+                    </p>
                     <h4 className="font-bold">{r.nome}</h4>
                     <p className="text-xs text-muted-foreground">
                       {r.local}
@@ -516,9 +453,39 @@ const RifaSolidaria = () => {
                     <li key={l}>{l}</li>
                   ))}
                 </ul>
-              </Link>
-            ))}
-          </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* ───── PRINCÍPIOS (faixa arrastável) ───── */}
+      <section className="py-14 md:py-20">
+        <p className="px-5 text-xs font-semibold uppercase tracking-[0.25em] text-primary text-center mb-2">
+          Por que funciona
+        </p>
+        <h2 className="px-5 text-xl sm:text-2xl md:text-3xl font-bold text-center mb-2">
+          O que muda quando existe método
+        </h2>
+        <p className="px-5 text-center text-xs text-muted-foreground mb-6">
+          Arraste para o lado
+        </p>
+        <div
+          ref={principios.ref}
+          {...principios.handlers}
+          className="flex gap-3 overflow-x-auto px-5 pb-3 snap-x cursor-grab active:cursor-grabbing select-none touch-pan-y [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
+          {PRINCIPIOS.map((p) => (
+            <div
+              key={p.title}
+              className="snap-start shrink-0 w-[76vw] sm:w-[300px] rounded-2xl bg-secondary/40 border border-border px-5 py-4"
+            >
+              <p className="text-lg leading-none">{p.emoji}</p>
+              <h3 className="font-bold text-sm mt-2.5">{p.title}</h3>
+              <p className="text-[13px] text-muted-foreground mt-1 leading-snug">
+                {p.text}
+              </p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -528,6 +495,21 @@ const RifaSolidaria = () => {
       {/* ───── CTA FINAL ───── */}
       <section className="bg-secondary py-16 px-5 sm:px-6 text-center">
         <div className="max-w-2xl mx-auto">
+          <span
+            aria-label="Mateus Tafuri"
+            className="mx-auto mb-4 block h-16 w-16"
+            style={{
+              backgroundColor: "hsl(176 39% 14%)",
+              WebkitMaskImage: `url(${logoTafuri})`,
+              maskImage: `url(${logoTafuri})`,
+              WebkitMaskRepeat: "no-repeat",
+              maskRepeat: "no-repeat",
+              WebkitMaskSize: "contain",
+              maskSize: "contain",
+              WebkitMaskPosition: "center",
+              maskPosition: "center",
+            }}
+          />
           <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-3">
             Sua causa é a próxima
           </p>
@@ -535,9 +517,8 @@ const RifaSolidaria = () => {
             Vamos tirar a sua campanha do papel?
           </h2>
           <p className="text-secondary-foreground/80 mb-8 text-base leading-relaxed">
-            Me conte qual é a sua causa e qual valor você precisa alcançar. A
-            gente avalia juntos o momento da sua organização e desenha o caminho
-            pelas cinco etapas.
+            Me conte a sua causa e quanto você precisa alcançar. A gente
+            desenha o caminho pelas cinco etapas.
           </p>
           <a
             href={WHATSAPP}

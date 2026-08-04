@@ -78,6 +78,38 @@
   }
 }
 
+/* Confete estourando no header: o papelote voa em 15% do ciclo e some no resto */
+@keyframes estouro {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  2% {
+    opacity: 1;
+  }
+  15%,
+  100% {
+    transform: translate(var(--dx), var(--dy)) rotate(var(--giro));
+    opacity: 0;
+  }
+}
+
+/* Confete contínuo: o papelote fica visível quase o ciclo inteiro (chuva, poeira) */
+@keyframes flutuar {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  12%,
+  82% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate(var(--dx), var(--dy)) rotate(var(--giro));
+    opacity: 0;
+  }
+}
+
 /* Estrelas do header da Rifa Solidária */
 @keyframes piscar {
   0%,

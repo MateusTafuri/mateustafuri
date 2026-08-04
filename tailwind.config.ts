@@ -82,6 +82,11 @@ export default {
           "0%": { transform: "translateX(-50%)" },
           "100%": { transform: "translateX(0)" },
         },
+        // degradê maior que a tela passeando de um lado ao outro
+        aurora: {
+          "0%, 100%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+        },
         "scroll-arrow": {
           "0%, 100%": { transform: "translateY(0)" },
           "25%": { transform: "translateY(12px)" },
@@ -93,6 +98,7 @@ export default {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "marquee-rtl": "marquee-rtl 25s linear infinite",
+        aurora: "aurora 22s ease-in-out infinite",
         "scroll-arrow": "scroll-arrow 1.4s ease-in-out infinite",
       },
     },

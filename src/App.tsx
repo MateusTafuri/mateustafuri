@@ -23,6 +23,8 @@ const TestesHero = lazy(() => import("./pages/TestesHero.tsx"));
 const TestesFundoTech = lazy(() => import("./pages/TestesFundoTech.tsx"));
 const TestesFundoImpacto = lazy(() => import("./pages/TestesFundoImpacto.tsx"));
 const TestesEmoji = lazy(() => import("./pages/TestesEmoji.tsx"));
+const TestesDegrade = lazy(() => import("./pages/TestesDegrade.tsx"));
+const TestesConfete = lazy(() => import("./pages/TestesConfete.tsx"));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 
 const queryClient = new QueryClient();
@@ -53,6 +55,8 @@ const App = () => (
             <Route path="/testes-fundo-impacto" element={<TestesFundoImpacto />} />
             <Route path="/testes-emoji" element={<TestesEmoji />} />
             <Route path="/testes-metodo" element={<TestesMetodo />} />
+            <Route path="/testes-degrade" element={<TestesDegrade />} />
+            <Route path="/testes-confete" element={<TestesConfete />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
