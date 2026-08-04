@@ -13,6 +13,7 @@
 import { useEffect, useRef, type CSSProperties } from "react";
 
 export type VarianteConfete =
+  | "pontual"
   | "estouros"
   | "canhoes"
   | "explosao"
@@ -52,6 +53,7 @@ const estouro = (
   centro = -Math.PI / 2,
   abertura = Math.PI,
   queda = 46,
+  mini = false,
 ): Papelote[] =>
   Array.from({ length: qtd }, (_, i) => {
     const ang = centro - abertura / 2 + (abertura / (qtd - 1)) * i;
@@ -64,8 +66,8 @@ const estouro = (
       dy: `${Math.round(Math.sin(ang) * raio + queda)}px`,
       giro: `${(i % 2 ? 1 : -1) * (160 + i * 40)}deg`,
       cor: CORES[i % CORES.length],
-      largura: 5 + (i % 3),
-      altura: 8 + (i % 4),
+      largura: mini ? 3 + (i % 2) : 5 + (i % 3),
+      altura: mini ? 4 + (i % 3) : 8 + (i % 4),
       atraso: o.atraso + i * 0.05,
       ciclo,
       keyframe: "estouro" as const,
@@ -73,6 +75,19 @@ const estouro = (
   });
 
 const PRESETS: Record<Exclude<VarianteConfete, "mouse">, Papelote[]> = {
+  // um estourinho só, no canto de cima à direita do pai (logo depois da palavra)
+  pontual: estouro(
+    "pt",
+    { x: 98, y: 6, atraso: 0 },
+    9,
+    46,
+    4.5,
+    -Math.PI / 3.2,
+    Math.PI * 0.85,
+    18,
+    true,
+  ),
+
   // sete estouros pequenos revezando: um a cada 1,5s, sempre um punhado no ar
   estouros: [
     { x: 12, y: 30, atraso: 0 },
@@ -217,7 +232,10 @@ const Confetes = ({
       {rastro && <Rastro />}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 overflow-hidden motion-reduce:hidden"
+        className={`pointer-events-none absolute inset-0 motion-reduce:hidden ${
+          // o estourinho precisa transbordar o pai; os outros são recortados pelo header
+          variante === "pontual" ? "" : "overflow-hidden"
+        }`}
       >
         {PRESETS[variante].map((p) => (
           <span

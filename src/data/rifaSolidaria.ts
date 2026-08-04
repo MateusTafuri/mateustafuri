@@ -22,6 +22,7 @@ export const WHATSAPP =
 
 export type BlocoCanvas = {
   icon: LucideIcon;
+  emoji: string;
   title: string;
   pergunta: string;
   dica: string;
@@ -70,18 +71,21 @@ export const ETAPAS: Etapa[] = [
     canvas: [
       {
         icon: CircleDot,
+        emoji: "❓",
         title: "Por quê",
         pergunta: "Qual problema real a organização quer resolver com esse dinheiro?",
         dica: "Seu porquê deve emocionar quem nunca ouviu falar de vocês.",
       },
       {
         icon: Flag,
+        emoji: "🎯",
         title: "Meta",
         pergunta: "Quanto precisa ser arrecadado, e o que exatamente esse valor cobre?",
         dica: "Sua meta deve ser alcançável.",
       },
       {
         icon: Lightbulb,
+        emoji: "🌱",
         title: "Transformação",
         pergunta: "O que muda, na prática, quando a meta for batida?",
         dica: "Deve ser algo que dá pra fotografar.",
@@ -116,18 +120,21 @@ export const ETAPAS: Etapa[] = [
     canvas: [
       {
         icon: Trophy,
+        emoji: "🏆",
         title: "Prêmio",
         pergunta: "Que prêmio faria alguém participar mesmo sem conhecer a causa?",
         dica: "Seu prêmio deve ser desejável.",
       },
       {
         icon: Handshake,
+        emoji: "🤝",
         title: "Parceiro certo",
         pergunta: "Qual parceiro tem o público certo pra performar online?",
         dica: "Deve ter o público certo pra converter online.",
       },
       {
         icon: ArrowLeftRight,
+        emoji: "🔄",
         title: "Contrapartida",
         pergunta: "O que, especificamente, cada parceiro leva pra casa em troca?",
         dica: "Deve virar posts em collab no Instagram.",
@@ -162,18 +169,21 @@ export const ETAPAS: Etapa[] = [
     canvas: [
       {
         icon: User,
+        emoji: "🎤",
         title: "Protagonista",
         pergunta: "Quem é o rosto que carrega essa campanha?",
         dica: "Seu protagonista deve ser real.",
       },
       {
         icon: PlayCircle,
+        emoji: "🎬",
         title: "Formato",
         pergunta: "O que carrega o peso da narrativa: vídeo, depoimento, bastidor?",
         dica: "Reels conecta mais que o produzido.",
       },
       {
         icon: Calendar,
+        emoji: "📅",
         title: "Calendário",
         pergunta: "O que sai em cada semana da pré-campanha?",
         dica: "Deve sustentar duas semanas de conteúdo.",
@@ -208,18 +218,21 @@ export const ETAPAS: Etapa[] = [
     canvas: [
       {
         icon: MousePointerClick,
+        emoji: "🛒",
         title: "Conversão",
         pergunta: "O que faz a pessoa confiar e comprar o bilhete na hora?",
         dica: "Sua página deve converter em segundos.",
       },
       {
         icon: Megaphone,
+        emoji: "🗣️",
         title: "Alcance orgânico",
         pergunta: "Quais influenciadores parceiros podem abraçar essa causa?",
         dica: "Deve vir de quem já confia em você.",
       },
       {
         icon: CircleDollarSign,
+        emoji: "💰",
         title: "Tráfego pago",
         pergunta: "Qual será nossa estratégia de tráfego pago?",
         dica: "Deve manter só o que der ROI.",
@@ -254,18 +267,21 @@ export const ETAPAS: Etapa[] = [
     canvas: [
       {
         icon: Eye,
+        emoji: "👀",
         title: "Transparência",
         pergunta: "Como o sorteio vai ser público e verificável?",
         dica: "O resultado não pode deixar dúvida.",
       },
       {
         icon: Clock,
+        emoji: "⏱️",
         title: "Prazo de entrega",
         pergunta: "Em quanto tempo o prêmio chega na mão de quem ganhou?",
         dica: "Deve ser rápido.",
       },
       {
         icon: RefreshCw,
+        emoji: "💌",
         title: "Retorno",
         pergunta: "O que quem apoiou recebe depois?",
         dica: "Deve ser visível pra quem apoiou.",

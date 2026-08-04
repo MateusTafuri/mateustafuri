@@ -18,20 +18,11 @@ import {
 
 /* ─────────── DATA ─────────── */
 
-const PRINCIPIOS = [
-  { emoji: "🎯", title: "Meta antes do prêmio", text: "A campanha nasce de um objetivo claro, não de um sorteio aleatório." },
-  { emoji: "🎁", title: "Parceria com troca real", text: "O parceiro fortalece a causa e ganha mídia e visibilidade de volta." },
-  { emoji: "📣", title: "História que mobiliza", text: "A causa sai do círculo próximo e chega em quem nunca ouviu falar dela." },
-  { emoji: "🚀", title: "Mídia que se paga", text: "O tráfego é financiado pelas primeiras vendas da própria campanha." },
-  { emoji: "👀", title: "Sorteio transparente", text: "Ao vivo e com regra clara: o resultado não deixa dúvida em ninguém." },
-  { emoji: "🤝", title: "Ciclo que se repete", text: "A prestação de contas vira base de apoiadores para a próxima campanha." },
-];
-
 const PASSOS = [
   { n: "1", title: "Abra o link", text: "Sem cadastro nem login." },
-  { n: "2", title: "Responda as 15 perguntas", text: "Três por etapa, com dica." },
+  { n: "2", title: "Responda as perguntas", text: "Três por etapa, com dica." },
   { n: "3", title: "Pare quando quiser", text: "Salva sozinho no navegador." },
-  { n: "4", title: "Baixe o seu plano", text: "A campanha pronta no papel." },
+  { n: "4", title: "Baixe o seu plano", text: "A campanha pronta para arrecadar." },
 ];
 
 const RIFAS = [
@@ -69,7 +60,6 @@ const NUMEROS = [
 
 const RifaSolidaria = () => {
   const [ativa, setAtiva] = useState(-1);
-  const principios = useDragScroll();
   const rifas = useDragScroll();
 
   return (
@@ -100,8 +90,26 @@ const RifaSolidaria = () => {
             "linear-gradient(120deg, hsl(176 44% 12%), hsl(178 40% 18%), hsl(184 36% 30%) 40%, hsl(15 45% 32%) 58%, hsl(178 40% 20%) 80%, hsl(176 44% 12%))",
         }}
       >
-        <Confetes variante="estouros" rastro />
         <Navbar />
+
+        {/* setas de rolagem, coladas na borda de baixo do header */}
+        <a
+          href="#metodologia"
+          aria-label="Rolar para baixo"
+          className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 rounded-full p-2 text-white"
+        >
+          <span className="flex flex-col items-center drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]">
+            {[0, 1, 2].map((i) => (
+              <ChevronDown
+                key={i}
+                size={20}
+                strokeWidth={2}
+                className="-my-1 animate-seta-oca motion-reduce:animate-none"
+                style={{ animationDelay: `${i * 0.18}s` }}
+              />
+            ))}
+          </span>
+        </a>
 
         {/* ───── HERO ───── */}
         <header className="relative w-full overflow-hidden px-5 sm:px-6 pt-24 pb-12 sm:pt-28 sm:pb-16 md:pt-32 md:pb-20 text-white text-center">
@@ -114,28 +122,30 @@ const RifaSolidaria = () => {
             }}
           />
           <div className="relative z-10 max-w-4xl mx-auto">
-            <span className="inline-flex items-center gap-2 rounded-full bg-[hsl(15,65%,56%)]/15 px-3.5 py-1.5 sm:px-4 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.12em] sm:tracking-[0.2em] text-[hsl(15,65%,56%)]">
+            <span className="inline-flex items-center gap-2 rounded-full border border-[hsl(15,65%,56%)]/45 px-3.5 py-1.5 sm:px-4 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.12em] sm:tracking-[0.2em] text-[hsl(15,65%,56%)]">
               <Sparkles size={13} className="shrink-0" /> Metodologia aberta e gratuita
             </span>
             <h1 className="mt-6 text-[2rem] sm:text-4xl md:text-6xl font-bold leading-[1.08] sm:leading-[1.05] tracking-tight">
               Como captar recursos para
               <br className="hidden sm:inline" />{" "}
               a sua causa com a{" "}
-              <span
-                className="bg-clip-text text-transparent"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(100deg, hsl(15 65% 56%) 20%, hsl(35 90% 70%) 45%, hsl(15 65% 56%) 70%)",
-                  backgroundSize: "200% 100%",
-                  animation: "varrer 3.5s ease-in-out infinite",
-                }}
-              >
-                Rifa Solidária
+              <span className="relative inline-block">
+                <span
+                  className="bg-clip-text text-transparent"
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(100deg, hsl(15 65% 56%) 20%, hsl(35 90% 70%) 45%, hsl(15 65% 56%) 70%)",
+                    backgroundSize: "200% 100%",
+                    animation: "varrer 3.5s ease-in-out infinite",
+                  }}
+                >
+                  Rifa Solidária
+                </span>
+                <Confetes variante="pontual" />
               </span>
             </h1>
             <p className="mt-5 sm:mt-6 max-w-2xl mx-auto text-white/75 text-base sm:text-lg leading-relaxed">
-              Cinco etapas para planejar, lançar e encerrar a rifa da sua
-              organização. Da primeira meta à prestação de contas.
+              Cinco etapas entre a sua causa e o valor que ela precisa.
             </p>
 
             {/* trilha das etapas */}
@@ -156,20 +166,6 @@ const RifaSolidaria = () => {
               ))}
             </div>
 
-            <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 justify-center">
-              <a
-                href="#metodologia"
-                className="inline-flex items-center justify-center gap-2 bg-[hsl(15,65%,56%)] text-white px-8 py-4 rounded-full text-sm font-bold hover:opacity-90 transition-opacity"
-              >
-                Ver as 5 etapas <ArrowRight size={16} />
-              </a>
-              <Link
-                to="/mapeamento-rifa-solidaria"
-                className="inline-flex items-center justify-center border border-white/25 text-white px-8 py-4 rounded-full text-sm font-semibold hover:bg-white/10 transition-colors"
-              >
-                Montar a minha rifa
-              </Link>
-            </div>
           </div>
         </header>
       </div>
@@ -184,8 +180,8 @@ const RifaSolidaria = () => {
           <div>
             <p className="font-bold">Veio pelo poster do Festival ABCR? Que bom ter você aqui.</p>
             <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
-              Esta página é a continuação do poster. O método inteiro está
-              aqui, de graça.
+              Aqui você pode planejar a sua Rifa Solidária de maneira simples e
+              gratuita.
             </p>
           </div>
         </div>
@@ -246,7 +242,7 @@ const RifaSolidaria = () => {
                           className="rounded-xl border border-border bg-secondary/60 p-4"
                         >
                           <div className="flex items-center gap-2">
-                            <bloco.icon size={16} className="shrink-0 text-primary" />
+                            <span className="text-base leading-none">{bloco.emoji}</span>
                             <h4 className="font-bold text-sm">{bloco.title}</h4>
                           </div>
                           <p className="text-sm text-muted-foreground mt-1.5 leading-snug">
@@ -273,7 +269,7 @@ const RifaSolidaria = () => {
             Como funciona o mapeamento
           </h2>
           <p className="text-muted-foreground text-center max-w-xl mx-auto mb-12">
-            O método vira o plano da sua campanha em quatro passos.
+            A metodologia que transforma a sua ideia em campanha.
           </p>
 
           <div className="relative">
@@ -322,7 +318,7 @@ const RifaSolidaria = () => {
                   Montar a minha rifa <ArrowRight size={18} />
                 </Link>
                 <p className="mt-3 text-xs text-white/45">
-                  Grátis · Sem cadastro · Salva sozinho no seu navegador
+                  Grátis · Salva sozinho no seu navegador
                 </p>
               </div>
 
@@ -374,13 +370,13 @@ const RifaSolidaria = () => {
               </p>
               <div className="space-y-3 text-muted-foreground leading-relaxed">
                 <p>
-                  Eu não aprendi captação em sala de aula. Aprendi em comunidade
-                  isolada, vendendo bilhete na mão e gravando vídeo no celular ao
-                  lado de quem toca o projeto.
+                  Três projetos em comunidades isoladas precisavam de dinheiro e
+                  não tinham como captar. A rifa foi a saída, e o que funcionou
+                  virou método.
                 </p>
                 <p>
-                  Foram três campanhas, do Bonete ao Corumbau, sempre pelo mesmo
-                  caminho de cinco etapas. É ele que está aberto aqui.
+                  Do Bonete ao Corumbau, sempre as mesmas cinco etapas. São elas
+                  que estão abertas aqui.
                 </p>
               </div>
               <a
@@ -454,37 +450,6 @@ const RifaSolidaria = () => {
                   ))}
                 </ul>
             </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* ───── PRINCÍPIOS (faixa arrastável) ───── */}
-      <section className="py-14 md:py-20">
-        <p className="px-5 text-xs font-semibold uppercase tracking-[0.25em] text-primary text-center mb-2">
-          Por que funciona
-        </p>
-        <h2 className="px-5 text-xl sm:text-2xl md:text-3xl font-bold text-center mb-2">
-          O que muda quando existe método
-        </h2>
-        <p className="px-5 text-center text-xs text-muted-foreground mb-6">
-          Arraste para o lado
-        </p>
-        <div
-          ref={principios.ref}
-          {...principios.handlers}
-          className="flex gap-3 overflow-x-auto px-5 pb-3 snap-x cursor-grab active:cursor-grabbing select-none touch-pan-y [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-        >
-          {PRINCIPIOS.map((p) => (
-            <div
-              key={p.title}
-              className="snap-start shrink-0 w-[76vw] sm:w-[300px] rounded-2xl bg-secondary/40 border border-border px-5 py-4"
-            >
-              <p className="text-lg leading-none">{p.emoji}</p>
-              <h3 className="font-bold text-sm mt-2.5">{p.title}</h3>
-              <p className="text-[13px] text-muted-foreground mt-1 leading-snug">
-                {p.text}
-              </p>
-            </div>
           ))}
         </div>
       </section>

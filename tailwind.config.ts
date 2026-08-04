@@ -87,6 +87,11 @@ export default {
           "0%, 100%": { backgroundPosition: "0% 50%" },
           "50%": { backgroundPosition: "100% 50%" },
         },
+        // seta de rolagem do ocacaraiva.com: desce 5px e acende no meio do ciclo
+        "seta-oca": {
+          "0%, 100%": { transform: "translateY(0)", opacity: "0.35" },
+          "50%": { transform: "translateY(5px)", opacity: "1" },
+        },
         "scroll-arrow": {
           "0%, 100%": { transform: "translateY(0)" },
           "25%": { transform: "translateY(12px)" },
@@ -100,6 +105,7 @@ export default {
         "marquee-rtl": "marquee-rtl 25s linear infinite",
         aurora: "aurora 22s ease-in-out infinite",
         "scroll-arrow": "scroll-arrow 1.4s ease-in-out infinite",
+        "seta-oca": "seta-oca 1.6s ease-in-out infinite",
       },
     },
   },
