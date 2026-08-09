@@ -1,18 +1,25 @@
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import EmBreveCase from "@/components/EmBreveCase";
-import logo from "@/assets/logo-caraiva.webp";
+import CaseHero from "@/components/CaseHero";
+import { CaseEtapas, CaseNav, Label } from "@/components/CaseParts";
+import DragCarousel from "@/components/DragCarousel";
+import FeedbackSection from "@/components/FeedbackSection";
+import { ETAPAS } from "@/data/rifaSolidaria";
+
+import logoCaraiva from "@/assets/logo-caraiva.webp";
 import logoTafuri from "@/assets/logo-tafuri.webp";
-import heroImg from "@/assets/caraiva-hero.webp";
-import socialImg from "@/assets/caraiva-social.webp";
-import kidsImg from "@/assets/caraiva-kids.webp";
+
+import heroPraia from "@/assets/caraiva-hero.webp";
+import social from "@/assets/caraiva-social.webp";
+import kids from "@/assets/caraiva-kids.webp";
 import bastidores1 from "@/assets/caraiva-bastidores-1.webp";
-import bastidores2 from "@/assets/caraiva-bastidores-2.webp";
-import bastidores2New from "@/assets/caraiva-bastidores-2-new.webp";
-import pousada1 from "@/assets/caraiva-pousada-1-new.webp";
+import bastidores2 from "@/assets/caraiva-bastidores-2-new.webp";
 import pousada2 from "@/assets/caraiva-pousada-2.webp";
 import pousada3 from "@/assets/caraiva-pousada-3-new.webp";
-import pousada4 from "@/assets/caraiva-pousada-4-new.webp";
+import rifa1 from "@/assets/caraiva-rifa-1.webp";
+import rifa2 from "@/assets/caraiva-rifa-2.webp";
 import sorteio1 from "@/assets/caraiva-sorteio-1.webp";
 import sorteio2 from "@/assets/caraiva-sorteio-2.webp";
 import sorteio3 from "@/assets/caraiva-sorteio-3.webp";
@@ -21,300 +28,471 @@ import impacto1 from "@/assets/caraiva-impacto-1.webp";
 import impacto2 from "@/assets/caraiva-impacto-2.webp";
 import impacto3 from "@/assets/caraiva-impacto-3.webp";
 import impacto4 from "@/assets/caraiva-impacto-4.webp";
-import { ArrowLeft } from "lucide-react";
-import { Link } from "react-router-dom";
 
-const stats = [
-  { label: "Novos Apoiadores", value: "3.183" },
-  { label: "Faturamento Bruto", value: "R$ 100.000,00" },
-  { label: "Investimento em Tráfego", value: "R$ 21.500,00" },
+/* ─────────────────────────── DATA ─────────────────────────── */
+
+const VERDE = "#16281f";
+const CREME = "#F4F0E6";
+
+const SECTIONS = [
+  { id: "desafio", label: "O desafio" },
+  { id: "estrategia", label: "Estratégia" },
+  { id: "processo", label: "Processo" },
+  { id: "artes", label: "As artes" },
+  { id: "fotos", label: "As fotos" },
+  { id: "ficha", label: "Ficha técnica" },
 ];
 
+/* paleta do case: fundo escuro e destaque próprios */
+const TEMA = {
+  grad: "linear-gradient(165deg, #1c1c1c 0%, #2b2b2b 55%, #363636 100%)",
+  heroGrad: "linear-gradient(165deg, #161616 0%, #232323 45%, #2b2b2b 100%)",
+  brilho: "#4a4a4a",
+  destaque: "#D9A441",
+  destaque40: "rgba(217,164,65,0.4)",
+  destaque30: "rgba(217,164,65,0.3)",
+  escuro: "#2B2B2B",
+};
+
+/* uma cor por cartão das etapas */
+const CORES = ["#A9C46C", "#C4693F", "#3C7A99", "#D9A441", "#2F6B45"];
+
+/* topo: duas em pé atrás e a deitada da turma na frente */
+const CAPAS = [bastidores1, sorteio2, heroPraia];
+
+/* O processo contado pelas cinco etapas da metodologia. */
+const PROCESS = [
+  {
+    n: "01",
+    etapa: "Sonhar",
+    title: "Um ano inteiro, não só o mês seguinte",
+    text: "O Dojo Caraíva foi erguido na Aldeia Xandó em 2019, com doações e mutirão, e se manteve por vaquinhas pontuais. Elas resolviam o mês e nunca o ano. O sonho desta campanha era outro: garantir o custeio do projeto por doze meses, com kimonos, campeonatos e manutenção previstos desde o começo.",
+    img: kids,
+    alt: "Turma de crianças do Dojo Caraíva sentada no tatame",
+  },
+  {
+    n: "02",
+    etapa: "Ofertar",
+    title: "Uma estadia em Caraíva por R$ 20",
+    text: "Em vez de pedir doação, uma oferta ao alcance de qualquer pessoa: o bilhete custava R$ 20 e concorria a uma estadia na Pousada Vila do Mar, dentro da própria vila. O parceiro entrou com a experiência e levou de volta a visibilidade de uma campanha que rodou o país inteiro.",
+    imgs: [rifa1, rifa2],
+    retrato: true,
+    alt: "Alunos do Dojo Caraíva com o cartaz da Rifa Solidária",
+  },
+  {
+    n: "03",
+    etapa: "Contar",
+    title: "As estrelas de Caraíva no comando",
+    text: "Quem contou a história foram Pérola, Arlison, Atxuhi e Helena. Levamos os alunos para conhecer o prêmio que ajudariam a rifar, e a pureza das perguntas deu o tom: “Vai ter piscina, tio?”, “Eu quero ser famoso, tio!”. Eles refaziam cada take para melhorar a fala e a postura, com a mesma teimosia que aprendem no tatame.",
+    imgs: [pousada2, pousada3],
+    alt: "Bastidores da gravação da rifa, na pousada de Caraíva",
+  },
+  {
+    n: "04",
+    etapa: "Escalar",
+    title: "R$ 21,5 mil que levaram Caraíva ao Brasil",
+    text: "A narrativa das crianças foi distribuída por tráfego pago com segmentação para quem ama Caraíva ou acompanha jiu-jitsu social. Foram 3.183 apoiadores comprando bilhetes de todo o país, muitos deles sem nunca ter pisado na vila.",
+    painel: {
+      titulo: "A mídia paga em quatro números",
+      itens: [
+        { v: "3,77x", l: "retorno sobre o investido" },
+        { v: "R$ 21,5 mil", l: "investidos em mídia" },
+        { v: "3.183", l: "apoiadores conquistados" },
+        { v: "R$ 100 mil", l: "arrecadados no total" },
+      ],
+    },
+  },
+  {
+    n: "05",
+    etapa: "Retribuir",
+    title: "O sorteio virou festa da vila",
+    text: "A entrega dos prêmios reuniu a comunidade, os alunos e quem apoiou de longe. Depois vieram as contas abertas e, principalmente, o destino do dinheiro: inscrições no Campeonato Baiano e no Mundial da CBJJE, kimonos, sapatilhas, equipamento de segurança e as novas camisetas da equipe.",
+    imgs: [sorteio1, sorteio2, sorteio3, sorteio4],
+    retrato: true,
+    alt: "Dia do sorteio da Rifa Solidária do Dojo Caraíva",
+  },
+];
+
+const STATS = [
+  { label: "Novos apoiadores", value: "3.183" },
+  { label: "Arrecadados na campanha", value: "R$ 100 mil" },
+  { label: "Líquidos para o projeto", value: "R$ 67,4 mil" },
+  { label: "Investidos em anúncios", value: "R$ 21,5 mil" },
+  { label: "Retorno sobre os anúncios", value: "3,77x" },
+  { label: "Preço do bilhete", value: "R$ 20" },
+];
+
+const VIROU = [
+  {
+    title: "Campeonatos",
+    text: "Inscrições e custos garantidos para o Campeonato Baiano e o Mundial da CBJJE.",
+  },
+  {
+    title: "Equipamento",
+    text: "Kimonos, sapatilhas, figurinos do projeto parceiro de ballet e itens de segurança para o treino.",
+  },
+  {
+    title: "Identidade",
+    text: "Camisetas novas da equipe e o evento de sorteio que reuniu a vila inteira.",
+  },
+];
+
+const FICHA = [
+  { label: "Projeto", value: "Dojo Caraíva · Aldeia Xandó, Caraíva/BA" },
+  { label: "Metodologia", value: "Rifa Solidária" },
+  { label: "Idealização & mestre", value: "Suellen Boni" },
+  { label: "Estratégia & captação", value: "Mateus Tafuri" },
+];
+
+const CARROSSEIS = [
+  { title: "Conheça o Dojo Caraíva", slug: "conheca-o-dojo-caraiva", count: 14 },
+  { title: "O prêmio da rifa", slug: "o-premio", count: 10 },
+  { title: "A importância do jiu-jitsu", slug: "importancia-jiu-jitsu", count: 7 },
+  { title: "Motivos para apoiar", slug: "ajudar-o-dojo", count: 6 },
+  { title: "Horários das aulas", slug: "horarios", count: 10 },
+  { title: "Gratidão", slug: "gratidao", count: 7 },
+  { title: "O que fizemos com a arrecadação", slug: "o-que-fizemos", count: 11 },
+].map((c) => ({
+  ...c,
+  images: Array.from({ length: c.count }, (_, i) => `/carrosseis/${c.slug}/${i + 1}.webp`),
+}));
+
+/* álbum: a vila, o tatame e os campeonatos que a rifa bancou */
+const ALBUM = [
+  heroPraia,
+  kids,
+  impacto1,
+  impacto2,
+  impacto3,
+  impacto4,
+  bastidores1,
+  bastidores2,
+  social,
+];
+
+const OUTROS_CASES = [
+  {
+    cliente: "Dojo Bonete",
+    titulo: "R$ 155,7 mil em 104 dias, do outro lado do mar",
+    tipo: "Rifa Solidária",
+    path: "/dojo-bonete",
+  },
+  {
+    cliente: "Corumbau BJJ",
+    titulo: "101 dias de fé no extremo sul da Bahia",
+    tipo: "Rifa Solidária",
+    path: "/corumbau-bjj",
+  },
+];
+
+/* ─────────────────────────── PAGE ─────────────────────────── */
+
 const DojoCaraiva = () => (
-  <div className="min-h-screen bg-background text-foreground">
+  <div
+    className="min-h-screen"
+    style={
+      {
+        backgroundColor: CREME,
+        color: VERDE,
+        "--case-grad": TEMA.heroGrad,
+        "--case-brilho": TEMA.brilho,
+        "--case-destaque": TEMA.destaque,
+        "--case-destaque-40": TEMA.destaque40,
+        "--case-destaque-30": TEMA.destaque30,
+        "--case-escuro": TEMA.escuro,
+      } as React.CSSProperties
+    }
+  >
     <Navbar />
 
-    {/* Hero */}
-    <header className="relative w-full h-[55vh] md:h-[60vh] overflow-hidden">
-      <img
-        src={heroImg}
-        alt="Crianças do Dojo Caraíva treinando jiu-jitsu na vila de Caraíva, Bahia"
-        className="w-full h-full object-cover"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
-      <div className="absolute bottom-6 left-0 right-0 max-w-4xl mx-auto px-6">
-        <Link
-          to="/#cases"
-          className="inline-flex items-center gap-2 text-sm text-primary mb-3 hover:underline"
-        >
-          <ArrowLeft size={16} /> Voltar para cases
-        </Link>
-        <div className="flex items-center gap-4">
-          <img
-            src={logo}
-            alt="Logo Dojo Caraíva"
-            className="w-14 h-14 rounded-full object-cover border-2 border-primary"
-          />
-          <div>
-            <span className="text-xs bg-primary/20 text-primary px-3 py-1 rounded-full">
-              Rifa Solidária
-            </span>
-            <h1 className="md:text-4xl font-bold mt-1 leading-tight text-2xl">
-              A União de uma Vila: Transformando Vidas através do Esporte
-            </h1>
+    <CaseHero
+      tipo="Rifa Solidária"
+      titulo="Dojo"
+      destaque="Caraíva"
+      descricao="Uma vila de ruas de areia no sul da Bahia, um tatame erguido por doações e a campanha que garantiu um ano inteiro de projeto com bilhetes de R$ 20."
+      logo={logoCaraiva}
+      logoAlt="Logo Dojo Caraíva"
+      pecas={CAPAS}
+    />
+
+    <CaseNav secoes={SECTIONS} />
+
+    <main className="mx-auto max-w-5xl px-5 sm:px-6">
+      {/* ───────── O DESAFIO ───────── */}
+      <section id="desafio" className="scroll-mt-20 py-14 md:py-20">
+        <Label>O desafio</Label>
+        <div className="border-l-[3px] border-[var(--case-destaque)] pl-5 md:pl-7">
+          <p className="font-display text-2xl font-bold leading-snug md:text-4xl">
+            Como sustentar um projeto social o ano inteiro numa vila que vive de
+            temporada?
+          </p>
+        </div>
+
+        <div className="mt-8 grid gap-8 md:grid-cols-2">
+          <div className="space-y-4 leading-relaxed text-[#16281f]/70">
+            <p>
+              Caraíva é conhecida pelas ruas de areia e pelo encontro do rio com o mar.
+              Longe dos holofotes do turismo, é uma vila com acesso limitado e poucas
+              oportunidades para os jovens. Ali, sob a mestre{" "}
+              <strong className="text-[#16281f]">Suellen Boni</strong>, o tatame virou o
+              porto seguro de dezenas de crianças e adolescentes.
+            </p>
+            <p>
+              O dojo foi erguido em 2019 com doações e mutirão, e se manteve por vaquinhas
+              pontuais — que resolviam o mês e nunca o ano seguinte. A rifa nasceu para
+              romper esse ciclo: custear o projeto por doze meses, vendendo bilhetes de
+              R$ 20 para gente de todo o país.
+            </p>
+          </div>
+
+          {/* a foto sai do fluxo no desktop para acompanhar a altura do texto */}
+          <div className="md:relative">
+            <img
+              src={social}
+              alt="Vila de Caraíva, no sul da Bahia"
+              className="aspect-[16/9] w-full rounded-2xl object-cover md:absolute md:inset-0 md:aspect-auto md:h-full"
+              loading="lazy"
+            />
           </div>
         </div>
-      </div>
-    </header>
-
-    <main className="max-w-4xl mx-auto px-6 pt-6 pb-12 space-y-10">
-      {/* Subtítulo */}
-      <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl">
-        Uma jornada pelos bastidores de um sonho coletivo, onde o carinho da comunidade e o poder de contar histórias abriram novos caminhos para o futuro do esporte.
-      </p>
-
-      {/* Seção 1 – O Cenário */}
-      <section>
-        <h2 className="text-2xl font-bold mb-4">
-          🌊 Caraíva, Além do Turismo
-        </h2>
-        <p className="text-muted-foreground leading-relaxed mb-4 text-justify">
-          Caraíva é um refúgio de belezas naturais, conhecido por suas ruas de areia e o encontro mágico do rio com o mar. Mas, longe dos holofotes turísticos, existe uma comunidade vibrante que enfrenta desafios reais. O acesso limitado e a falta de oportunidades para os jovens são questões presentes no dia a dia da vila.
-        </p>
-        <p className="text-muted-foreground leading-relaxed mb-6 text-justify">
-          Foi nesse contexto que o Dojo Caraíva nasceu. O projeto social não entrega apenas aulas de Jiu-Jitsu, ele oferece uma estrutura de disciplina, respeito e cidadania para dezenas de crianças e adolescentes locais. Sob a orientação da mestre Suellen Boni o tatame tornou-se um porto seguro e um trampolim para sonhos maiores.
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <img
-            src={socialImg}
-            alt="Vila de Caraíva, sul da Bahia"
-            className="w-full rounded-2xl object-cover h-72"
-            loading="lazy"
-          />
-          <img
-            src={kidsImg}
-            alt="Crianças do Dojo Caraíva no tatame"
-            className="w-full rounded-2xl object-cover h-72"
-            loading="lazy"
-          />
-        </div>
       </section>
 
-      {/* Seção 2 – O Desafio Narrativo */}
-      <section>
-        <h2 className="text-2xl font-bold mb-4">
-          🥋 O Desafio Narrativo: Conectando Propósito com Desejo
+      {/* ───────── ESTRATÉGIA ───────── */}
+      <section id="estrategia" className="scroll-mt-20 border-t border-black/10 py-14 md:py-20">
+        <Label>Estratégia adotada</Label>
+        <h2 className="max-w-2xl font-display text-3xl font-bold md:text-4xl">
+          As cinco etapas da Rifa Solidária
         </h2>
-        <p className="text-muted-foreground leading-relaxed mb-4 text-justify">
-          O Dojo Caraíva foi erguido na Aldeia Xandó em 2019, fruto de doações e do esforço comunitário. Durante anos, a estrutura foi mantida por meio de vaquinhas pontuais que, embora fundamentais, limitavam o planejamento a longo prazo. O desafio era constante: manter o tatame vivo em uma realidade de recursos escassos.
-        </p>
-        <p className="text-muted-foreground leading-relaxed mb-6 text-justify">
-          A rifa solidária surgiu uma ideia audaciosa para romper esse ciclo. O objetivo era captar recursos suficientes para custear o projeto por um ano inteiro, garantindo segurança e continuidade para o projeto.
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <img
-            src={bastidores1}
-            alt="Mateus Tafuri fixando cartaz da Rifa Solidária no Dojo Caraíva"
-            className="w-full rounded-2xl object-cover h-72 object-[center_25%]"
-            loading="lazy"
-          />
-          <img
-            src={bastidores2New}
-            alt="Mateus Tafuri apresentando a rifa para aluna do Dojo Caraíva"
-            className="w-full rounded-2xl object-cover h-72 object-[center_25%]"
-            loading="lazy"
-          />
-        </div>
-      </section>
-
-      {/* Seção 3 – Bastidores */}
-      <section>
-        <h2 className="text-2xl font-bold mb-4">
-          ✨ Bastidores de um Dia Especial: O Dia da Gravação
-        </h2>
-        <p className="text-muted-foreground leading-relaxed mb-4 text-justify">
-          Para comunicar essa campanha, fomos além do "compre um número". Trouxemos as estrelas do projeto para serem os porta-vozes. Durante um treino kids, os alunos Pérola, Arlison, Atxuhi e Helena tiveram a oportunidade de conhecer o prêmio que ajudariam a rifar.
-        </p>
-        <p className="text-muted-foreground leading-relaxed mb-4 text-justify">
-          A pureza das perguntas: "Vai ter piscina, tio?" e o entusiasmo de Arlison: "Eu quero ser famoso, tio!", deram o tom. Assim que entenderam que o objetivo da rifa era trazer mais recursos para o projeto, eles abraçaram a ideia com a alegria e a resiliência que o jiu-jitsu ensina.
-        </p>
-        <p className="text-muted-foreground leading-relaxed mb-6 text-justify">
-          Foi emocionante ver o empenho deles em cada take da gravação. Queriam melhorar a fala, a postura, o cenário, demonstrando a determinação que aprendem no tatame. Recebidos com carinho pela equipe da pousada, aproveitaram cada detalhe: batata frita, suco, piscina, brincadeiras. Eles não eram apenas "crianças do projeto", eram as verdadeiras estrelas de Caraíva. Essa autenticidade foi o pilar da nossa comunicação, mostrando que cada bilhete de R$20 era um passo real na transformação dessas vidas.
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <img
-            src={pousada1}
-            alt="Alunos do Dojo Caraíva conhecendo a Pousada Vila do Mar"
-            className="w-full rounded-2xl object-cover h-72"
-            loading="lazy"
-          />
-          <img
-            src={pousada2}
-            alt="Bastidores da gravação da rifa solidária do Dojo Caraíva"
-            className="w-full rounded-2xl object-cover h-72"
-            loading="lazy"
-          />
-        </div>
-      </section>
-
-      {/* Seção 4 – Estratégia Digital */}
-      <section>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-          <img
-            src={pousada3}
-            alt="Mateus Tafuri com aluna do Dojo Caraíva apresentando a Rifa Solidária"
-            className="w-full rounded-2xl object-cover h-72"
-            loading="lazy"
-          />
-          <img
-            src={pousada4}
-            alt="Aluna do Dojo Caraíva à beira da piscina da pousada"
-            className="w-full rounded-2xl object-cover h-72"
-            loading="lazy"
-          />
-        </div>
-        <h2 className="text-2xl font-bold mb-4">
-          📊 A Estratégia Digital e o Resultado Financeiro
-        </h2>
-        <p className="text-muted-foreground leading-relaxed mb-4 text-justify">
-          A campanha não foi movida apenas por emoção, mas por uma execução técnica de marketing digital voltada para a conversão. Para escalar o alcance da história e atrair os 3.183 compradores, investimos estrategicamente em tráfego pago nas redes sociais.
-        </p>
-        <p className="text-muted-foreground leading-relaxed mb-6 text-justify">
-          A narrativa empática das crianças, combinada com a segmentação inteligente para pessoas que amam Caraíva ou o jiu-jitsu social, gerou um ROI (Retorno sobre o Investimento) de 3,77.
+        <p className="mt-3 max-w-2xl leading-relaxed text-[#16281f]/65">
+          A mesma metodologia aplicada em toda campanha. O que cada etapa virou em
+          Caraíva está logo adiante, no processo.
         </p>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
-          {stats.map((s) => (
+        <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+          {ETAPAS.map((e, i) => (
             <div
-              key={s.label}
-              className="bg-card border border-border rounded-2xl p-5 text-center"
+              key={e.n}
+              /* no hover o cartão sobe, acende a borda e o emoji inclina */
+              className="group relative overflow-hidden rounded-xl border border-black/10 bg-white p-4 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--cor)] hover:shadow-[0_14px_28px_-16px_rgba(22,40,31,0.45)]"
+              style={
+                {
+                  borderTop: `3px solid ${CORES[i]}`,
+                  "--cor": CORES[i],
+                } as React.CSSProperties
+              }
             >
-              <p className="text-2xl md:text-3xl font-bold text-primary">
-                {s.value}
+              <span
+                aria-hidden
+                className="absolute right-3 top-1 font-display text-4xl font-extrabold text-[#16281f]/[0.06]"
+              >
+                0{e.n}
+              </span>
+              <span
+                className="grid h-9 w-9 place-items-center rounded-lg text-lg transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110"
+                style={{ backgroundColor: CORES[i] }}
+              >
+                {e.emoji}
+              </span>
+              <h3 className="relative mt-3 font-display font-bold leading-none">
+                {e.title}
+              </h3>
+              <p className="relative mt-2 text-[13px] leading-snug text-[#16281f]/65">
+                {e.chamada}
               </p>
-              <p className="text-xs text-muted-foreground mt-1">{s.label}</p>
             </div>
           ))}
         </div>
-
-        <div className="text-center py-6 mb-8 border border-border rounded-2xl bg-card">
-          <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">
-            Lucro real para o projeto
-          </p>
-          <p className="text-5xl md:text-6xl font-bold text-primary">
-            R$ 67.431,74
-          </p>
-        </div>
-
-        <div className="bg-card border border-border rounded-2xl p-6">
-          <h3 className="text-lg font-semibold mb-3">
-            Prestação de Contas
-          </h3>
-          <p className="text-muted-foreground leading-relaxed text-justify">
-            Este resultado é a prova de que quando a comunicação autêntica se une à gestão profissional e transparente, os resultados são extraordinários. Cada centavo arrecadado foi documentado e direcionado para a transformação dos jovens atletas de Caraíva.
-          </p>
-        </div>
-
-        <div className="mt-10">
-          <h3 className="text-2xl font-bold mb-4">
-            🎉 Dia do Sorteio
-          </h3>
-          <p className="text-muted-foreground leading-relaxed mb-6 text-justify">
-            O dia do sorteio foi uma celebração coletiva. Reunimos a comunidade, os alunos e os apoiadores para entregar os prêmios e agradecer por cada bilhete vendido. A alegria nos rostos das crianças e o brilho de quem fez parte dessa jornada provam que essa rifa foi muito mais do que números: foi um movimento de amor pelo Dojo Caraíva.
-          </p>
-          <div className="grid grid-cols-2 gap-4">
-            <img src={sorteio1} alt="Aluna do Dojo Caraíva no dia do sorteio da rifa solidária" className="w-full rounded-2xl object-cover h-72 object-[center_5%]" loading="lazy" />
-            <img src={sorteio2} alt="Mestre Suellen, Mateus Tafuri e aluno premiado no sorteio do Dojo Caraíva" className="w-full rounded-2xl object-cover h-72 object-[center_30%]" loading="lazy" />
-            <img src={sorteio3} alt="Aluno premiado com a mestre Suellen no dia do sorteio" className="w-full rounded-2xl object-cover h-72 object-[center_25%]" loading="lazy" />
-            <img src={sorteio4} alt="Mateus Tafuri entregando prêmio para aluno do Dojo Caraíva" className="w-full rounded-2xl object-cover h-72 object-[center_25%]" loading="lazy" />
-          </div>
-        </div>
-      </section>
-
-      {/* Seção 5 – Impacto Real */}
-      <section>
-        <h2 className="text-2xl font-bold mb-4">
-          🏅 O Impacto Real: Sonhos que se Tornaram Realidade
-        </h2>
-        <p className="text-muted-foreground leading-relaxed mb-6 text-justify">
-          Os R$ 67.431,74 arrecadados não foram apenas dinheiro em caixa. Eles se traduziram imediatamente em ação e transformação na vida dos nossos atletas:
-        </p>
-        <ul className="space-y-3 mb-6">
-          {[
-            {
-              icon: "🥋",
-              title: "Presença em Campeonatos",
-              text: "Inscrições e custos garantidos para competições cruciais, incluindo o Campeonato Baiano e o Mundial da CBJJE.",
-            },
-            {
-              icon: "🛡️",
-              title: "Equipamento",
-              text: "Aquisição de novos kimonos, sapatilhas e figurinos do projeto parceiro de ballet, além de equipamentos de segurança essenciais para treinos seguros.",
-            },
-            {
-              icon: "✨",
-              title: "Infraestrutura e Uniforme",
-              text: "Confecção de novas camisetas da equipe e um grande evento de sorteio da rifa cheio de alegria e união.",
-            },
-          ].map((item) => (
-            <li
-              key={item.title}
-              className="flex items-start gap-3 bg-card border border-border rounded-xl p-4"
-            >
-              <span className="text-2xl shrink-0">{item.icon}</span>
-              <div>
-                <strong className="text-foreground">{item.title}:</strong>{" "}
-                <span className="text-muted-foreground">{item.text}</span>
-              </div>
-            </li>
-          ))}
-        </ul>
-        <div className="grid grid-cols-2 gap-4">
-          <img src={impacto1} alt="Alunos do Dojo Caraíva em travessia de barco para competição" className="w-full rounded-2xl object-cover h-72" loading="lazy" />
-          <img src={impacto2} alt="Equipe do Dojo Caraíva reunida antes do campeonato" className="w-full rounded-2xl object-cover h-72 object-[center_70%]" loading="lazy" />
-          <img src={impacto3} alt="Atletas do Dojo Caraíva acompanhando lutas no campeonato" className="w-full rounded-2xl object-cover h-72" loading="lazy" />
-          <img src={impacto4} alt="Mateus Tafuri com atletas do Dojo Caraíva no campeonato" className="w-full rounded-2xl object-cover h-72" loading="lazy" />
-        </div>
-      </section>
-
-      {/* Seção 6 – Conclusão */}
-      <section>
-        <h2 className="text-2xl font-bold mb-4">
-          🚀 Conclusão e Oportunidade
-        </h2>
-        <p className="text-muted-foreground leading-relaxed mb-4 text-justify">
-          A Rifa Solidária do Dojo Caraíva não foi apenas uma campanha de arrecadação de fundos; foi uma demonstração do poder da comunidade e da eficácia de uma comunicação estratégica e empática. Ela validou o modelo de gestão e captação do projeto.
-        </p>
-        <p className="text-muted-foreground leading-relaxed text-justify">
-          Este é apenas o começo. O tatame está pronto para receber novos alunos, e nossos atletas estão prontos para novos desafios no mundo todo.
-        </p>
       </section>
     </main>
 
-    <EmBreveCase />
+    {/* ───────── PROCESSO + NÚMEROS + LEGADO (bloco escuro) ───────── */}
+    <section
+      id="processo"
+      className="scroll-mt-20 px-5 py-16 sm:px-6 md:py-24"
+      style={{
+        background: TEMA.grad,
+        color: CREME,
+      }}
+    >
+      <div className="mx-auto max-w-5xl">
+        <Label escuro>Processo de desenvolvimento</Label>
+        <h2 className="max-w-2xl font-display text-3xl font-bold leading-tight md:text-5xl">
+          As cinco etapas aplicadas em Caraíva
+        </h2>
+        <p className="mt-4 max-w-xl leading-relaxed text-[#F4F0E6]/65">
+          A mesma metodologia da Rifa Solidária, etapa por etapa, com o que cada uma
+          virou na vila.
+        </p>
 
-    {/* CTA */}
-    <section className="bg-secondary py-16 px-6 text-center mt-8">
-      <div className="max-w-2xl mx-auto">
+        <CaseEtapas itens={PROCESS} />
+
+        {/* números */}
+        <div className="mt-16 border-t border-white/10 pt-10">
+          <Label escuro>Os números da campanha</Label>
+          <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
+            {STATS.map((s) => (
+              <div
+                key={s.label}
+                className="rounded-2xl border border-white/10 bg-white/[0.05] p-5 text-center"
+              >
+                <p className="font-display text-2xl font-extrabold text-[var(--case-destaque)] md:text-3xl">
+                  {s.value}
+                </p>
+                <p className="mt-1 text-xs text-[#F4F0E6]/55">{s.label}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-3 rounded-2xl border border-[var(--case-destaque-30)] bg-[var(--case-destaque)]/10 py-8 text-center">
+            <p className="text-[11px] uppercase tracking-[0.25em] text-[#F4F0E6]/60">
+              A campanha em uma linha
+            </p>
+            <p className="mt-2 px-4 font-display text-3xl font-extrabold text-[var(--case-destaque)] md:text-5xl">
+              Um ano de projeto garantido a R$ 20 o bilhete
+            </p>
+          </div>
+        </div>
+
+        {/* no que o dinheiro virou */}
+        <div className="mt-16 border-t border-white/10 pt-10">
+          <Label escuro>No que o dinheiro virou</Label>
+          <div className="grid gap-4 md:grid-cols-3">
+            {VIROU.map((v) => (
+              <div key={v.title} className="rounded-2xl border border-white/10 bg-white/[0.04] p-6">
+                <h3 className="font-display text-lg font-bold text-[var(--case-destaque)]">{v.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-[#F4F0E6]/65">{v.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* legado ao lado da ficha */}
+        <div
+          id="ficha"
+          className="mt-16 grid scroll-mt-20 items-start gap-8 border-t border-white/10 pt-10 md:grid-cols-2 md:gap-12"
+        >
+          <div>
+            <Label escuro>O legado</Label>
+            <p className="font-display text-2xl font-bold leading-snug md:text-3xl">
+              Quando a vila inteira vende bilhete, o tatame deixa de depender de sorte.
+              Caraíva não ganhou só um ano de caixa: ganhou um modelo de captação que
+              pode repetir na próxima temporada.
+            </p>
+          </div>
+
+          <div className="overflow-hidden rounded-3xl" style={{ backgroundColor: CREME }}>
+            <div className="flex items-center justify-between px-5 py-4 md:px-7">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#16281f]/60">
+                Ficha técnica
+              </p>
+              <p className="text-xs text-[#16281f]/45">Caraíva · BA</p>
+            </div>
+            {FICHA.map((f) => (
+              <div
+                key={f.label}
+                className="flex flex-col gap-1 border-t border-black/10 px-5 py-3.5 sm:flex-row sm:items-center sm:justify-between md:px-7"
+                style={{ color: VERDE }}
+              >
+                <p className="text-[11px] uppercase tracking-[0.15em] text-[#16281f]/50">
+                  {f.label}
+                </p>
+                <p className="font-semibold">{f.value}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ───────── AS ARTES ───────── */}
+    <section id="artes" className="scroll-mt-20 px-5 py-16 sm:px-6 md:py-20">
+      <div className="mx-auto max-w-5xl">
+        <Label>As artes</Label>
+        <h2 className="font-display text-3xl font-bold md:text-4xl">
+          Os carrosséis da campanha
+        </h2>
+        <p className="mt-4 max-w-2xl leading-relaxed text-[#16281f]/65">
+          As peças que apresentaram o Dojo Caraíva ao país e sustentaram a venda dos
+          bilhetes. Arraste para o lado para ver cada carrossel.
+        </p>
+
+        <div className="mt-10 space-y-12">
+          {CARROSSEIS.map((c) => (
+            <DragCarousel key={c.slug} title={`Carrossel: ${c.title}`} images={c.images} />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* ───────── AS FOTOS ───────── */}
+    <section id="fotos" className="scroll-mt-20 border-t border-black/10 px-5 py-16 sm:px-6 md:py-20">
+      <div className="mx-auto max-w-5xl">
+        <Label>Álbum de fotos</Label>
+        <h2 className="font-display text-3xl font-bold md:text-4xl">
+          A vila, o tatame e os campeonatos
+        </h2>
+        <p className="mb-8 mt-4 max-w-2xl leading-relaxed text-[#16281f]/65">
+          O que a rifa comprou aparece aqui: viagem, competição e a turma inteira de pé.
+        </p>
+
+        <DragCarousel title="Depois da campanha" images={ALBUM} />
+      </div>
+    </section>
+
+    {/* ───────── DEPOIMENTO ───────── */}
+    <div className="border-t border-black/10">
+      <FeedbackSection titulo="O que dizem sobre a campanha" apenas="Dojo Caraíva" />
+    </div>
+
+    {/* ───────── OUTROS CASES ───────── */}
+    <section className="border-t border-black/10 px-5 py-16 sm:px-6">
+      <div className="mx-auto max-w-5xl">
+        <Label>Outros projetos</Label>
+        <div className="grid gap-4 sm:grid-cols-2">
+          {OUTROS_CASES.map((c) => (
+            <Link
+              key={c.path}
+              to={c.path}
+              className="group rounded-3xl border border-black/10 bg-white p-6 transition-colors hover:border-[var(--case-destaque)]"
+            >
+              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#16281f]/45">
+                {c.cliente}
+              </p>
+              <h3 className="mt-2 font-display text-xl font-bold leading-snug">
+                {c.titulo}
+              </h3>
+              <p className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--case-escuro)]">
+                {c.tipo} <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
+              </p>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* ───────── CTA ───────── */}
+    <section
+      className="px-5 py-16 text-center sm:px-6 md:py-20"
+      style={{ backgroundColor: "#eae5d8" }}
+    >
+      <div className="mx-auto max-w-2xl">
         <img
           src={logoTafuri}
           alt="Mateus Tafuri"
-          className="w-28 h-28 md:w-32 md:h-32 mx-auto -mb-2 [filter:brightness(0)_saturate(100%)_invert(18%)_sepia(58%)_saturate(1654%)_hue-rotate(78deg)_brightness(96%)_contrast(95%)]"
+          className="mx-auto -mb-2 h-28 w-28 [filter:brightness(0)_saturate(100%)_invert(18%)_sepia(58%)_saturate(1654%)_hue-rotate(78deg)_brightness(96%)_contrast(95%)] md:h-32 md:w-32"
         />
-        <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-3">
-          Sua causa é a próxima
-        </p>
-        <h2 className="text-3xl md:text-4xl font-bold text-green-dark mb-4">
-          Vamos captar juntos?
-        </h2>
-        <p className="text-secondary-foreground/80 mb-8 text-base leading-relaxed">
-          Se o Dojo Caraíva te inspirou, imagine o que podemos construir pelo seu projeto. Vamos transformar sua história em uma campanha que mobiliza, emociona e arrecada.
+        <Label>Sua causa é a próxima</Label>
+        <h2 className="font-display text-3xl font-bold md:text-4xl">Vamos captar juntos?</h2>
+        <p className="mt-4 leading-relaxed text-[#16281f]/70">
+          Se o Dojo Caraíva te inspirou, imagine o que dá para construir pelo seu
+          projeto. Vamos transformar a sua história em uma campanha que mobiliza,
+          emociona e arrecada.
         </p>
         <a
           href="https://wa.me/5567998860067"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block bg-primary text-primary-foreground px-8 py-4 rounded-full text-base font-semibold hover:opacity-90 transition-opacity"
+          className="mt-8 inline-block rounded-full bg-[var(--case-escuro)] px-8 py-4 text-base font-semibold text-[#F4F0E6] transition-opacity hover:opacity-90"
         >
           Falar com Mateus no WhatsApp
         </a>

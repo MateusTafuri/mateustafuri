@@ -40,30 +40,30 @@ const RIFAS = [
   {
     nome: "Dojo Bonete",
     local: "Ilhabela · SP",
-    valor: "R$ 152.678",
-    linhas: ["2.161 apoiadores", "1,2M de alcance", "R$ 41 mil em mídia"],
+    valor: "R$ 155,7 mil",
+    linhas: ["2.077 apoiadores", "1,2 mi de alcance", "R$ 41 mil em mídia"],
     path: "/dojo-bonete",
   },
   {
     nome: "Dojo Caraíva",
     local: "Caraíva · BA",
-    valor: "R$ 100.000",
+    valor: "R$ 100 mil",
     linhas: ["3.183 apoiadores", "Bilhete de R$ 20", "R$ 21,5 mil em mídia"],
     path: "/dojo-caraiva",
   },
   {
     nome: "Corumbau BJJ",
     local: "Corumbau · BA",
-    valor: "R$ 159.493",
-    linhas: ["101 dias de campanha", "Comunidade isolada", "Prêmio por parceria"],
+    valor: "R$ 159,5 mil",
+    linhas: ["4.377 apoiadores", "101 dias de campanha", "R$ 56 mil em mídia"],
     path: "/corumbau-bjj",
   },
 ];
 
 const NUMEROS = [
-  { valor: "R$ 412 mil", label: "mobilizados em rifas" },
+  { valor: "R$ 415 mil", label: "mobilizados em rifas" },
   { valor: "3", label: "campanhas conduzidas" },
-  { valor: "5.300+", label: "apoiadores conquistados" },
+  { valor: "9.600+", label: "apoiadores conquistados" },
   { valor: "3,6 mi", label: "pessoas alcançadas" },
 ];
 

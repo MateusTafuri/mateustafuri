@@ -27,9 +27,6 @@ const TestesDegrade = lazy(() => import("./pages/TestesDegrade.tsx"));
 const TestesConfete = lazy(() => import("./pages/TestesConfete.tsx"));
 const TestesMapeamento = lazy(() => import("./pages/TestesMapeamento.tsx"));
 const TestesProgresso = lazy(() => import("./pages/TestesProgresso.tsx"));
-const TestesHeaderBonete = lazy(() => import("./pages/TestesHeaderBonete.tsx"));
-const TestesCapaBonete = lazy(() => import("./pages/TestesCapaBonete.tsx"));
-const TestesLequeBonete = lazy(() => import("./pages/TestesLequeBonete.tsx"));
 const TestesPilulaEtapa = lazy(() => import("./pages/TestesPilulaEtapa.tsx"));
 const TestesDashboardEscalar = lazy(() => import("./pages/TestesDashboardEscalar.tsx"));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
@@ -66,9 +63,6 @@ const App = () => (
             <Route path="/testes-confete" element={<TestesConfete />} />
             <Route path="/testes-mapeamento" element={<TestesMapeamento />} />
             <Route path="/testes-progresso" element={<TestesProgresso />} />
-            <Route path="/testes-header-bonete" element={<TestesHeaderBonete />} />
-            <Route path="/testes-capa-bonete" element={<TestesCapaBonete />} />
-            <Route path="/testes-leque-bonete" element={<TestesLequeBonete />} />
             <Route path="/testes-pilula-etapa" element={<TestesPilulaEtapa />} />
             <Route path="/testes-dashboard-escalar" element={<TestesDashboardEscalar />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

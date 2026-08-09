@@ -37,11 +37,18 @@ const feedbacks = [
   },
 ];
 
+/* `apenas` filtra por um projeto: nas páginas de case entra só o depoimento
+   daquele projeto, sem carrossel nem setas. */
 const FeedbackSection = ({
   titulo = "O que dizem sobre minhas campanhas",
+  apenas,
 }: {
   titulo?: string;
+  apenas?: string;
 }) => {
+  const lista = apenas
+    ? feedbacks.filter((f) => f.project.includes(apenas))
+    : feedbacks;
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
 
@@ -66,7 +73,7 @@ const FeedbackSection = ({
 
       <Carousel opts={{ loop: true }} setApi={setApi} className="w-full">
         <CarouselContent>
-          {feedbacks.map((f) => (
+          {lista.map((f) => (
             <CarouselItem key={f.project}>
               <div className="rounded-2xl border border-border bg-card overflow-hidden">
                 <div className="flex flex-col md:flex-row md:items-center">
@@ -105,10 +112,11 @@ const FeedbackSection = ({
           ))}
         </CarouselContent>
 
+        {lista.length > 1 && (
         <div className="flex items-center justify-center gap-4 mt-6">
           <CarouselPrevious className="static translate-y-0" />
           <div className="flex gap-2">
-            {feedbacks.map((_, i) => (
+            {lista.map((_, i) => (
               <button
                 key={i}
                 onClick={() => api?.scrollTo(i)}
@@ -120,6 +128,7 @@ const FeedbackSection = ({
           </div>
           <CarouselNext className="static translate-y-0" />
         </div>
+        )}
       </Carousel>
     </section>
   );

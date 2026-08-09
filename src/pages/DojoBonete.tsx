@@ -3,18 +3,15 @@ import {
   ArrowLeft,
   ArrowRight,
   ArrowUpRight,
-  Clapperboard,
-  Coins,
-  Megaphone,
   MousePointerClick,
-  PenLine,
   Ticket,
   TrendingUp,
 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import { ETAPAS } from "@/data/rifaSolidaria";
-import BoneteHero from "@/components/BoneteHero";
+import CaseHero from "@/components/CaseHero";
+import { CaseEtapas, CaseNav, Label } from "@/components/CaseParts";
 import DragCarousel from "@/components/DragCarousel";
 
 import logoBonete from "@/assets/logo-bonete.webp";
@@ -43,14 +40,13 @@ const LIME = "#A9C46C"; // destaque
 
 const SECTIONS = [
   { id: "desafio", label: "O desafio" },
-  { id: "entregas", label: "A campanha" },
   { id: "estrategia", label: "Estratégia" },
   { id: "processo", label: "Processo" },
   { id: "artes", label: "As artes" },
   { id: "ficha", label: "Ficha técnica" },
 ];
 
-/* uma cor por cartão, para as etapas e para as entregas */
+/* uma cor por cartão das etapas */
 const CORES = [
   { bg: "#A9C46C", fg: "#22331a" }, // lime
   { bg: "#C4693F", fg: "#fff" }, // tijolo
@@ -58,15 +54,6 @@ const CORES = [
   { bg: "#D9A441", fg: "#3a2c0a" }, // areia
   { bg: "#2F6B45", fg: "#fff" }, // mata
   { bg: "#8C6A9E", fg: "#fff" }, // fim de tarde
-];
-
-const DELIVERABLES = [
-  { icon: Ticket, title: "Rifa Solidária", sub: "Metodologia de captação com prêmio-experiência" },
-  { icon: PenLine, title: "Copywriting & storytelling", sub: "Narrativa que levou o Bonete ao Brasil" },
-  { icon: TrendingUp, title: "Gestão de tráfego pago", sub: "Distribuição paga para públicos frios de todo o país" },
-  { icon: Clapperboard, title: "Criativos de campanha", sub: "Carrosséis e vídeos nativos" },
-  { icon: Megaphone, title: "Mobilização comunitária", sub: "A comunidade como parte da história" },
-  { icon: Coins, title: "Estratégia de arrecadação", sub: "Bilhetes, doações e checkout" },
 ];
 
 /* O processo contado pelas cinco etapas da metodologia. As perguntas de cada
@@ -105,7 +92,15 @@ const PROCESS = [
     etapa: "Escalar",
     title: "R$ 41 mil levando a história para o país",
     text: "A conversão acontecia numa página focada na transparência da obra e integrada via Pix. Grandes nomes do esporte e parceiros locais abraçaram a causa no orgânico, e o Meta Ads levou roteiros curtos de gancho forte a públicos frios de todo o Brasil: 77,2% dos bilhetes vendidos e R$ 103,5 mil em receita direta.",
-    painel: true,
+    painel: {
+      titulo: "A mídia paga em quatro números",
+      itens: [
+        { v: "3,8x", l: "retorno sobre o investido" },
+        { v: "R$ 41 mil", l: "investidos em mídia" },
+        { v: "77,2%", l: "dos bilhetes via tráfego" },
+        { v: "R$ 103,5 mil", l: "de receita direta" },
+      ],
+    },
   },
   {
     n: "05",
@@ -168,124 +163,23 @@ const OUTROS_CASES = [
   },
 ];
 
-/* ─────────────────────────── HELPERS ─────────────────────────── */
-
-/* Os quatro números da mídia paga, no lugar da foto da etapa Escalar */
-const PainelEscalar = () => (
-  <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 shadow-2xl">
-    <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#F4F0E6]/45">
-      A mídia paga em quatro números
-    </p>
-    <div className="mt-5 grid grid-cols-2 gap-4">
-      {[
-        { icon: TrendingUp, v: "3,8x", l: "retorno sobre o investido" },
-        { icon: MousePointerClick, v: "R$ 41 mil", l: "investidos em mídia" },
-        { icon: Ticket, v: "77,2%", l: "dos bilhetes via tráfego" },
-        { icon: ArrowUpRight, v: "R$ 103,5 mil", l: "de receita direta" },
-      ].map((k) => (
-        <div key={k.l} className="rounded-xl bg-white/[0.04] p-4">
-          <k.icon size={16} className="text-[#A9C46C]" />
-          <p className="mt-2 font-display text-2xl font-extrabold">{k.v}</p>
-          <p className="mt-0.5 text-xs leading-snug text-[#F4F0E6]/50">{k.l}</p>
-        </div>
-      ))}
-    </div>
-  </div>
-);
-
-
-const Label = ({ children, escuro }: { children: React.ReactNode; escuro?: boolean }) => (
-  <p
-    className={`mb-4 text-xs font-semibold uppercase tracking-[0.25em] ${
-      escuro ? "text-[#A9C46C]" : "text-[#16281f]/45"
-    }`}
-  >
-    {children}
-  </p>
-);
-
-/* Menu de seções que gruda no topo e segue a rolagem */
-const AnchorNav = () => {
-  const [active, setActive] = useState(SECTIONS[0].id);
-  const navigate = useNavigate();
-  const barRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) setActive(e.target.id);
-        });
-      },
-      { rootMargin: "-45% 0px -50% 0px", threshold: 0 },
-    );
-    SECTIONS.forEach((s) => {
-      const el = document.getElementById(s.id);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    barRef.current
-      ?.querySelector<HTMLElement>(`[data-id="${active}"]`)
-      ?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
-  }, [active]);
-
-  const go = (id: string) =>
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
-
-  /* volta para onde a pessoa estava; se ela caiu aqui direto, vai para os cases */
-  const voltar = () => (window.history.length > 1 ? navigate(-1) : navigate("/#cases"));
-
-  return (
-    <div className="sticky top-0 z-40 border-b border-black/10 bg-[#F4F0E6]/95 backdrop-blur-md">
-      {/* o miolo com w-max + mx-auto centraliza quando cabe e, quando não cabe,
-          deixa a faixa rolar do começo — justify-center esconderia a primeira */}
-      <div className="overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        <div
-          ref={barRef}
-          className="mx-auto flex w-max items-center gap-1.5 px-4 py-2.5"
-        >
-        <button
-          onClick={voltar}
-          aria-label="Voltar para a página anterior"
-          className="mr-1 grid h-8 w-8 shrink-0 place-items-center rounded-full text-[#16281f]/60 transition-colors hover:bg-black/5 hover:text-[#16281f]"
-        >
-          <ArrowLeft size={17} />
-        </button>
-        <span aria-hidden className="mr-1 h-5 w-px shrink-0 bg-black/10" />
-
-        {SECTIONS.map((s) => (
-          <button
-            key={s.id}
-            data-id={s.id}
-            onClick={() => go(s.id)}
-            aria-current={active === s.id ? "true" : undefined}
-            className={`shrink-0 rounded-full px-3.5 py-1.5 text-[13px] font-semibold transition-colors ${
-              active === s.id
-                ? "bg-[#16281f] text-[#F4F0E6]"
-                : "text-[#16281f]/55 hover:bg-black/5"
-            }`}
-          >
-            {s.label}
-          </button>
-        ))}
-        </div>
-      </div>
-    </div>
-  );
-};
-
 /* ─────────────────────────── PAGE ─────────────────────────── */
 
 const DojoBonete = () => (
   <div className="min-h-screen" style={{ backgroundColor: CREME, color: VERDE }}>
     <Navbar />
 
-    <BoneteHero pecas={CAPAS} />
+    <CaseHero
+      tipo="Rifa Solidária"
+      titulo="Dojo"
+      destaque="Bonete"
+      descricao="A construção coletiva de um sonho caiçara: como a união de uma comunidade isolada e a comunicação estratégica levantaram um dojo do outro lado do mar."
+      logo={logoBonete}
+      logoAlt="Logo Dojo Bonete"
+      pecas={CAPAS}
+    />
 
-    <AnchorNav />
+    <CaseNav secoes={SECTIONS} />
 
     <main className="mx-auto max-w-5xl px-5 sm:px-6">
       {/* ───────── O DESAFIO ───────── */}
@@ -323,36 +217,6 @@ const DojoBonete = () => (
               loading="lazy"
             />
           </div>
-        </div>
-      </section>
-
-      {/* ───────── SOBRE A CAMPANHA ───────── */}
-      <section id="entregas" className="scroll-mt-20 border-t border-black/10 py-14 md:py-20">
-        <Label>Sobre a campanha</Label>
-        <h2 className="max-w-2xl font-display text-3xl font-bold md:text-4xl">
-          Tudo o que a campanha exigiu
-        </h2>
-
-        <div className="mt-8 grid gap-3 sm:grid-cols-2">
-          {DELIVERABLES.map((d, i) => (
-            <div
-              key={d.title}
-              /* no hover o cartão sobe, ganha a borda da própria cor e o ícone inclina */
-              className="group flex items-start gap-3 rounded-2xl border border-black/10 bg-white p-4 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--cor)] hover:shadow-[0_14px_28px_-16px_rgba(22,40,31,0.45)]"
-              style={{ "--cor": CORES[i].bg } as React.CSSProperties}
-            >
-              <span
-                className="grid h-9 w-9 shrink-0 place-items-center rounded-xl transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110"
-                style={{ backgroundColor: CORES[i].bg, color: "#fff" }}
-              >
-                <d.icon size={16} strokeWidth={2.2} />
-              </span>
-              <div>
-                <h3 className="font-semibold leading-tight">{d.title}</h3>
-                <p className="mt-0.5 text-sm text-[#16281f]/55">{d.sub}</p>
-              </div>
-            </div>
-          ))}
         </div>
       </section>
 
@@ -425,81 +289,7 @@ const DojoBonete = () => (
           virou nos 104 dias de campanha.
         </p>
 
-        {/* texto e foto em zigue-zague: nas etapas pares a foto vem primeiro */}
-        <div className="mt-14 space-y-12 md:space-y-16">
-          {PROCESS.map((p, i) => (
-            <div
-              key={p.n}
-              className="grid items-center gap-6 md:grid-cols-2 md:gap-10"
-            >
-              <div className={i % 2 ? "md:order-2" : undefined}>
-                <div className="flex items-center gap-3">
-                  {/* no hover o emoji da etapa entra pela esquerda e empurra o texto */}
-                  <span className="group inline-flex items-center rounded-full border border-[#A9C46C]/40 px-3 py-1 font-display text-xs font-extrabold tracking-widest text-[#A9C46C] transition-colors hover:border-[#A9C46C]">
-                    <span className="w-0 overflow-hidden text-sm opacity-0 transition-all duration-300 group-hover:mr-1.5 group-hover:w-4 group-hover:opacity-100">
-                      {ETAPAS[i].emoji}
-                    </span>
-                    {p.n} · {p.etapa.toUpperCase()}
-                  </span>
-                  <span className="h-px w-8 bg-[#A9C46C]/30" />
-                </div>
-                <h3 className="mt-3 font-display text-2xl font-bold md:text-3xl">
-                  {p.title}
-                </h3>
-                <p className="mt-3 leading-relaxed text-[#F4F0E6]/65">{p.text}</p>
-              </div>
-              {p.painel ? (
-                <PainelEscalar />
-              ) : (
-              <div>
-                <div
-                  className={
-                    p.imgs?.length === 4
-                      ? "mx-auto grid max-w-[340px] grid-cols-2 gap-3"
-                      : `flex justify-center ${p.imgs?.length === 3 ? "" : "gap-3"}`
-                  }
-                >
-                {(p.imgs ?? [p.img]).map((src, k) => (
-                  <img
-                    key={src}
-                    src={src}
-                    alt={p.alt}
-                    className={
-                      p.imgs?.length === 4
-                        ? `peca-flutuante w-full rounded-xl border-[3px] border-white object-contain shadow-2xl ${k % 2 ? "mt-4" : ""}`
-                        : p.imgs?.length === 3
-                        ? `peca-flutuante w-[46%] rounded-xl border-[3px] border-white object-contain shadow-2xl ${k ? "-ml-[11%]" : ""}`
-                        : p.imgs
-                        ? "peca-flutuante min-w-0 flex-1 rounded-xl border-[3px] border-white object-contain shadow-2xl"
-                        : p.retrato
-                          ? "peca-flutuante max-h-[400px] w-auto rounded-xl border-[3px] border-white object-contain shadow-2xl"
-                          : "aspect-[4/3] w-full rounded-3xl object-cover shadow-2xl"
-                    }
-                    style={
-                      p.retrato && !p.imgs
-                        ? ({ "--giro": "-2deg" } as React.CSSProperties)
-                        : p.imgs
-                        ? ({
-                            "--giro": ["-4deg", "3deg", "2deg", "-3deg"][k % 4],
-                            animationDelay: `${-1.8 * k}s`,
-                            zIndex: [10, 30, 20, 25][k % 4],
-                          } as React.CSSProperties)
-                        : undefined
-                    }
-                    loading="lazy"
-                  />
-                ))}
-                </div>
-                {p.legenda && (
-                  <p className="mt-3 text-center text-xs leading-snug text-[#F4F0E6]/45">
-                    {p.legenda}
-                  </p>
-                )}
-              </div>
-              )}
-            </div>
-          ))}
-        </div>
+        <CaseEtapas itens={PROCESS} />
 
         {/* números */}
         <div className="mt-16 border-t border-white/10 pt-10">
