@@ -22,18 +22,18 @@ import logoTafuri from "@/assets/logo-tafuri.webp";
 
 import inauguracao from "@/assets/bonete-inauguracao.webp";
 import rifaGrupo from "@/assets/bonete-rifa-grupo.webp";
-import largaPraia from "@/assets/bonete-larga-praia.jpg";
+import largaPraia from "@/assets/bonete-larga-praia.webp";
 
-import tijolo2 from "@/assets/bonete-tijolo-2.jpg";
-import tijolo3 from "@/assets/bonete-tijolo-3.jpg";
+import tijolo2 from "@/assets/bonete-tijolo-2.webp";
+import tijolo3 from "@/assets/bonete-tijolo-3.webp";
 
-import renderInterior from "@/assets/bonete-render-interior.jpg";
-import renderTatame from "@/assets/bonete-render-tatame.jpg";
+import renderInterior from "@/assets/bonete-render-interior.webp";
+import renderTatame from "@/assets/bonete-render-tatame.webp";
 
-import capaSorteio from "@/assets/bonete-capa-sorteio.jpg";
-import flyerRifa from "@/assets/bonete-flyer-rifa.jpg";
-import capaObra from "@/assets/bonete-capa-obra.jpg";
-import largaDeck from "@/assets/bonete-larga-deck.jpg";
+import capaSorteio from "@/assets/bonete-capa-sorteio.webp";
+import flyerRifa from "@/assets/bonete-flyer-rifa.webp";
+import capaObra from "@/assets/bonete-capa-obra.webp";
+import largaDeck from "@/assets/bonete-larga-deck.webp";
 
 /* ─────────────────────────── DATA ─────────────────────────── */
 
@@ -136,7 +136,7 @@ const FICHA = [
 ];
 
 /* álbum: o dojo pronto, em uso */
-const ALBUM = Array.from({ length: 11 }, (_, i) => `/album/${i + 1}.jpg`);
+const ALBUM = Array.from({ length: 11 }, (_, i) => `/album/${i + 1}.webp`);
 
 const CARROSSEIS = [
   { title: "Conheça o Dojo Bonete", slug: "conheca-o-dojo", count: 5 },
@@ -147,7 +147,7 @@ const CARROSSEIS = [
   { title: "Tijolo em tijolo", slug: "tijolo-em-tijolo", count: 6 },
 ].map((c) => ({
   ...c,
-  images: Array.from({ length: c.count }, (_, i) => `/carrosseis/${c.slug}/${i + 1}.jpg`),
+  images: Array.from({ length: c.count }, (_, i) => `/carrosseis/${c.slug}/${i + 1}.webp`),
 }));
 
 /* topo: duas em pé atrás e a deitada do deck na frente */

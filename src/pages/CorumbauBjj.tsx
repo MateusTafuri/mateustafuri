@@ -4,10 +4,10 @@ import EmBreveCase from "@/components/EmBreveCase";
 import logo from "@/assets/logo-corumbau.webp";
 import logoTafuri from "@/assets/logo-tafuri.webp";
 import heroImg from "@/assets/case-corumbau-real.webp";
-import teamImg1 from "@/assets/corumbau-team-1.jpg";
-import teamImg2 from "@/assets/corumbau-team-2.jpg";
-import teamImg3 from "@/assets/corumbau-team-3.jpg";
-import teamImg4 from "@/assets/corumbau-team-4.jpg";
+import teamImg1 from "@/assets/corumbau-team-1.webp";
+import teamImg2 from "@/assets/corumbau-team-2.webp";
+import teamImg3 from "@/assets/corumbau-team-3.webp";
+import teamImg4 from "@/assets/corumbau-team-4.webp";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 

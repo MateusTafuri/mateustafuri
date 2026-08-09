@@ -1,4 +1,4 @@
-import heroImg from "@/assets/hero-real.jpg";
+import heroImg from "@/assets/hero-real.webp";
 
 const PHRASE = (
   <>

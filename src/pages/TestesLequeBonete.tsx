@@ -1,14 +1,14 @@
 import type { CSSProperties } from "react";
 
-import vTurma from "@/assets/bonete-capa-turma.jpg";
-import vFaixa from "@/assets/bonete-capa-faixa.jpg";
-import vFormatura from "@/assets/bonete-capa-formatura.jpg";
-import vPorDoSol from "@/assets/bonete-capa-por-do-sol.jpg";
+import vTurma from "@/assets/bonete-capa-turma.webp";
+import vFaixa from "@/assets/bonete-capa-faixa.webp";
+import vFormatura from "@/assets/bonete-capa-formatura.webp";
+import vPorDoSol from "@/assets/bonete-capa-por-do-sol.webp";
 
-import hDeck from "@/assets/bonete-larga-deck.jpg";
-import hSalao from "@/assets/bonete-larga-salao.jpg";
-import hFormatura from "@/assets/bonete-larga-formatura.jpg";
-import hPraia from "@/assets/bonete-larga-praia.jpg";
+import hDeck from "@/assets/bonete-larga-deck.webp";
+import hSalao from "@/assets/bonete-larga-salao.webp";
+import hFormatura from "@/assets/bonete-larga-formatura.webp";
+import hPraia from "@/assets/bonete-larga-praia.webp";
 
 /* Dez arranjos para as peças que flutuam no topo do case, misturando fotos
    em pé e deitadas. Cada peça: v = 3:4, h = 16:9; a altura sai da largura. */

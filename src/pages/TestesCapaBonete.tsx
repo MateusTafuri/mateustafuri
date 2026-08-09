@@ -1,9 +1,9 @@
 import type { CSSProperties } from "react";
 
-import deck from "@/assets/bonete-larga-deck.jpg";
-import salao from "@/assets/bonete-larga-salao.jpg";
-import formatura from "@/assets/bonete-larga-formatura.jpg";
-import praia from "@/assets/bonete-larga-praia.jpg";
+import deck from "@/assets/bonete-larga-deck.webp";
+import salao from "@/assets/bonete-larga-salao.webp";
+import formatura from "@/assets/bonete-larga-formatura.webp";
+import praia from "@/assets/bonete-larga-praia.webp";
 
 /* Cinco arranjos das fotos horizontais no começo do case, todos flutuando
    como o leque do topo: sobem e descem devagar, cada peça no seu tempo. */
