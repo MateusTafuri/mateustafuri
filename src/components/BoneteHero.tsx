@@ -10,9 +10,9 @@ const CREME = "#F4F0E6";
 /* Duas em pé atrás e uma deitada atravessada na frente. A largura vem daqui e
    a altura sai da proporção: "v" é 3:4, "h" é 16:9. */
 const LEQUE = [
-  { tipo: "v", larg: 190, giro: "-7deg", left: "2%", top: "0%", z: 10, atraso: "0s" },
-  { tipo: "v", larg: 190, giro: "7deg", left: "44%", top: "5%", z: 20, atraso: "-2.3s" },
-  { tipo: "h", larg: 340, giro: "-2deg", left: "8%", top: "52%", z: 30, atraso: "-4.6s" },
+  { tipo: "v", larg: 215, giro: "-7deg", left: "0%", top: "0%", z: 10, atraso: "0s" },
+  { tipo: "v", larg: 215, giro: "7deg", left: "45%", top: "5%", z: 20, atraso: "-2.3s" },
+  { tipo: "h", larg: 385, giro: "-2deg", left: "6%", top: "52%", z: 30, atraso: "-4.6s" },
 ] as const;
 
 const BoneteHero = ({ pecas }: { pecas: string[] }) => (

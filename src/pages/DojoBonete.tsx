@@ -527,18 +527,20 @@ const DojoBonete = () => (
           </div>
         </div>
 
-        {/* legado */}
-        <div className="mt-16 border-t border-white/10 pt-10">
-          <Label escuro>O legado</Label>
-          <p className="max-w-4xl font-display text-2xl font-bold leading-snug md:text-4xl">
-            Quando a própria comunidade carrega os tijolos, o dojo deixa de ser uma obra
-            e vira patrimônio. O Bonete não ganhou só um tatame: ganhou a prova de que
-            uma causa bem contada atravessa o mar.
-          </p>
-        </div>
+        {/* legado ao lado da ficha */}
+        <div
+          id="ficha"
+          className="mt-16 grid scroll-mt-20 items-start gap-8 border-t border-white/10 pt-10 md:grid-cols-2 md:gap-12"
+        >
+          <div>
+            <Label escuro>O legado</Label>
+            <p className="font-display text-2xl font-bold leading-snug md:text-3xl">
+              Quando a própria comunidade carrega os tijolos, o dojo deixa de ser uma
+              obra e vira patrimônio. O Bonete não ganhou só um tatame: ganhou a prova
+              de que uma causa bem contada atravessa o mar.
+            </p>
+          </div>
 
-        {/* ficha técnica */}
-        <div id="ficha" className="scroll-mt-20 pt-16">
           <div className="overflow-hidden rounded-3xl" style={{ backgroundColor: CREME }}>
             <div className="flex items-center justify-between px-5 py-4 md:px-7">
               <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#16281f]/60">
