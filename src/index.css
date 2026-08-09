@@ -126,3 +126,36 @@
     animation: none !important;
   }
 }
+
+/* Peças flutuando no topo dos cases: sobem e descem devagar, cada uma no
+   seu tempo. O giro vem por --giro para não brigar com a animação. */
+@keyframes flutuar {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--giro, 0deg));
+  }
+  50% {
+    transform: translateY(-14px) rotate(var(--giro, 0deg));
+  }
+}
+
+.peca-flutuante {
+  transform: rotate(var(--giro, 0deg));
+  animation: flutuar 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .peca-flutuante {
+    animation: none;
+  }
+}
+
+/* Tira de fotos correndo em looping (teste de capa do case) */
+@keyframes correr {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
