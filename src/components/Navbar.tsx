@@ -8,11 +8,8 @@ export type ItemMenu = { label: string; href: string };
 /** Menu da home. Cada página pode passar os próprios itens, ou uma lista
     vazia para não mostrar nenhum. */
 const PADRAO: ItemMenu[] = [
-  { label: "Campanhas", href: "#cases" },
+  { label: "Sobre mim", href: "/sobre" },
   { label: "Rifa Solidária", href: "/rifa-solidaria" },
-  { label: "Trajetória", href: "#trajetoria" },
-  { label: "História", href: "#historia" },
-  { label: "Depoimentos", href: "#feedbacks" },
 ];
 
 const Navbar = ({ links = PADRAO }: { links?: ItemMenu[] }) => {

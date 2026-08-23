@@ -12,6 +12,8 @@ const DojoBonete = lazy(() => import("./pages/DojoBonete.tsx"));
 const CorumbauBjj = lazy(() => import("./pages/CorumbauBjj.tsx"));
 const Testes = lazy(() => import("./pages/Testes.tsx"));
 const RifaSolidaria = lazy(() => import("./pages/RifaSolidaria.tsx"));
+const Sobre = lazy(() => import("./pages/Sobre.tsx"));
+const TestesVitrine = lazy(() => import("./pages/TestesVitrine.tsx"));
 const TestesMetodo = lazy(() => import("./pages/TestesMetodo.tsx"));
 const MapeamentoRifa = lazy(() => import("./pages/MapeamentoRifa.tsx"));
 const TestesHeader = lazy(() => import("./pages/TestesHeader.tsx"));
@@ -29,6 +31,9 @@ const TestesMapeamento = lazy(() => import("./pages/TestesMapeamento.tsx"));
 const TestesProgresso = lazy(() => import("./pages/TestesProgresso.tsx"));
 const TestesPilulaEtapa = lazy(() => import("./pages/TestesPilulaEtapa.tsx"));
 const TestesDashboardEscalar = lazy(() => import("./pages/TestesDashboardEscalar.tsx"));
+const TestesHomeEnxuta = lazy(() => import("./pages/TestesHomeEnxuta.tsx"));
+const TestesSobre = lazy(() => import("./pages/TestesSobre.tsx"));
+const TestesHomeClean = lazy(() => import("./pages/TestesHomeClean.tsx"));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 
 const queryClient = new QueryClient();
@@ -48,6 +53,8 @@ const App = () => (
             <Route path="/corumbau-bjj" element={<CorumbauBjj />} />
             <Route path="/testes" element={<Testes />} />
             <Route path="/rifa-solidaria" element={<RifaSolidaria />} />
+            <Route path="/sobre" element={<Sobre />} />
+            <Route path="/testes-vitrine" element={<TestesVitrine />} />
             <Route path="/mapeamento-rifa-solidaria" element={<MapeamentoRifa />} />
             <Route path="/testes-header" element={<TestesHeader />} />
             <Route path="/testes-copy" element={<TestesCopy />} />
@@ -65,6 +72,9 @@ const App = () => (
             <Route path="/testes-progresso" element={<TestesProgresso />} />
             <Route path="/testes-pilula-etapa" element={<TestesPilulaEtapa />} />
             <Route path="/testes-dashboard-escalar" element={<TestesDashboardEscalar />} />
+            <Route path="/testes-home-enxuta" element={<TestesHomeEnxuta />} />
+            <Route path="/testes-sobre" element={<TestesSobre />} />
+            <Route path="/testes-home-clean" element={<TestesHomeClean />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

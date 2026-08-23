@@ -1,31 +1,15 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import CasesSection from "@/components/CasesSection";
-import ServicesSection from "@/components/ServicesSection";
-import StorySection from "@/components/StorySection";
-import TimelineSection from "@/components/TimelineSection";
-import FeedbackSection from "@/components/FeedbackSection";
-import CtaSection from "@/components/CtaSection";
-import Footer from "@/components/Footer";
+import ConteudoRifa from "@/components/ConteudoRifa";
 
-const Index = () => {
-  return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-      <HeroSection />
-      <div className="bg-secondary">
-        <TimelineSection />
-      </div>
-      <StorySection />
-      <div className="bg-secondary">
-        <CasesSection />
-      </div>
-      <FeedbackSection />
-      <ServicesSection />
-      <CtaSection />
-      <Footer />
-    </div>
-  );
-};
+/* A entrada: o banner de sempre e, abaixo dele, a página da Rifa Solidária
+   inteira (sem o menu próprio dela e sem a faixa do Festival ABCR). */
+const Index = () => (
+  <div className="min-h-screen bg-background">
+    <Navbar />
+    <HeroSection />
+    <ConteudoRifa navbar={false} faixaFestival={false} />
+  </div>
+);
 
 export default Index;

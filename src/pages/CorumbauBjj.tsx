@@ -13,6 +13,7 @@ import logoTafuri from "@/assets/logo-tafuri.webp";
 
 import capaPraia from "@/assets/corumbau-praia.webp";
 import capaAtleta from "@/assets/corumbau-atleta.webp";
+import capaCampeonato from "@/assets/corumbau-campeonato.webp";
 import largaBaiano from "@/assets/corumbau-larga-baiano.webp";
 import render1 from "@/assets/corumbau-render-1.webp";
 import render2 from "@/assets/corumbau-render-2.webp";
@@ -21,6 +22,10 @@ import aula1 from "@/assets/corumbau-aula-1.webp";
 import aula2 from "@/assets/corumbau-aula-2.webp";
 import medalhista from "@/assets/corumbau-medalhista.webp";
 import farol from "@/assets/corumbau-farol.webp";
+import obraEstrutura from "@/assets/corumbau-obra-estrutura.webp";
+import obraBlocos from "@/assets/corumbau-obra-blocos.webp";
+import medalhas1 from "@/assets/corumbau-medalhas-1.webp";
+import medalhas2 from "@/assets/corumbau-medalhas-2.webp";
 import obra2 from "@/assets/corumbau-obra-2.webp";
 import obra3 from "@/assets/corumbau-obra-3.webp";
 import obra4 from "@/assets/corumbau-obra-4.webp";
@@ -56,7 +61,7 @@ const TEMA = {
 const CORES = ["#A9C46C", "#C4693F", "#3C7A99", "#D9A441", "#2F6B45"];
 
 /* topo: duas em pé atrás e a deitada do campeonato na frente */
-const CAPAS = [capaPraia, capaAtleta, largaBaiano];
+const CAPAS = [capaPraia, capaCampeonato, largaBaiano];
 
 /* O processo contado pelas cinco etapas da metodologia. */
 const PROCESS = [
@@ -83,8 +88,8 @@ const PROCESS = [
     etapa: "Contar",
     title: "As medalhas contaram a história",
     text: "Quem apareceu nas peças foram os atletas: mais de 50 crianças que treinam jiu-jitsu e ballet num espaço improvisado e mesmo assim voltam de campeonato com medalha no peito. Sete carrosséis levaram esse contraste ao país — o sonho gigante de uma vila onde a vida é simples.",
-    imgs: [medalhista, aula1, aula2],
-    alt: "Alunos do Corumbau BJJ em treino e em competição",
+    imgs: [medalhas1, medalhas2],
+    alt: "Atletas do Corumbau BJJ com as medalhas conquistadas em campeonato",
   },
   {
     n: "04",
@@ -106,8 +111,8 @@ const PROCESS = [
     etapa: "Retribuir",
     title: "A obra começou",
     text: "Depois do sorteio veio a prestação de contas e, logo em seguida, a parte que ninguém esquece: o caminhão de material chegando ao terreno. Do bruto arrecadado saíram a taxa da plataforma, a mídia e o serviço; o que sobrou virou madeira, bloco e o começo da primeira sede cultural e esportiva de Corumbau.",
-    imgs: [obra2, obra3, obra4],
-    alt: "Início das obras da sede do Corumbau BJJ Team",
+    imgs: [obra2, obraEstrutura, obraBlocos, obra4],
+    alt: "Material chegando ao terreno e a estrutura da sede subindo",
   },
 ];
 
@@ -235,8 +240,8 @@ const CorumbauBjj = () => (
           {/* a foto sai do fluxo no desktop para acompanhar a altura do texto */}
           <div className="md:relative">
             <img
-              src={largaBaiano}
-              alt="Equipe do Corumbau BJJ Team no Campeonato Baiano de Jiu-Jitsu"
+              src={aula2}
+              alt="Treino do Corumbau BJJ Team no tatame da escola desativada"
               className="aspect-[16/9] w-full rounded-2xl object-cover md:absolute md:inset-0 md:aspect-auto md:h-full"
               loading="lazy"
             />
