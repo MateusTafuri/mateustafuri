@@ -75,14 +75,14 @@ describe("ModalLead", () => {
 
     await waitFor(() => expect(concluir).toHaveBeenCalledTimes(1));
 
-    const corpo = fetchFalso.mock.calls[0][1].body as string;
-    const p = new URLSearchParams(corpo);
-    expect(p.get("form-name")).toBe("leads-mapeamento");
-    expect(p.get("nome")).toBe("Maria Silva");
-    expect(p.get("celular")).toBe("(67) 99886-0067");
-    expect(p.get("email")).toBe("maria@email.com");
-    expect(p.get("origem")).toBe("Mapeamento");
-    expect(p.get("progresso")).toBe("9 de 15");
+    const [url, opcoes] = fetchFalso.mock.calls[0];
+    expect(url).toBe("/api/lead");
+    const p = JSON.parse(opcoes.body as string);
+    expect(p.nome).toBe("Maria Silva");
+    expect(p.celular).toBe("(67) 99886-0067");
+    expect(p.email).toBe("maria@email.com");
+    expect(p.origem).toBe("Mapeamento");
+    expect(p.progresso).toBe("9 de 15");
 
     expect(leadSalvo()?.nome).toBe("Maria Silva");
   });

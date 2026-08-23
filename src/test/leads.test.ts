@@ -65,19 +65,18 @@ describe("validação", () => {
   });
 });
 
-describe("corpo enviado ao Netlify", () => {
-  it("leva o nome do formulário, normaliza e-mail e mascara o celular", () => {
-    const p = new URLSearchParams(corpoDoLead({ ...bom, celular: "67998860067" }));
-    expect(p.get("form-name")).toBe("leads-mapeamento");
-    expect(p.get("nome")).toBe("Maria Silva");
-    expect(p.get("celular")).toBe("(67) 99886-0067");
-    expect(p.get("email")).toBe("maria@email.com");
+describe("corpo enviado à API", () => {
+  it("normaliza e-mail e mascara o celular", () => {
+    const p = JSON.parse(corpoDoLead({ ...bom, celular: "67998860067" }));
+    expect(p.nome).toBe("Maria Silva");
+    expect(p.celular).toBe("(67) 99886-0067");
+    expect(p.email).toBe("maria@email.com");
   });
 
   it("carrega os extras da página", () => {
-    const p = new URLSearchParams(corpoDoLead(bom, { origem: "Mapeamento", progresso: "9 de 15" }));
-    expect(p.get("origem")).toBe("Mapeamento");
-    expect(p.get("progresso")).toBe("9 de 15");
+    const p = JSON.parse(corpoDoLead(bom, { origem: "Mapeamento", progresso: "9 de 15" }));
+    expect(p.origem).toBe("Mapeamento");
+    expect(p.progresso).toBe("9 de 15");
   });
 });
 
@@ -99,17 +98,17 @@ describe("memória do navegador", () => {
 describe("envio", () => {
   afterEach(() => vi.unstubAllGlobals());
 
-  it("posta urlencoded para a raiz", async () => {
+  it("posta JSON para /api/lead", async () => {
     const fetchFalso = vi.fn().mockResolvedValue({ ok: true });
     vi.stubGlobal("fetch", fetchFalso);
 
     await expect(enviarLead(bom)).resolves.toBe(true);
 
     const [url, opcoes] = fetchFalso.mock.calls[0];
-    expect(url).toBe("/");
+    expect(url).toBe("/api/lead");
     expect(opcoes.method).toBe("POST");
-    expect(opcoes.headers["Content-Type"]).toBe("application/x-www-form-urlencoded");
-    expect(opcoes.body).toContain("form-name=leads-mapeamento");
+    expect(opcoes.headers["Content-Type"]).toBe("application/json");
+    expect(JSON.parse(opcoes.body).nome).toBe("Maria Silva");
   });
 
   it("devolve false sem lançar quando a rede cai", async () => {
@@ -117,7 +116,7 @@ describe("envio", () => {
     await expect(enviarLead(bom)).resolves.toBe(false);
   });
 
-  it("devolve false quando o Netlify recusa", async () => {
+  it("devolve false quando o servidor recusa", async () => {
     vi.stubGlobal("fetch", vi.fn().mockResolvedValue({ ok: false }));
     await expect(enviarLead(bom)).resolves.toBe(false);
   });

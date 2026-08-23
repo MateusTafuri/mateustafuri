@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# segredos locais do wrangler
+.dev.vars
+.wrangler/

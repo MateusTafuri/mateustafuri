@@ -1,0 +1,23 @@
+{
+  // O site inteiro é arquivo estático; só /api/* passa pelo worker.
+  // Deploy: npx wrangler deploy   (ou pelo Git, conectando o repositório)
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "mateustafuri",
+  "main": "./worker/index.ts",
+  "compatibility_date": "2026-08-23",
+  "assets": {
+    "directory": "./dist/",
+    // rota que não é arquivo cai no index.html, para o React Router assumir
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "leads",
+      // preenchido por `wrangler d1 create leads`
+      "database_id": "PREENCHER"
+    }
+  ],
+  "observability": { "enabled": true }
+}

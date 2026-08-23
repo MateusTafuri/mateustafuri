@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Loader2, X } from "lucide-react";
 import {
-  FORM,
   mascaraCelular,
   salvarLead,
   validarLead,
@@ -12,8 +11,8 @@ import {
 
 /**
  * Pede nome, celular e e-mail antes de liberar o PDF do Mapeamento.
- * O envio é para o Netlify Forms; se ele falhar, o PDF baixa do mesmo jeito,
- * porque quem preencheu cumpriu a parte dela.
+ * Se o envio falhar, o PDF baixa do mesmo jeito: quem preencheu cumpriu a
+ * parte dela.
  */
 
 const VAZIO: Lead = { nome: "", celular: "", email: "" };
@@ -103,7 +102,7 @@ const ModalLead = ({
           quando sair material novo sobre a Rifa Solidária.
         </p>
 
-        <form onSubmit={enviar} noValidate className="mt-6 space-y-4" name={FORM}>
+        <form onSubmit={enviar} noValidate className="mt-6 space-y-4">
           {CAMPOS.map((c) => (
             <div key={c.k}>
               <label htmlFor={`lead-${c.k}`} className="block text-sm font-semibold">

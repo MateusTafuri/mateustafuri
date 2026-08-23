@@ -22,20 +22,6 @@
 </head>
 
   <body>
-    <!-- Gêmeo estático do formulário de leads: é este que o Netlify lê no
-         build para registrar o formulário. O React posta para "/" com os
-         mesmos campos. Não remover. -->
-    <form name="leads-mapeamento" data-netlify="true" netlify-honeypot="bot-field" hidden>
-      <input type="hidden" name="form-name" value="leads-mapeamento" />
-      <input type="text" name="bot-field" />
-      <input type="text" name="nome" />
-      <input type="tel" name="celular" />
-      <input type="email" name="email" />
-      <input type="text" name="origem" />
-      <input type="text" name="progresso" />
-      <input type="text" name="organizacao" />
-    </form>
-
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
