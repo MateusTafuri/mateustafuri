@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { baixarPdf } from "@/lib/pdf-mapeamento";
+import ModalLead from "@/components/ModalLead";
+import { leadSalvo } from "@/lib/leads";
+import { TOTAL } from "@/hooks/use-mapeamento";
 import {
   CampoDobravel,
   NavegacaoEtapas,
@@ -16,7 +19,14 @@ const MapeamentoRifa = () => {
   const m = useMapeamento();
   const [i, setI] = useState(0);
   const [aberto, setAberto] = useState(-1);
+  const [pedindoContato, setPedindoContato] = useState(false);
   const etapa = ETAPAS[i];
+
+  /* o contato é pedido uma vez por navegador; depois disso o PDF sai direto */
+  const clicarBaixar = () => {
+    if (leadSalvo()) return baixarPdf(m);
+    setPedindoContato(true);
+  };
 
   const irPara = (n: number) => {
     setI(n);
@@ -143,7 +153,7 @@ const MapeamentoRifa = () => {
               </p>
               <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
                 <button
-                  onClick={() => baixarPdf(m)}
+                  onClick={clicarBaixar}
                   className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-bold text-primary-foreground transition-opacity hover:opacity-90"
                 >
                   <Download size={16} /> Baixar em PDF
@@ -162,6 +172,20 @@ const MapeamentoRifa = () => {
       </main>
 
       <Footer />
+
+      <ModalLead
+        aberto={pedindoContato}
+        aoFechar={() => setPedindoContato(false)}
+        aoConcluir={() => {
+          setPedindoContato(false);
+          baixarPdf(m);
+        }}
+        extras={{
+          origem: "Mapeamento Rifa Solidária",
+          progresso: `${m.totalPreenchidas} de ${TOTAL} respostas`,
+          organizacao: (m.respostas.organizacao || "").trim(),
+        }}
+      />
     </div>
   );
 };
