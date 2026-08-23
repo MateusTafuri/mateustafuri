@@ -15,8 +15,7 @@
     {
       "binding": "DB",
       "database_name": "leads",
-      // preenchido por `wrangler d1 create leads`
-      "database_id": "PREENCHER"
+      "database_id": "c2666d21-05c1-4f25-8488-2d2ae65d1abc"
     }
   ],
   "observability": { "enabled": true }
