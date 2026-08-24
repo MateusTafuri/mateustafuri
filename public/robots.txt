@@ -1,14 +1,7 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
+# As páginas de teste e a API não devem aparecer na busca.
 User-agent: *
 Allow: /
+Disallow: /testes
+Disallow: /api/
+
+Sitemap: https://mateustafuri.com.br/sitemap.xml

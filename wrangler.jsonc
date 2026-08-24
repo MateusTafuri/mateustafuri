@@ -9,7 +9,18 @@
     "directory": "./dist/",
     // rota que não é arquivo cai no index.html, para o React Router assumir
     "not_found_handling": "single-page-application",
-    "run_worker_first": ["/api/*"]
+    "binding": "ASSETS",
+    // só as rotas de página passam pelo worker; arquivo estático vai direto
+    "run_worker_first": [
+      "/api/*",
+      "/",
+      "/rifa-solidaria",
+      "/mapeamento-rifa-solidaria",
+      "/dojo-bonete",
+      "/corumbau-bjj",
+      "/dojo-caraiva",
+      "/sobre"
+    ]
   },
   // o domínio responde direto pelo worker; a Cloudflare cria o registro
   // de DNS sozinha quando a zona ficar ativa
