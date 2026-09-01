@@ -60,12 +60,9 @@
       }
     </script>
 
-    <!-- Google Analytics 4, desligado até existir o ID de medição real.
-         Para ligar: trocar G-XXXXXXXXXX pelo ID da propriedade (Analytics >
-         Administrador > Fluxos de dados) e tirar o comentário daqui.
-         O site é uma SPA: o "enhanced measurement" do GA4 já conta as trocas
-         de rota pelo History API, então não precisa de código extra.
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <!-- Google Analytics 4. O site é uma SPA: o "enhanced measurement" do GA4
+         já conta as trocas de rota pelo History API, sem código extra. -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S7QFXG8SLJ"></script>
     <script>
       // o dev roda no mesmo HTML: sem isto, cada npm run dev vira visita no relatório
       if (location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
@@ -74,10 +71,9 @@
           dataLayer.push(arguments);
         }
         gtag("js", new Date());
-        gtag("config", "G-XXXXXXXXXX");
+        gtag("config", "G-S7QFXG8SLJ");
       }
     </script>
-    -->
   </head>
 
   <body>
