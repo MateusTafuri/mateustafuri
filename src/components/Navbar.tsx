@@ -12,16 +12,27 @@ const PADRAO: ItemMenu[] = [
   { label: "Rifa Solidária", href: "/rifa-solidaria" },
 ];
 
-const Navbar = ({ links = PADRAO }: { links?: ItemMenu[] }) => {
+/* `textoEscuro` para páginas de fundo claro: sem imagem atrás, o branco
+   com sombra some no fundo. */
+const Navbar = ({
+  links = PADRAO,
+  textoEscuro = false,
+}: {
+  links?: ItemMenu[];
+  textoEscuro?: boolean;
+}) => {
   const [open, setOpen] = useState(false);
   const simples = links.length === 0;
+  const sombra = textoEscuro ? "" : " drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]";
 
   return (
     <nav className="absolute top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 bg-transparent">
-      <Link to="/" className="group flex items-center gap-2 text-sm font-semibold drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]">
+      <Link to="/" className={`group flex items-center gap-2 text-sm font-semibold${sombra}`}>
         <span
           aria-label="Tafuri"
-          className="w-9 h-9 inline-block bg-white transition-all duration-300 group-hover:scale-105 group-hover:brightness-110"
+          className={`w-9 h-9 inline-block transition-all duration-300 group-hover:scale-105 group-hover:brightness-110 ${
+            textoEscuro ? "bg-green-dark" : "bg-white"
+          }`}
           style={{
             WebkitMaskImage: `url(${logoTafuri})`,
             maskImage: `url(${logoTafuri})`,
@@ -33,13 +44,15 @@ const Navbar = ({ links = PADRAO }: { links?: ItemMenu[] }) => {
             maskPosition: "center",
           }}
         />
-        <span className="text-white">
+        <span className={textoEscuro ? "text-green-dark" : "text-white"}>
           Mateus Tafuri
         </span>
       </Link>
 
       {!simples && (
-        <div className="hidden md:flex items-center gap-6 text-sm text-white/90 drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]">
+        <div className={`hidden md:flex items-center gap-6 text-sm${sombra} ${
+          textoEscuro ? "text-green-dark/80" : "text-white/90"
+        }`}>
           {links.map((l) =>
             l.href.startsWith("/") ? (
               <Link key={l.href} to={l.href} className="hover:text-green-accent transition-colors">
@@ -63,8 +76,14 @@ const Navbar = ({ links = PADRAO }: { links?: ItemMenu[] }) => {
         Entrar em contato
       </a>
 
+      {/* o -m-3 devolve o espaço que o p-3 ocupa: alvo de 46px, mesma posição */}
       {!simples && (
-      <button onClick={() => setOpen(!open)} className="md:hidden text-green-accent drop-shadow">
+      <button
+        onClick={() => setOpen(!open)}
+        aria-label={open ? "Fechar menu" : "Abrir menu"}
+        aria-expanded={open}
+        className={`-m-3 p-3 md:hidden${textoEscuro ? " text-green-dark" : " text-green-accent drop-shadow"}`}
+      >
         {open ? <X size={22} /> : <Menu size={22} />}
       </button>
       )}
@@ -73,11 +92,11 @@ const Navbar = ({ links = PADRAO }: { links?: ItemMenu[] }) => {
         <div className="absolute top-full left-0 right-0 bg-green-dark/95 backdrop-blur-md flex flex-col p-4 gap-3 md:hidden">
           {links.map((l) =>
             l.href.startsWith("/") ? (
-              <Link key={l.href} to={l.href} onClick={() => setOpen(false)} className="text-sm text-white hover:text-green-accent">
+              <Link key={l.href} to={l.href} onClick={() => setOpen(false)} className="py-2 text-sm text-white hover:text-green-accent">
                 {l.label}
               </Link>
             ) : (
-              <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="text-sm text-white hover:text-green-accent">
+              <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="py-2 text-sm text-white hover:text-green-accent">
                 {l.label}
               </a>
             ),

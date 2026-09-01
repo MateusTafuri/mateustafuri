@@ -19,7 +19,7 @@ const CasesSection = () => {
       <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-1">
         Realidades Transformadas
       </p>
-      <h2 className="text-2xl md:text-3xl font-bold mb-8">
+      <h2 className="font-display text-2xl md:text-3xl font-bold mb-8">
         Estratégia, narrativa e mobilização na prática
       </h2>
       <div className="flex gap-5 overflow-x-auto pb-2">

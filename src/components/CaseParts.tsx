@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
+import NumeroAnimado from "@/components/NumeroAnimado";
 import type { CSSProperties, ReactNode } from "react";
 import { ArrowLeft, ArrowUpRight, MousePointerClick, Ticket, TrendingUp } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useVoltar } from "@/components/Voltar";
 import { ETAPAS } from "@/data/rifaSolidaria";
 
 /* Peças compartilhadas pelas páginas de case (Bonete, Caraíva, ...).
@@ -36,10 +37,16 @@ export const Label = ({ children, escuro }: { children: ReactNode; escuro?: bool
 );
 
 /* Menu de seções que gruda no topo e segue a rolagem, com o botão de voltar */
-export const CaseNav = ({ secoes }: { secoes: Secao[] }) => {
+export const CaseNav = ({
+  secoes,
+  /* o fundo da faixa: creme nos cases, branco translúcido onde o topo é claro */
+  fundo = "border-black/10 bg-[#F4F0E6]/95",
+}: {
+  secoes: Secao[];
+  fundo?: string;
+}) => {
   const [active, setActive] = useState(secoes[0].id);
   const barRef = useRef<HTMLDivElement>(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -66,13 +73,12 @@ export const CaseNav = ({ secoes }: { secoes: Secao[] }) => {
   const go = (id: string) =>
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
 
-  /* volta para onde a pessoa estava; se ela caiu aqui direto, vai para os cases */
-  const voltar = () => (window.history.length > 1 ? navigate(-1) : navigate("/#cases"));
+  const voltar = useVoltar("/#cases");
 
   return (
-    <div className="sticky top-0 z-40 border-b border-black/10 bg-[#F4F0E6]/95 backdrop-blur-md">
+    <div className={`sticky top-0 z-40 border-b backdrop-blur-md ${fundo}`}>
       {/* o miolo com w-max + mx-auto centraliza quando cabe e, quando não cabe,
-          deixa a faixa rolar do começo — justify-center esconderia a primeira */}
+          deixa a faixa rolar do começo, porque justify-center esconderia a primeira */}
       <div className="overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         <div ref={barRef} className="mx-auto flex w-max items-center gap-1.5 px-4 py-2.5">
           <button
@@ -119,7 +125,9 @@ const Painel = ({ titulo, itens }: NonNullable<Etapa["painel"]>) => (
         return (
           <div key={k.l} className="rounded-xl bg-white/[0.04] p-4">
             <Icone size={16} style={{ color: LIME }} />
-            <p className="mt-2 font-display text-2xl font-extrabold">{k.v}</p>
+            <p className="mt-2 font-display text-2xl font-extrabold">
+              <NumeroAnimado valor={k.v} />
+            </p>
             <p className="mt-0.5 text-xs leading-snug text-[#F4F0E6]/50">{k.l}</p>
           </div>
         );
@@ -155,7 +163,7 @@ export const CaseEtapas = ({ itens }: { itens: Etapa[] }) => (
             <div
               className={
                 p.imgs?.length === 4
-                  ? "mx-auto grid max-w-[340px] grid-cols-2 gap-3"
+                  ? "mx-auto grid max-w-[440px] grid-cols-2 gap-3"
                   : `flex justify-center ${p.imgs?.length === 3 ? "" : "gap-3"}`
               }
             >

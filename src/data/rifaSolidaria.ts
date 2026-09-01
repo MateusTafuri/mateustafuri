@@ -20,6 +20,10 @@ import {
 export const WHATSAPP =
   "https://wa.me/5567998860067?text=Oi%20Mateus!%20Vim%20pela%20p%C3%A1gina%20da%20Rifa%20Solid%C3%A1ria%20e%20quero%20falar%20sobre%20a%20minha%20causa.";
 
+/* quem chega pela página Sobre não veio pela Rifa: a mensagem é outra */
+export const WHATSAPP_SOBRE =
+  "https://wa.me/5567998860067?text=Oi%20Mateus!%20Vi%20o%20seu%20site%20e%20quero%20conversar%20sobre%20um%20projeto.";
+
 export type BlocoCanvas = {
   icon: LucideIcon;
   emoji: string;
@@ -85,7 +89,7 @@ export const ETAPAS: Etapa[] = [
         emoji: "🎯",
         title: "Meta",
         pergunta: "Quanto precisa ser arrecadado, e o que exatamente esse valor cobre?",
-        exemplo: "Ex.: R$ 30 mil — R$ 22 mil de material e R$ 8 mil de mão de obra.",
+        exemplo: "Ex.: R$ 30 mil, sendo R$ 22 mil de material e R$ 8 mil de mão de obra.",
         dica: "Sua meta deve ser alcançável.",
       },
       {

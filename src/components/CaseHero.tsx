@@ -1,4 +1,4 @@
-import { ArrowLeft } from "lucide-react";
+import { Voltar } from "@/components/Voltar";
 import { Link } from "react-router-dom";
 
 /* Topo de um case: texto à esquerda e três peças flutuando à direita.
@@ -6,12 +6,13 @@ import { Link } from "react-router-dom";
 
 const CREME = "#F4F0E6";
 
-/* Duas em pé atrás e uma deitada atravessada na frente. A largura vem daqui e
-   a altura sai da proporção: "v" é 3:4, "h" é 16:9. */
+/* Duas em pé atrás e uma deitada atravessada na frente. A largura é uma
+   porcentagem da coluna, e não um valor fixo, para o leque caber igual no
+   celular; a altura sai da proporção: "v" é 3:4, "h" é 16:9. */
 const LEQUE = [
-  { tipo: "v", larg: 215, giro: "-7deg", left: "0%", top: "0%", z: 10, atraso: "0s" },
-  { tipo: "v", larg: 215, giro: "7deg", left: "45%", top: "5%", z: 20, atraso: "-2.3s" },
-  { tipo: "h", larg: 385, giro: "-2deg", left: "6%", top: "52%", z: 30, atraso: "-4.6s" },
+  { tipo: "v", larg: "48%", giro: "-7deg", left: "0%", top: "0%", z: 10, atraso: "0s" },
+  { tipo: "v", larg: "48%", giro: "7deg", left: "45%", top: "5%", z: 20, atraso: "-2.3s" },
+  { tipo: "h", larg: "86%", giro: "-2deg", left: "6%", top: "52%", z: 30, atraso: "-4.6s" },
 ] as const;
 
 type Props = {
@@ -38,16 +39,16 @@ const CaseHero = ({ tipo, titulo, destaque, descricao, logo, logoAlt, pecas }: P
       style={{ background: "radial-gradient(circle, var(--case-brilho, #2f6b45) 0%, transparent 70%)" }}
     />
 
-    <div className="relative mx-auto grid max-w-5xl items-center gap-10 md:grid-cols-[1.05fr_0.95fr]">
-      <div>
-        <Link
-          to="/#cases"
-          className="inline-flex items-center gap-2 text-sm text-[#F4F0E6]/60 transition-colors hover:text-[var(--case-destaque,#A9C46C)]"
-        >
-          <ArrowLeft size={16} /> Voltar para cases
-        </Link>
+    <div className="relative mx-auto max-w-5xl">
+      <Voltar
+        fallback="/#cases"
+        className="inline-flex items-center gap-2 text-sm text-[#F4F0E6]/60 transition-colors hover:text-[var(--case-destaque,#A9C46C)]"
+      />
+    </div>
 
-        <div className="mt-10 flex items-center gap-3">
+    <div className="relative mx-auto mt-6 grid max-w-5xl items-center gap-10 md:mt-2 md:grid-cols-[1.05fr_0.95fr]">
+      <div>
+        <div className="flex items-center gap-3">
           <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#F4F0E6]/45">
             Projeto
           </span>
@@ -67,15 +68,20 @@ const CaseHero = ({ tipo, titulo, destaque, descricao, logo, logoAlt, pecas }: P
         </p>
       </div>
 
-      {/* leque de peças: só no desktop, onde sobra largura para ele respirar */}
-      <div className="relative hidden h-[500px] md:block">
+      {/* Leque de peças; no celular ele encolhe junto com a coluna e sobe para
+          cima do texto. A altura é proporção, não pixel: as peças são medidas
+          em % da largura, então com altura fixa elas escapavam da caixa e
+          caíam por cima do texto nas larguras intermediárias.
+          Carrega eager: é a primeira tela, e lazy deixava molduras vazias. */}
+      <div className="relative order-first mx-auto aspect-[1/1.08] w-full max-w-[420px] md:order-none md:max-w-none">
         {pecas.slice(0, LEQUE.length).map((src, i) => (
           <img
             key={src}
             src={src}
             alt=""
             aria-hidden
-            loading="lazy"
+            loading="eager"
+            fetchPriority={i === 0 ? "high" : undefined}
             className="peca-flutuante absolute rounded-xl border-[3px] border-white object-cover shadow-[0_25px_50px_-12px_rgba(0,0,0,0.65)]"
             style={
               {
@@ -84,10 +90,7 @@ const CaseHero = ({ tipo, titulo, destaque, descricao, logo, logoAlt, pecas }: P
                 left: LEQUE[i].left,
                 top: LEQUE[i].top,
                 width: LEQUE[i].larg,
-                height:
-                  LEQUE[i].tipo === "v"
-                    ? (LEQUE[i].larg * 4) / 3
-                    : (LEQUE[i].larg * 9) / 16,
+                aspectRatio: LEQUE[i].tipo === "v" ? "3 / 4" : "16 / 9",
                 zIndex: LEQUE[i].z,
               } as React.CSSProperties
             }

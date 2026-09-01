@@ -1,5 +1,7 @@
 import { ArrowRight } from "lucide-react";
+import NumeroAnimado from "@/components/NumeroAnimado";
 import { Link } from "react-router-dom";
+import { useSeo } from "@/lib/seo";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CaseHero from "@/components/CaseHero";
@@ -12,25 +14,15 @@ import logoCorumbau from "@/assets/logo-corumbau.webp";
 import logoTafuri from "@/assets/logo-tafuri.webp";
 
 import capaPraia from "@/assets/corumbau-praia.webp";
-import capaAtleta from "@/assets/corumbau-atleta.webp";
 import capaCampeonato from "@/assets/corumbau-campeonato.webp";
-import largaBaiano from "@/assets/corumbau-larga-baiano.webp";
+import turmaMedalhas from "@/assets/corumbau-team-2.webp";
 import render1 from "@/assets/corumbau-render-1.webp";
 import render2 from "@/assets/corumbau-render-2.webp";
 import flyer from "@/assets/corumbau-flyer.webp";
-import aula1 from "@/assets/corumbau-aula-1.webp";
-import aula2 from "@/assets/corumbau-aula-2.webp";
+import turmaTatame from "@/assets/corumbau-turma-tatame.webp";
 import medalhista from "@/assets/corumbau-medalhista.webp";
-import farol from "@/assets/corumbau-farol.webp";
 import obraEstrutura from "@/assets/corumbau-obra-estrutura.webp";
-import obraBlocos from "@/assets/corumbau-obra-blocos.webp";
 import medalhas1 from "@/assets/corumbau-medalhas-1.webp";
-import medalhas2 from "@/assets/corumbau-medalhas-2.webp";
-import obra2 from "@/assets/corumbau-obra-2.webp";
-import obra3 from "@/assets/corumbau-obra-3.webp";
-import obra4 from "@/assets/corumbau-obra-4.webp";
-import capaLoja from "@/assets/corumbau-capa-loja.webp";
-import capaMedalhas from "@/assets/corumbau-capa-medalhas.webp";
 
 /* ─────────────────────────── DATA ─────────────────────────── */
 
@@ -42,7 +34,6 @@ const SECTIONS = [
   { id: "estrategia", label: "Estratégia" },
   { id: "processo", label: "Processo" },
   { id: "artes", label: "As artes" },
-  { id: "fotos", label: "As fotos" },
   { id: "ficha", label: "Ficha técnica" },
 ];
 
@@ -61,7 +52,7 @@ const TEMA = {
 const CORES = ["#A9C46C", "#C4693F", "#3C7A99", "#D9A441", "#2F6B45"];
 
 /* topo: duas em pé atrás e a deitada do campeonato na frente */
-const CAPAS = [capaPraia, capaCampeonato, largaBaiano];
+const CAPAS = [capaPraia, capaCampeonato, turmaMedalhas];
 
 /* O processo contado pelas cinco etapas da metodologia. */
 const PROCESS = [
@@ -69,10 +60,10 @@ const PROCESS = [
     n: "01",
     etapa: "Sonhar",
     title: "Um lote conquistado e uma planta na mão",
-    text: "O Corumbau BJJ nasceu com um propósito simples: dar às crianças da comunidade acesso a novas oportunidades. Depois de três anos treinando numa escola desativada, o projeto conquistou o lote e desenhou a sede — um espaço cultural e esportivo, o primeiro da vila. A campanha existia para tirar essa planta do papel.",
+    text: "O Corumbau BJJ nasceu com um propósito simples: dar às crianças da comunidade acesso a novas oportunidades. Depois de três anos treinando numa escola desativada, o projeto conquistou o lote e desenhou a sede, um espaço cultural e esportivo, o primeiro da vila. A campanha existia para tirar essa planta do papel.",
     imgs: [render1, render2],
     alt: "Render do novo espaço cultural e esportivo do Corumbau BJJ",
-    legenda: "Projeto arquitetônico do novo espaço, assinado por Fernando Lima.",
+    legenda: "Projeto arquitetônico do novo espaço.",
   },
   {
     n: "02",
@@ -87,15 +78,15 @@ const PROCESS = [
     n: "03",
     etapa: "Contar",
     title: "As medalhas contaram a história",
-    text: "Quem apareceu nas peças foram os atletas: mais de 50 crianças que treinam jiu-jitsu e ballet num espaço improvisado e mesmo assim voltam de campeonato com medalha no peito. Sete carrosséis levaram esse contraste ao país — o sonho gigante de uma vila onde a vida é simples.",
-    imgs: [medalhas1, medalhas2],
-    alt: "Atletas do Corumbau BJJ com as medalhas conquistadas em campeonato",
+    text: "Quem apareceu nas peças foram os atletas: mais de 50 crianças que treinam jiu‑jitsu num espaço improvisado e mesmo assim voltam de campeonato com medalha no peito. Sete carrosséis levaram esse contraste ao país: o sonho gigante de uma vila onde a vida é simples.",
+    imgs: [medalhas1, medalhista],
+    alt: "Atletas do Corumbau BJJ com as medalhas e a gravação das peças no campeonato",
   },
   {
     n: "04",
     etapa: "Escalar",
     title: "R$ 56 mil levando Corumbau ao Brasil",
-    text: "A campanha correu por 101 dias, com contagem regressiva pública até o sorteio de 23 de novembro e reinvestimento contínuo do que entrava. O tráfego pago levou a história a quem nunca tinha ouvido falar da vila: 4.377 apoiadores em 4.543 pedidos, com ticket médio de R$ 35,11 — quase o dobro do bilhete avulso.",
+    text: "A campanha correu por 101 dias, com contagem regressiva pública até o sorteio de 23 de novembro e reinvestimento contínuo do que entrava. O tráfego pago levou a história a quem nunca tinha ouvido falar da vila: 4.377 apoiadores em 4.543 pedidos, com ticket médio de R$ 35,11.",
     painel: {
       titulo: "A mídia paga em quatro números",
       itens: [
@@ -110,8 +101,8 @@ const PROCESS = [
     n: "05",
     etapa: "Retribuir",
     title: "A obra começou",
-    text: "Depois do sorteio veio a prestação de contas e, logo em seguida, a parte que ninguém esquece: o caminhão de material chegando ao terreno. Do bruto arrecadado saíram a taxa da plataforma, a mídia e o serviço; o que sobrou virou madeira, bloco e o começo da primeira sede cultural e esportiva de Corumbau.",
-    imgs: [obra2, obraEstrutura, obraBlocos, obra4],
+    text: "Depois do sorteio veio a prestação de contas e, logo em seguida, a parte que ninguém esquece: o caminhão de material chegando ao terreno. Do bruto arrecadado saíram a taxa da plataforma, a mídia e o serviço; o que sobrou virou madeira, bloco e o começo da primeira sede cultural e esportiva de Corumbau, erguida só com o esforço e a mão de obra dos próprios alunos.",
+    imgs: [obraEstrutura],
     alt: "Material chegando ao terreno e a estrutura da sede subindo",
   },
 ];
@@ -129,8 +120,12 @@ const FICHA = [
   { label: "Projeto", value: "Corumbau BJJ Team · Corumbau/BA" },
   { label: "Metodologia", value: "Rifa Solidária" },
   { label: "Idealização & mestre", value: "Diego Oliveira" },
-  { label: "Projeto arquitetônico", value: "Fernando Lima" },
   { label: "Estratégia & captação", value: "Mateus Tafuri" },
+  {
+    label: "Instagram",
+    value: "@corumbaubjjteam",
+    href: "https://www.instagram.com/corumbaubjjteam/",
+  },
 ];
 
 const CARROSSEIS = [
@@ -145,21 +140,6 @@ const CARROSSEIS = [
   ...c,
   images: Array.from({ length: c.count }, (_, i) => `/carrosseis/${c.slug}/${i + 1}.webp`),
 }));
-
-/* álbum: a vila, o tatame improvisado e os pódios */
-const ALBUM = [
-  largaBaiano,
-  capaAtleta,
-  medalhista,
-  capaLoja,
-  aula1,
-  aula2,
-  capaPraia,
-  farol,
-  capaMedalhas,
-  obra2,
-  obra3,
-];
 
 const OUTROS_CASES = [
   {
@@ -178,7 +158,15 @@ const OUTROS_CASES = [
 
 /* ─────────────────────────── PAGE ─────────────────────────── */
 
-const CorumbauBjj = () => (
+const CorumbauBjj = () => {
+  useSeo({
+    titulo: "Case Corumbau BJJ: R$ 159,5 mil para a primeira sede da vila | Mateus Tafuri",
+    descricao:
+      "Como a Rifa Solidária mobilizou 4.377 apoiadores e R$ 159,5 mil para tirar do papel o primeiro espaço cultural e esportivo de Corumbau, no extremo sul da Bahia.",
+    path: "/corumbau-bjj",
+  });
+
+  return (
   <div
     className="min-h-screen"
     style={
@@ -200,7 +188,7 @@ const CorumbauBjj = () => (
       tipo="Rifa Solidária"
       titulo="Corumbau"
       destaque="BJJ Team"
-      descricao="No extremo sul da Bahia, mais de 50 crianças treinam jiu-jitsu e ballet numa escola desativada. A campanha que tirou do papel a primeira sede cultural e esportiva da vila."
+      descricao="No extremo sul da Bahia, mais de 50 crianças treinam jiu‑jitsu numa escola desativada. A campanha que tirou do papel a primeira sede cultural e esportiva da vila."
       logo={logoCorumbau}
       logoAlt="Logo Corumbau BJJ Team"
       pecas={CAPAS}
@@ -225,23 +213,23 @@ const CorumbauBjj = () => (
               Em Corumbau, no extremo sul da Bahia, a vida é simples e os sonhos das
               crianças são gigantes. Fundado por{" "}
               <strong className="text-[#16281f]">Diego Oliveira</strong> há três anos, o
-              Corumbau BJJ Team leva jiu-jitsu, ballet e educação a{" "}
+              Corumbau BJJ Team leva jiu‑jitsu a{" "}
               <strong className="text-[#16281f]">mais de 50 crianças</strong> e
-              adolescentes em situação de vulnerabilidade.
+              adolescentes.
             </p>
             <p>
               Os treinos acontecem numa escola desativada: espaço improvisado, mas cheio
-              de energia. O projeto já tinha conquistado o lote e o projeto arquitetônico
-              da sede. Faltava o dinheiro da obra, e ele precisava vir de fora da vila —
-              em bilhetes de R$ 20, com sorteio marcado para 23 de novembro.
+              de energia. O projeto já tinha conquistado o lote. Faltava o dinheiro da
+              obra e, sem grandes patrocinadores, buscamos esse valor por meio de uma
+              rifa solidária.
             </p>
           </div>
 
           {/* a foto sai do fluxo no desktop para acompanhar a altura do texto */}
           <div className="md:relative">
             <img
-              src={aula2}
-              alt="Treino do Corumbau BJJ Team no tatame da escola desativada"
+              src={turmaTatame}
+              alt="Turma do Corumbau BJJ Team reunida no tatame"
               className="aspect-[16/9] w-full rounded-2xl object-cover md:absolute md:inset-0 md:aspect-auto md:h-full"
               loading="lazy"
             />
@@ -328,7 +316,7 @@ const CorumbauBjj = () => (
                 className="rounded-2xl border border-white/10 bg-white/[0.05] p-5 text-center"
               >
                 <p className="font-display text-2xl font-extrabold text-[var(--case-destaque)] md:text-3xl">
-                  {s.value}
+                  <NumeroAnimado valor={s.value} />
                 </p>
                 <p className="mt-1 text-xs text-[#F4F0E6]/55">{s.label}</p>
               </div>
@@ -353,9 +341,9 @@ const CorumbauBjj = () => (
           <div>
             <Label escuro>O legado</Label>
             <p className="font-display text-2xl font-bold leading-snug md:text-3xl">
-              Uma vila de pescadores no fim da estrada provou que consegue financiar a
-              própria sede. O tatame improvisado tem data para acabar, e as crianças que
-              treinam nele já sabem como é ver um sonho sair do papel.
+              O que faltava era o dinheiro da obra, e ele veio em bilhetes de R$ 20. O
+              tatame improvisado tem data para acabar, e as crianças que treinam nele já
+              viram um sonho sair do papel.
             </p>
           </div>
 
@@ -375,7 +363,18 @@ const CorumbauBjj = () => (
                 <p className="text-[11px] uppercase tracking-[0.15em] text-[#16281f]/50">
                   {f.label}
                 </p>
-                <p className="font-semibold">{f.value}</p>
+                {"href" in f && f.href ? (
+                  <a
+                    href={f.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-semibold underline-offset-4 hover:underline"
+                  >
+                    {f.value}
+                  </a>
+                ) : (
+                  <p className="font-semibold">{f.value}</p>
+                )}
               </div>
             ))}
           </div>
@@ -392,7 +391,6 @@ const CorumbauBjj = () => (
         </h2>
         <p className="mt-4 max-w-2xl leading-relaxed text-[#16281f]/65">
           As peças que apresentaram Corumbau ao país e sustentaram a venda dos bilhetes.
-          Arraste para o lado para ver cada carrossel.
         </p>
 
         <div className="mt-10 space-y-12">
@@ -400,25 +398,6 @@ const CorumbauBjj = () => (
             <DragCarousel key={c.slug} title={`Carrossel: ${c.title}`} images={c.images} />
           ))}
         </div>
-      </div>
-    </section>
-
-    {/* ───────── AS FOTOS ───────── */}
-    <section
-      id="fotos"
-      className="scroll-mt-20 border-t border-black/10 px-5 py-16 sm:px-6 md:py-20"
-    >
-      <div className="mx-auto max-w-5xl">
-        <Label>Álbum de fotos</Label>
-        <h2 className="font-display text-3xl font-bold md:text-4xl">
-          O tatame improvisado e os pódios
-        </h2>
-        <p className="mb-8 mt-4 max-w-2xl leading-relaxed text-[#16281f]/65">
-          A equipe no Campeonato Baiano, as aulas na escola desativada e os primeiros
-          dias de obra no terreno.
-        </p>
-
-        <DragCarousel title="Corumbau, dentro e fora do tatame" images={ALBUM} />
       </div>
     </section>
 
@@ -486,5 +465,6 @@ const CorumbauBjj = () => (
     <Footer />
   </div>
 );
+};
 
 export default CorumbauBjj;

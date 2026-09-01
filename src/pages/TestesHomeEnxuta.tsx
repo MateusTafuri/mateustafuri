@@ -15,7 +15,7 @@ import logoBonete from "@/assets/logo-bonete.webp";
 import logoCorumbau from "@/assets/logo-corumbau.webp";
 
 /* Versão enxuta da entrada: prova primeiro, biografia na página /sobre.
-   Cinco blocos — topo, cases, método, um depoimento e contato. */
+   Cinco blocos, topo, cases, método, um depoimento e contato. */
 
 const CASES = [
   {

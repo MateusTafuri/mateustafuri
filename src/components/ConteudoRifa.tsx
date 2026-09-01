@@ -1,4 +1,5 @@
 import { useEffect, useState, type CSSProperties } from "react";
+import NumeroAnimado from "@/components/NumeroAnimado";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -11,15 +12,18 @@ import fotoRifa2 from "@/assets/caraiva-rifa-2.webp";
 import logoBonete from "@/assets/logo-bonete.webp";
 import logoCaraiva from "@/assets/logo-caraiva.webp";
 import logoCorumbau from "@/assets/logo-corumbau.webp";
-import { ETAPAS, WHATSAPP } from "@/data/rifaSolidaria";
+import { ETAPAS, WHATSAPP, WHATSAPP_SOBRE } from "@/data/rifaSolidaria";
 import {
   ArrowRight,
+  BookOpen,
+  BadgeCheck,
   ArrowUpRight,
   ChevronDown,
   ClipboardList,
   Megaphone,
+  MessageCircle,
   QrCode,
-  Sparkles,
+  Tickets,
   TrendingUp,
   Users,
 } from "lucide-react";
@@ -34,11 +38,12 @@ const VARRER = {
   animation: "varrer 3.5s ease-in-out infinite",
 } as const;
 
+/* na ordem em que as seções aparecem na página */
 const MENU = [
-  { label: "O método", href: "#metodologia" },
-  { label: "Mapeamento", href: "#mapeamento" },
   { label: "Sobre", href: "#sobre" },
+  { label: "O método", href: "#metodologia" },
   { label: "Cases", href: "#cases" },
+  { label: "Mapeamento", href: "#mapeamento" },
   { label: "Depoimentos", href: "#feedbacks" },
 ];
 
@@ -102,13 +107,14 @@ const NUMEROS = [
 const RETRATOS = [
   {
     src: fotoCampeonato,
-    pos: "center 40%",
-    zoom: 1.12, // aproxima um pouco: a foto é aberta demais no enquadramento
+    pos: "center 74%",
+    zoom: 1.5, // fecha nos rostos e corta os coqueiros do topo
     alt: "Mateus e os atletas do projeto depois de um campeonato",
   },
   {
     src: fotoRifa1,
-    pos: "center",
+    // ancorada embaixo: a foto é mais alta que o quadro e o corte comia os pés
+    pos: "center bottom",
     zoom: 1,
     alt: "Mateus e uma aluna do Dojo Caraíva com o cartaz da Rifa Solidária, na escada da praia",
   },
@@ -151,13 +157,14 @@ const RetratoRotativo = () => {
         />
       ))}
 
-      <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-1.5">
+      {/* gap maior + before:-inset-2.5 dá área de toque sem engordar a bolinha */}
+      <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-3">
         {RETRATOS.map((f, idx) => (
           <button
             key={f.src}
             onClick={() => setI(idx)}
             aria-label={`Foto ${idx + 1} de ${RETRATOS.length}`}
-            className={`h-1.5 rounded-full transition-all ${
+            className={`relative h-1.5 rounded-full transition-all before:absolute before:-inset-2.5 before:content-[''] ${
               idx === i ? "w-5 bg-white" : "w-1.5 bg-white/50 hover:bg-white/80"
             }`}
           />
@@ -167,27 +174,6 @@ const RetratoRotativo = () => {
   );
 };
 
-/* O mesmo varrer, em SVG, para pintar o traço dos ícones: background-clip
-   só funciona em texto. */
-const GradienteVarrido = () => (
-  <svg width="0" height="0" aria-hidden className="absolute">
-    <defs>
-      <linearGradient id="varrer-icone" x1="0" y1="0" x2="1" y2="0" spreadMethod="repeat">
-        <stop offset="0%" stopColor="hsl(15 65% 56%)" />
-        <stop offset="45%" stopColor="hsl(35 90% 70%)" />
-        <stop offset="100%" stopColor="hsl(15 65% 56%)" />
-        <animateTransform
-          attributeName="gradientTransform"
-          type="translate"
-          values="0 0; 0.5 0; 0 0"
-          dur="3.5s"
-          repeatCount="indefinite"
-        />
-      </linearGradient>
-    </defs>
-  </svg>
-);
-
 /* ─────────── CONTEÚDO ─────────── */
 
 /* O corpo inteiro da Rifa Solidária. A página /rifa-solidaria usa como está;
@@ -195,9 +181,11 @@ const GradienteVarrido = () => (
 const ConteudoRifa = ({
   navbar = true,
   faixaFestival = true,
+  hero = true,
 }: {
   navbar?: boolean;
   faixaFestival?: boolean;
+  hero?: boolean;
 }) => {
   const [ativa, setAtiva] = useState(-1);
 
@@ -220,7 +208,9 @@ const ConteudoRifa = ({
         } as CSSProperties
       }
     >
-      {/* Primeira tela: hero verde + faixa do QR, sem sobra branca */}
+      {/* Primeira tela: hero verde + faixa do QR, sem sobra branca.
+          A home já tem o próprio banner em cima, então entra sem ela. */}
+      {hero && (
       <div className="min-h-screen flex flex-col">
       <div
         className="relative overflow-hidden flex-1 flex items-center animate-aurora motion-reduce:animate-none [background-size:300%_300%]"
@@ -231,25 +221,6 @@ const ConteudoRifa = ({
         }}
       >
         {navbar && <Navbar links={MENU} />}
-
-        {/* setas de rolagem, coladas na borda de baixo do header */}
-        <a
-          href="#metodologia"
-          aria-label="Rolar para baixo"
-          className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 rounded-full p-2 text-white"
-        >
-          <span className="flex flex-col items-center drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]">
-            {[0, 1, 2].map((i) => (
-              <ChevronDown
-                key={i}
-                size={20}
-                strokeWidth={2}
-                className="-my-1 animate-seta-oca motion-reduce:animate-none"
-                style={{ animationDelay: `${i * 0.18}s` }}
-              />
-            ))}
-          </span>
-        </a>
 
         {/* ───── HERO ───── */}
         {/* sem overflow-hidden aqui: ele cortava o brilho decorativo numa linha
@@ -264,10 +235,10 @@ const ConteudoRifa = ({
             }}
           />
           <div className="relative z-10 max-w-4xl mx-auto">
-            <span className="inline-flex items-center gap-2 rounded-full border border-[hsl(15,65%,56%)]/45 px-3.5 py-1.5 sm:px-4 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.12em] sm:tracking-[0.2em] text-[hsl(15,65%,56%)]">
-              <Sparkles size={13} className="shrink-0" /> Metodologia aberta e gratuita
+            <span className="inline-flex items-center gap-2 rounded-full border border-[hsl(35,92%,82%)]/40 px-3.5 py-1.5 sm:px-4 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.12em] sm:tracking-[0.2em] text-[hsl(35,92%,82%)]">
+              <Tickets size={14} className="shrink-0" /> Metodologia aberta e gratuita
             </span>
-            <h1 className="mt-6 text-[2rem] sm:text-4xl md:text-6xl font-bold leading-[1.08] sm:leading-[1.05] tracking-tight">
+            <h1 className="mt-6 font-display text-[2rem] sm:text-4xl md:text-6xl font-bold leading-[1.08] sm:leading-[1.05] tracking-tight">
               Como captar recursos para
               <br className="hidden sm:inline" />{" "}
               a sua causa com a{" "}
@@ -296,9 +267,9 @@ const ConteudoRifa = ({
                 <div key={e.n} className="flex items-center gap-2">
                   <a
                     href="#metodologia"
-                    className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-white/20 bg-white/[0.06] px-3 py-1.5 text-xs sm:px-4 sm:py-2 sm:text-sm font-semibold transition-colors hover:border-[hsl(15,65%,56%)]/60 hover:bg-white/[0.12]"
+                    className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/[0.06] px-3 py-1.5 text-xs font-semibold transition-colors hover:border-[hsl(15,65%,56%)]/60 hover:bg-white/[0.12] sm:gap-2 sm:px-4 sm:py-2 sm:text-sm"
                   >
-                    <span className="text-sm sm:text-base leading-none">{e.emoji}</span>
+                    <span className="text-sm leading-none sm:text-base">{e.emoji}</span>
                     {e.title}
                   </a>
                   {i < ETAPAS.length - 1 && (
@@ -330,14 +301,80 @@ const ConteudoRifa = ({
       </section>
       )}
       </div>
+      )}
+
+      {/* ───── QUEM CONDUZ ───── */}
+      <section id="sobre" className="scroll-mt-20 px-5 sm:px-6 py-16 md:py-20 bg-secondary/40">
+        <div className="max-w-4xl mx-auto">
+          <div className="grid gap-8 md:gap-10 md:grid-cols-[300px_1fr] md:items-center">
+            <RetratoRotativo />
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary mb-3">
+                Sobre mim
+              </p>
+              <h2 className="font-display text-2xl md:text-4xl font-bold mb-2">Mateus Tafuri</h2>
+              <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-5">
+                Estratégia · Mobilização · Captação de Recursos
+              </p>
+              <div className="space-y-3 text-justify hyphens-auto text-muted-foreground leading-relaxed">
+                <p>
+                  Como captar recursos para projetos isolados sem acesso a
+                  grandes financiadores? A solução foi estruturar rifas
+                  solidárias focadas em turismo de experiência.
+                </p>
+                <p>
+                  O que começou como uma saída emergencial virou um método
+                  validado: são mais de dez campanhas aplicando sempre as mesmas
+                  cinco etapas. São elas que abro detalhadamente aqui.
+                </p>
+              </div>
+              <Link
+                to="/sobre"
+                className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
+              >
+                Mais sobre mim <ArrowRight size={14} />
+              </Link>
+            </div>
+          </div>
+
+          {/* números consolidados */}
+          <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-4">
+            {NUMEROS.map((n) => (
+              <div
+                key={n.label}
+                className="rounded-2xl border border-border bg-background px-4 py-5 text-center"
+              >
+                <p className="text-xl sm:text-2xl font-bold text-primary">
+                  <NumeroAnimado valor={n.valor} />
+                </p>
+                <p className="text-[11px] sm:text-xs text-muted-foreground mt-1 leading-snug">
+                  {n.label}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 text-center">
+            <a
+              href={WHATSAPP_SOBRE}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-base font-semibold text-primary-foreground no-underline transition-opacity hover:opacity-90"
+            >
+              <MessageCircle size={18} /> Mandar mensagem
+            </a>
+          </div>
+
+        </div>
+      </section>
 
       {/* ───── METODOLOGIA (etapas clicáveis) ───── */}
-      <section id="metodologia" className="scroll-mt-20 px-5 sm:px-6 py-16 md:py-24">
+      <section id="metodologia" className="scroll-mt-20 px-5 sm:px-6 pt-16 pb-10 md:pt-24 md:pb-12">
         <div className="max-w-4xl mx-auto">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary text-center mb-3">
             O método, passo a passo
           </p>
-          <h2 className="text-2xl md:text-4xl font-bold text-center mb-3">
+          <h2 className="font-display text-2xl md:text-4xl font-bold text-center mb-3">
             5 etapas para tirar a sua campanha do papel
           </h2>
           <p className="text-muted-foreground text-center max-w-xl mx-auto mb-10">
@@ -399,16 +436,121 @@ const ConteudoRifa = ({
               );
             })}
           </div>
+
+          {/* quem quer se aprofundar vai para o guia longo */}
+          <Link
+            to="/como-estruturar-rifa-solidaria-digital"
+            className="group mt-8 flex items-center gap-5 rounded-2xl bg-primary p-6 text-primary-foreground no-underline transition-shadow hover:shadow-lg"
+          >
+            <span
+              className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-white/20 text-primary-foreground"
+            >
+              <BookOpen size={22} />
+            </span>
+            <span className="min-w-0 flex-1">
+              <span className="block text-[11px] font-semibold uppercase tracking-[0.2em] text-primary-foreground/80">
+                Guia completo e gratuito
+              </span>
+              <span className="mt-1 block font-display text-lg font-bold leading-snug">
+                Cada etapa destrinchada, com erros comuns e checklist
+              </span>
+            </span>
+            <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-white text-primary transition-transform group-hover:translate-x-1">
+              <ArrowRight size={18} />
+            </span>
+          </Link>
+        </div>
+      </section>
+
+      {/* ───── AS RIFAS ───── */}
+      <section
+        id="cases"
+        className="scroll-mt-20 pt-14 pb-7 md:pt-16 md:pb-8"
+        style={{ background: "hsl(178 36% 22%)" }}
+      >
+        <div className="mx-auto max-w-5xl px-5 sm:px-6">
+          <h3 className="font-display text-xl font-bold text-white sm:text-2xl">
+            As rifas que originaram o método
+          </h3>
+          <p className="mt-1 text-sm leading-relaxed text-white/55">
+            Números reais de cada campanha. Toque para ver o case inteiro.
+          </p>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            {RIFAS.map((r) => (
+              <Link
+                key={r.path}
+                to={r.path}
+                className="group rounded-2xl border border-white/12 bg-white/[0.05] p-5 text-white no-underline transition-colors hover:border-white/30 hover:bg-white/[0.09]"
+              >
+                <div className="flex items-center gap-3">
+                  <img src={r.logo} alt="" className="h-9 w-9 rounded-full object-cover" />
+                  <div className="min-w-0">
+                    <p className="truncate text-sm font-semibold">{r.nome}</p>
+                    <p className="text-xs text-white/50">{r.local}</p>
+                  </div>
+                  <ArrowUpRight
+                    size={16}
+                    className="ml-auto shrink-0 text-white/40 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  />
+                </div>
+
+                <p
+                  className="mt-5 bg-clip-text font-display text-[38px] font-extrabold leading-none text-transparent"
+                  style={VARRER}
+                >
+                  <NumeroAnimado valor={r.valor} />
+                </p>
+                <p className="mt-1 text-xs text-white/45">{r.frase}</p>
+
+                <dl className="mt-5 grid grid-cols-3 gap-2 border-t border-white/10 pt-4 text-center">
+                  {r.stats.map((k) => (
+                    <div key={k.l}>
+                      <k.icone size={13} className="mx-auto text-white/70" />
+                      <dd className="mt-1 font-display text-base font-bold text-white">
+                        <NumeroAnimado valor={k.v} />
+                      </dd>
+                      <dt className="text-[10px] leading-tight text-white/40">{k.l}</dt>
+                    </div>
+                  ))}
+                </dl>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ───── GUIA DE LEGALIZAÇÃO ───── */}
+      <section className="pt-7 pb-14 md:pt-8 md:pb-16" style={{ background: "hsl(178 36% 22%)" }}>
+        <div className="mx-auto max-w-5xl px-5 sm:px-6">
+          <div className="rounded-3xl border-2 border-dashed border-white/25 p-8 text-center md:p-12">
+            <BadgeCheck size={30} className="mx-auto text-white/50" />
+            <p className="mt-4 text-xs font-semibold uppercase tracking-[0.25em] text-white/45">
+              Guia gratuito
+            </p>
+            <h3 className="mx-auto mt-3 max-w-2xl font-display text-2xl font-bold leading-tight text-white md:text-3xl">
+              Como legalizar a sua rifa solidária
+            </h3>
+            <p className="mx-auto mt-3 max-w-xl leading-relaxed text-white/60">
+              Sete etapas, do CNPJ à prestação de contas.
+            </p>
+            <Link
+              to="/como-legalizar-a-rifa"
+              className="mt-7 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground no-underline transition-opacity hover:opacity-90"
+            >
+              Ler o guia <ArrowRight size={16} />
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* ───── COMO USAR O MAPEAMENTO ───── */}
-      <section id="mapeamento" className="scroll-mt-20 px-5 sm:px-6 py-16 md:py-20">
+      <section id="mapeamento" className="scroll-mt-20 px-5 sm:px-6 pt-10 pb-16 md:pt-12 md:pb-20">
         <div className="max-w-4xl mx-auto">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary text-center mb-3">
             Ferramenta gratuita
           </p>
-          <h2 className="text-2xl md:text-4xl font-bold text-center mb-3">
+          <h2 className="font-display text-2xl md:text-4xl font-bold text-center mb-3">
             Como funciona o mapeamento
           </h2>
           <p className="text-muted-foreground text-center max-w-xl mx-auto mb-12">
@@ -432,11 +574,25 @@ const ConteudoRifa = ({
           </div>
 
           <div
-            className="relative mt-14 overflow-hidden rounded-3xl p-6 sm:p-10 text-white"
-            style={{ backgroundColor: "hsl(176 39% 14%)" }}
+            className="relative mt-14 overflow-hidden rounded-3xl p-6 sm:p-10 text-white ring-1 ring-white/10"
+            style={{
+              // o mesmo degradê do hero, varrendo devagar dentro do cartão
+              backgroundImage:
+                "linear-gradient(120deg, hsl(176 44% 11%), hsl(178 40% 17%) 30%, hsl(184 36% 26%) 48%, hsl(15 45% 30%) 66%, hsl(178 40% 18%) 84%, hsl(176 44% 11%))",
+              backgroundSize: "300% 300%",
+            }}
           >
             <div
-              className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full opacity-20 blur-3xl"
+              aria-hidden
+              className="pointer-events-none absolute inset-0 animate-aurora motion-reduce:animate-none"
+              style={{
+                backgroundImage:
+                  "linear-gradient(120deg, transparent 35%, hsl(15 65% 56% / 0.28) 55%, transparent 72%)",
+                backgroundSize: "300% 300%",
+              }}
+            />
+            <div
+              className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full opacity-25 blur-3xl"
               style={{
                 background:
                   "radial-gradient(circle, hsl(15 65% 56%) 0%, transparent 70%)",
@@ -447,7 +603,7 @@ const ConteudoRifa = ({
                 <span className="inline-grid h-10 w-10 place-items-center rounded-2xl bg-white/10 text-[hsl(15,65%,56%)]">
                   <ClipboardList size={20} />
                 </span>
-                <h3 className="mt-4 text-xl sm:text-3xl font-bold leading-tight">
+                <h3 className="mt-4 font-display text-xl sm:text-3xl font-bold leading-tight">
                   Mapeamento Rifa Solidária
                 </h3>
                 <p className="mt-3 max-w-md text-white/70 text-sm sm:text-base leading-relaxed">
@@ -493,126 +649,13 @@ const ConteudoRifa = ({
         </div>
       </section>
 
-      {/* ───── QUEM CONDUZ ───── */}
-      <section id="sobre" className="scroll-mt-20 px-5 sm:px-6 py-16 md:py-20 bg-secondary/40">
-        <div className="max-w-4xl mx-auto">
-          <div className="grid gap-8 md:gap-10 md:grid-cols-[300px_1fr] md:items-center">
-            <RetratoRotativo />
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary mb-3">
-                Quem criou o método
-              </p>
-              <h2 className="text-2xl md:text-4xl font-bold mb-2">Mateus Tafuri</h2>
-              <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-5">
-                Estratégia · Mobilização · Captação de Recursos
-              </p>
-              <div className="space-y-3 text-muted-foreground leading-relaxed">
-                <p>
-                  Como captar recursos para projetos isolados sem acesso a
-                  grandes financiadores? A solução foi estruturar rifas
-                  solidárias focadas em turismo de experiência.
-                </p>
-                <p>
-                  O que começou como uma saída emergencial virou um método
-                  validado: são mais de dez campanhas aplicando sempre as mesmas
-                  cinco etapas. São elas que abro detalhadamente aqui.
-                </p>
-              </div>
-              <Link
-                to="/sobre"
-                className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
-              >
-                Mais sobre mim <ArrowRight size={14} />
-              </Link>
-            </div>
-          </div>
-
-          {/* números consolidados */}
-          <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-4">
-            {NUMEROS.map((n) => (
-              <div
-                key={n.label}
-                className="rounded-2xl border border-border bg-background px-4 py-5 text-center"
-              >
-                <p className="text-xl sm:text-2xl font-bold text-primary">{n.valor}</p>
-                <p className="text-[11px] sm:text-xs text-muted-foreground mt-1 leading-snug">
-                  {n.label}
-                </p>
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
-      {/* ───── AS RIFAS ───── */}
-      <section
-        id="cases"
-        className="scroll-mt-20 py-14 md:py-16"
-        style={{ background: "hsl(178 36% 22%)" }}
-      >
-        <GradienteVarrido />
-        <div className="mx-auto max-w-5xl px-5 sm:px-6">
-          <h3 className="text-xl font-bold text-white sm:text-2xl">
-            As rifas que originaram o método
-          </h3>
-          <p className="mt-1 text-sm leading-relaxed text-white/55">
-            Números reais de cada campanha. Toque para ver o case inteiro.
-          </p>
-
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
-            {RIFAS.map((r) => (
-              <Link
-                key={r.path}
-                to={r.path}
-                className="group rounded-2xl border border-white/12 bg-white/[0.05] p-5 text-white no-underline transition-colors hover:border-white/30 hover:bg-white/[0.09]"
-              >
-                <div className="flex items-center gap-3">
-                  <img src={r.logo} alt="" className="h-9 w-9 rounded-full object-cover" />
-                  <div className="min-w-0">
-                    <p className="truncate text-sm font-semibold">{r.nome}</p>
-                    <p className="text-xs text-white/50">{r.local}</p>
-                  </div>
-                  <ArrowUpRight
-                    size={16}
-                    className="ml-auto shrink-0 text-white/40 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                  />
-                </div>
-
-                <p
-                  className="mt-5 bg-clip-text font-display text-[38px] font-extrabold leading-none text-transparent"
-                  style={VARRER}
-                >
-                  {r.valor}
-                </p>
-                <p className="mt-1 text-xs text-white/45">{r.frase}</p>
-
-                <dl className="mt-5 grid grid-cols-3 gap-2 border-t border-white/10 pt-4 text-center">
-                  {r.stats.map((k) => (
-                    <div key={k.l}>
-                      <k.icone size={13} className="mx-auto" stroke="url(#varrer-icone)" />
-                      <dd
-                        className="mt-1 bg-clip-text font-display text-base font-bold text-transparent"
-                        style={VARRER}
-                      >
-                        {k.v}
-                      </dd>
-                      <dt className="text-[10px] leading-tight text-white/40">{k.l}</dt>
-                    </div>
-                  ))}
-                </dl>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ───── DEPOIMENTOS ───── */}
       <FeedbackSection titulo="O que dizem sobre a metodologia" />
 
       {/* ───── CTA FINAL ───── */}
       <section className="bg-secondary py-16 px-5 sm:px-6 text-center">
-        <div className="max-w-2xl mx-auto">
+        {/* 3xl para o título caber em uma linha; o texto abaixo segue estreito */}
+        <div className="max-w-3xl mx-auto">
           <span
             aria-label="Mateus Tafuri"
             className="mx-auto mb-4 block h-16 w-16"
@@ -631,10 +674,10 @@ const ConteudoRifa = ({
           <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-3">
             Sua causa é a próxima
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-green-dark mb-4">
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-green-dark mb-4">
             Vamos tirar a sua campanha do papel?
           </h2>
-          <p className="text-secondary-foreground/80 mb-8 text-base leading-relaxed">
+          <p className="text-secondary-foreground/80 mb-8 mx-auto max-w-2xl text-base leading-relaxed">
             Me conte a sua causa e quanto você precisa alcançar. A gente
             desenha o caminho pelas cinco etapas.
           </p>

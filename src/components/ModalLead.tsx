@@ -94,7 +94,7 @@ const ModalLead = ({
           <X size={18} />
         </button>
 
-        <h2 id="titulo-lead" className="pr-8 text-xl font-bold">
+        <h2 id="titulo-lead" className="pr-8 font-display text-xl font-bold">
           Para onde eu mando o seu plano?
         </h2>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">

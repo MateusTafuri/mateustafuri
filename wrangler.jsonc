@@ -19,7 +19,9 @@
       "/dojo-bonete",
       "/corumbau-bjj",
       "/dojo-caraiva",
-      "/sobre"
+      "/sobre",
+      "/como-legalizar-a-rifa",
+      "/como-estruturar-rifa-solidaria-digital"
     ]
   },
   // o domínio responde direto pelo worker; a Cloudflare cria o registro
@@ -27,6 +29,11 @@
   "routes": [
     { "pattern": "mateustafuri.com.br", "custom_domain": true },
     { "pattern": "www.mateustafuri.com.br", "custom_domain": true }
+  ],
+  // aviso de download: só pode mandar para este endereço, verificado no
+  // Email Routing da conta
+  "send_email": [
+    { "name": "EMAIL", "destination_address": "tafuri1999@gmail.com" }
   ],
   "d1_databases": [
     {

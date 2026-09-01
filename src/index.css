@@ -2,11 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&display=swap');
 
 .font-display {
   font-family: 'Bricolage Grotesque', 'Inter', system-ui, sans-serif;
+}
+
+/* manuscrita, só para o nome */
+.font-nome {
+  font-family: 'Caveat', 'Bricolage Grotesque', cursive;
+  font-weight: 700;
 }
 
 @layer base {
@@ -41,7 +45,7 @@
 
     --radius: 0.75rem;
 
-    /* Custom tokens — sage green palette */
+    /* Custom tokens, paleta verde sálvia */
     --green-light: 103 66% 92%;
     --green-accent: 80 18% 40%;
     --green-dark: 80 15% 22%;
@@ -54,6 +58,21 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  /* Texto corrido justificado no site inteiro. Ficam de fora os rótulos
+     pequenos, os textos em caixa alta e tudo que já tem alinhamento próprio:
+     justificados, eles abririam buracos entre as palavras. */
+  /* o :where zera a especificidade: qualquer alinhamento do Tailwind ganha */
+  p:where(:not([class*="text-xs"]):not([class*="text-[10px]"]):not([class*="text-[11px]"]):not([class*="uppercase"])) {
+    text-align: justify;
+  }
+
+  /* dentro de um bloco centralizado o parágrafo segue centralizado */
+  [class*="text-center"] p {
+    text-align: center;
   }
 }
 
@@ -157,5 +176,18 @@
   }
   to {
     transform: translateX(-50%);
+  }
+}
+
+/* No iOS, campo com fonte menor que 16px faz o Safari dar zoom ao focar e não
+   desfaz depois. Fica fora de @layer de propósito: dentro de base, o text-sm
+   do Tailwind ganharia. */
+@media (max-width: 767px) {
+  /* o [class] sobe a especificidade acima do text-sm do Tailwind, que é quem
+     estava ganhando */
+  input[class],
+  textarea[class],
+  select[class] {
+    font-size: 16px;
   }
 }

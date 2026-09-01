@@ -30,10 +30,9 @@ const feedbacks = [
   {
     project: "Projeto Social l Dojo Bonete",
     image: feedbackBonete,
-    text: "",
-    author: "",
-    role: "",
-    placeholder: true,
+    text: `Gratidão eterna a ti, @mateustafuri! Você documentou a nossa história de uma maneira única e especial, conseguindo transmitir através do seu trabalho toda a essência desse projeto. Com seu talento e dedicação, ajudou muito na nossa evolução e fez parte de um momento que trouxe alegria para toda a nossa equipe.\n\nA Rifa Solidária do Dojo Bonete foi muito além de uma ação: foi a união de pessoas em torno de um propósito maior, capaz de gerar oportunidades, esperança e transformar muitas vidas. Ter esse momento registrado de uma forma tão incrível tornou tudo ainda mais especial. Obrigado por fazer parte dessa história e contribuir de forma tão importante para que ela chegasse ainda mais longe!`,
+    author: "André Queiroz",
+    role: "Líder do projeto social Dojo Bonete",
   },
 ];
 
@@ -69,7 +68,7 @@ const FeedbackSection = ({
       <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-1">
         Depoimentos
       </p>
-      <h2 className="text-2xl md:text-3xl font-bold mb-10">{titulo}</h2>
+      <h2 className="font-display text-2xl md:text-3xl font-bold mb-10">{titulo}</h2>
 
       <Carousel opts={{ loop: true }} setApi={setApi} className="w-full">
         <CarouselContent>
@@ -90,21 +89,13 @@ const FeedbackSection = ({
                       <Quote size={20} className="text-primary shrink-0" />
                       <span className="text-sm font-bold text-primary">{f.project}</span>
                     </div>
-                    {f.placeholder ? (
-                      <p className="text-sm text-muted-foreground/50 italic">
-                        Depoimento em breve...
-                      </p>
-                    ) : (
-                      <>
-                        <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line mb-4">
-                          {f.text}
-                        </p>
-                        <div className="mt-auto">
-                          <p className="text-sm font-semibold">{f.author}</p>
-                          <p className="text-xs text-muted-foreground">{f.role}</p>
-                        </div>
-                      </>
-                    )}
+                    <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line mb-4">
+                      {f.text}
+                    </p>
+                    <div className="mt-auto">
+                      <p className="text-sm font-semibold">{f.author}</p>
+                      <p className="text-xs text-muted-foreground">{f.role}</p>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -1,5 +1,7 @@
 import { ArrowRight } from "lucide-react";
+import NumeroAnimado from "@/components/NumeroAnimado";
 import { Link } from "react-router-dom";
+import { useSeo } from "@/lib/seo";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CaseHero from "@/components/CaseHero";
@@ -11,23 +13,21 @@ import { ETAPAS } from "@/data/rifaSolidaria";
 import logoCaraiva from "@/assets/logo-caraiva.webp";
 import logoTafuri from "@/assets/logo-tafuri.webp";
 
-import heroPraia from "@/assets/caraiva-hero.webp";
-import social from "@/assets/caraiva-social.webp";
-import kids from "@/assets/caraiva-kids.webp";
+import heroPiscina from "@/assets/caraiva-piscina-turma.webp";
+import social from "@/assets/caraiva-turma-dojo.webp";
+import cartazParede from "@/assets/caraiva-cartaz-parede.webp";
 import bastidores1 from "@/assets/caraiva-bastidores-1.webp";
-import bastidores2 from "@/assets/caraiva-bastidores-2-new.webp";
+import gravando1 from "@/assets/caraiva-gravando-1.webp";
+import gravando2 from "@/assets/caraiva-gravando-2.webp";
 import pousada2 from "@/assets/caraiva-pousada-2.webp";
 import pousada3 from "@/assets/caraiva-pousada-3-new.webp";
 import rifa1 from "@/assets/caraiva-rifa-1.webp";
 import rifa2 from "@/assets/caraiva-rifa-2.webp";
 import sorteio1 from "@/assets/caraiva-sorteio-1.webp";
 import sorteio2 from "@/assets/caraiva-sorteio-2.webp";
+import sorteio5 from "@/assets/caraiva-sorteio-5.webp";
 import sorteio3 from "@/assets/caraiva-sorteio-3.webp";
 import sorteio4 from "@/assets/caraiva-sorteio-4.webp";
-import impacto1 from "@/assets/caraiva-impacto-1.webp";
-import impacto2 from "@/assets/caraiva-impacto-2.webp";
-import impacto3 from "@/assets/caraiva-impacto-3.webp";
-import impacto4 from "@/assets/caraiva-impacto-4.webp";
 
 /* ─────────────────────────── DATA ─────────────────────────── */
 
@@ -39,7 +39,6 @@ const SECTIONS = [
   { id: "estrategia", label: "Estratégia" },
   { id: "processo", label: "Processo" },
   { id: "artes", label: "As artes" },
-  { id: "fotos", label: "As fotos" },
   { id: "ficha", label: "Ficha técnica" },
 ];
 
@@ -58,7 +57,7 @@ const TEMA = {
 const CORES = ["#A9C46C", "#C4693F", "#3C7A99", "#D9A441", "#2F6B45"];
 
 /* topo: duas em pé atrás e a deitada da turma na frente */
-const CAPAS = [bastidores1, sorteio2, heroPraia];
+const CAPAS = [bastidores1, sorteio2, cartazParede];
 
 /* O processo contado pelas cinco etapas da metodologia. */
 const PROCESS = [
@@ -67,8 +66,8 @@ const PROCESS = [
     etapa: "Sonhar",
     title: "Um ano inteiro, não só o mês seguinte",
     text: "O Dojo Caraíva foi erguido na Aldeia Xandó em 2019, com doações e mutirão, e se manteve por vaquinhas pontuais. Elas resolviam o mês e nunca o ano. O sonho desta campanha era outro: garantir o custeio do projeto por doze meses, com kimonos, campeonatos e manutenção previstos desde o começo.",
-    img: kids,
-    alt: "Turma de crianças do Dojo Caraíva sentada no tatame",
+    img: heroPiscina,
+    alt: "Turma do Dojo Caraíva na beira da piscina da pousada",
   },
   {
     n: "02",
@@ -84,14 +83,14 @@ const PROCESS = [
     etapa: "Contar",
     title: "As estrelas de Caraíva no comando",
     text: "Quem contou a história foram Pérola, Arlison, Atxuhi e Helena. Levamos os alunos para conhecer o prêmio que ajudariam a rifar, e a pureza das perguntas deu o tom: “Vai ter piscina, tio?”, “Eu quero ser famoso, tio!”. Eles refaziam cada take para melhorar a fala e a postura, com a mesma teimosia que aprendem no tatame.",
-    imgs: [pousada2, pousada3],
+    imgs: [pousada2, pousada3, gravando1, gravando2],
     alt: "Bastidores da gravação da rifa, na pousada de Caraíva",
   },
   {
     n: "04",
     etapa: "Escalar",
     title: "R$ 21,5 mil que levaram Caraíva ao Brasil",
-    text: "A narrativa das crianças foi distribuída por tráfego pago com segmentação para quem ama Caraíva ou acompanha jiu-jitsu social. Foram 3.183 apoiadores comprando bilhetes de todo o país, muitos deles sem nunca ter pisado na vila.",
+    text: "A narrativa das crianças foi distribuída por tráfego pago com segmentação para quem ama Caraíva ou acompanha jiu‑jitsu social. Foram 3.183 apoiadores comprando bilhetes de todo o país, muitos deles sem nunca ter pisado na vila.",
     painel: {
       titulo: "A mídia paga em quatro números",
       itens: [
@@ -107,7 +106,7 @@ const PROCESS = [
     etapa: "Retribuir",
     title: "O sorteio virou festa da vila",
     text: "A entrega dos prêmios reuniu a comunidade, os alunos e quem apoiou de longe. Depois vieram as contas abertas e, principalmente, o destino do dinheiro: inscrições no Campeonato Baiano e no Mundial da CBJJE, kimonos, sapatilhas, equipamento de segurança e as novas camisetas da equipe.",
-    imgs: [sorteio1, sorteio2, sorteio3, sorteio4],
+    imgs: [sorteio1, sorteio5, sorteio3, sorteio4],
     retrato: true,
     alt: "Dia do sorteio da Rifa Solidária do Dojo Caraíva",
   },
@@ -142,12 +141,17 @@ const FICHA = [
   { label: "Metodologia", value: "Rifa Solidária" },
   { label: "Idealização & mestre", value: "Suellen Boni" },
   { label: "Estratégia & captação", value: "Mateus Tafuri" },
+  {
+    label: "Instagram",
+    value: "@dojocaraiva",
+    href: "https://www.instagram.com/dojocaraiva/",
+  },
 ];
 
 const CARROSSEIS = [
   { title: "Conheça o Dojo Caraíva", slug: "conheca-o-dojo-caraiva", count: 14 },
   { title: "O prêmio da rifa", slug: "o-premio", count: 10 },
-  { title: "A importância do jiu-jitsu", slug: "importancia-jiu-jitsu", count: 7 },
+  { title: "A importância do jiu‑jitsu", slug: "importancia-jiu-jitsu", count: 7 },
   { title: "Motivos para apoiar", slug: "ajudar-o-dojo", count: 6 },
   { title: "Horários das aulas", slug: "horarios", count: 10 },
   { title: "Gratidão", slug: "gratidao", count: 7 },
@@ -156,19 +160,6 @@ const CARROSSEIS = [
   ...c,
   images: Array.from({ length: c.count }, (_, i) => `/carrosseis/${c.slug}/${i + 1}.webp`),
 }));
-
-/* álbum: a vila, o tatame e os campeonatos que a rifa bancou */
-const ALBUM = [
-  heroPraia,
-  kids,
-  impacto1,
-  impacto2,
-  impacto3,
-  impacto4,
-  bastidores1,
-  bastidores2,
-  social,
-];
 
 const OUTROS_CASES = [
   {
@@ -187,7 +178,15 @@ const OUTROS_CASES = [
 
 /* ─────────────────────────── PAGE ─────────────────────────── */
 
-const DojoCaraiva = () => (
+const DojoCaraiva = () => {
+  useSeo({
+    titulo: "Case Dojo Caraíva: R$ 100 mil em bilhetes de R$ 20 | Mateus Tafuri",
+    descricao:
+      "Como a Rifa Solidária garantiu um ano inteiro de custeio ao Dojo Caraíva, na Aldeia Xandó, com 3.183 apoiadores e bilhetes de R$ 20.",
+    path: "/dojo-caraiva",
+  });
+
+  return (
   <div
     className="min-h-screen"
     style={
@@ -209,7 +208,7 @@ const DojoCaraiva = () => (
       tipo="Rifa Solidária"
       titulo="Dojo"
       destaque="Caraíva"
-      descricao="Uma vila de ruas de areia no sul da Bahia, um tatame erguido por doações e a campanha que garantiu um ano inteiro de projeto com bilhetes de R$ 20."
+      descricao="Uma vila de ruas de areia no sul da Bahia e a campanha que garantiu um ano inteiro de projeto com bilhetes de R$ 20."
       logo={logoCaraiva}
       logoAlt="Logo Dojo Caraíva"
       pecas={CAPAS}
@@ -239,7 +238,7 @@ const DojoCaraiva = () => (
             </p>
             <p>
               O dojo foi erguido em 2019 com doações e mutirão, e se manteve por vaquinhas
-              pontuais — que resolviam o mês e nunca o ano seguinte. A rifa nasceu para
+              pontuais, que resolviam o mês e nunca o ano seguinte. A rifa nasceu para
               romper esse ciclo: custear o projeto por doze meses, vendendo bilhetes de
               R$ 20 para gente de todo o país.
             </p>
@@ -249,8 +248,8 @@ const DojoCaraiva = () => (
           <div className="md:relative">
             <img
               src={social}
-              alt="Vila de Caraíva, no sul da Bahia"
-              className="aspect-[16/9] w-full rounded-2xl object-cover md:absolute md:inset-0 md:aspect-auto md:h-full"
+              alt="Turma do Dojo Caraíva reunida no tatame"
+              className="aspect-[4/3] w-full rounded-2xl object-cover object-[center_58%] md:absolute md:inset-0 md:aspect-auto md:h-full"
               loading="lazy"
             />
           </div>
@@ -336,7 +335,7 @@ const DojoCaraiva = () => (
                 className="rounded-2xl border border-white/10 bg-white/[0.05] p-5 text-center"
               >
                 <p className="font-display text-2xl font-extrabold text-[var(--case-destaque)] md:text-3xl">
-                  {s.value}
+                  <NumeroAnimado valor={s.value} />
                 </p>
                 <p className="mt-1 text-xs text-[#F4F0E6]/55">{s.label}</p>
               </div>
@@ -396,7 +395,18 @@ const DojoCaraiva = () => (
                 <p className="text-[11px] uppercase tracking-[0.15em] text-[#16281f]/50">
                   {f.label}
                 </p>
-                <p className="font-semibold">{f.value}</p>
+                {"href" in f && f.href ? (
+                  <a
+                    href={f.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-semibold underline-offset-4 hover:underline"
+                  >
+                    {f.value}
+                  </a>
+                ) : (
+                  <p className="font-semibold">{f.value}</p>
+                )}
               </div>
             ))}
           </div>
@@ -413,7 +423,7 @@ const DojoCaraiva = () => (
         </h2>
         <p className="mt-4 max-w-2xl leading-relaxed text-[#16281f]/65">
           As peças que apresentaram o Dojo Caraíva ao país e sustentaram a venda dos
-          bilhetes. Arraste para o lado para ver cada carrossel.
+          bilhetes.
         </p>
 
         <div className="mt-10 space-y-12">
@@ -421,21 +431,6 @@ const DojoCaraiva = () => (
             <DragCarousel key={c.slug} title={`Carrossel: ${c.title}`} images={c.images} />
           ))}
         </div>
-      </div>
-    </section>
-
-    {/* ───────── AS FOTOS ───────── */}
-    <section id="fotos" className="scroll-mt-20 border-t border-black/10 px-5 py-16 sm:px-6 md:py-20">
-      <div className="mx-auto max-w-5xl">
-        <Label>Álbum de fotos</Label>
-        <h2 className="font-display text-3xl font-bold md:text-4xl">
-          A vila, o tatame e os campeonatos
-        </h2>
-        <p className="mb-8 mt-4 max-w-2xl leading-relaxed text-[#16281f]/65">
-          O que a rifa comprou aparece aqui: viagem, competição e a turma inteira de pé.
-        </p>
-
-        <DragCarousel title="Depois da campanha" images={ALBUM} />
       </div>
     </section>
 
@@ -502,5 +497,6 @@ const DojoCaraiva = () => (
     <Footer />
   </div>
 );
+};
 
 export default DojoCaraiva;

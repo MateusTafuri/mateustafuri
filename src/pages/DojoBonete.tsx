@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
+import NumeroAnimado from "@/components/NumeroAnimado";
 import {
-  ArrowLeft,
   ArrowRight,
   ArrowUpRight,
   MousePointerClick,
@@ -8,6 +8,7 @@ import {
   TrendingUp,
 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
+import { useSeo } from "@/lib/seo";
 import Navbar from "@/components/Navbar";
 import { ETAPAS } from "@/data/rifaSolidaria";
 import CaseHero from "@/components/CaseHero";
@@ -63,7 +64,7 @@ const PROCESS = [
     n: "01",
     etapa: "Sonhar",
     title: "Um sonho que precisava ser coletivo",
-    text: "Antes de tudo foi preciso sonhar: desenhar o projeto no papel, entender a realidade local e definir um plano claro, que era a construção da sede do Dojo Bonete. A meta precisava ir além de uma necessidade interna — tinha que ser um sonho coletivo, uma causa que outras pessoas sentissem orgulho de apoiar, garantindo novas oportunidades para as crianças e jovens da comunidade através do jiu-jitsu. Em número: R$ 200 mil de meta, R$ 0 em caixa.",
+    text: "Antes de tudo foi preciso sonhar: desenhar o projeto no papel, entender a realidade local e definir um plano claro, que era a construção da sede do Dojo Bonete. A meta precisava ir além de uma necessidade interna: tinha que ser um sonho coletivo, uma causa que outras pessoas sentissem orgulho de apoiar, garantindo novas oportunidades para as crianças e jovens da comunidade através do jiu‑jitsu. Em número: R$ 200 mil de meta, R$ 0 em caixa.",
     imgs: [renderInterior, renderTatame],
     retrato: true,
     alt: "Render do projeto da sede do Dojo Bonete",
@@ -128,15 +129,22 @@ const FICHA = [
   { label: "Metodologia", value: "Rifa Solidária" },
   { label: "Idealização & mestre", value: "André Queiroz" },
   { label: "Estratégia & captação", value: "Mateus Tafuri" },
+  {
+    label: "Instagram",
+    value: "@dojobonete",
+    href: "https://www.instagram.com/dojobonete/",
+  },
 ];
 
 /* álbum: o dojo pronto, em uso */
-const ALBUM = Array.from({ length: 11 }, (_, i) => `/album/${i + 1}.webp`);
+/* ordem escolhida a dedo: a foto da turma sendo fotografada vem em segundo,
+   e as duas de graduação saíram */
+const ALBUM = [1, 10, 2, 3, 4, 5, 8, 9, 11].map((n) => `/album/${n}.webp`);
 
 const CARROSSEIS = [
   { title: "Conheça o Dojo Bonete", slug: "conheca-o-dojo", count: 5 },
   { title: "Rifa Solidária", slug: "rifa-solidaria", count: 10 },
-  { title: "Jiu-jitsu", slug: "jiu-jitsu", count: 9 },
+  { title: "Jiu‑jitsu", slug: "jiu-jitsu", count: 9 },
   { title: "O impacto", slug: "o-impacto", count: 6 },
   { title: "Uma comunidade unida", slug: "carrossel-3", count: 6 },
   { title: "Tijolo em tijolo", slug: "tijolo-em-tijolo", count: 6 },
@@ -165,7 +173,15 @@ const OUTROS_CASES = [
 
 /* ─────────────────────────── PAGE ─────────────────────────── */
 
-const DojoBonete = () => (
+const DojoBonete = () => {
+  useSeo({
+    titulo: "Case Dojo Bonete: R$ 155,7 mil para erguer um dojo em Ilhabela | Mateus Tafuri",
+    descricao:
+      "Como a Rifa Solidária levantou R$ 155,7 mil com 2.077 apoiadores e construiu a sede do Dojo Bonete, numa comunidade caiçara de 350 moradores sem acesso por estrada.",
+    path: "/dojo-bonete",
+  });
+
+  return (
   <div className="min-h-screen" style={{ backgroundColor: CREME, color: VERDE }}>
     <Navbar />
 
@@ -198,7 +214,7 @@ const DojoBonete = () => (
               A Praia do Bonete é uma comunidade caiçara de 350 moradores em Ilhabela,
               aonde só se chega por uma hora de barco ou 12 km de trilha. Ali, o
               faixa-preta <strong className="text-[#16281f]">André Queiroz</strong>
-              {" "}ensinava jiu-jitsu num tatame embaixo da própria casa. Virou projeto
+              {" "}ensinava jiu‑jitsu num tatame embaixo da própria casa. Virou projeto
               social gratuito em 2023 e, em pouco tempo, colocou{" "}
               <strong className="text-[#16281f]">20% da comunidade</strong> no tatame.
             </p>
@@ -301,7 +317,7 @@ const DojoBonete = () => (
                 className="rounded-2xl border border-white/10 bg-white/[0.05] p-5 text-center"
               >
                 <p className="font-display text-2xl font-extrabold text-[#A9C46C] md:text-3xl">
-                  {s.value}
+                  <NumeroAnimado valor={s.value} />
                 </p>
                 <p className="mt-1 text-xs text-[#F4F0E6]/55">{s.label}</p>
               </div>
@@ -336,7 +352,7 @@ const DojoBonete = () => (
               <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#16281f]/60">
                 Ficha técnica
               </p>
-              <p className="text-xs text-[#16281f]/45">2024 – 2025</p>
+              <p className="text-xs text-[#16281f]/45">2024 a 2025</p>
             </div>
             {FICHA.map((f) => (
               <div
@@ -347,7 +363,18 @@ const DojoBonete = () => (
                 <p className="text-[11px] uppercase tracking-[0.15em] text-[#16281f]/50">
                   {f.label}
                 </p>
-                <p className="font-semibold">{f.value}</p>
+                {"href" in f && f.href ? (
+                  <a
+                    href={f.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-semibold underline-offset-4 hover:underline"
+                  >
+                    {f.value}
+                  </a>
+                ) : (
+                  <p className="font-semibold">{f.value}</p>
+                )}
               </div>
             ))}
           </div>
@@ -363,8 +390,7 @@ const DojoBonete = () => (
           Os carrosséis da campanha
         </h2>
         <p className="mt-4 max-w-2xl leading-relaxed text-[#16281f]/65">
-          As peças que levaram a história do Dojo Bonete para todo o Brasil. Arraste
-          para o lado para ver cada carrossel.
+          As peças que levaram a história do Dojo Bonete para todo o Brasil.
         </p>
 
         <div className="mt-10 space-y-12">
@@ -376,9 +402,7 @@ const DojoBonete = () => (
         {/* ───────── ÁLBUM ───────── */}
         <div className="mt-16 border-t border-black/10 pt-12">
           <Label>Álbum de fotos</Label>
-          <p className="mb-8 max-w-2xl leading-relaxed text-[#16281f]/65">
-            As aulas, as graduações e a comunidade dentro da sede nova.
-          </p>
+          <div className="mb-8" />
 
           <DragCarousel title="O tatame em uso" images={ALBUM} />
         </div>
@@ -452,5 +476,6 @@ const DojoBonete = () => (
     </footer>
   </div>
 );
+};
 
 export default DojoBonete;

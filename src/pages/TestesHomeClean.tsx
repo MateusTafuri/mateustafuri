@@ -9,7 +9,7 @@ import caseCorumbau from "@/assets/case-corumbau.webp";
 import caseCaraiva from "@/assets/case-caraiva-v2.webp";
 
 /* Entrada pensada para quem chega do link da bio: quieta, curta e vertical.
-   Quem é, o que fez, como fez e como falar comigo — nessa ordem. */
+   Quem é, o que fez, como fez e como falar comigo, nessa ordem. */
 
 const NUMEROS = [
   { v: "R$ 415 mil", l: "captados" },
@@ -179,7 +179,7 @@ const TestesHomeClean = () => (
       <p className="mt-3 leading-relaxed text-muted-foreground">
         Chamo de Rifa Solidária: no lugar de pedir doação, a campanha faz uma oferta
         que a pessoa quer aceitar. São cinco etapas, as mesmas nos três projetos, e o
-        passo a passo está inteiro aberto aqui — dá para rodar sozinho, sem me contratar.
+        passo a passo está inteiro aberto aqui, dá para rodar sozinho, sem me contratar.
       </p>
       <p className="mt-4 text-sm text-foreground/80">
         {ETAPAS.map((e) => e.title).join(" · ")}

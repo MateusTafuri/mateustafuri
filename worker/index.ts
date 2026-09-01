@@ -1,3 +1,4 @@
+import { EmailMessage } from "cloudflare:email";
 import { validarLead, type Lead } from "../src/lib/lead-validacao";
 
 /**
@@ -15,6 +16,7 @@ export type Env = {
   DB: D1Database;
   LEADS_TOKEN: string;
   ASSETS: Fetcher;
+  EMAIL: SendEmail;
 };
 
 /* O site é uma SPA: sem isto, as sete páginas chegariam ao Google com o
@@ -49,6 +51,16 @@ const PAGINAS: Record<string, { titulo: string; descricao: string }> = {
     titulo: "Dojo Caraíva: R$ 100 mil em bilhetes de R$ 20 | Mateus Tafuri",
     descricao:
       "Um ano inteiro de projeto garantido para as crianças de Caraíva, com 3.183 apoiadores e bilhetes de R$ 20.",
+  },
+  "/como-estruturar-rifa-solidaria-digital": {
+    titulo: "Como estruturar a sua rifa solidária no digital | Mateus Tafuri",
+    descricao:
+      "Guia completo e gratuito das cinco etapas da Rifa Solidária: meta, prêmio e parceiros, narrativa, página de venda e tráfego, sorteio e prestação de contas.",
+  },
+  "/como-legalizar-a-rifa": {
+    titulo: "Como legalizar a rifa da sua organização | Mateus Tafuri",
+    descricao:
+      "O caminho do sorteio filantrópico, do CNPJ à prestação de contas: as sete etapas, os prazos, as taxas e os documentos, conferidos nas normas oficiais.",
   },
   "/sobre": {
     titulo: "Sobre mim | Mateus Tafuri",
@@ -126,7 +138,45 @@ const lerCorpo = async (req: Request): Promise<Record<string, string>> => {
   return Object.fromEntries([...form.entries()].map(([k, v]) => [k, String(v)]));
 };
 
-const gravar = async (req: Request, env: Env) => {
+/* assunto com acento precisa ir codificado no cabeçalho MIME */
+const b64 = (s: string) => btoa(String.fromCharCode(...new TextEncoder().encode(s)));
+
+const DESTINO = "tafuri1999@gmail.com";
+const REMETENTE = "avisos@mateustafuri.com.br";
+
+/* Aviso de download. O corpo vai em MIME cru porque é o que o binding do
+   Email Routing aceita; o \r\n entre os campos é exigência do formato.
+   Nunca lança: se o e-mail falhar, o lead já está gravado e o PDF já baixou. */
+const avisar = async (env: Env, lead: Lead, extras: Record<string, string>) => {
+  const linhas = [
+    `Nome: ${lead.nome}`,
+    `E-mail: ${lead.email}`,
+    `Celular: ${lead.celular}`,
+    extras.organizacao ? `Organização: ${extras.organizacao}` : "",
+    extras.progresso ? `Progresso: ${extras.progresso}` : "",
+    extras.origem ? `Origem: ${extras.origem}` : "",
+    "",
+    `Lista completa: https://mateustafuri.com.br/api/leads?token=${encodeURIComponent(env.LEADS_TOKEN)}`,
+  ].filter(Boolean);
+
+  const mime = [
+    `From: Site Mateus Tafuri <${REMETENTE}>`,
+    `To: <${DESTINO}>`,
+    `Subject: =?UTF-8?B?${b64(`Baixou o Mapeamento: ${lead.nome}`)}?=`,
+    "MIME-Version: 1.0",
+    "Content-Type: text/plain; charset=utf-8",
+    "",
+    linhas.join("\n"),
+  ].join("\r\n");
+
+  try {
+    await env.EMAIL.send(new EmailMessage(REMETENTE, DESTINO, mime));
+  } catch (e) {
+    console.error("aviso de lead não saiu:", e);
+  }
+};
+
+const gravar = async (req: Request, env: Env, ctx: ExecutionContext) => {
   let corpo: Record<string, string>;
   try {
     corpo = await lerCorpo(req);
@@ -159,6 +209,8 @@ const gravar = async (req: Request, env: Env) => {
       req.headers.get("cf-ipcountry") || null,
     )
     .run();
+
+  ctx.waitUntil(avisar(env, lead, corpo));
 
   return json({ ok: true });
 };
@@ -207,8 +259,8 @@ ${
       <td data-r="Nome">${escapar(l.nome)}</td>
       <td data-r="Celular">${escapar(l.celular)}</td>
       <td data-r="E-mail">${escapar(l.email)}</td>
-      <td data-r="Organização">${escapar(l.organizacao || "—")}</td>
-      <td data-r="Progresso">${escapar(l.progresso || "—")}</td>
+      <td data-r="Organização">${escapar(l.organizacao || "-")}</td>
+      <td data-r="Progresso">${escapar(l.progresso || "-")}</td>
     </tr>`,
     )
     .join("")}
@@ -256,10 +308,10 @@ const listar = async (url: URL, env: Env, formato: "html" | "csv") => {
 };
 
 export default {
-  async fetch(req: Request, env: Env): Promise<Response> {
+  async fetch(req: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(req.url);
 
-    if (url.pathname === "/api/lead" && req.method === "POST") return gravar(req, env);
+    if (url.pathname === "/api/lead" && req.method === "POST") return gravar(req, env, ctx);
     if (url.pathname === "/api/leads" && req.method === "GET") return listar(url, env, "html");
     if (url.pathname === "/api/leads.csv" && req.method === "GET") return listar(url, env, "csv");
     if (url.pathname.startsWith("/api/")) return texto("Não encontrado.", 404);

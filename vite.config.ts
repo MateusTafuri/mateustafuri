@@ -7,7 +7,9 @@ import { componentTagger } from "lovable-tagger";
 export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
-    port: 8080,
+    // o Vite não lê PORT sozinho: sem isto, quem sobe o dev server não
+    // consegue escolher a porta e duas sessões brigam pela mesma
+    port: Number(process.env.PORT) || 8080,
     hmr: {
       overlay: false,
     },

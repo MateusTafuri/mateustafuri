@@ -7,7 +7,7 @@ import { ArrowLeft, ArrowRight, Check, X } from "lucide-react";
 /* Cinco formas de mostrar o progresso e deixar as cinco etapas ao alcance
    durante a página inteira. Todas usam as mesmas respostas, salvas neste
    navegador: escreva em uma e troque de opção para comparar. Pensadas para o
-   celular primeiro — no desktop elas continuam funcionando, mais folgadas. */
+   celular primeiro, no desktop elas continuam funcionando, mais folgadas. */
 
 const PALETA = {
   "--primary": "15 65% 56%",
@@ -352,7 +352,7 @@ const OPCOES = [
   {
     id: "linha",
     nome: "1 · Linha fina",
-    nota: "Uma faixa de 40px que gruda no topo: nome da etapa, cinco bolinhas para pular e um fio de progresso embaixo. É o mínimo possível de cromo — sobra tela para o teclado do celular.",
+    nota: "Uma faixa de 40px que gruda no topo: nome da etapa, cinco bolinhas para pular e um fio de progresso embaixo. É o mínimo possível de cromo, sobra tela para o teclado do celular.",
     Chrome: LinhaFina,
     topo: true,
   },

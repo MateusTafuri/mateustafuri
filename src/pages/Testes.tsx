@@ -39,7 +39,7 @@ const Testes = () => {
   return (
     <main className="w-full bg-neutral-950">
       <div className="mx-auto max-w-3xl px-6 py-10 text-center">
-        <h1 className="text-2xl font-bold text-white">Testes de Capa — 5 opções</h1>
+        <h1 className="text-2xl font-bold text-white">Testes de Capa, 5 opções</h1>
         <p className="mt-2 text-sm text-white/60">
           Mesma foto, mesma frase. Menos preto, mais impacto e mais alinhado à paleta verde da marca.
           Role para comparar.
@@ -50,7 +50,7 @@ const Testes = () => {
       <Variant
         num={1}
         title="Oliva translúcido"
-        desc="Preto trocado por verde-oliva da marca com blend multiply — tinge a foto em vez de escurecê-la."
+        desc="Preto trocado por verde-oliva da marca com blend multiply, tinge a foto em vez de escurecê-la."
       >
         <img
           src={heroImg}
@@ -192,7 +192,7 @@ const Testes = () => {
       </Variant>
 
       <div className="py-12 text-center text-sm text-white/50">
-        Fim das opções — me diga qual número você prefere (ou combine ideias).
+        Fim das opções, me diga qual número você prefere (ou combine ideias).
       </div>
     </main>
   );

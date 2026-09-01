@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.png" type="image/png" />
 
+    <!-- as fontes vêm por link: @import depois das regras do Tailwind era
+         descartado pelo navegador e só o fallback aparecia -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Caveat:wght@700&display=swap"
+    />
+
     <title>Mateus Tafuri | Captação de recursos para projetos sociais</title>
     <meta
       name="description"
@@ -50,6 +59,25 @@
         ]
       }
     </script>
+
+    <!-- Google Analytics 4, desligado até existir o ID de medição real.
+         Para ligar: trocar G-XXXXXXXXXX pelo ID da propriedade (Analytics >
+         Administrador > Fluxos de dados) e tirar o comentário daqui.
+         O site é uma SPA: o "enhanced measurement" do GA4 já conta as trocas
+         de rota pelo History API, então não precisa de código extra.
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      // o dev roda no mesmo HTML: sem isto, cada npm run dev vira visita no relatório
+      if (location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+        gtag("config", "G-XXXXXXXXXX");
+      }
+    </script>
+    -->
   </head>
 
   <body>

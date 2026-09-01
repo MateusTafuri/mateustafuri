@@ -13,6 +13,17 @@ const CorumbauBjj = lazy(() => import("./pages/CorumbauBjj.tsx"));
 const Testes = lazy(() => import("./pages/Testes.tsx"));
 const RifaSolidaria = lazy(() => import("./pages/RifaSolidaria.tsx"));
 const Sobre = lazy(() => import("./pages/Sobre.tsx"));
+const RifaLegal = lazy(() => import("./pages/RifaLegal.tsx"));
+const RifaDigital = lazy(() => import("./pages/RifaDigital.tsx"));
+const TestesBannerLegalizar = lazy(() => import("./pages/TestesBannerLegalizar.tsx"));
+const TestesMosaico = lazy(() => import("./pages/TestesMosaico.tsx"));
+const TestesBannerGuia = lazy(() => import("./pages/TestesBannerGuia.tsx"));
+const TestesIconeBilhete = lazy(() => import("./pages/TestesIconeBilhete.tsx"));
+const TestesHeaderSobre = lazy(() => import("./pages/TestesHeaderSobre.tsx"));
+const TestesFonteNome = lazy(() => import("./pages/TestesFonteNome.tsx"));
+const TestesCardGuia = lazy(() => import("./pages/TestesCardGuia.tsx"));
+const TestesFonteTitulos = lazy(() => import("./pages/TestesFonteTitulos.tsx"));
+const TestesHeaderHome = lazy(() => import("./pages/TestesHeaderHome.tsx"));
 const TestesVitrine = lazy(() => import("./pages/TestesVitrine.tsx"));
 const TestesMetodo = lazy(() => import("./pages/TestesMetodo.tsx"));
 const MapeamentoRifa = lazy(() => import("./pages/MapeamentoRifa.tsx"));
@@ -54,6 +65,17 @@ const App = () => (
             <Route path="/testes" element={<Testes />} />
             <Route path="/rifa-solidaria" element={<RifaSolidaria />} />
             <Route path="/sobre" element={<Sobre />} />
+            <Route path="/como-legalizar-a-rifa" element={<RifaLegal />} />
+            <Route path="/como-estruturar-rifa-solidaria-digital" element={<RifaDigital />} />
+            <Route path="/testes-banner-legalizar" element={<TestesBannerLegalizar />} />
+            <Route path="/testes-mosaico" element={<TestesMosaico />} />
+            <Route path="/testes-banner-guia" element={<TestesBannerGuia />} />
+            <Route path="/testes-icone-bilhete" element={<TestesIconeBilhete />} />
+            <Route path="/testes-header-sobre" element={<TestesHeaderSobre />} />
+            <Route path="/testes-fonte-nome" element={<TestesFonteNome />} />
+            <Route path="/testes-card-guia" element={<TestesCardGuia />} />
+            <Route path="/testes-fonte-titulos" element={<TestesFonteTitulos />} />
+            <Route path="/testes-header-home" element={<TestesHeaderHome />} />
             <Route path="/testes-vitrine" element={<TestesVitrine />} />
             <Route path="/mapeamento-rifa-solidaria" element={<MapeamentoRifa />} />
             <Route path="/testes-header" element={<TestesHeader />} />

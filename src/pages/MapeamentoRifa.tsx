@@ -1,5 +1,6 @@
 import { useState, type CSSProperties } from "react";
 import { Link } from "react-router-dom";
+import { useSeo } from "@/lib/seo";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { baixarPdf } from "@/lib/pdf-mapeamento";
@@ -13,9 +14,17 @@ import {
 } from "@/components/MapeamentoCampos";
 import { ETAPAS, WHATSAPP } from "@/data/rifaSolidaria";
 import { useMapeamento } from "@/hooks/use-mapeamento";
-import { ArrowLeft, ArrowRight, Download } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
+import { Voltar } from "@/components/Voltar";
 
 const MapeamentoRifa = () => {
+  useSeo({
+    titulo: "Mapeamento da Rifa Solidária: monte a sua campanha de graça",
+    descricao:
+      "Ferramenta gratuita e sem cadastro: responda três perguntas por etapa, salve no navegador e baixe em PDF o plano completo da sua Rifa Solidária.",
+    path: "/mapeamento-rifa-solidaria",
+  });
+
   const m = useMapeamento();
   const [i, setI] = useState(0);
   const [aberto, setAberto] = useState(-1);
@@ -62,18 +71,16 @@ const MapeamentoRifa = () => {
         {/* ───── CABEÇALHO ───── */}
         <header className="px-5 pt-24 pb-12 sm:px-6 md:pt-28 md:pb-14 text-white">
           <div className="mx-auto max-w-4xl">
-            <Link
-              to="/rifa-solidaria"
+            <Voltar
+              fallback="/rifa-solidaria"
               className="inline-flex items-center gap-2 text-sm text-white/60 transition-colors hover:text-[hsl(15,65%,56%)]"
-            >
-              <ArrowLeft size={16} /> Voltar para a metodologia
-            </Link>
+            />
 
             <div className="mt-8 text-center">
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[hsl(15,65%,56%)]">
                 Ferramenta gratuita
               </p>
-              <h1 className="mt-3 text-3xl font-bold leading-tight tracking-tight md:text-5xl">
+              <h1 className="mt-3 font-display text-3xl font-bold leading-tight tracking-tight md:text-5xl">
                 Mapeamento Rifa Solidária
               </h1>
               <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-white/70 md:text-lg">
@@ -97,7 +104,7 @@ const MapeamentoRifa = () => {
                 {etapa.emoji}
               </span>
               <div className="min-w-0 flex-1">
-                <h2 className="text-lg font-bold sm:text-xl">{etapa.title}</h2>
+                <h2 className="font-display text-lg font-bold sm:text-xl">{etapa.title}</h2>
                 <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
                   {etapa.chamada}
                 </p>
@@ -144,7 +151,7 @@ const MapeamentoRifa = () => {
         {/* ───── ENCERRAMENTO ───── */}
         <div className="mx-auto mt-8 max-w-2xl md:mt-10">
           <div className="rounded-3xl border border-primary/30 bg-secondary/40 p-6 text-center md:p-8">
-              <h2 className="text-xl font-bold md:text-2xl">
+              <h2 className="font-display text-xl font-bold md:text-2xl">
                 Terminou o mapeamento?
               </h2>
               <p className="mx-auto mt-3 max-w-xl leading-relaxed text-muted-foreground">
