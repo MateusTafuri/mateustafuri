@@ -1,3 +1,4 @@
+import { Award } from "lucide-react";
 import { Voltar } from "@/components/Voltar";
 import { Link } from "react-router-dom";
 
@@ -20,12 +21,15 @@ type Props = {
   titulo: string;
   destaque: string;
   descricao: string;
-  logo: string;
-  logoAlt: string;
+  /* opcional: as ações dos Causadores entram sem marca própria */
+  logo?: string;
+  logoAlt?: string;
   pecas: string[];
+  /* reconhecimento externo do case, quando houver */
+  selo?: string;
 };
 
-const CaseHero = ({ tipo, titulo, destaque, descricao, logo, logoAlt, pecas }: Props) => (
+const CaseHero = ({ tipo, titulo, destaque, descricao, logo, logoAlt, pecas, selo }: Props) => (
   <header
     className="relative overflow-hidden px-5 pt-24 pb-12 sm:px-6 md:pt-28 md:pb-16"
     style={{
@@ -52,12 +56,20 @@ const CaseHero = ({ tipo, titulo, destaque, descricao, logo, logoAlt, pecas }: P
           <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#F4F0E6]/45">
             Projeto
           </span>
-          <img
-            src={logo}
-            alt={logoAlt}
-            className="h-10 w-10 rounded-xl border border-white/15 bg-white/5 object-cover p-1"
-          />
+          {logo && (
+            <img
+              src={logo}
+              alt={logoAlt}
+              className="h-10 w-10 rounded-xl border border-white/15 bg-white/5 object-cover p-1"
+            />
+          )}
         </div>
+
+        {selo && (
+          <p className="mt-5 inline-flex items-center gap-2 rounded-full border border-[var(--case-destaque,#A9C46C)]/40 bg-[var(--case-destaque,#A9C46C)]/10 px-3.5 py-1.5 text-xs font-semibold text-[var(--case-destaque,#A9C46C)]">
+            <Award size={14} /> {selo}
+          </p>
+        )}
 
         <p className="mt-6 text-lg text-[#F4F0E6]/70 md:text-xl">{tipo}</p>
         <h1 className="mt-1 font-display text-5xl font-extrabold leading-[0.95] tracking-tight md:text-7xl">

@@ -15,6 +15,7 @@ import logoCorumbau from "@/assets/logo-corumbau.webp";
 import { ETAPAS, WHATSAPP, WHATSAPP_SOBRE } from "@/data/rifaSolidaria";
 import {
   ArrowRight,
+  Award,
   BookOpen,
   BadgeCheck,
   ArrowUpRight,
@@ -67,6 +68,7 @@ const RIFAS = [
       { icone: TrendingUp, v: "3,8x", l: "de retorno" },
     ],
     path: "/dojo-bonete",
+    selo: "Premiado no Festival ABCR 2026",
   },
   {
     nome: "Dojo Caraíva",
@@ -292,7 +294,8 @@ const ConteudoRifa = ({
             <QrCode size={22} className="hidden sm:block" />
           </span>
           <div>
-            <p className="font-bold">Veio pelo poster do Festival ABCR? Que bom ter você aqui.</p>
+            <p className="font-bold">Veio pelo pôster do Festival ABCR? Que bom ter você aqui.</p>
+            <p className="mt-1 text-left text-sm font-semibold text-primary">O case Dojo Bonete ficou entre os 3 melhores do Festival.</p>
             <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
               Planeje a sua Rifa Solidária de maneira simples e gratuita.
             </p>
@@ -502,6 +505,11 @@ const ConteudoRifa = ({
                   <NumeroAnimado valor={r.valor} />
                 </p>
                 <p className="mt-1 text-xs text-white/45">{r.frase}</p>
+                {"selo" in r && (
+                  <p className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-white/10 px-2.5 py-1 text-[11px] font-semibold text-white/85">
+                    <Award size={12} /> {r.selo}
+                  </p>
+                )}
 
                 <dl className="mt-5 grid grid-cols-3 gap-2 border-t border-white/10 pt-4 text-center">
                   {r.stats.map((k) => (

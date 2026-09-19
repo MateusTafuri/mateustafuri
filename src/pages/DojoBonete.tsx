@@ -193,6 +193,7 @@ const DojoBonete = () => {
       logo={logoBonete}
       logoAlt="Logo Dojo Bonete"
       pecas={CAPAS}
+      selo="Premiado no Festival ABCR 2026"
     />
 
     <CaseNav secoes={SECTIONS} />
