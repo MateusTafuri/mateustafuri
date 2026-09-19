@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Brilho azul de horizonte sobre fundo escuro">
+  <defs>
+    <radialGradient id="sky" cx="50%" cy="30%" r="60%">
+      <stop offset="0%"  stop-color="#2f7bff" stop-opacity="0.55"/>
+      <stop offset="26%" stop-color="#1b50d6" stop-opacity="0.30"/>
+      <stop offset="55%" stop-color="#0a1a4a" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#04091f" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="core" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"  stop-color="#d7ecff" stop-opacity="0.95"/>
+      <stop offset="30%" stop-color="#4f96ff" stop-opacity="0.55"/>
+      <stop offset="70%" stop-color="#2f6bff" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#2f6bff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="rim" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#0a2a6e" stop-opacity="0"/>
+      <stop offset="32%"  stop-color="#6fb4ff" stop-opacity="0.85"/>
+      <stop offset="50%"  stop-color="#eaf5ff" stop-opacity="1"/>
+      <stop offset="68%"  stop-color="#6fb4ff" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#0a2a6e" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="blurBig" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="46"/>
+    </filter>
+    <filter id="blurRim" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+  </defs>
+
+  <!-- Base -->
+  <rect width="1600" height="1000" fill="#04091f"/>
+
+  <!-- Atmosfera / brilho difuso -->
+  <rect width="1600" height="1000" fill="url(#sky)"/>
+
+  <!-- Núcleo luminoso acima da borda -->
+  <ellipse cx="800" cy="512" rx="560" ry="150" fill="url(#core)" filter="url(#blurBig)"/>
+
+  <!-- Corpo escuro (planeta) cuja borda superior forma o horizonte -->
+  <circle cx="800" cy="1360" r="828" fill="#03060f"/>
+
+  <!-- Halo brilhante da borda (blur) -->
+  <path d="M 232 748 A 828 828 0 0 1 1368 748" fill="none" stroke="url(#rim)" stroke-width="6" filter="url(#blurRim)"/>
+  <!-- Linha nítida do horizonte -->
+  <path d="M 232 748 A 828 828 0 0 1 1368 748" fill="none" stroke="url(#rim)" stroke-width="1.75"/>
+</svg>
