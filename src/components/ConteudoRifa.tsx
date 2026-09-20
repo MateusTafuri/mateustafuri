@@ -23,7 +23,6 @@ import {
   ClipboardList,
   Megaphone,
   MessageCircle,
-  QrCode,
   Tickets,
   TrendingUp,
   Users,
@@ -98,7 +97,7 @@ const RIFAS = [
   },
 ];
 
-const NUMEROS = [
+export const NUMEROS = [
   { valor: "+R$ 500 mil", label: "mobilizados em rifas" },
   { valor: "+10", label: "campanhas conduzidas" },
   { valor: "+10.000", label: "apoiadores conquistados" },
@@ -128,7 +127,7 @@ const RETRATOS = [
   },
 ];
 
-const RetratoRotativo = () => {
+export const RetratoRotativo = () => {
   const [i, setI] = useState(0);
 
   // depende de `i`: clicar num pontinho reinicia a contagem em vez de
@@ -178,15 +177,13 @@ const RetratoRotativo = () => {
 
 /* ─────────── CONTEÚDO ─────────── */
 
-/* O corpo inteiro da Rifa Solidária. A página /rifa-solidaria usa como está;
-   a home reaproveita sem o menu próprio e sem a faixa do Festival. */
+/* O corpo inteiro da Rifa Solidária, hoje só usado pela página
+   /rifa-solidaria: a entrada deixou de repetir esse conteúdo. */
 const ConteudoRifa = ({
   navbar = true,
-  faixaFestival = true,
   hero = true,
 }: {
   navbar?: boolean;
-  faixaFestival?: boolean;
   hero?: boolean;
 }) => {
   const [ativa, setAtiva] = useState(-1);
@@ -285,24 +282,6 @@ const ConteudoRifa = ({
         </header>
       </div>
 
-      {/* ───── BOAS-VINDAS DO FESTIVAL ───── */}
-      {faixaFestival && (
-      <section className="shrink-0 px-5 sm:px-6 py-6 bg-secondary/50 border-b border-border">
-        <div className="max-w-4xl mx-auto flex items-start gap-3 sm:gap-4">
-          <span className="grid h-10 w-10 sm:h-11 sm:w-11 shrink-0 place-items-center rounded-2xl bg-primary/10 text-primary">
-            <QrCode size={20} className="sm:hidden" />
-            <QrCode size={22} className="hidden sm:block" />
-          </span>
-          <div>
-            <p className="font-bold">Veio pelo pôster do Festival ABCR? Que bom ter você aqui.</p>
-            <p className="mt-1 text-left text-sm font-semibold text-primary">O case Dojo Bonete ficou entre os 3 melhores do Festival.</p>
-            <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
-              Planeje a sua Rifa Solidária de maneira simples e gratuita.
-            </p>
-          </div>
-        </div>
-      </section>
-      )}
       </div>
       )}
 
