@@ -4,12 +4,12 @@ import caseBonete from "@/assets/case-bonete-v3.webp";
 import logoCaraiva from "@/assets/logo-caraiva.webp";
 import logoBonete from "@/assets/logo-bonete.webp";
 import logoCorumbau from "@/assets/logo-corumbau.webp";
-import { ArrowRight, MapPin } from "lucide-react";
+import { ArrowRight, Award, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const cases = [
   { img: caseCaraiva, logo: logoCaraiva, name: "Projeto Social l Dojo Caraíva", desc: "Quando a estratégia encontra propósito, o simples encanta, engaja, transforma e realiza.", location: "Caraíva, BA", path: "/dojo-caraiva", imgPosition: "center 65%" },
-  { img: caseBonete, logo: logoBonete, name: "Projeto Social l Dojo Bonete", desc: "Uma comunidade isolada, um professor de jiu jitsu e um sonho que construíram muito mais que um espaço.", location: "Ilhabela, SP", path: "/dojo-bonete", imgPosition: "center 58%" },
+  { img: caseBonete, logo: logoBonete, name: "Projeto Social l Dojo Bonete", desc: "Uma comunidade isolada, um professor de jiu jitsu e um sonho que construíram muito mais que um espaço.", location: "Ilhabela, SP", path: "/dojo-bonete", imgPosition: "center 58%", selo: "Premiado no Festival ABCR 2026" },
   { img: caseCorumbau, logo: logoCorumbau, name: "Projeto Social l Corumbau BJJ", desc: "101 dias de campanha, persistência e fé. Um projeto que provou que o esporte muda tudo, mesmo longe de tudo.", location: "Corumbau, BA", path: "/corumbau-bjj", imgPosition: "center 65%", imgScale: "scale-110" },
 ];
 
@@ -39,6 +39,11 @@ const CasesSection = () => {
                 className={`w-full h-full ${(c as any).fit === 'contain' ? 'object-contain bg-muted' : 'object-cover'} group-hover:scale-105 transition-transform duration-300 ${(c as any).imgScale || ''}`}
                 style={c.imgPosition ? { objectPosition: c.imgPosition } : undefined}
               />
+              {"selo" in c && (
+                <p className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-black/65 px-2.5 py-1 text-[11px] font-semibold text-white backdrop-blur-sm">
+                  <Award size={12} /> {c.selo}
+                </p>
+              )}
             </div>
             <div className="p-4">
               <div className="flex items-center gap-2 mb-2">
